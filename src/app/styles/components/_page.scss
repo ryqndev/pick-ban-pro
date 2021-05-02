@@ -1,0 +1,12 @@
+.page__component {
+    padding: 60px 0px 200px;
+    margin: 0 auto;
+    max-width: 950px;
+    width: calc(100% - 80px);
+    font-size: 1.3em;
+    @media screen and (max-width: 800px){
+        padding: 100px 0px 100px;
+        width: calc(100vw - 40px);
+        font-size: 1rem;
+    }
+}

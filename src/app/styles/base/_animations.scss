@@ -1,0 +1,38 @@
+:root {
+    --animation-time: 350ms;
+    --animation-slow: 500ms;
+    --animation-fast: 150ms;
+}
+
+
+.fade-enter,
+.fade-exit {
+    transition: opacity var(--animation-time) ease-out;
+    &.fast {
+        transition-duration: var(--animation-fast);
+    }
+    &.slow {
+        transition-duration: var(--animation-slow);
+    }
+}
+
+.fade-enter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+}
+
+.fade-exit {
+
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+}

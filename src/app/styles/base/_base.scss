@@ -1,0 +1,14 @@
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: color 500ms, background-color 500ms;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+}
+a:any-link {
+    color: inherit;
+    transition: color 250ms;
+}
+a:hover {
+    color: var(--accent-alt);
+}
