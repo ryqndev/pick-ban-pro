@@ -10,7 +10,8 @@ const App = () => {
 		<Router basename={process.env.PUBLIC_URL}>
 			<Navbar />
 			<Route exact strict path="/" component={Landing} />
-			<Route exact strict path="/draft" component={Draft} />
+			<Route path="/draft" component={Draft} />
+			<Route path="/draft/:draft" component={Draft} />
 			<Footer />
 		</Router>
 	);

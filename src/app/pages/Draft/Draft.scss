@@ -7,36 +7,6 @@ main.draft--wrapper {
         display: grid;
         grid-template-columns: 400px 1fr 400px;
         height: 95%;
-        & > .pickban {
-            display: grid;
-            grid-template-rows: 80px repeat(3, 1fr) 80px repeat(2, 1fr);
-            row-gap: 5px;
-            & > .ban-row {
-                display: grid;
-                place-content: center;
-                grid-auto-flow: column;
-                width: 100%;
-                column-gap: 30px;
-            }
-            & > .pick {
-                background-color: var(--bg-primary-light);
-                transition: border-width 350ms;
-                &.left {
-                    border-right: 0px solid var(--accent-primary);
-                    &:hover {
-                        border-width: 10px;
-                    }
-                }
-                &.right {
-                    border-left: 0px solid var(--accent-primary);
-                    &:hover {
-                        border-width: 10px;
-                    }
-                }
-            }
-        }
-        & > .select {
-        }
     }
 }
 
