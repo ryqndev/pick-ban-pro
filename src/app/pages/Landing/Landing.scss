@@ -1,0 +1,66 @@
+.landing-page--wrapper {
+    & > header {
+        display: grid;
+        place-content: center;
+        height: 100vh;
+        & > .start {
+            z-index: 1;
+            border-bottom: 3px solid transparent;
+            margin-bottom: 100px;
+            width: 300px;
+            padding: 0px 0px 10px 14px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 15px;
+            transition: border-color 350ms, letter-spacing 350ms;
+            &:hover {
+                border-bottom: 3px solid gold;
+                letter-spacing: 18px;
+            }
+        }
+        & > .splash-decoration {
+            box-sizing: border-box;
+            height: calc(100vh - 110px);
+            position: absolute;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            padding: 25px 100px 25px 0px;
+            border-bottom: 4px solid var(--accent-primary);
+            border-left: 4px solid var(--accent-primary);
+            border-bottom-left-radius: 10px;
+            & > div {
+                grid-row: 2/3;
+                padding: 25px;
+                background-color: var(--bg-primary);
+                transform: rotate(-20deg) translateX(-20px) translateY(20px);
+                & > h1 {
+                    font: 18rem "Hyperwave";
+                    text-align: center;
+                    line-height: 9rem;
+                    padding: 25px;
+                    background: -webkit-linear-gradient(#38006d, #FF00FF);
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    user-select: none;
+                    @media screen and (max-width: 1300px) {
+                        font-size: 14rem;
+                        line-height: 8rem;
+                    }
+                    @media screen and (max-width: 1000px) {
+                        font-size: 12rem;
+                        line-height: 6rem;
+                    }
+                    @media screen and (max-width: 800px) {
+                        font-size: 10rem;
+                        line-height: 6rem;
+                    }
+                }
+            }
+        }
+    }
+}

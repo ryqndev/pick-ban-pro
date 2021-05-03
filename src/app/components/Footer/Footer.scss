@@ -1,0 +1,32 @@
+footer {
+    position: relative;
+    z-index: 150;
+    height: 100vh;
+    text-align: center;
+    background-color: var(--bg-primary-dark);
+    transition: background-color 500ms;
+    & > .portfolio{
+        display: grid;
+        place-content: center;
+        height: 100%;
+        text-align: center;
+        font: 25vw 'Hyperwave';
+        transition: color 500ms;
+        & > a {
+            text-decoration: none;
+            color: var(--bg-primary);
+            transition: color 500ms;
+            &:hover {
+                color: var(--bg-primary-light);
+            }
+        }
+    }
+    & .made-with{
+        position: absolute;
+        width: 100%;
+        bottom: 30px;
+        font: 1em 'Poppins';
+        text-align: center;
+        color: #fff;
+    }
+}

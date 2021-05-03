@@ -1,0 +1,12 @@
+.champion-icon--wrapper {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-secondary);
+    overflow: hidden;
+    & img {
+        height: 100%;
+        transform: scale(1.15);
+        background-color: var(--bg-primary-light);
+    }
+}

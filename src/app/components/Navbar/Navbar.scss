@@ -1,0 +1,21 @@
+nav {
+    box-sizing: border-box;
+    position: sticky;
+    z-index: 500;
+    top: 0px;
+    height: 60px;
+    width: 100%;
+    padding: 0px 30px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: var(--bg-primary);
+    & .name {
+        display: grid;
+        place-content: center;
+        color: white;
+        font-family: "Hyperwave";
+        font-size: 3em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
