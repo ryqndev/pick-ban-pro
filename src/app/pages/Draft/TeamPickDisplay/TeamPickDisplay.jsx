@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import ChampionsContext from '../../../controller/contexts/ChampionsContext';
 import ChampionBan from './ChampionBan';
 import ChampionPick from './ChampionPick';
 import './TeamPickDisplay.scss';
@@ -15,33 +17,41 @@ const PICK_2_END = 10;
  * @note Using the loop index as a key for all component loops because the number of items in the array should 
  * never change... unless the game itself changes
  */
-const TeamPickDisplay = ({isLeft, draft}) => {
+const TeamPickDisplay = ({isLeft, teamPickData}) => {
+    const championContextData = useContext(ChampionsContext);
+
+    const getChampionData = (championID) => {
+        console.log(championID);
+        if(!championID || !championContextData.championsList) return {id: championID};
+        return {name: championContextData.championsList[championID].name, id: championID}
+    }
+
     return (
         <div className={`team-pick-display--wrapper currently-picking`}>
             <div className="ban-row">
-                {draft.slice(BAN_1_START, BAN_1_END + 1).map(({status, val, id}, index) => (
-                    <ChampionBan key={index} name={status !== -1 ? val : ''} id={id}/>
+                {teamPickData.slice(BAN_1_START, BAN_1_END + 1).map((champion, index) => (
+                    <ChampionBan key={index} {...getChampionData(champion)} />
                 ))}
             </div>
-            {draft.slice(PICK_1_START, PICK_1_END + 1).map(({status, val, id}) => (
+            {teamPickData.slice(PICK_1_START, PICK_1_END + 1).map((champion, index) => (
                 <ChampionPick
-                    className={`pick ${status === 0 ? 'currently-picking' : ''}`}
+                    key={index}
+                    className={`pick`}
                     isLeft={isLeft}
-                    name={status !== -1 ? val : ''} 
-                    id={id}
+                    {...getChampionData(champion)} 
                 />
             ))}
             <div className="ban-row">
-            {draft.slice(BAN_2_START, BAN_2_END + 1).map(({status, val, id}, index) => (
-                <ChampionBan key={index} name={status !== -1 ? val : ''} id={id}/>
+            {teamPickData.slice(BAN_2_START, BAN_2_END + 1).map((champion, index) => (
+                <ChampionBan key={index} {...getChampionData(champion)} />
             ))}
             </div>
-            {draft.slice(PICK_2_START, PICK_2_END + 1).map(({status, val, id}) => (
+            {teamPickData.slice(PICK_2_START, PICK_2_END + 1).map((champion, index) => (
                 <ChampionPick
-                    className={`pick ${status === 0 ? 'currently-picking' : ''}`}
+                    key={index}
+                    className={`pick`}
                     isLeft={isLeft}
-                    name={status !== -1 ? val : ''} 
-                    id={id}
+                    {...getChampionData(champion)} 
                 />
             ))}
         </div>
