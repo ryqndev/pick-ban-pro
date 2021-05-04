@@ -1,0 +1,49 @@
+.champion-pick--wrapper {
+    position: relative;
+    margin: 5px 0px;
+    background-color: var(--bg-primary-light);
+    transition: height 350ms;
+    overflow: hidden;
+
+    &:hover>.pick {
+        filter: contrast(0.8);
+        &>h3 {
+            color: var(--accent-primary);
+        }
+    }
+
+    &>.pick {
+        height: 100%;
+        transition: border-width 350ms;
+        background-size: cover;
+        transition: filter 350ms;
+        &>h3 {
+            position: absolute;
+            bottom: 0px;
+            font: 4rem 'Hyperwave';
+            color: white;
+            text-shadow: 2px 2px 1px #000000;
+            transition: color 350ms;
+        }
+    }
+
+    &.left {
+        border-right: 2px solid var(--accent-primary);
+
+        & .pick>h3 {
+            right: 20px;
+        }
+    }
+
+    &.right {
+        border-left: 2px solid var(--accent-secondary);
+
+        & .pick>h3 {
+            left: 20px;
+        }
+    }
+
+    &.currently-picking>.pick {
+        border-width: 10px;
+    }
+}

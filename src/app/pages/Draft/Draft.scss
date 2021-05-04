@@ -1,12 +1,12 @@
 main.draft--wrapper {
+    box-sizing: border-box;
     height: calc(100vh - 60px);
+    padding-top: 20px;
     overflow: scroll;
     display: grid;
-    grid-template-rows: 100px 1fr;
     & > .pickban-select--wrapper {
         display: grid;
         grid-template-columns: 400px 1fr 400px;
         height: 95%;
     }
 }
-

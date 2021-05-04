@@ -9,13 +9,12 @@ nav {
     display: grid;
     grid-template-columns: auto 1fr;
     background-color: var(--bg-primary);
-    & .name {
+    & a.name {
         display: grid;
+        color: transparent;
         place-content: center;
-        color: white;
-        font-family: "Hyperwave";
-        font-size: 3em;
-        font-weight: bold;
+        font: 3em "Poppins";
         text-decoration: none;
+        
     }
 }

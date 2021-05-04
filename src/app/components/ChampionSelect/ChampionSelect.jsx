@@ -1,8 +1,8 @@
-import './ChampSelect.scss';
+import './ChampionSelect.scss';
 
 const ChampSelect = () => {
     return (
-        <div>
+        <div className="champ-select--wrapper">
             
         </div>
     );
