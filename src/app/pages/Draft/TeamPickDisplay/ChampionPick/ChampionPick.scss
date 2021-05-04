@@ -2,7 +2,7 @@
     position: relative;
     margin: 5px 0px;
     background-color: var(--bg-primary-light);
-    transition: height 350ms;
+    transition: height 350ms, border-width 350ms;
     overflow: hidden;
 
     &:hover>.pick {
@@ -43,7 +43,7 @@
         }
     }
 
-    &.currently-picking>.pick {
-        border-width: 10px;
+    &.currently-picking {
+        border-width: 15px;
     }
 }

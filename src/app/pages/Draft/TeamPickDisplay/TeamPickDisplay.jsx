@@ -17,45 +17,46 @@ const PICK_2_END = 10;
  * @note Using the loop index as a key for all component loops because the number of items in the array should 
  * never change... unless the game itself changes
  */
-const TeamPickDisplay = ({isLeft, teamPickData}) => {
+const TeamPickDisplay = ({isLeft, currentPick, teamPickData}) => {
     const championContextData = useContext(ChampionsContext);
 
     const getChampionData = (championID) => {
-        console.log(championID);
         if(!championID || !championContextData.championsList) return {id: championID};
         return {name: championContextData.championsList[championID].name, id: championID}
     }
 
+    const isCurrentPick = (index) => (isLeft === currentPick.blue) && (currentPick.index === index);
+
     return (
-        <div className={`team-pick-display--wrapper currently-picking`}>
+        <div className={`team-pick-display--wrapper`}>
             <div className="ban-row">
                 {teamPickData.slice(BAN_1_START, BAN_1_END + 1).map((champion, index) => (
-                    <ChampionBan key={index} {...getChampionData(champion)} />
+                    <ChampionBan key={index} {...getChampionData(champion)} currentPick={isCurrentPick(index)}/>
                 ))}
             </div>
             {teamPickData.slice(PICK_1_START, PICK_1_END + 1).map((champion, index) => (
                 <ChampionPick
                     key={index}
-                    className={`pick`}
+                    className={`pick ${isCurrentPick(index + PICK_1_START) ? 'currently-picking' : ''}`}
                     isLeft={isLeft}
                     {...getChampionData(champion)} 
                 />
             ))}
             <div className="ban-row">
             {teamPickData.slice(BAN_2_START, BAN_2_END + 1).map((champion, index) => (
-                <ChampionBan key={index} {...getChampionData(champion)} />
+                <ChampionBan key={index} {...getChampionData(champion)} currentPick={isCurrentPick(index + BAN_2_START)}/>
             ))}
             </div>
             {teamPickData.slice(PICK_2_START, PICK_2_END + 1).map((champion, index) => (
                 <ChampionPick
                     key={index}
-                    className={`pick`}
+                    className={`pick ${isCurrentPick(index + PICK_2_START) ? 'currently-picking' : ''}`}
                     isLeft={isLeft}
                     {...getChampionData(champion)} 
                 />
             ))}
         </div>
-    )
+    );
 }
 
 export default TeamPickDisplay;

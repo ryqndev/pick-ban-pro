@@ -14,19 +14,22 @@ const useDraftLogicController = () => {
     const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
     const [redTeamRenderData, setRedTeamRenderData] = useState([]);
     const [currentPick, setCurrentPick] = useState(0);
+    const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: 0});
 
     useEffect(() => {
         let red = [], blue = [];
         draft.forEach((e, i) => {
-            if(BLUE_SIDE_PICKS.has(i)) blue.push(e);
-            else                        red.push(e);
+            let currentTeam = BLUE_SIDE_PICKS.has(i) ? blue : red;
+            if(i === currentPick) setLocalCurrentPick({blue: BLUE_SIDE_PICKS.has(i), index: currentTeam.length});
+            currentTeam.push(e);
         });
         setBlueTeamRenderData(blue);
         setRedTeamRenderData(red);
-    }, [draft])
+    }, [currentPick, draft])
 
     const select = useCallback((champion) => {
-        if(currentPick >= 20) return; // if all champs picked
+        if(currentPick >= 20) return;
+        if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
 
         setDraft(prevDraft => {
             let updatedDraft = [...prevDraft];
@@ -39,7 +42,7 @@ const useDraftLogicController = () => {
     return {
         blueTeamRenderData,
         redTeamRenderData,
-        currentPick,
+        localCurrentPick,
         select,
     };
 }
