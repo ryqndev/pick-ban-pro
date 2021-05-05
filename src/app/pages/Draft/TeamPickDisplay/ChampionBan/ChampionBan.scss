@@ -28,7 +28,7 @@
         bottom: 5px;
         left: 50%;
         transform: translateX(-50%);
-        animation: fade 1s alternate infinite linear;
+        animation: fade 750ms alternate infinite ease-in-out;
     }
     &:hover {
         & > img {

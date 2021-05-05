@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from 'react';
-import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
+import {BLUE_SIDE_PICKS, editArrayAtIndex, LPL_SPRING_2021_FINALS_GAME_1} from '../draftLogicControllerUtil.js';
 
 /**
  * This seems like a pretty good use case for a state machine but I'm not sure I need it
@@ -10,11 +10,14 @@ import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
  * 
  */
 const useDraftLogicController = () => {
+    // const [draft, setDraft] = useState(LPL_SPRING_2021_FINALS_GAME_1);
+    // const [currentPick, setCurrentPick] = useState(20);
+    // const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
     const [draft, setDraft] = useState(new Array(20).fill(null));
-    const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
-    const [redTeamRenderData, setRedTeamRenderData] = useState([]);
     const [currentPick, setCurrentPick] = useState(0);
     const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: 0});
+    const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
+    const [redTeamRenderData, setRedTeamRenderData] = useState([]);
 
     useEffect(() => {
         let red = [], blue = [];
@@ -28,21 +31,20 @@ const useDraftLogicController = () => {
     }, [currentPick, draft])
 
     const select = useCallback((champion) => {
-        if(currentPick >= 20) return;
-        if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
-
-        setDraft(prevDraft => {
-            let updatedDraft = [...prevDraft];
-            updatedDraft[currentPick] = champion;
-            return updatedDraft;
-        });
-        setCurrentPick(pick => pick + 1);
+        setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
     }, [currentPick]);
+
+    const lockin = useCallback(() => {
+        if(currentPick >= 20 || !draft[currentPick]) return;
+        if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
+        setCurrentPick(pick => pick + 1);
+    }, [draft, currentPick]);
 
     return {
         blueTeamRenderData,
         redTeamRenderData,
         localCurrentPick,
+        lockin,
         select,
     };
 }
