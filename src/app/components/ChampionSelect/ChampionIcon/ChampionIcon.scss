@@ -1,0 +1,15 @@
+.champion-icon--wrapper {
+    display: grid;
+    width: 120px;
+    grid-template-rows: 120px auto;
+    & > img {
+        height: 100%;
+        background-color: black;
+    }
+    & > p {
+        text-align: center;
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 5px 0px 20px;
+    }
+}

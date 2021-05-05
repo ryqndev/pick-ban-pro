@@ -1,7 +1,7 @@
 import useDraftLogicController from '../../controller/hooks/useDraftLogicController';
 import TeamPickDisplay from './TeamPickDisplay';
-import './Draft.scss';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelectionDisplay';
+import './Draft.scss';
 
 const Draft = () => {
     const {

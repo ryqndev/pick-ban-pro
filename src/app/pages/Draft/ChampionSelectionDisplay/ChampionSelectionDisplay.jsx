@@ -4,9 +4,11 @@ import './ChampionSelectionDisplay.scss';
 
 const ChampionSelectionDisplay = ({lockin, select}) => {
     return (
-        <div>
-            <ChampionSelect select={select}/>
-            <button onClick={lockin}>lock in</button>
+        <div className="champion-select-display--wrapper">
+            <ChampionSelect className="select" select={select}/>
+            <div className="controls">
+                <button onClick={lockin}>lock in</button>
+            </div>
         </div>
     );
 }

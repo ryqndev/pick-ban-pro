@@ -1,0 +1,42 @@
+.champion-select--wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 20px;
+    & > .filter-options {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 50px;
+        padding: 0px 15px;
+        & > .role-filter {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            & > p {
+                display: grid;
+                place-content: center;
+                width: 40px;
+            }
+        }
+        & > input[type=text] {
+            font-size: 1.4rem;
+            padding: 5px 10px;
+            background-color: var(--bg-primary-light);
+            border: none;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px 1px black;
+            color: var(--text-primary);
+        }
+    }
+    & > .results {
+       max-height: 100%;
+       overflow: hidden;
+        & .resizable-container {
+            max-height: 100%;
+            overflow: scroll;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            column-gap: 20px;
+            padding: 0px 15px;
+        }
+    }
+}

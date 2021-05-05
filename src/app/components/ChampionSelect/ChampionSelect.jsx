@@ -7,7 +7,7 @@ import ChampionIcon from './ChampionIcon/ChampionIcon';
 const options = {
     isCaseSensitive: false,
     shouldSort: false,
-    threshold: 0.2,
+    threshold: 0.3,
     keys: [
         "name",
         "tags",
@@ -15,11 +15,12 @@ const options = {
     ],
 };
 
-const ChampSelect = ({ select }) => {
+const ChampSelect = ({ className='', select }) => {
     const { championsList } = useContext(ChampionsContext);
     const [search, setSearch] = useState('');
     const [fuse, setFuse] = useState(new Fuse([], options));
     const [results, setResults] = useState([]);
+    const [cachedFullList, setCachedFullList] = useState([]);
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -39,17 +40,34 @@ const ChampSelect = ({ select }) => {
             } = championsList[championID];
             return {id, name, title, tags}
         });
-        setFuse(new Fuse(sortedChampionData, options))
+        setCachedFullList(sortedChampionData.map(championData => ({item: championData})));
+        setFuse(new Fuse(sortedChampionData, options));
     }, [championsList]);
 
     useEffect(() => {
+        if(search.length === 0) return setResults(cachedFullList);
+
         setResults(fuse.search(search));
-    }, [fuse, search]);
+    }, [fuse, search, cachedFullList]);
 
     return (
-        <div className="champ-select--wrapper">
-            <input type="text" value={search} onChange={handleChange} />
-            {results.map(result => <ChampionIcon key={result.id} {...result} select={select}/>)}
+        <div className={`champion-select--wrapper ${className}`}>
+            <div className="filter-options">
+                <div className="role-filter">
+                    <p>T</p>
+                    <p>J</p>
+                    <p>M</p>
+                    <p>B</p>
+                    <p>S</p>
+                </div>
+                <input type="text" value={search} onChange={handleChange} />
+            </div>
+            <div className="results">
+                <div className="resizable-container">
+                    <ChampionIcon key='@ryqndev/no-ban' item={{id: 'none', name: 'None'}} select={select}/>
+                    {results.map(result => <ChampionIcon key={result.item.id} {...result} select={select}/>)}
+                </div>
+            </div>
         </div>
     );
 }
