@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from 'react';
-import {BLUE_SIDE_PICKS, editArrayAtIndex, LPL_SPRING_2021_FINALS_GAME_1} from '../draftLogicControllerUtil.js';
+import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, LPL_SPRING_2021_FINALS_GAME_1} from '../draftLogicControllerUtil.js';
 
 /**
  * This seems like a pretty good use case for a state machine but I'm not sure I need it
@@ -31,19 +31,22 @@ const useDraftLogicController = () => {
     }, [currentPick, draft])
 
     const select = useCallback((champion) => {
+        if(currentPick >= 20) return;
         setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
     }, [currentPick]);
 
     const lockin = useCallback(() => {
-        if(currentPick >= 20 || !draft[currentPick]) return;
+        if(currentPick >= 20 || !draft[currentPick] || (draft[currentPick] === 'none' && PICKS.has(currentPick))) return;
         if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
         setCurrentPick(pick => pick + 1);
     }, [draft, currentPick]);
 
     return {
+        draft,
         blueTeamRenderData,
         redTeamRenderData,
         localCurrentPick,
+        currentPick,
         lockin,
         select,
     };

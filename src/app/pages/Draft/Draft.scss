@@ -6,7 +6,8 @@ main.draft--wrapper {
     display: grid;
     & > .pickban-select--wrapper {
         display: grid;
-        grid-template-columns: 400px 1fr 400px;
+        grid-template-columns: 460px 1fr 460px;
         height: 98%;
+        min-height: 0;
     }
 }

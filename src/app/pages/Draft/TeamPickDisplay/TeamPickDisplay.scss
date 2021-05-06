@@ -14,7 +14,12 @@
     & > .ban-row {
         height: 100px;
         display: grid;
-        grid-auto-flow: column;
         column-gap: 5px;
+        &.phase-1 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        &.phase-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 }

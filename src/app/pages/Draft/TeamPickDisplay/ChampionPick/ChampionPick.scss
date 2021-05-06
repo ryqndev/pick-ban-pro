@@ -25,6 +25,19 @@
             text-shadow: 2px 2px 1px #000000;
             transition: color 350ms;
         }
+        &>span {
+            display: none;
+            font-family: 'Rubik';
+            position: absolute;
+            bottom: 4rem;
+            text-shadow: 1px 1px 2px  #000000;
+            font-size: 1.8rem;
+            padding: none;
+            animation: fade 750ms alternate infinite ease-in-out;
+        }
+    }
+    &.currently-picking>.pick>span {
+        display: inline;
     }
 
     &.left {
@@ -33,6 +46,9 @@
         & .pick>h3 {
             right: 20px;
         }
+        & .pick>span {
+            right: 15px;
+        }
     }
 
     &.right {
@@ -40,6 +56,9 @@
 
         & .pick>h3 {
             left: 20px;
+        }
+        & .pick>span {
+            left: 15px;
         }
     }
 

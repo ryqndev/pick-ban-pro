@@ -5,9 +5,11 @@ import './Draft.scss';
 
 const Draft = () => {
     const {
+        draft,
         blueTeamRenderData, 
         redTeamRenderData,
         localCurrentPick,
+        currentPick,
         lockin,
         select,
     } = useDraftLogicController();
@@ -16,7 +18,7 @@ const Draft = () => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay lockin={lockin} select={select} />
+                <ChampionSelectionDisplay lockin={lockin} select={select} draft={draft} currentPick={currentPick}/>
                 <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />
             </div>
         </main>

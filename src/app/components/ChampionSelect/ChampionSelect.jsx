@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import ChampionsContext from '../../controller/contexts/ChampionsContext';
 import Fuse from 'fuse.js';
 import './ChampionSelect.scss';
-import ChampionIcon from './ChampionIcon/ChampionIcon';
+import ChampionIcon from './ChampionIcon';
 
 const options = {
     isCaseSensitive: false,
@@ -15,7 +15,7 @@ const options = {
     ],
 };
 
-const ChampSelect = ({ className='', select }) => {
+const ChampSelect = ({className='', select, disabled}) => {
     const { championsList } = useContext(ChampionsContext);
     const [search, setSearch] = useState('');
     const [fuse, setFuse] = useState(new Fuse([], options));
@@ -52,7 +52,7 @@ const ChampSelect = ({ className='', select }) => {
 
     return (
         <div className={`champion-select--wrapper ${className}`}>
-            <div className="filter-options">
+            <div className="filter-options card__component">
                 <div className="role-filter">
                     <p>T</p>
                     <p>J</p>
@@ -65,7 +65,14 @@ const ChampSelect = ({ className='', select }) => {
             <div className="results">
                 <div className="resizable-container">
                     <ChampionIcon key='@ryqndev/no-ban' item={{id: 'none', name: 'None'}} select={select}/>
-                    {results.map(result => <ChampionIcon key={result.item.id} {...result} select={select}/>)}
+                    {results.map(result => 
+                        <ChampionIcon 
+                            key={result.item.id} 
+                            disabled={disabled.has(result.item.id)}
+                            select={select} 
+                            {...result}
+                        />
+                    )}
                 </div>
             </div>
         </div>

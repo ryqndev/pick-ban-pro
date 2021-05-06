@@ -21,7 +21,7 @@ const TeamPickDisplay = ({isLeft, currentPick, teamPickData}) => {
     const championContextData = useContext(ChampionsContext);
 
     const getChampionData = (championID) => {
-        if(!championID || !championContextData.championsList) return {id: championID};
+        if(!championID || championID === 'none' || !championContextData.championsList) return {id: championID};
         return {name: championContextData.championsList[championID].name, id: championID}
     }
 
@@ -29,7 +29,7 @@ const TeamPickDisplay = ({isLeft, currentPick, teamPickData}) => {
 
     return (
         <div className={`team-pick-display--wrapper`}>
-            <div className="ban-row">
+            <div className="ban-row phase-1">
                 {teamPickData.slice(BAN_1_START, BAN_1_END + 1).map((champion, index) => (
                     <ChampionBan key={index} {...getChampionData(champion)} currentPick={isCurrentPick(index)}/>
                 ))}
@@ -42,7 +42,7 @@ const TeamPickDisplay = ({isLeft, currentPick, teamPickData}) => {
                     {...getChampionData(champion)} 
                 />
             ))}
-            <div className="ban-row">
+            <div className="ban-row phase-2">
             {teamPickData.slice(BAN_2_START, BAN_2_END + 1).map((champion, index) => (
                 <ChampionBan key={index} {...getChampionData(champion)} currentPick={isCurrentPick(index + BAN_2_START)}/>
             ))}

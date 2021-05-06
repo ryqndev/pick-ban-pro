@@ -1,16 +1,34 @@
 .champion-select-display--wrapper {
     display: grid;
-    grid-template-rows: 75vh 1fr;
+    grid-template-rows: 1fr 120px;
+    height: 100%;
     row-gap: 20px;
     margin: 0 auto;
-    max-width: 900px;
+    min-height: 0;
+    max-width: 800px;
     & > .select {
-        height: 75vh;
+        min-height: 0;
     }
     & > .controls {
-        height: 100%;
+        box-sizing: border-box;
         display: grid;
-        padding: 0px 15px;
-        place-content: center right;
+        grid-template-columns: 1fr auto;
+        height: 100%;
+        & > .selected-display {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: 1fr 25px;
+            column-gap: 20px;
+            min-height: 0;
+            height: 100%;
+            & > img {
+                height: 90px;
+                grid-row: 1/3;
+            }
+            & > h3 {
+                font: 4em 'Hyperwave';
+            }
+
+        }
     }
 }

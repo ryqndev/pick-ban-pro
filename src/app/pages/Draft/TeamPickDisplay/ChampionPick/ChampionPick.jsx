@@ -11,6 +11,7 @@ const ChampionPick = ({ className='', name, isLeft, id}) => {
                 className={`pick`}
                 style={{ backgroundImage: `url('${iconSource}')` }}
             >
+                <span>Picking...</span>
                 <h3>{name}</h3>
             </div>
         </div>

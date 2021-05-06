@@ -1,22 +1,26 @@
 button{
-    background-color: transparent;
-    text-decoration: none;
-    font-size: 1.2em;
-    text-transform: uppercase;
     padding: 15px 30px;
-    text-align: center;
-    border-radius: 2px;
-    color: var(--text-primary);
-    box-shadow: 2px 2px 5px 2px black;
     border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px 0px var(--bg-primary-dark);
+    color: var(--text-primary);
     background-color: var(--bg-primary-light);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    transition: box-shadow 350ms, background-color 350ms;
     @media screen and (max-width: 800px) {
         font-size: 1em;
         padding: 20px 20px 20px 37px;
         border: 2px solid var(--text-primary);
     }
     &:hover {
+        background-color: var(--bg-primary-light);
         color: var(--accent);
-        border-color: var(--accent);
+        box-shadow: 1px 1px 5px 1px var(--bg-primary-dark);
+    }
+    &:active {
+        box-shadow: 1px 1px 0px 0px var(--bg-primary-dark);
     }
 }
