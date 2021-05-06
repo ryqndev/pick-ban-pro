@@ -1,8 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
 import ChampionsContext from '../../controller/contexts/ChampionsContext';
 import Fuse from 'fuse.js';
-import './ChampionSelect.scss';
+import roles from '../../assets/roles.json';
 import ChampionIcon from './ChampionIcon';
+import RoleFilter from './RoleFilter';
+import './ChampionSelect.scss';
 
 const options = {
     isCaseSensitive: false,
@@ -17,6 +19,8 @@ const options = {
 
 const ChampSelect = ({className='', select, disabled}) => {
     const { championsList } = useContext(ChampionsContext);
+    const [filteredChampionsList, setFilteredChampionsList] = useState(championsList); 
+    const [roleFilter, setRoleFilter] = useState(null);
     const [search, setSearch] = useState('');
     const [fuse, setFuse] = useState(new Fuse([], options));
     const [results, setResults] = useState([]);
@@ -28,38 +32,40 @@ const ChampSelect = ({className='', select, disabled}) => {
     }
 
     useEffect(() => {
-        if (championsList === null) return;
+        if(!roleFilter) return setFilteredChampionsList(championsList);        
+        setFilteredChampionsList(
+            Object.fromEntries(
+                roles[roleFilter].map(champion => [champion, championsList[champion]])
+            )
+        );
+    }, [roleFilter, championsList]);
 
-        let championsKeys = Object.keys(championsList).sort((a, b) => championsList[a].name.localeCompare(championsList[b].name));
+    useEffect(() => {
+        if (filteredChampionsList === null) return;
+
+        let championsKeys = Object.keys(filteredChampionsList).sort((a, b) => filteredChampionsList[a].name.localeCompare(filteredChampionsList[b].name));
         let sortedChampionData = championsKeys.map(championID => {
             const {
                 id,
                 name,
                 title,
                 tags,
-            } = championsList[championID];
+            } = filteredChampionsList[championID];
             return {id, name, title, tags}
         });
         setCachedFullList(sortedChampionData.map(championData => ({item: championData})));
         setFuse(new Fuse(sortedChampionData, options));
-    }, [championsList]);
+    }, [filteredChampionsList]);
 
     useEffect(() => {
         if(search.length === 0) return setResults(cachedFullList);
-
         setResults(fuse.search(search));
     }, [fuse, search, cachedFullList]);
 
     return (
         <div className={`champion-select--wrapper ${className}`}>
             <div className="filter-options card__component">
-                <div className="role-filter">
-                    <p>T</p>
-                    <p>J</p>
-                    <p>M</p>
-                    <p>B</p>
-                    <p>S</p>
-                </div>
+                <RoleFilter roleFilter={roleFilter} setRoleFilter={setRoleFilter} />
                 <input type="text" value={search} onChange={handleChange} />
             </div>
             <div className="results">
