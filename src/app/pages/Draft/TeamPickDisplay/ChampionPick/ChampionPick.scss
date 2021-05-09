@@ -20,7 +20,7 @@
         &>h3 {
             position: absolute;
             bottom: 0px;
-            font: 4rem 'Hyperwave';
+            font: 4em 'Hyperwave';
             color: white;
             text-shadow: 2px 2px 1px #000000;
             transition: color 350ms;
@@ -29,9 +29,9 @@
             display: none;
             font-family: 'Rubik';
             position: absolute;
-            bottom: 4rem;
+            bottom: 2.2em;
             text-shadow: 1px 1px 2px  #000000;
-            font-size: 1.8rem;
+            font-size: 1.8em;
             padding: none;
             animation: fade 750ms alternate infinite ease-in-out;
         }

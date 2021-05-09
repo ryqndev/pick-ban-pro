@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from 'react';
-import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, LPL_SPRING_2021_FINALS_GAME_1} from '../draftLogicControllerUtil.js';
+import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, draftStringParser} from '../draftLogicControllerUtil.js';
 
 /**
  * This seems like a pretty good use case for a state machine but I'm not sure I need it
@@ -9,12 +9,12 @@ import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, LPL_SPRING_2021_FINALS_GAME_1}
  * Current plan is to just use a standard fixed array and we'll see if further state management is needed
  * 
  */
-const useDraftLogicController = () => {
+const useDraftLogicController = (draftString='') => {
     // const [draft, setDraft] = useState(LPL_SPRING_2021_FINALS_GAME_1);
     // const [currentPick, setCurrentPick] = useState(20);
     // const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
-    const [draft, setDraft] = useState(new Array(20).fill(null));
-    const [currentPick, setCurrentPick] = useState(0);
+    const [draft, setDraft] = useState(() => draftStringParser(draftString));
+    const [currentPick, setCurrentPick] = useState(() => parseInt(draftString.length / 2));
     const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: 0});
     const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
     const [redTeamRenderData, setRedTeamRenderData] = useState([]);
@@ -41,6 +41,17 @@ const useDraftLogicController = () => {
         setCurrentPick(pick => pick + 1);
     }, [draft, currentPick]);
 
+    const undo = useCallback(() => {
+        if(currentPick <= 0) return;
+        setDraft(draft => {
+            if(currentPick >= 20) return draft;
+            let newDraft = [...draft];
+            newDraft[currentPick] = null;
+            return newDraft;
+        });
+        setCurrentPick(pick => pick - 1);
+    }, [currentPick]);
+
     return {
         draft,
         blueTeamRenderData,
@@ -48,6 +59,7 @@ const useDraftLogicController = () => {
         localCurrentPick,
         currentPick,
         lockin,
+        undo,
         select,
     };
 }

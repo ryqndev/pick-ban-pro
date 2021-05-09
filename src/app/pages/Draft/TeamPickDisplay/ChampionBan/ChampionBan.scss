@@ -7,13 +7,13 @@
         z-index: 1;
         top: 50%;
         left: 50%;
-        font: 3.2rem 'Hyperwave';
+        font: 3.2em 'Hyperwave';
         transform: translate(-50%, -50%);
         text-align: center;
         line-height: 2rem;
         transition: color 350ms;
         &.long {
-            font-size: 2rem;
+            font-size: 2em;
         }
     }
     & > img {

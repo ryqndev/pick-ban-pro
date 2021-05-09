@@ -15,6 +15,15 @@
             border-radius: 4px;
             box-shadow: 2px 2px 5px 1px black;
             color: var(--text-primary);
+            @media screen and (max-width: 1500px) {
+                width: 250px;
+            }
+            @media screen and (max-width: 1200px) {
+                width: 200px;
+            }
+            @media screen and (max-width: 1200px) {
+                width: 150px;
+            }
         }
     }
     & > .results {
@@ -30,6 +39,12 @@
             column-gap: 10px;
             padding: 0px 15px;
             width: 100%;
+            @media screen and (max-width: 1500px) {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            @media screen and (max-width: 1200px) {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
     }
 }

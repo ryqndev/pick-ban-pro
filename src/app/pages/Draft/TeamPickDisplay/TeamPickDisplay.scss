@@ -1,5 +1,12 @@
 .team-pick-display--wrapper {
     height: 100%;
+    font-size: 1em;
+    @media screen and (max-width: 1500px) {
+        font-size: 0.8em;
+    }
+    @media screen and (max-width: 1200px) {
+        font-size: 0.7em;
+    }
     &.currently-picking {
         & > .pick {
             height: calc((100% - 200px)/5 - 2px);

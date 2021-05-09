@@ -1,34 +1,68 @@
 .champion-select-display--wrapper {
     display: grid;
-    grid-template-rows: 1fr 120px;
+    grid-template-rows: 1fr 150px;
     height: 100%;
     row-gap: 20px;
     margin: 0 auto;
     min-height: 0;
     max-width: 800px;
-    & > .select {
+
+    &>.select {
         min-height: 0;
     }
-    & > .controls {
+
+    &>.selected-controls {
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 1fr auto;
         height: 100%;
-        & > .selected-display {
+
+        &>.selected-display {
             display: grid;
             grid-template-columns: auto 1fr;
-            grid-template-rows: 1fr 25px;
+            grid-template-rows: 1fr 45px;
             column-gap: 20px;
             min-height: 0;
             height: 100%;
-            & > img {
-                height: 90px;
+
+            &>img {
+                height: 120px;
                 grid-row: 1/3;
             }
-            & > h3 {
-                font: 4em 'Hyperwave';
+
+            &>h3 {
+                font: 5em 'Hyperwave';
             }
 
+            &>span {
+                font-size: 1.3em;
+            }
+
+        }
+        &>.controls {
+            display: grid;
+            grid-template-rows: 65px 45px;
+            row-gap: 10px;
+            &>button {
+                box-sizing: border-box;
+                padding: 0px 20px;
+                height: 100%;
+                &.lock-in {
+                    font-size: 1.4em;
+                }
+                &.undo {
+                    font-size: 1.1em;
+                    transition: box-shadow 350ms, background-color 350ms, color 350ms;
+                }
+                &:disabled {
+                    box-shadow: none;
+                    background-color: var(--bg-primary-dark);
+                    color: var(--bg-primary-light)
+                }
+                &:hover:not(:disabled) {
+                    background-color: #303030;
+                }
+            }
         }
     }
 }

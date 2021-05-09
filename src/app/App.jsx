@@ -15,8 +15,8 @@ const App = () => {
 			<Router basename={process.env.PUBLIC_URL}>
 				<Navbar />
 				<Route exact strict path="/" component={Landing} />
-				<Route path="/draft" component={Draft} />
-				<Route path="/draft/:draft" component={Draft} />
+				<Route exact path="/draft" component={Draft} />
+				<Route path="/draft/:draftString" component={Draft} />
 				<Footer />
 			</Router>
 		</ChampionsContext.Provider>

@@ -2,12 +2,15 @@ main.draft--wrapper {
     box-sizing: border-box;
     height: calc(100vh - 60px);
     padding-top: 20px;
-    overflow: scroll;
+    overflow: hidden;
     display: grid;
     & > .pickban-select--wrapper {
         display: grid;
-        grid-template-columns: 460px 1fr 460px;
+        grid-template-columns: 25vw 1fr 25vw;
         height: 98%;
         min-height: 0;
+        @media screen and (max-width: 1800px) {
+            grid-template-columns: 22vw 1fr 22vw;
+        }
     }
 }

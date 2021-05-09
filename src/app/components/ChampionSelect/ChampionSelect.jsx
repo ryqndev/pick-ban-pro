@@ -17,12 +17,13 @@ const options = {
     ],
 };
 
-const ChampSelect = ({className='', select, disabled}) => {
+const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
+
     const { championsList } = useContext(ChampionsContext);
     const [filteredChampionsList, setFilteredChampionsList] = useState(championsList); 
     const [roleFilter, setRoleFilter] = useState(null);
     const [search, setSearch] = useState('');
-    const [fuse, setFuse] = useState(new Fuse([], options));
+    const [fuse, setFuse] = useState(() => new Fuse([], options));
     const [results, setResults] = useState([]);
     const [cachedFullList, setCachedFullList] = useState([]);
 
@@ -70,7 +71,7 @@ const ChampSelect = ({className='', select, disabled}) => {
             </div>
             <div className="results">
                 <div className="resizable-container">
-                    <ChampionIcon key='@ryqndev/no-ban' item={{id: 'none', name: 'None'}} select={select}/>
+                    {hasNoneOption && <ChampionIcon key='@ryqndev/no-ban' item={{id: 'none', name: 'None'}} select={select}/>}
                     {results.map(result => 
                         <ChampionIcon 
                             key={result.item.id} 
