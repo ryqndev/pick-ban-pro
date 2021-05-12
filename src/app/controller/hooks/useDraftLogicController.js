@@ -1,5 +1,6 @@
-import {useState, useCallback, useEffect} from 'react';
-import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, draftStringParser} from '../draftLogicControllerUtil.js';
+import {useState, useCallback, useEffect, useContext} from 'react';
+import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, parseDraftString, parseCurrentPick} from '../draftLogicControllerUtil.js';
+import ChampionsContext from '../contexts/ChampionsContext';
 
 /**
  * This seems like a pretty good use case for a state machine but I'm not sure I need it
@@ -10,14 +11,17 @@ import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, draftStringParser} from '../dr
  * 
  */
 const useDraftLogicController = (draftString='') => {
-    // const [draft, setDraft] = useState(LPL_SPRING_2021_FINALS_GAME_1);
-    // const [currentPick, setCurrentPick] = useState(20);
-    // const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
-    const [draft, setDraft] = useState(() => draftStringParser(draftString));
-    const [currentPick, setCurrentPick] = useState(() => parseInt(draftString.length / 2));
-    const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: 0});
+    const {championsList} = useContext(ChampionsContext);
+    const [draft, setDraft] = useState([]);
+    const [currentPick, setCurrentPick] = useState(0);
+    const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
     const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
     const [redTeamRenderData, setRedTeamRenderData] = useState([]);
+
+    useEffect(() => {
+        setDraft(parseDraftString(draftString, championsList));
+        setCurrentPick(parseCurrentPick(draftString))
+    }, [draftString, championsList]);
 
     useEffect(() => {
         let red = [], blue = [];

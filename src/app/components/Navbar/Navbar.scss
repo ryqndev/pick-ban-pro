@@ -5,16 +5,70 @@ nav {
     top: 0px;
     height: 60px;
     width: 100%;
-    padding: 0px 30px;
+    padding: 0px 10px;
     display: grid;
-    grid-template-columns: auto 1fr;
-    background-color: var(--bg-primary);
+    grid-template-columns: 70px 1fr 50px 740px 50px 1fr 70px;
+    column-gap: 20px;
+    background-color: var(--nav-bg);
+    color: white;
+    @media screen and (max-width: 1500px) {
+        grid-template-columns: 70px 1fr 50px 620px 50px 1fr 70px;
+    }
+    @media screen and (max-width: 1300px) {
+        grid-template-columns: 70px 1fr 50px 300px 50px 1fr 70px;
+    }
     & a.name {
         display: grid;
         color: transparent;
         place-content: center;
-        font: 3em "Poppins";
+        font: 3em 'Poppins';
+        padding: none;
+        height: 60px;
         text-decoration: none;
-        
+    }
+    & > h1 {
+        font: 3.6em 'Hyperwave';
+        text-align: center;
+    }
+    & > h2 {
+        font: 2.5em 'Arvo', serif;
+        display: grid;
+        align-content: center;
+        &.blue {
+            text-align: right;
+        }
+        &.red {
+            text-align: left;
+        }
+    }
+    & > p {
+        font: 2.8em 'Arvo', serif;
+        display: grid;
+        place-content: center;
+        &.blue {
+            filter: saturate(0.7) brightness(2);
+            color: var(--accent-primary);
+        }
+        &.red {
+            filter: saturate(0.25) brightness(2);
+            color: var(--accent-secondary);
+
+        }
+    }
+    &::after, &::before {
+        content: '';
+        height: 5px;
+        width: 100vw;
+        position: absolute;
+        left: 50vw;
+        transform: translateX(-50%);
+        top: 60px;
+    }
+    &::after {
+        background-color: var(--accent-primary);
+        transition: width 30000ms linear;
+    }
+    &::before {
+        background-color: var(--bg-primary-light-2);
     }
 }

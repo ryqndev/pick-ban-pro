@@ -10,10 +10,10 @@
             font-size: 1.4rem;
             padding: 5px 10px;
             width: 360px;
-            background-color: var(--bg-primary-light);
+            background-color: var(--champion-select-search-bg);
             border: none;
             border-radius: 4px;
-            box-shadow: 2px 2px 5px 1px black;
+            box-shadow: 2px 2px 5px 1px var(--elevation-shadow);
             color: var(--text-primary);
             @media screen and (max-width: 1500px) {
                 width: 250px;

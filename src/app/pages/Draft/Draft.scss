@@ -6,10 +6,11 @@ main.draft--wrapper {
     display: grid;
     & > .pickban-select--wrapper {
         display: grid;
-        grid-template-columns: 25vw 1fr 25vw;
+        grid-template-columns: 1fr auto 1fr;
+        column-gap: 80px;
         height: 98%;
         min-height: 0;
-        @media screen and (max-width: 1800px) {
+        @media screen and (max-width: 1500px) {
             grid-template-columns: 22vw 1fr 22vw;
         }
     }

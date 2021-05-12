@@ -1,10 +1,34 @@
-:root{
+// :root{
+//     --bg-primary-dark: #fff;
+//     --bg-primary-dark-1: #fff;
+//     --bg-primary: #fff;
+//     --bg-primary-light-1: #fff;
+//     --bg-primary-light-2: #fff;
+//     --bg-primary-light: #fff;
+//     --text-primary: black;
+//     --accent-primary: #FFD700;
+//     --accent-secondary: #FF00FF;
+//     --accent-tertiary: #5600b3;
+//     --success: #7EFF00;
+// }
+:root {
     --bg-primary-dark: #000000;
+    --bg-primary-dark-1: #050505;
     --bg-primary: #101010;
-    --bg-primary-light: #202020;
+    --bg-primary-light-1: #151515;
+    --bg-primary-light-2: #202020;
+    --bg-primary-light: #303030;
     --text-primary: white;
     --accent-primary: #FFD700;
     --accent-secondary: #FF00FF;
     --accent-tertiary: #5600b3;
     --success: #7EFF00;
+}
+:root {
+    --nav-bg: var(--bg-primary);
+    --card-background: var(--bg-primary-light-1);
+    --elevation-shadow: var(--bg-primary-dark);
+    --champion-select-search-bg: var(--bg-primary-light-2);
+    --champion-pick-bg: var(--bg-primary-light-2);
+    --main-bg: var(--bg-primary);
 }

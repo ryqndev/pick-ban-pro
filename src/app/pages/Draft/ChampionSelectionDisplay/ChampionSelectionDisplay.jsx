@@ -1,10 +1,13 @@
 import {useContext} from 'react';
+import {MemoryRouter, Route} from 'react-router-dom';
 import {PICKS} from '../../../controller/draftLogicControllerUtil.js';
 import ChampionsContext from '../../../controller/contexts/ChampionsContext';
-import ChampionSelect from '../../../components/ChampionSelect';
-import NoneIcon from '../../../assets/square.png';
-import './ChampionSelectionDisplay.scss';
 import useEventListener from '../../../controller/hooks/useEventListener.js';
+import ChampionSelect from '../../../components/ChampionSelect';
+import OptionsDisplay from './OptionsDisplay';
+import NoneIcon from '../../../assets/square.png';
+import {ReactComponent as SettingsIcon} from '../../../assets/settings.svg';
+import './ChampionSelectionDisplay.scss';
 
 
 const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) => {
@@ -30,7 +33,14 @@ const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) =>
 
     return (
         <div className="champion-select-display--wrapper">
-            <ChampionSelect className="select" select={select} disabled={disabled} hasNoneOption={!PICKS.has(currentPick)}/>
+            <MemoryRouter>
+                <Route path="/">
+                    <ChampionSelect className="select" select={select} disabled={disabled} hasNoneOption={!PICKS.has(currentPick)}/>
+                </Route>
+                <Route path="/options">
+                    <OptionsDisplay />
+                </Route>
+            </MemoryRouter>
             <div className="selected-controls card__component">
                 <div className="selected-display">
                     <img src={imageLink} alt={selectedID}/>
@@ -39,6 +49,7 @@ const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) =>
                 </div>
                 <div className="controls">
                     <button className="lock-in" onClick={lockin} disabled={!draft[currentPick]}>lock in</button>
+                    <button className="settings"><SettingsIcon /></button>
                     <button className="undo" onClick={undo} disabled={currentPick <= 0}>undo</button>
                 </div>
             </div>

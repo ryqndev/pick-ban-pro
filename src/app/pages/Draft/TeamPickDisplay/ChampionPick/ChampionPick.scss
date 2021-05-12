@@ -1,7 +1,7 @@
 .champion-pick--wrapper {
     position: relative;
     margin: 5px 0px;
-    background-color: var(--bg-primary-light);
+    background-color: var(--champion-pick-bg);
     transition: height 350ms, border-width 350ms;
     overflow: hidden;
 
@@ -22,7 +22,7 @@
             bottom: 0px;
             font: 4em 'Hyperwave';
             color: white;
-            text-shadow: 2px 2px 1px #000000;
+            text-shadow: 2px 2px 1px var(--elevation-shadow);
             transition: color 350ms;
         }
         &>span {
@@ -30,7 +30,7 @@
             font-family: 'Rubik';
             position: absolute;
             bottom: 2.2em;
-            text-shadow: 1px 1px 2px  #000000;
+            text-shadow: 1px 1px 2px  var(--elevation-shadow);
             font-size: 1.8em;
             padding: none;
             animation: fade 750ms alternate infinite ease-in-out;
