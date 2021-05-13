@@ -48,16 +48,16 @@ const editArrayAtIndex = (array, index, item) => {
  * of 20 items in the array
  */
 const parseDraftString = (draftString, championsList) => {
-    if(!draftString || draftString.length === 0) return new Array(20).fill(null);
+    const parsedDraftString = new Array(20).fill(null);
+    if(!draftString || draftString.length === 0) return parsedDraftString;
 
     const championKeyMap = mapKeyToID(championsList);
 
-    const getChampNameFromKey = key => championKeyMap[key];
-    return draftString.toLowerCase().split('=')[0].split(/(.{4})/)
-        .filter(e => e.length !== 0)
-        .map(decode)
-        .flat()
-        .map(getChampNameFromKey);
+    const getChampNameFromKey = (key, index) => {
+        parsedDraftString[index] = championKeyMap[decode(key)];
+    }
+    draftString.toLowerCase().split('=')[0].split(/(.{2})/).filter(e => e.length !== 0).forEach(getChampNameFromKey);
+    return parsedDraftString;
 }
 
 const parseCurrentPick = (draftString) => {
@@ -65,51 +65,32 @@ const parseCurrentPick = (draftString) => {
     return !pick ? draft.length / 2 : pick;
 }
 
-/** 
- * @function writeDraftString
- * 
- * Since we expect to support functionality of updating a draft string live,
- * writeDraftString should keep the championKeyMap in closure to prevent
- * excessive, expensive recalculations as well as other champion maps.
- * 
- * Call .update(draft) to efficiently recalculate the string.
- */
-const draftStringWriter = (draft, championsList) => {
-    const championKeyMap = mapKeyToID(championsList);
-    const draftString = [];
-
-    // draft.map()
-
-    const update = () => {
-
-    }
-    const init = () => {
-
-    }
-    return update;
+const writeDraftString = (draft, championsList) => {
+    return draft.reduce((acc, e) => {
+        if(!e) return acc;
+        let key = getKey(e, championsList);
+        return [...acc, encode(parseInt(key))];
+    }, []);
 }
 
-
-const writeDraftString = (draft, championsList) => {
-
+/** TODO: throw error if champ name not found? */
+const getKey = (championName, championsList) => {
+    if(!championsList) return 1294;
+    if(championName === 'none') return 1293;
+    return championsList[championName].key;
 }
 
 const encode = (num) => {
     let encoded = num.toString(36);
-    return encoded + '-'.repeat(4 - encoded.length)
+    return encoded + '-'.repeat(2 - encoded.length);
 }
-const decode = (chunk) => {
-    let pickChunk = parseInt(stripEnd(chunk), 36)
-    return [parseInt(pickChunk / 1000), parseInt(pickChunk % 1000)];
-}
-const stripEnd = (str, delimiter='') => {
-    let end = str.length - 1;
-    while(str.charAt(end) === delimiter) end--;
-    return str.substring(0, end + 1);
-}
+const decode = (chunk) => parseInt(chunk, 36);
 
 const mapKeyToID = (championsList) => {
-    const championKeyMap = {}
+    const championKeyMap = {
+        "1293": "none",
+        "1294": null,
+    }
     for(let name in championsList) championKeyMap[championsList[name].key] = name;
     return championKeyMap;
 }
@@ -120,6 +101,7 @@ export {
     RED_SIDE_PICKS,
     parseDraftString,
     parseCurrentPick,
+    writeDraftString,
     editArrayAtIndex,
     LPL_SPRING_2021_FINALS_GAME_1
 }

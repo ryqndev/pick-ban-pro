@@ -3,7 +3,18 @@
     overflow: hidden;
     transition: height 350ms;
     &>.content {
+        box-sizing: border-box;
         overflow: scroll;
         height: 100%;
+        &>h2 {
+            margin: 5px;
+            font-size: 1.6em;
+        }
+        &>input[type=text] {
+            margin-top: 10px;
+            font-size: 1em;
+            height: 30px;
+            width: calc(100% - 30px);
+        }
     }
 }

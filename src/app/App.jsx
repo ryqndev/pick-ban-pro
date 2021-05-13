@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 import Landing from './pages/Landing';
 import Draft from './pages/Draft';
+import TournamentList from './pages/TournamentList';
 import './styles/main.scss';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
 			<Router basename={process.env.PUBLIC_URL}>
 				<Navbar navRenderData={navRenderData} />
 				<Route exact strict path="/" component={Landing} />
+				<Route exact strict path="/list" component={TournamentList} />
 				<Route exact path={[
 					"/draft",
 					"/draft/:draftString",

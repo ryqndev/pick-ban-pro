@@ -37,7 +37,7 @@ const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
                 disabled={disabled}
                 hasNoneOption={!PICKS.has(currentPick)}
             />
-            <OptionsDisplay open={showOptions} />
+            <OptionsDisplay open={showOptions} draft={draft}/>
             <div className="selected-controls card__component">
                 <div className="selected-display">
                     <img src={imageLink} alt={selectedID}/>
