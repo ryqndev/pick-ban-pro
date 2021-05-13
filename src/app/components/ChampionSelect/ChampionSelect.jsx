@@ -18,7 +18,6 @@ const options = {
 };
 
 const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
-
     const { championsList } = useContext(ChampionsContext);
     const [filteredChampionsList, setFilteredChampionsList] = useState(championsList); 
     const [roleFilter, setRoleFilter] = useState(null);

@@ -10,8 +10,14 @@ const splitTeamNames = (teamNames='') => {
 const Navbar = ({navRenderData}) => {
     const [blueTeamName, redTeamName] = splitTeamNames(navRenderData?.teamNames);
     const blueTimer = '--', redTimer = '--';
-    return (
+    
+    if(!navRenderData.draft) return (
         <nav>
+            <Link to="/" className="name">Pick Ban Pro</Link>
+        </nav>
+    );
+    return (
+        <nav className="with-bar">
             <Link to="/" className="name">Pick Ban Pro</Link>
             <h2 className="blue">{blueTeamName}</h2>
             <p className="blue">{blueTimer}</p>

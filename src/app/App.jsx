@@ -10,7 +10,7 @@ import './styles/main.scss';
 
 const App = () => {
 	const {championsList, patchList, patch} = useDDragonStaticAssets();
-	const [navRenderData, setNavRenderData] = useState();
+	const [navRenderData, setNavRenderData] = useState({draft: false});
 
 	return (
 		<ChampionsContext.Provider value={{championsList, patchList, patch}}>

@@ -1,8 +1,6 @@
-import {useContext} from 'react';
-import {MemoryRouter, Route} from 'react-router-dom';
+import {useContext, useRef, useEffect, useState} from 'react';
 import {PICKS} from '../../../controller/draftLogicControllerUtil.js';
 import ChampionsContext from '../../../controller/contexts/ChampionsContext';
-import useEventListener from '../../../controller/hooks/useEventListener.js';
 import ChampionSelect from '../../../components/ChampionSelect';
 import OptionsDisplay from './OptionsDisplay';
 import NoneIcon from '../../../assets/square.png';
@@ -10,9 +8,11 @@ import {ReactComponent as SettingsIcon} from '../../../assets/settings.svg';
 import './ChampionSelectionDisplay.scss';
 
 
-const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) => {
+const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
     const disabled = new Set(draft);
     const { championsList } = useContext(ChampionsContext);
+    const [showOptions, setShowOptions] = useState(false);
+    const lockinButtonRef = useRef(null);
 
     const selectedID = draft[currentPick];
     const imageLink = (selectedID && selectedID !== 'none') 
@@ -27,20 +27,17 @@ const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) =>
         return championsList[selectedID][property];
     }
 
-    useEventListener('keypress', (e) => {
-        if(e.keyCode === 13) lockin();
-    });
+    useEffect(() => { lockinButtonRef.current.focus() }, [draft]);
 
     return (
         <div className="champion-select-display--wrapper">
-            <MemoryRouter>
-                <Route path="/">
-                    <ChampionSelect className="select" select={select} disabled={disabled} hasNoneOption={!PICKS.has(currentPick)}/>
-                </Route>
-                <Route path="/options">
-                    <OptionsDisplay />
-                </Route>
-            </MemoryRouter>
+            <ChampionSelect 
+                className="select"
+                select={actions.select}
+                disabled={disabled}
+                hasNoneOption={!PICKS.has(currentPick)}
+            />
+            <OptionsDisplay open={showOptions} />
             <div className="selected-controls card__component">
                 <div className="selected-display">
                     <img src={imageLink} alt={selectedID}/>
@@ -48,9 +45,27 @@ const ChampionSelectionDisplay = ({lockin, undo, select, draft, currentPick}) =>
                     <span>{getChampionData('title')}</span>
                 </div>
                 <div className="controls">
-                    <button className="lock-in" onClick={lockin} disabled={!draft[currentPick]}>lock in</button>
-                    <button className="settings"><SettingsIcon /></button>
-                    <button className="undo" onClick={undo} disabled={currentPick <= 0}>undo</button>
+                    <button
+                        className="lock-in"
+                        ref={lockinButtonRef}
+                        onClick={actions.lockin}
+                        disabled={!draft[currentPick]}
+                    >
+                        lock in
+                    </button>
+                    <button 
+                        className={`settings ${showOptions ? 'active' : ''}`}
+                        onClick={() => {setShowOptions(prevOption => !prevOption)}}
+                    >
+                        <SettingsIcon />
+                    </button>
+                    <button 
+                        className="undo"
+                        onClick={actions.undo}
+                        disabled={currentPick <= 0}
+                    >
+                        undo
+                    </button>
                 </div>
             </div>
         </div>

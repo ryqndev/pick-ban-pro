@@ -50,8 +50,7 @@ const editArrayAtIndex = (array, index, item) => {
 const parseDraftString = (draftString, championsList) => {
     if(!draftString || draftString.length === 0) return new Array(20).fill(null);
 
-    const championKeyMap = {}
-    for(let name in championsList) championKeyMap[championsList[name].key] = name;
+    const championKeyMap = mapKeyToID(championsList);
 
     const getChampNameFromKey = key => championKeyMap[key];
     return draftString.toLowerCase().split('=')[0].split(/(.{4})/)
@@ -66,6 +65,35 @@ const parseCurrentPick = (draftString) => {
     return !pick ? draft.length / 2 : pick;
 }
 
+/** 
+ * @function writeDraftString
+ * 
+ * Since we expect to support functionality of updating a draft string live,
+ * writeDraftString should keep the championKeyMap in closure to prevent
+ * excessive, expensive recalculations as well as other champion maps.
+ * 
+ * Call .update(draft) to efficiently recalculate the string.
+ */
+const draftStringWriter = (draft, championsList) => {
+    const championKeyMap = mapKeyToID(championsList);
+    const draftString = [];
+
+    // draft.map()
+
+    const update = () => {
+
+    }
+    const init = () => {
+
+    }
+    return update;
+}
+
+
+const writeDraftString = (draft, championsList) => {
+
+}
+
 const encode = (num) => {
     let encoded = num.toString(36);
     return encoded + '-'.repeat(4 - encoded.length)
@@ -78,6 +106,12 @@ const stripEnd = (str, delimiter='') => {
     let end = str.length - 1;
     while(str.charAt(end) === delimiter) end--;
     return str.substring(0, end + 1);
+}
+
+const mapKeyToID = (championsList) => {
+    const championKeyMap = {}
+    for(let name in championsList) championKeyMap[championsList[name].key] = name;
+    return championKeyMap;
 }
 
 export {

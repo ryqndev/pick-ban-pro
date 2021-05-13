@@ -31,9 +31,12 @@ nav {
         text-align: center;
     }
     & > h2 {
-        font: 2.5em 'Arvo', serif;
+        font: 2em 'Arvo', serif;
         display: grid;
         align-content: center;
+        color: var(--bg-primary-light);
+        white-space: nowrap;
+        text-overflow: ellipsis;
         &.blue {
             text-align: right;
         }
@@ -55,20 +58,23 @@ nav {
 
         }
     }
-    &::after, &::before {
-        content: '';
-        height: 5px;
-        width: 100vw;
-        position: absolute;
-        left: 50vw;
-        transform: translateX(-50%);
-        top: 60px;
-    }
-    &::after {
-        background-color: var(--accent-primary);
-        transition: width 30000ms linear;
-    }
-    &::before {
-        background-color: var(--bg-primary-light-2);
+    &.with-bar {
+        &::after, &::before {
+            content: '';
+            height: 2px;
+            width: 100vw;
+            position: absolute;
+            left: 50vw;
+            transform: translateX(-50%);
+            top: 60px;
+        }
+        &::after {
+            background-color: var(--accent-primary);
+            transition: width 30000ms linear;
+            width: 0vw;
+        }
+        &::before {
+            background-color: var(--bg-primary-light-2);
+        }
     }
 }

@@ -1,0 +1,9 @@
+.options-display--wrapper {
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: height 350ms;
+    &>.content {
+        overflow: scroll;
+        height: 100%;
+    }
+}

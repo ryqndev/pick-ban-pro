@@ -8,31 +8,23 @@ import './Draft.scss';
 const Draft = ({setNavRenderData}) => {
     const {draftString, matchName, teamNames} = useParams();
     const {
-        draft,
         blueTeamRenderData, 
         redTeamRenderData,
         localCurrentPick,
         currentPick,
-        lockin,
-        undo,
-        select,
+        ...draft
     } = useDraftLogicController(draftString);
 
     useEffect(() => {
-        setNavRenderData({matchName, teamNames});
+        setNavRenderData({draft: true, matchName, teamNames});
+        return () => setNavRenderData({draft: false});
     }, [setNavRenderData, matchName, teamNames]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay 
-                    lockin={lockin} 
-                    select={select} 
-                    draft={draft} 
-                    undo={undo} 
-                    currentPick={currentPick}
-                />
+                <ChampionSelectionDisplay currentPick={currentPick} {...draft} />
                 <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />
             </div>
         </main>

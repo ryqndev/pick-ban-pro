@@ -10,7 +10,7 @@ import ChampionsContext from '../contexts/ChampionsContext';
  * Current plan is to just use a standard fixed array and we'll see if further state management is needed
  * 
  */
-const useDraftLogicController = (draftString='') => {
+const useDraftLogicController = (draftString='', options={}) => {
     const {championsList} = useContext(ChampionsContext);
     const [draft, setDraft] = useState([]);
     const [currentPick, setCurrentPick] = useState(0);
