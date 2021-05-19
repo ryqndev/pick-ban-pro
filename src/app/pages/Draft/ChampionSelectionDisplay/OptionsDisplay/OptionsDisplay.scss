@@ -1,11 +1,10 @@
 .options-display--wrapper {
     box-sizing: border-box;
     overflow: hidden;
-    transition: height 350ms;
+    transition: max-height 350ms ease-in-out;
     &>.content {
         box-sizing: border-box;
         overflow: scroll;
-        height: 100%;
         &>h2 {
             margin: 5px;
             font-size: 1.6em;
