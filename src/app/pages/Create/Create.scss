@@ -3,27 +3,32 @@
     padding-bottom: 60px;
     display: grid;
     place-content: center;
+
     &>form.content {
         box-sizing: border-box;
         display: grid;
         width: 400px;
         row-gap: 5px;
         padding: 20px 30px 30px;
+
         &>h1 {
             font-family: 'Hyperwave';
             color: var(--accent-primary);
             font-size: 7em;
             text-align: center;
         }
+
         &>label {
             font-size: 1.3em;
             font-family: 'Rubik';
             padding-left: 5px;
+
             &>span {
                 font-size: 0.8em;
                 color: grey;
             }
         }
+
         &>input[type="text"] {
             box-sizing: border-box;
             font-family: 'Rubik';

@@ -2,9 +2,6 @@ const BLUE_SIDE_PICKS = new Set([0, 2, 4, 6, 9, 10, 13, 15, 17, 18]);
 const RED_SIDE_PICKS = new Set([1, 3, 5, 7, 8, 11, 12, 14, 16, 19]);
 const PICKS = new Set([6, 7, 8, 9, 10, 11, 16, 17, 18, 19]);
 
-const LPL_SPRING_2021_FINALS_GAME_1 = ["Alistar", "Thresh", "Lucian", "TahmKench", "Kaisa", "Rell", "Hecarim", "Jayce", "Tristana", "Xayah", "Irelia", "Udyr", "Rakan", "TwistedFate", "Leona", "Azir", "Nautilus", "Galio", "Orianna", "Viktor"	];
-const LPL_SPRING_2021_FINALS_GAME_1_STRING = '9ks-529r34ae2koue9u-u5h-anho1wvo2dnf1b5k';
-
 const editArrayAtIndex = (array, index, item) => {
     let newArray = [...array];
     newArray[index] = item;
@@ -103,5 +100,4 @@ export {
     parseCurrentPick,
     writeDraftString,
     editArrayAtIndex,
-    LPL_SPRING_2021_FINALS_GAME_1
 }

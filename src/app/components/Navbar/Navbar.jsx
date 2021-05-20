@@ -1,22 +1,23 @@
-import {Link} from 'react-router-dom';
-import {ReactComponent as Logo} from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Navbar.scss';
 
-const splitTeamNames = (teamNames='') => {
+const splitTeamNames = (teamNames = ',') => {
     const names = teamNames.split(',');
-    if(names.length !== 2) return ['Blue Team', 'Red Team'];
-    return names;
+    if (names.length !== 2 || teamNames === ',') return ['Blue Team', 'Red Team'];
+    return [decodeURIComponent(names[0]), decodeURIComponent(names[1])];
 }
 
-const Navbar = ({navRenderData}) => {
-    if(!navRenderData.draft) return (
+const Navbar = ({ navRenderData }) => {
+    if (!navRenderData.draft) return (
         <nav>
             <Link to="/" className="name"><Logo /></Link>
+            <h1>pickban.pro</h1>
         </nav>
     );
-    
+
     const [blueTeamName, redTeamName] = splitTeamNames(navRenderData?.teamNames);
-    const matchName = navRenderData?.matchName;
+    const matchName = decodeURIComponent(navRenderData?.matchName ?? 'pickban.pro');
     const blueTimer = '', redTimer = '';
 
     return (

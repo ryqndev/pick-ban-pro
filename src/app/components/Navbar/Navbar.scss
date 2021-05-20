@@ -8,62 +8,82 @@ nav {
     padding: 0px 10px;
     display: grid;
     grid-template-columns: 70px 1fr 50px 740px 50px 1fr 70px;
-    column-gap: 20px;
+    column-gap: 10px;
     background-color: var(--nav-bg);
     color: white;
+    grid-template-areas: "logo blue-team blue-counter middle red-counter red-team toggle";
+
     @media screen and (max-width: 1500px) {
         grid-template-columns: 70px 1fr 50px 620px 50px 1fr 70px;
     }
+
     @media screen and (max-width: 1300px) {
         grid-template-columns: 70px 1fr 50px 300px 50px 1fr 70px;
     }
+
     & a.name {
         background-color: transparent;
         transition: background-color 250ms;
+
         &>svg {
             box-sizing: border-box;
             height: 60px;
             width: 70px;
             padding: 12px;
         }
+
         &:hover {
             background-color: var(--bg-primary-light-2);
         }
     }
-    & > h1 {
+
+    &>h1 {
         font: 3.6em 'Hyperwave';
         text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        grid-area: middle;
     }
-    & > h2 {
+
+    &>h2 {
         font: 2em 'Arvo', serif;
-        display: grid;
-        align-content: center;
+        padding-top: 10px;
         color: var(--bg-primary-light);
         white-space: nowrap;
         text-overflow: ellipsis;
+        overflow: hidden;
+
         &.blue {
             text-align: right;
         }
+
         &.red {
             text-align: left;
         }
     }
-    & > p {
+
+    &>p {
         font: 2.8em 'Arvo', serif;
         display: grid;
         place-content: center;
+
         &.blue {
             filter: saturate(0.7) brightness(2);
             color: var(--accent-primary);
         }
+
         &.red {
             filter: saturate(0.25) brightness(2);
             color: var(--accent-secondary);
 
         }
     }
+
     &.with-bar {
-        &::after, &::before {
+
+        &::after,
+        &::before {
             content: '';
             height: 2px;
             width: 100vw;
@@ -72,11 +92,13 @@ nav {
             transform: translateX(-50%);
             top: 60px;
         }
+
         &::after {
             background-color: var(--accent-primary);
             transition: width 30000ms linear;
             width: 0vw;
         }
+
         &::before {
             background-color: var(--bg-primary-light-2);
         }
