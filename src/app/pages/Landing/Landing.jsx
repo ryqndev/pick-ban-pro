@@ -10,7 +10,7 @@ const Landing = () => {
                         <h1>pick ban pro</h1>
                     </div>
                 </div>
-                <Link to="/draft" className="start">START</Link>
+                <Link to="/menu" className="start">START</Link>
             </header>
         </div>
     );

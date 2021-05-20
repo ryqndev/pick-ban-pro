@@ -16,7 +16,8 @@
     --bg-primary-dark-1: #050505;
     --bg-primary: #101010;
     --bg-primary-light-1: #151515;
-    --bg-primary-light-2: #202020;
+    --bg-primary-light-2: #1a1a1a;
+    --bg-primary-light-3: #202020;
     --bg-primary-light: #303030;
     --text-primary: white;
     --accent-primary: #FFD700;
@@ -26,9 +27,9 @@
 }
 :root {
     --nav-bg: var(--bg-primary);
-    --card-background: var(--bg-primary-light-1);
+    --card-background: var(--bg-primary-light-2);
     --elevation-shadow: var(--bg-primary-dark);
-    --champion-select-search-bg: var(--bg-primary-light-2);
-    --champion-pick-bg: var(--bg-primary-light-2);
+    --champion-select-search-bg: var(--bg-primary-light-3);
+    --champion-pick-bg: var(--bg-primary-light-3);
     --main-bg: var(--bg-primary);
 }

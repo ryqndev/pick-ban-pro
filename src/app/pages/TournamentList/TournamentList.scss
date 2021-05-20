@@ -36,10 +36,10 @@
                             &>a {
                                 font-size: 1.2em;
                                 text-decoration: none;
-                                border-bottom: 1px solid transparent;
-                                transition: border-color 350ms;
+                                color: #bbb;
+                                transition: color 150ms;
                                 &:hover {
-                                    border-bottom: 1px solid white;
+                                    color: var(--accent-primary);
                                 }
                             }
                         }

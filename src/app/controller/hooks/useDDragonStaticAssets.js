@@ -28,7 +28,8 @@ const useDDragonStaticAssets = () => {
     return {
         championsList,
         patchList,
-        patch
+        patch,
+        setPatch,
     };
 }
 

@@ -18,13 +18,17 @@ nav {
         grid-template-columns: 70px 1fr 50px 300px 50px 1fr 70px;
     }
     & a.name {
-        display: grid;
-        color: transparent;
-        place-content: center;
-        font: 3em 'Poppins';
-        padding: none;
-        height: 60px;
-        text-decoration: none;
+        background-color: transparent;
+        transition: background-color 250ms;
+        &>svg {
+            box-sizing: border-box;
+            height: 60px;
+            width: 70px;
+            padding: 12px;
+        }
+        &:hover {
+            background-color: var(--bg-primary-light-2);
+        }
     }
     & > h1 {
         font: 3.6em 'Hyperwave';

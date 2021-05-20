@@ -14,7 +14,7 @@ const ChampionBan = ({name, id, currentPick}) => {
     }
 
     return (
-        <div className={`champion-ban--wrapper ${currentPick ? 'currently-picking' : ''}`}>
+        <div className={`champion-ban--wrapper ${currentPick ? 'currently-picking' : ''} ${id === 'none' ? 'none': ''}`}>
             <h4 className={isLongName(name) ? "long" : ""}>{name}</h4>
             <img src={transparentImageBase64} alt={name} style={{position: 'absolute', zIndex: -1}}/>
             <img src={iconSource} alt={name} style={{opacity: id ? 1 : 0}}/>
