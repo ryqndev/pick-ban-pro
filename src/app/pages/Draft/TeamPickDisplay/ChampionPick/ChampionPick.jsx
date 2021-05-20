@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import './ChampionPick.scss';
 
 const transparentImageBase64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
@@ -18,4 +19,4 @@ const ChampionPick = ({ className='', name, isLeft, id}) => {
     );
 }
 
-export default ChampionPick;
+export default memo(ChampionPick);

@@ -1,3 +1,5 @@
+
+import { useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Navbar.scss';
@@ -9,6 +11,14 @@ const splitTeamNames = (teamNames = ',') => {
 }
 
 const Navbar = ({ navRenderData }) => {
+    useEffect(() => {
+        if (!navRenderData?.timeLeft) return;
+        document.documentElement.style.setProperty('--navbar-length', navRenderData?.timeLeft / navRenderData?.timeLimit * 100000 + '%');
+    }, [navRenderData]);
+    useEffect(() => {
+        document.documentElement.style.setProperty('--picking-side', navRenderData?.bluePick ? 'var(--accent-primary)' : 'var(--accent-secondary)');
+    }, [navRenderData?.bluePick]);
+
     if (!navRenderData.draft) return (
         <nav>
             <Link to="/" className="name"><Logo /></Link>
@@ -18,7 +28,9 @@ const Navbar = ({ navRenderData }) => {
 
     const [blueTeamName, redTeamName] = splitTeamNames(navRenderData?.teamNames);
     const matchName = decodeURIComponent(navRenderData?.matchName ?? 'pickban.pro');
-    const blueTimer = '', redTimer = '';
+    const blueTimer = navRenderData?.bluePick ? parseInt(navRenderData?.timeLeft) : '',
+        redTimer = !navRenderData?.bluePick ? parseInt(navRenderData?.timeLeft) : '';
+
 
     return (
         <nav className="with-bar">
@@ -32,4 +44,4 @@ const Navbar = ({ navRenderData }) => {
     );
 }
 
-export default Navbar;
+export default memo(Navbar);

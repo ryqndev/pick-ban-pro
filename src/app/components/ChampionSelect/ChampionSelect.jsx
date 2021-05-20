@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, memo } from 'react';
 import ChampionsContext from '../../controller/contexts/ChampionsContext';
 import Fuse from 'fuse.js';
 import roles from '../../assets/roles.json';
@@ -85,4 +85,4 @@ const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
     );
 }
 
-export default ChampSelect;
+export default memo(ChampSelect);

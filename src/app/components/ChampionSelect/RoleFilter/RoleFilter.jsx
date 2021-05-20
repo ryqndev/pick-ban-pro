@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {ReactComponent as TopIcon} from '../../../assets/positions/position-top.svg';
 import {ReactComponent as JungleIcon} from '../../../assets/positions/position-jungle.svg';
 import {ReactComponent as MiddleIcon} from '../../../assets/positions/position-middle.svg';
@@ -27,4 +28,4 @@ const RoleFilter = ({ roleFilter, setRoleFilter }) => {
     );
 }
 
-export default RoleFilter;
+export default memo(RoleFilter);

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, memo } from 'react';
 import ChampionsContext from '../../../../controller/contexts/ChampionsContext';
 import { writeDraftString } from '../../../../controller/draftLogicControllerUtil.js';
 import './OptionsDisplay.scss';
@@ -20,4 +20,4 @@ const OptionsDisplay = ({ open, options, draft }) => {
     );
 }
 
-export default OptionsDisplay;
+export default memo(OptionsDisplay);

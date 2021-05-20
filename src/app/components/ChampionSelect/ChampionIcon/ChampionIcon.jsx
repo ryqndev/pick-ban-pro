@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import NoneIcon from '../../../assets/square.png';
 import './ChampionIcon.scss';
 
@@ -16,4 +17,4 @@ const ChampionIcon = ({item: {name, id}, select, disabled}) => {
     );
 }
 
-export default ChampionIcon;
+export default memo(ChampionIcon);

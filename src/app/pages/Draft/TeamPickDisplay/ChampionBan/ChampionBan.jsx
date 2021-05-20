@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import EmptyBanImage from '../../../../assets/square.png';
 import './ChampionBan.scss';
 
@@ -23,4 +24,4 @@ const ChampionBan = ({name, id, currentPick}) => {
     );
 }
 
-export default ChampionBan;
+export default memo(ChampionBan);

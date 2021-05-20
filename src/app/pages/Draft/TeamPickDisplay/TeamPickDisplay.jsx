@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, memo} from 'react';
 import ChampionsContext from '../../../controller/contexts/ChampionsContext';
 import ChampionBan from './ChampionBan';
 import ChampionPick from './ChampionPick';
@@ -59,4 +59,4 @@ const TeamPickDisplay = ({isLeft, currentPick, teamPickData}) => {
     );
 }
 
-export default TeamPickDisplay;
+export default memo(TeamPickDisplay);

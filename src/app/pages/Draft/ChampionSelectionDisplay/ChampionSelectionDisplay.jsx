@@ -1,4 +1,4 @@
-import {useContext, useRef, useEffect, useState} from 'react';
+import {useContext, useRef, useEffect, useState, memo} from 'react';
 import {PICKS} from '../../../controller/draftLogicControllerUtil.js';
 import ChampionsContext from '../../../controller/contexts/ChampionsContext';
 import ChampionSelect from '../../../components/ChampionSelect';
@@ -9,7 +9,12 @@ import './ChampionSelectionDisplay.scss';
 
 
 const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
-    const disabled = new Set(draft);
+    const [disabled, setDisabled] = useState(new Set(draft));
+
+    useEffect(() => {
+        setDisabled(new Set(draft));
+    }, [draft]);
+
     const { championsList } = useContext(ChampionsContext);
     const [showOptions, setShowOptions] = useState(false);
     const lockinButtonRef = useRef(null);
@@ -72,4 +77,4 @@ const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
     );
 }
 
-export default ChampionSelectionDisplay;
+export default memo(ChampionSelectionDisplay);

@@ -8,7 +8,7 @@ nav {
     padding: 0px 10px;
     display: grid;
     grid-template-columns: 70px 1fr 50px 740px 50px 1fr 70px;
-    column-gap: 10px;
+    column-gap: 20px;
     background-color: var(--nav-bg);
     color: white;
     grid-template-areas: "logo blue-team blue-counter middle red-counter red-team toggle";
@@ -81,12 +81,11 @@ nav {
     }
 
     &.with-bar {
-
         &::after,
         &::before {
             content: '';
             height: 2px;
-            width: 100vw;
+            width: 100%;
             position: absolute;
             left: 50vw;
             transform: translateX(-50%);
@@ -94,9 +93,9 @@ nav {
         }
 
         &::after {
-            background-color: var(--accent-primary);
-            transition: width 30000ms linear;
-            width: 0vw;
+            background-color: var(--picking-side);
+            transition: width 200ms linear;
+            width: var(--navbar-length);
         }
 
         &::before {

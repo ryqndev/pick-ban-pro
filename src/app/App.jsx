@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import useDDragonStaticAssets from './controller/hooks/useDDragonStaticAssets';
 import ChampionsContext from './controller/contexts/ChampionsContext';
@@ -27,7 +27,7 @@ const App = () => {
 					"/d/:matchName/:teamNames",
 					"/d/:matchName/:teamNames/:draftString",
 				]}>
-					<Draft setNavRenderData={setNavRenderData} />
+					<Draft setNavRenderData={setNavRenderData}/>
 				</Route>
 				<Footer />
 
