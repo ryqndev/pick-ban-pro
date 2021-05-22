@@ -1,6 +1,6 @@
 
 import { useEffect, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Navbar.scss';
 
@@ -11,35 +11,40 @@ const splitTeamNames = (teamNames = ',') => {
 }
 
 const Navbar = ({ navRenderData }) => {
+    const {matchName, teamNames} = useParams();
+
     useEffect(() => {
         if (!navRenderData?.timeLeft) return;
         document.documentElement.style.setProperty('--navbar-length', navRenderData?.timeLeft / navRenderData?.timeLimit * 100000 + '%');
-    }, [navRenderData]);
-    useEffect(() => {
-        document.documentElement.style.setProperty('--picking-side', navRenderData?.bluePick ? 'var(--accent-primary)' : 'var(--accent-secondary)');
-    }, [navRenderData?.bluePick]);
+    }, [navRenderData?.timeLeft, navRenderData?.timeLimit]);
 
-    if (!navRenderData.draft) return (
+    useEffect(() => {
+        document.documentElement.style.setProperty('--picking-side', navRenderData?.side ? 'var(--accent-primary)' : 'var(--accent-secondary)');
+    }, [navRenderData?.side]);
+
+    if (!navRenderData?.type) return (
         <nav>
             <Link to="/" className="name"><Logo /></Link>
             <h1>pickban.pro</h1>
         </nav>
     );
 
-    const [blueTeamName, redTeamName] = splitTeamNames(navRenderData?.teamNames);
-    const matchName = decodeURIComponent(navRenderData?.matchName ?? 'pickban.pro');
-    const blueTimer = navRenderData?.bluePick ? parseInt(navRenderData?.timeLeft) : '',
-        redTimer = !navRenderData?.bluePick ? parseInt(navRenderData?.timeLeft) : '';
+    const side = navRenderData?.side;
+    const isRed = side === 'red';
+    const isBlue = side === 'blue';
 
+    const [blueTeamName, redTeamName] = splitTeamNames(teamNames);
+    const blueTimer = isBlue ? parseInt(navRenderData?.timeLeft) : '',
+        redTimer = isRed ? parseInt(navRenderData?.timeLeft) : '';
 
     return (
         <nav className="with-bar">
             <Link to="/" className="name"><Logo /></Link>
-            <h2 className="blue">{blueTeamName}</h2>
+            <h2 className="blue" style={{color: isBlue ? 'white' : 'var(--bg-primary-light)'}}>{blueTeamName}</h2>
             <p className="blue">{blueTimer}</p>
-            <h1>{matchName}</h1>
+            <h1>{decodeURIComponent(matchName ?? 'pickban.pro')}</h1>
             <p className="red">{redTimer}</p>
-            <h2 className="red">{redTeamName}</h2>
+            <h2 className="red" style={{color: isRed ? 'white' : 'var(--bg-primary-light)'}}>{redTeamName}</h2>
         </nav>
     );
 }

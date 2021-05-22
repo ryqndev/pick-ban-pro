@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import './ControlledTextInput.scss';
 
 const ControlledTextInput = ({id, placeholder='', value, setValue}) => {
@@ -18,4 +19,4 @@ const ControlledTextInput = ({id, placeholder='', value, setValue}) => {
     )
 }
 
-export default ControlledTextInput;
+export default memo(ControlledTextInput);

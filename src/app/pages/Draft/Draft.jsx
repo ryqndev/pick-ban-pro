@@ -7,46 +7,44 @@ import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import './Draft.scss';
 
 const Draft = ({setNavRenderData}) => {
-    const {draftString, matchName, teamNames} = useParams();
+    const {draftString} = useParams();
 
     const {
         blueTeamRenderData, 
         redTeamRenderData,
         localCurrentPick,
         currentPick,
-        draft, 
-        undo, lockin, select
+        ...draft
     } = useDraftLogicController(draftString);
 
 	const {
         timeLimit,
         timeLeft,
+        isRunning,
         startTimer,
         endTimer,
-    } = useDraftTimer({});
+    } = useDraftTimer();
 
     useEffect(() => {
-        startTimer();
-		return endTimer;
+        // startTimer();
+		// return endTimer;
     }, [startTimer, endTimer]);
 
     useEffect(() => {
         setNavRenderData({
-            draft: true,
-            matchName,
-            teamNames,
-            bluePick: localCurrentPick.blue,
+            type: 'draft',
+            side: isRunning ? (localCurrentPick.blue ? 'blue' : 'red') : 'none',
             timeLeft,
             timeLimit,
         });
-        return () => setNavRenderData({draft: false});
-    }, [setNavRenderData, timeLeft, localCurrentPick, matchName, teamNames, timeLimit]);
+        return () => setNavRenderData({});
+    }, [setNavRenderData, timeLeft, localCurrentPick, isRunning, timeLimit]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay currentPick={currentPick} {...{draft, lockin, select, undo}} />
+                <ChampionSelectionDisplay currentPick={currentPick} {...draft} />
                 <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />
             </div>
         </main>

@@ -2,7 +2,7 @@ import Landing from './Landing';
 import Menu from './Menu';
 import Create from './Create';
 import TournamentList from './TournamentList';
-import Draft from './Draft';
+import Draft, {PeerDraft} from './Draft';
 
 export {
     Landing,
@@ -10,4 +10,5 @@ export {
     Create,
     TournamentList, 
     Draft,
+    PeerDraft,
 }

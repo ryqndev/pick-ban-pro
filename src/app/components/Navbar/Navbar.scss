@@ -53,6 +53,7 @@ nav {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        transition: color 350ms;
 
         &.blue {
             text-align: right;
