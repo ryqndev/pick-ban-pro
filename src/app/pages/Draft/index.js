@@ -1,5 +1,5 @@
 import Draft from './Draft.jsx';
-import PeerDraft from './PeerDraft.jsx';
+import SpectatorDraft from './SpectatorDraft.jsx';
 
 export default Draft;
-export {PeerDraft}
+export {SpectatorDraft}

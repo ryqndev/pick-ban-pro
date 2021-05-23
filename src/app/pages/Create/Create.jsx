@@ -20,6 +20,16 @@ const Create = ({ peer, peerID, listen }) => {
     const [challengerLink, setChallengerLink] = useState('Creating...');
     const [spectatorLink, setSpectatorLink] = useState('Creating...');
 
+    // const draftOptions = {
+    //     matchName,
+    //     blueTeamName,
+    //     redTeamName,
+    //     hasTimeLimits,
+    //     timeLimit,
+    //     challengerLink,
+    //     spectatorLink,
+    // }
+
     useEffect(() => {
         listen();
     });

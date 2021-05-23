@@ -4,14 +4,26 @@ main.draft--wrapper {
     padding-top: 20px;
     overflow: hidden;
     display: grid;
+    @media screen and (max-width: 800px) {
+        height: calc(200vh);
+    }
     & > .pickban-select--wrapper {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
+        grid-template-areas: "blue select red";
         column-gap: 80px;
         height: 98%;
         min-height: 0;
         @media screen and (max-width: 1500px) {
             grid-template-columns: 22vw 1fr 22vw;
+        }
+        @media screen and (max-width: 800px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: calc(100vh - 60px) 100vh;
+            row-gap: 20px;
+            column-gap: 5px;
+            grid-template-areas: "blue red"
+                                 "select select";
         }
     }
 }

@@ -11,7 +11,7 @@ const splitTeamNames = (teamNames = ',') => {
 }
 
 const Navbar = ({ navRenderData }) => {
-    const {matchName, teamNames} = useParams();
+    const { matchName, teamNames } = useParams();
 
     useEffect(() => {
         if (!navRenderData?.timeLeft) return;
@@ -40,11 +40,11 @@ const Navbar = ({ navRenderData }) => {
     return (
         <nav className="with-bar">
             <Link to="/" className="name"><Logo /></Link>
-            <h2 className="blue" style={{color: isBlue ? 'white' : 'var(--bg-primary-light)'}}>{blueTeamName}</h2>
+            <h2 className="blue" style={{ color: isBlue ? 'white' : 'var(--bg-primary-light)' }}>{blueTeamName}</h2>
             <p className="blue">{blueTimer}</p>
             <h1>{decodeURIComponent(matchName ?? 'pickban.pro')}</h1>
             <p className="red">{redTimer}</p>
-            <h2 className="red" style={{color: isRed ? 'white' : 'var(--bg-primary-light)'}}>{redTeamName}</h2>
+            <h2 className="red" style={{ color: isRed ? 'white' : 'var(--bg-primary-light)' }}>{redTeamName}</h2>
         </nav>
     );
 }

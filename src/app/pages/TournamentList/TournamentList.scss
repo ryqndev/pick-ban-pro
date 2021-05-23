@@ -26,6 +26,7 @@
                     column-gap: 20px;
                     &>.day {
                         padding: 20px;
+                        height: max-content;
                         &>h3 {
                             font-weight: bold;
                             font-size: 1.8em;

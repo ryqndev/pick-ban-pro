@@ -22,12 +22,16 @@
                 text-decoration: none;
                 overflow-y: scroll;
                 transition: filter 350ms;
-
+                display: grid;
+                row-gap: 15px;
                 &>h2 {
+                    height: 60px;
                     padding-left: 10px;
                     font: 5em 'Hyperwave';
                 }
-
+                &>span {
+                    color: grey;
+                }
                 &>p {
                     font-size: 1.3em;
                     line-height: 1.2em;

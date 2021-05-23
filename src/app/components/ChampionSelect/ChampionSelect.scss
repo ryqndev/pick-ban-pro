@@ -6,6 +6,11 @@
         display: grid;
         grid-template-columns: 1fr auto;
         column-gap: 50px;
+        @media screen and (max-width: 800px) {
+            grid-template-columns: 1fr;
+            row-gap: 10px;
+            grid-template-rows: 1fr 1fr;
+        }
         & > input[type=text] {
             width: 360px;
             @media screen and (max-width: 1500px) {
@@ -16,6 +21,9 @@
             }
             @media screen and (max-width: 1200px) {
                 width: 150px;
+            }
+            @media screen and (max-width: 800px) {
+                width: calc(100% - 20px)
             }
         }
     }
@@ -37,6 +45,11 @@
             }
             @media screen and (max-width: 1200px) {
                 grid-template-columns: repeat(4, 1fr);
+            }
+            @media screen and (max-width: 500px) {
+                grid-template-columns: repeat(3, 1fr);
+                padding: 0px;
+                width: calc(100vw - 20px);
             }
         }
     }

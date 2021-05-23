@@ -388,7 +388,6 @@
                     {
                         "date": "May 17, 2021",
                         "games": [
-
                             {
                                 "blue": "PSG Talon",
                                 "red": "Royal Never Give Up",
@@ -465,6 +464,75 @@
                                 "red": "Cloud 9",
                                 "draft": "1m32251sbg6j6k41p-1wdubx1q1i2h33c-3idt13",
                                 "winner": "blue"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Semifinals",
+                "days": [
+                    {
+                        "date": "May 21, 2021",
+                        "games": [
+                            {
+                                "blue": "Royal Never Give Up",
+                                "red": "PSG Talon",
+                                "draft": "3y32bg6k1k1m1s2541p-i-464-3-em332h5l1p7g",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "PSG Talon",
+                                "red": "Royal Never Give Up",
+                                "draft": "6k3y321m1sbg2541p-i-3346152h3iem5l1ked34",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "Royal Never Give Up",
+                                "red": "PSG Talon",
+                                "draft": "3y32bg6k1k1m1s25i-p-41332h3-em467e1p5l34",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "PSG Talon",
+                                "red": "Royal Never Give Up",
+                                "draft": "6k3y321m1sbg2533p-i-em41d-1k3-3i46ed151p",
+                                "winner": "red"
+                            }
+                        ]
+                    },
+                    {
+                        "date": "May 22, 2021",
+                        "games": [
+                            {
+                                "blue": "DWG KIA",
+                                "red": "MAD Lions",
+                                "draft": "6k1m1s6jbgp-3225411w673y1p33e-1q3illecem",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "MAD Lions",
+                                "red": "DWG KIA",
+                                "draft": "1m6kp-bg326j1s41252ydu464-3y1p2h335led34",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "DWG KIA",
+                                "red": "MAD Lions",
+                                "draft": "6k1m1s67bgp-32252h1w3341e-ed3y4-1p463i1q",
+                                "winner": "red"
+                            },
+                            {
+                                "blue": "DWG KIA",
+                                "red": "MAD Lions",
+                                "draft": "bg1m6k6732p-1s41251wi-463y1p3id-2hedem34",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "MAD Lions",
+                                "red": "DWG KIA",
+                                "draft": "1mbgp-1s676k25i-1w412h3y4-e-1pemc-ed463i",
+                                "winner": "red"
                             }
                         ]
                     }

@@ -6,7 +6,7 @@ import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelecti
 import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import './Draft.scss';
 
-const Draft = ({setNavRenderData}) => {
+const Draft = ({setNavRenderData, connection, peerID, send}) => {
     const {draftString} = useParams();
 
     const {
@@ -21,14 +21,24 @@ const Draft = ({setNavRenderData}) => {
         timeLimit,
         timeLeft,
         isRunning,
-        startTimer,
-        endTimer,
+        // startTimer,
+        // endTimer,
     } = useDraftTimer();
 
     useEffect(() => {
-        // startTimer();
-		// return endTimer;
-    }, [startTimer, endTimer]);
+        console.log("connection object", connection);
+        if(!connection) return;
+        
+        send({
+            type: 'STATE_UPDATE',
+            content: {
+                ready_check: [true, true],
+                draft: draft.draft,
+                current_pick: currentPick,
+                timer_end: new Date().getTime() + 60000,
+            }
+        })
+    }, [draft.draft, connection, send, currentPick]);
 
     useEffect(() => {
         setNavRenderData({

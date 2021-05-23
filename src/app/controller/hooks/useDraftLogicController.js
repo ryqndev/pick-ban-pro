@@ -10,13 +10,17 @@ import ChampionsContext from '../contexts/ChampionsContext';
  * Current plan is to just use a standard fixed array and we'll see if further state management is needed
  * 
  */
-const useDraftLogicController = (draftString='', options={}) => {
+const useDraftLogicController = (draftString='') => {
     const {championsList} = useContext(ChampionsContext);
     const [draft, setDraft] = useState([]);
     const [currentPick, setCurrentPick] = useState(0);
     const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
     const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
     const [redTeamRenderData, setRedTeamRenderData] = useState([]);
+
+    useEffect(() => {
+        console.log("updated fraft", draft)
+    },[draft]);
 
     useEffect(() => {
         setDraft(parseDraftString(draftString, championsList));
@@ -32,9 +36,10 @@ const useDraftLogicController = (draftString='', options={}) => {
         });
         setBlueTeamRenderData(blue);
         setRedTeamRenderData(red);
+
     }, [currentPick, draft])
 
-    const select = useCallback((champion) => {
+    const select = useCallback(champion => {
         if(currentPick >= 20) return;
         setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
     }, [currentPick]);
@@ -44,6 +49,15 @@ const useDraftLogicController = (draftString='', options={}) => {
         if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
         setCurrentPick(pick => pick + 1);
     }, [draft, currentPick]);
+
+    const selectAndLockRandom = useCallback(() => {
+        const getRandomChampion = () => {
+
+        }
+        if(currentPick >= 20) return;
+        // setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
+        lockin();
+    }, [currentPick, lockin]);
 
     const undo = useCallback(() => {
         if(currentPick <= 0) return;
@@ -58,10 +72,12 @@ const useDraftLogicController = (draftString='', options={}) => {
 
     return {
         draft,
+        setDraft,
         blueTeamRenderData,
         redTeamRenderData,
         localCurrentPick,
         currentPick,
+        setCurrentPick,
         lockin,
         undo,
         select,

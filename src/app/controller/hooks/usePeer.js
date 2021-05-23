@@ -27,6 +27,10 @@ const usePeer = () => {
         console.log("connecting event", connection);
     }, [connection]);
 
+    useEffect(() => {
+        console.log("new message", message);
+    }, [message]);
+
     /**
      * Listen for messages after connection established
      */
@@ -35,10 +39,13 @@ const usePeer = () => {
 
         connection.on('open', () => {
             connection.on('data', data => {
-                console.log('Received', data);
+                setMessage(data);
             });
 
-            connection.send('Connected!');
+            connection.send({
+                type: 'CONNECT',
+                success: true,
+            });
         });
     }, [connection]);
 
@@ -51,9 +58,9 @@ const usePeer = () => {
         setConnection(peer.connect(id));
     }, [peer]);
 
-    const send = useCallback(() => {
+    const send = useCallback(message => {
         if(!connection) return console.log('Not connected to anyone!');
-        connection.send("yo what up");
+        connection.send(message);
     }, [connection]);
 
     return {
@@ -62,6 +69,8 @@ const usePeer = () => {
         setPeer,
         setPeerID,
         listen,
+        message,
+        connection,
         connect,
         send,
     };
