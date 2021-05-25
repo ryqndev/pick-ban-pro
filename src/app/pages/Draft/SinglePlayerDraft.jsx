@@ -6,7 +6,7 @@ import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelecti
 import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import './Draft.scss';
 
-const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
+const Draft = ({setNavRenderData, spectatorConnections, sendToSpectators, message, peer, peerID, send}) => {
     const {draftString} = useParams();
 
     const {
@@ -26,18 +26,16 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
     } = useDraftTimer();
 
     useEffect(() => {
-        if(!connection) return;
-        send({
+        if(spectatorConnections?.length === 0) return;
+        sendToSpectators({
             type: 'STATE_UPDATE',
             content: {
                 ready_check: [true, true],
                 draft: draft.draft,
-                current_pick: currentPick,
                 timer_end: new Date().getTime() + 60000,
             }
-        })
-    }, [draft.draft, connection, message, send, currentPick]);
-
+        });
+    }, [draft.draft, spectatorConnections, sendToSpectators]);
 
     useEffect(() => {
         setNavRenderData({
@@ -53,14 +51,13 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay currentPick={currentPick} {...draft}>
-
+                <ChampionSelectionDisplay {...draft}>
                     <h3>
                         debug
                     </h3>
                     {JSON.stringify({
                         side: localCurrentPick.blue,
-                        pick_number: currentPick,
+                        pick_number: draft.p,
                         id: peerID,
                         connections: peer.connections.length,
                         disconnected: peer.disconnected,

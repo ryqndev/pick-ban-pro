@@ -5,12 +5,12 @@ import usePeer from './controller/hooks/usePeer';
 import ChampionsContext from './controller/contexts/ChampionsContext';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Landing, Menu, Create, TournamentList, Draft, SpectatorDraft } from './pages';
+import { Landing, Menu, Create, TournamentList, SinglePlayerDraft, SpectatorDraft } from './pages';
 import './styles/main.scss';
 
 const App = () => {
 	const { championsList, patchList, patch } = useDDragonStaticAssets();
-	const {peer, peerID, connect, connection, message, send, listen} = usePeer();
+	const peer = usePeer();
 	const [navRenderData, setNavRenderData] = useState({});
 
 	return (
@@ -26,13 +26,13 @@ const App = () => {
 				<Route exact strict path="/" component={Landing} />
 				<Route exact strict path="/menu" component={Menu} />
 				<Route path="/create">
-					<Create peer={peer} peerID={peerID} listen={listen}/>
+					<Create {...peer}/>
 				</Route>
 				<Route path="/challenger/:id">
-					<SpectatorDraft peer={peer} peerID={peerID} send={send} connect={connect}/>
+					<SpectatorDraft {...peer}/>
 				</Route>
 				<Route path="/spectator/:id">
-					<SpectatorDraft peer={peer} connect={connect} message={message} peerID={peerID}/>
+					<SpectatorDraft {...peer}/>
 				</Route>
 				<Route exact strict path="/list" component={TournamentList} />
 				<Route exact path={[
@@ -43,7 +43,7 @@ const App = () => {
 					"/d/:matchName/:teamNames",
 					"/d/:matchName/:teamNames/:draftString",
 				]}>
-					<Draft setNavRenderData={setNavRenderData} connection={connection} message={message} peerID={peerID} peer={peer} send={send} />
+					<SinglePlayerDraft setNavRenderData={setNavRenderData} {...peer}/>
 				</Route>
 				<Footer />
 			</Router>

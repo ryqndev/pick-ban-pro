@@ -1,5 +1,5 @@
-import {useState, useCallback, useEffect, useContext} from 'react';
-import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, parseDraftString, parseCurrentPick} from '../draftLogicControllerUtil.js';
+import {useCallback, useEffect, useContext} from 'react';
+import {PICKS, editArrayAtIndex, parseDraftString, parseCurrentPick} from '../draftLogicControllerUtil.js';
 import useDraftRenderData from './useDraftRenderData.js';
 import ChampionsContext from '../contexts/ChampionsContext';
 
@@ -16,53 +16,48 @@ const useDraftLogicController = (draftString='') => {
     const {
         draft,
         setDraft,
-        currentPick,
-        setCurrentPick,
         localCurrentPick,
         ...teamRenderData
     } = useDraftRenderData();
 
     useEffect(() => {
-        setDraft(parseDraftString(draftString, championsList));
-        setCurrentPick(parseCurrentPick(draftString))
-    }, [draftString, setDraft, setCurrentPick, championsList]);
+        setDraft({d: parseDraftString(draftString, championsList), p: parseCurrentPick(draftString)});
+    }, [draftString, setDraft, championsList]);
 
     const select = useCallback(champion => {
-        if(currentPick >= 20) return;
-        setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
-    }, [setDraft, currentPick]);
+        if(draft.p >= 20) return;
+        setDraft(prevDraft => ({d: editArrayAtIndex(prevDraft.d, draft.p, champion), p: prevDraft.p}));
+    }, [setDraft, draft.p]);
 
     const lockin = useCallback(() => {
-        if(currentPick >= 20 || !draft[currentPick] || (draft[currentPick] === 'none' && PICKS.has(currentPick))) return;
-        setCurrentPick(pick => pick + 1);
-    }, [draft, setCurrentPick, currentPick]);
+        if(draft.p >= 20 || !draft.d[draft.p] || (draft.d[draft.p] === 'none' && PICKS.has(draft.p))) return;
+        setDraft(({d, p}) => ({d, p: p+1}));
+    }, [draft, setDraft]);
 
-    const selectAndLockRandom = useCallback(() => {
-        const getRandomChampion = () => {
+    // const selectAndLockRandom = useCallback(() => {
+    //     const getRandomChampion = () => {
 
-        }
-        if(currentPick >= 20) return;
-        // setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
-        lockin();
-    }, [currentPick, lockin]);
+    //     }
+    //     if(currentPick >= 20) return;
+    //     // setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
+    //     lockin();
+    // }, [currentPick, lockin]);
 
     const undo = useCallback(() => {
-        if(currentPick <= 0) return;
+        if(draft.p <= 0) return;
         setDraft(draft => {
-            if(currentPick >= 20) return draft;
+            if(draft.p >= 20) return draft;
             let newDraft = [...draft];
-            newDraft[currentPick] = null;
+            newDraft[draft.p] = null;
             return newDraft;
         });
-        setCurrentPick(pick => pick - 1);
-    }, [setDraft, setCurrentPick, currentPick]);
+        setDraft(({d, p}) => ({d, p: p-1}));
+    }, [setDraft, draft.p]);
 
     return {
         draft,
         setDraft,
         localCurrentPick,
-        currentPick,
-        setCurrentPick,
         lockin,
         undo,
         select,

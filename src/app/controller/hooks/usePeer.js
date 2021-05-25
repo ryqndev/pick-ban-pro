@@ -1,7 +1,7 @@
 import Peer from 'peerjs';
 import { useState, useEffect, useCallback } from 'react'
 
-const usePeer = (draftState={}) => {
+const usePeer = () => {
     const [peer, setPeer] = useState(() => new Peer());
     const [connection, setConnection] = useState(null);
     const [spectatorConnections, setSpectatorConnections] = useState([]);
@@ -10,9 +10,7 @@ const usePeer = (draftState={}) => {
 
     useEffect(() => {
         if (!peer || (peer?.destroyed ?? true)) return setPeer(new Peer());
-        peer.on('open', id => {
-            setPeerID(id);
-        });
+        peer.on('open', setPeerID);
         return () => {
             peer.destroy();
             setPeerID('');
@@ -26,36 +24,28 @@ const usePeer = (draftState={}) => {
     useEffect(() => {
         if (!connection) return;
 
-        connection.on('open', () => {
-            connection.on('data', setMessage);
-        });
+        connection.on('open', () => { connection.on('data', setMessage) });
     }, [connection]);
 
-    /**
-     * Listen for connections AFTER peer object created
-     */
-    const listen = useCallback(() => {
+    useEffect(() => {
         if(!peerID) return;
 
-        peer.on('connection', (newConnection) => {
+        const connector = (newConnection) => {
             console.log("NEW [connection]", newConnection);
             switch(newConnection?.metadata?.type) {
                 case 'spectator':
                     newConnection.on('open', () => {
-                        newConnection.send({type: 'STATE_UPDATE', content: draftState});
+                        setSpectatorConnections(spectators => [...spectators, newConnection]);
                     });
-                    return setSpectatorConnections(spectators => [...spectators, newConnection]);
+                    break;
                 default:
                     setConnection(newConnection); 
             }
-        });
-    }, [peer, peerID, draftState, setSpectatorConnections]);
+        }
 
-    useEffect(() => {
-        spectatorConnections.forEach(connection => {
-            connection.send({type: 'STATE_UPDATE', content: draftState});
-        });
-    }, [draftState, spectatorConnections]);
+        peer.on('connection', connector);
+        return () => peer.off('connection', connector);
+    }, [peer, peerID, setSpectatorConnections]);
 
     const connect = useCallback((id, connectionType) => {
         setConnection(peer.connect(id, {metadata: {type: connectionType}}));
@@ -65,17 +55,24 @@ const usePeer = (draftState={}) => {
         if(!connection) return console.log('Not connected to anyone!');
         connection.send(message);
     }, [connection]);
+    
+    const sendToSpectators = useCallback(message => {
+        spectatorConnections.forEach(connection => {
+            connection.send(message);
+        });
+    }, [spectatorConnections]);
 
     return {
         peer,
         peerID,
         setPeer,
         setPeerID,
-        listen,
         message,
         connection,
+        spectatorConnections,
         connect,
         send,
+        sendToSpectators,
     };
 }
 

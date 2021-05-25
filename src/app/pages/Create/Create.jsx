@@ -29,11 +29,7 @@ const Create = ({ peer, peerID, listen }) => {
     //     challengerLink,
     //     spectatorLink,
     // }
-
-    useEffect(() => {
-        listen();
-    });
-
+    
     useEffect(() => {
         if (!peerID?.length) return;
         setChallengerLink(window.location.origin + '/challenger/' + peerID);

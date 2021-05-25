@@ -12,10 +12,8 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
         blueTeamRenderData, 
         redTeamRenderData,
         localCurrentPick,
-        currentPick,
         setDraft,
         draft,
-        setCurrentPick,
     } = useDraftRenderData();
 
 	// const {
@@ -35,15 +33,14 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
         if(!message) return;
         if(message?.type === 'STATE_UPDATE'){
             setDraft(message.content?.draft);
-            setCurrentPick(message.content?.current_pick);
         }
-    }, [message, setDraft, setCurrentPick]);
+    }, [message, setDraft]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay currentPick={currentPick} draft={draft} >
+                <ChampionSelectionDisplay draft={draft} spectator={true}>
                     <br />
                     <br />
                     <h3>
@@ -51,7 +48,7 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
                     </h3>
                     {JSON.stringify({
                         side: localCurrentPick.blue,
-                        pick_number: currentPick,
+                        pick_number: draft.p,
                         id: peerID,
                         // connections: peer.connections,
                         disconnected: peer.disconnected,
