@@ -31,7 +31,6 @@ const usePeer = () => {
         if(!peerID) return;
 
         const connector = (newConnection) => {
-            console.log("NEW [connection]", newConnection);
             switch(newConnection?.metadata?.type) {
                 case 'spectator':
                     newConnection.on('open', () => {

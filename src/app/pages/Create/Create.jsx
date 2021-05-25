@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useRouteMatch, Route, useHistory } from 'react-router-dom';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
 import './Create.scss';
 
-const Create = ({ peer, peerID, listen }) => {
-    let { path } = useRouteMatch();
-    const history = useHistory();
+const Create = ({ peer, peerID }) => {
+    const navigate = useNavigate();
 
     const [matchName, setMatchName] = useState('');
     const [blueTeamName, setBlueTeamName] = useState('');
@@ -15,20 +14,10 @@ const Create = ({ peer, peerID, listen }) => {
     const [hasTimeLimits, setHasTimeLimits] = useState(false);
     const [timeLimit, setTimeLimit] = useState(30);
 
-    const [draftLink, setDraftLink] = useState('/draft');
+    const [draftLink, setDraftLink] = useState('/d');
 
     const [challengerLink, setChallengerLink] = useState('Creating...');
     const [spectatorLink, setSpectatorLink] = useState('Creating...');
-
-    // const draftOptions = {
-    //     matchName,
-    //     blueTeamName,
-    //     redTeamName,
-    //     hasTimeLimits,
-    //     timeLimit,
-    //     challengerLink,
-    //     spectatorLink,
-    // }
 
     useEffect(() => {
         if (!peerID?.length) return;
@@ -48,7 +37,17 @@ const Create = ({ peer, peerID, listen }) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        history.push(draftLink);
+        navigate(draftLink, { 
+            state: {
+                matchName: matchName.length === 0 ? 'pickban.pro' : matchName,
+                blueTeamName: blueTeamName.length === 0 ? 'Blue Team' : blueTeamName,
+                redTeamName: redTeamName.length === 0 ? 'Red Team' : redTeamName,
+                hasTimeLimits,
+                timeLimit,
+                challengerLink,
+                spectatorLink,
+            }
+        });
     }
 
     return (
@@ -87,24 +86,26 @@ const Create = ({ peer, peerID, listen }) => {
                         }
                     </div>
                 </div>
-                <Route exact path={[path, `${path}/test`]}>
-                    <button>Start</button>
-                </Route>
-                <Route path={`${path}/challenge`}>
-                    <button>Start</button>
-                </Route>
+                <button>Start</button>
             </form>
             <div className="link-holder card__component">
-                <Route path={`${path}/challenge`}>
-                    <h1>Challenger & Spectator Links</h1>
-                    <label htmlFor="challenger-link">Challenger <span>to play (send only to 1)</span></label>
-                    <ControlledTextInput id="challenger-link" value={challengerLink} readOnly />
-                </Route>
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <h1>Spectator Link</h1>
+                            <span>Let people watch you as you draft</span>
+                        </>
+                    } />
+                    <Route path="/challenge" element={
+                        <>
+                            <h1>Challenger & Spectator Links</h1>
+                            <label htmlFor="challenger-link">Challenger <span>to play (send only to 1)</span></label>
+                            <ControlledTextInput id="challenger-link" value={challengerLink} readOnly />
+                        </>
+                    } />
+                </Routes>
 
-                <Route exact path={[path, `${path}/test`]}>
-                    <h1>Spectator Link</h1>
-                    <span>Let people watch you as you draft</span>
-                </Route>
+
 
                 <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>
                 <ControlledTextInput id="spectator-link" value={spectatorLink} readOnly />

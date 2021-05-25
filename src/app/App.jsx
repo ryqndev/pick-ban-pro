@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useDDragonStaticAssets from './controller/hooks/useDDragonStaticAssets';
 import usePeer from './controller/hooks/usePeer';
 import ChampionsContext from './controller/contexts/ChampionsContext';
@@ -16,35 +16,29 @@ const App = () => {
 	return (
 		<ChampionsContext.Provider value={{ championsList, patchList, patch }}>
 			<Router basename={process.env.PUBLIC_URL}>
-				<Route path={[
-					"/d/:matchName/:teamNames",
-					"/draft/:teamNames",
-					"/",
-				]}>
-					<Navbar navRenderData={navRenderData} />
-				</Route>
-				<Route exact strict path="/" component={Landing} />
-				<Route exact strict path="/menu" component={Menu} />
-				<Route path="/create">
-					<Create {...peer}/>
-				</Route>
-				<Route path="/challenger/:id">
-					<SpectatorDraft {...peer}/>
-				</Route>
-				<Route path="/spectator/:id">
-					<SpectatorDraft {...peer}/>
-				</Route>
-				<Route exact strict path="/list" component={TournamentList} />
-				<Route exact path={[
-					"/d",
-					"/d/:draftString",
-					"/draft/:teamNames",
-					"/draft/:teamNames/:draftString",
-					"/d/:matchName/:teamNames",
-					"/d/:matchName/:teamNames/:draftString",
-				]}>
-					<SinglePlayerDraft setNavRenderData={setNavRenderData} {...peer}/>
-				</Route>
+				<Navbar navRenderData={navRenderData} />
+				<Routes>
+					<Route path="/" element={<Menu/>} />
+					<Route path="menu" element={<Menu/>} />
+					<Route path="list/*" element={<TournamentList/>} />
+					<Route path="create/*" element={<Create {...peer}/>} />
+					<Route path="challenger/:id" element={<SpectatorDraft {...peer}/>} />
+					<Route path="spectator/:id" element={<SpectatorDraft {...peer} setNavRenderData={setNavRenderData}/>} />
+					{[
+						"d", 
+						"d/:draftString", 
+						"draft/:teamNames", 
+						"draft/:teamNames/:draftString", 
+						"d/:matchName/:teamNames", 
+						"d/:matchName/:teamNames/:draftString"
+					].map(url => 
+						<Route
+							key={url}
+							path={url} 
+							element={<SinglePlayerDraft setNavRenderData={setNavRenderData} {...peer}/>} 
+						/>
+					)}
+				</Routes>
 				<Footer />
 			</Router>
 		</ChampionsContext.Provider>

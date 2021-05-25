@@ -10,7 +10,7 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
                 disabled={!draft.d[draft.p]}
             >
                 lock in
-                    </button>
+            </button>
             <button
                 className={`settings ${showOptions ? 'active' : ''}`}
                 onClick={() => { setShowOptions(prevOption => !prevOption) }}

@@ -6,7 +6,7 @@ import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelecti
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData'
 import './Draft.scss';
 
-const SpectatorDraft = ({peer, peerID, connect, message}) => {
+const SpectatorDraft = ({peerID, connect, message, setNavRenderData}) => {
     const {id} = useParams();
     const {
         blueTeamRenderData, 
@@ -31,12 +31,18 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
     }, [connect, peerID, id]);
 
     useEffect(() => {
-        if(!message) return;
-        if(message?.type === 'STATE_UPDATE'){
-            setDraft(message.content?.draft);
-            setReadyCheck(message.content?.ready_check);
-        }
-    }, [message, setDraft]);
+        if(!message || !message?.content) return;
+        setDraft(message.content?.draft);
+        setReadyCheck(message.content?.ready_check);
+        setNavRenderData({
+            type: 'draft',
+            timeLimit: message.content?.time_limit,
+            match: message.content?.match_name,
+            blue: message.content?.team_names[0],
+            red: message.content?.team_names[1],
+        });
+        return () => setNavRenderData({});
+    }, [message, setDraft, setNavRenderData]);
 
     if(!readyCheck) return (
         <main className="draft--wrapper wait-ready-check">
@@ -48,7 +54,7 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay draft={draft} spectator={true}>
+                <ChampionSelectionDisplay draft={draft} spectator>
                     <br />
                     <br />
                     <h3>
@@ -58,8 +64,6 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
                         side: localCurrentPick.blue,
                         pick_number: draft.p,
                         id: peerID,
-                        // connections: peer.connections,
-                        disconnected: peer.disconnected,
                     }, null, 8)}
                 </ChampionSelectionDisplay>
                 <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />

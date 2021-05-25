@@ -1,10 +1,7 @@
-import { useContext, memo } from 'react';
-import ChampionsContext from '../../../../controller/contexts/ChampionsContext';
-import { writeDraftString } from '../../../../controller/draftLogicControllerUtil.js';
+import { memo } from 'react';
 import './OptionsDisplay.scss';
 
 const OptionsDisplay = ({ open, options, draft, children }) => {
-    const { championsList } = useContext(ChampionsContext);
 
     return (
         <div className="options-display--wrapper" style={{ maxHeight: open ? '250px' : 0 + 'px' }}>
