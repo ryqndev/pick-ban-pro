@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelectionDisplay';
@@ -15,6 +15,7 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
         setDraft,
         draft,
     } = useDraftRenderData();
+    const [readyCheck, setReadyCheck] = useState(null);
 
 	// const {
     //     timeLimit,
@@ -33,8 +34,15 @@ const SpectatorDraft = ({peer, peerID, connect, message}) => {
         if(!message) return;
         if(message?.type === 'STATE_UPDATE'){
             setDraft(message.content?.draft);
+            setReadyCheck(message.content?.ready_check);
         }
     }, [message, setDraft]);
+
+    if(!readyCheck) return (
+        <main className="draft--wrapper wait-ready-check">
+            <h1>Waiting for host to start...</h1>
+        </main>
+    );
 
     return (
         <main className="draft--wrapper">

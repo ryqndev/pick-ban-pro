@@ -24,7 +24,7 @@
         width: 30vw;
         min-width: 200px;
         row-gap: 5px;
-        padding: 20px 30px 30px;
+        padding: 20px 30px 20px;
 
         &>h1 {
             box-sizing: border-box;
@@ -33,6 +33,11 @@
             font: 1.7em 'Rubik';
             color: var(--accent-tertiary);
             filter: brightness(1.5);
+        }
+        &>span {
+            color: grey;
+            text-align: center;
+            padding-bottom: 20px;
         }
 
         & input[type=text] {

@@ -1,6 +1,5 @@
 import { ReactComponent as SettingsIcon } from '../../../../assets/settings.svg';
 
-
 const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, showOptions }) => {
     return (
         <div className="controls">

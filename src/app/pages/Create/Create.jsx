@@ -29,7 +29,7 @@ const Create = ({ peer, peerID, listen }) => {
     //     challengerLink,
     //     spectatorLink,
     // }
-    
+
     useEffect(() => {
         if (!peerID?.length) return;
         setChallengerLink(window.location.origin + '/challenger/' + peerID);
@@ -94,16 +94,21 @@ const Create = ({ peer, peerID, listen }) => {
                     <button>Start</button>
                 </Route>
             </form>
-            <Route path={`${path}/challenge`}>
-                <div className="link-holder card__component">
+            <div className="link-holder card__component">
+                <Route path={`${path}/challenge`}>
                     <h1>Challenger & Spectator Links</h1>
                     <label htmlFor="challenger-link">Challenger <span>to play (send only to 1)</span></label>
                     <ControlledTextInput id="challenger-link" value={challengerLink} readOnly />
+                </Route>
 
-                    <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>
-                    <ControlledTextInput id="spectator-link" value={spectatorLink} readOnly />
-                </div>
-            </Route>
+                <Route exact path={[path, `${path}/test`]}>
+                    <h1>Spectator Link</h1>
+                    <span>Let people watch you as you draft</span>
+                </Route>
+
+                <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>
+                <ControlledTextInput id="spectator-link" value={spectatorLink} readOnly />
+            </div>
         </div>
     );
 }

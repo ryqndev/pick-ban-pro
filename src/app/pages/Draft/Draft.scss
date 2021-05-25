@@ -7,6 +7,14 @@ main.draft--wrapper {
     @media screen and (max-width: 800px) {
         height: calc(200vh);
     }
+    &.wait-ready-check {
+        place-content: center;
+        &>h1 {
+            font-size: 3em;
+            font-family: 'Rubik';
+            padding-bottom: 10vh;
+        }
+    }
     & > .pickban-select--wrapper {
         display: grid;
         grid-template-columns: 1fr auto 1fr;

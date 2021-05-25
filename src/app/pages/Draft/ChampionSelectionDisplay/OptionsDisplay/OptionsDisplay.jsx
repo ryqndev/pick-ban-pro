@@ -1,4 +1,4 @@
-import { useContext, useEffect, memo } from 'react';
+import { useContext, memo } from 'react';
 import ChampionsContext from '../../../../controller/contexts/ChampionsContext';
 import { writeDraftString } from '../../../../controller/draftLogicControllerUtil.js';
 import './OptionsDisplay.scss';
