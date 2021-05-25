@@ -1,5 +1,6 @@
 import {useState, useCallback, useEffect, useContext} from 'react';
 import {PICKS, BLUE_SIDE_PICKS, editArrayAtIndex, parseDraftString, parseCurrentPick} from '../draftLogicControllerUtil.js';
+import useDraftRenderData from './useDraftRenderData.js';
 import ChampionsContext from '../contexts/ChampionsContext';
 
 /**
@@ -12,43 +13,29 @@ import ChampionsContext from '../contexts/ChampionsContext';
  */
 const useDraftLogicController = (draftString='') => {
     const {championsList} = useContext(ChampionsContext);
-    const [draft, setDraft] = useState([]);
-    const [currentPick, setCurrentPick] = useState(0);
-    const [localCurrentPick, setLocalCurrentPick] = useState({blue: true, index: -1});
-    const [blueTeamRenderData, setBlueTeamRenderData] = useState([]);
-    const [redTeamRenderData, setRedTeamRenderData] = useState([]);
-
-    useEffect(() => {
-        console.log("updated fraft", draft)
-    },[draft]);
+    const {
+        draft,
+        setDraft,
+        currentPick,
+        setCurrentPick,
+        localCurrentPick,
+        ...teamRenderData
+    } = useDraftRenderData();
 
     useEffect(() => {
         setDraft(parseDraftString(draftString, championsList));
         setCurrentPick(parseCurrentPick(draftString))
-    }, [draftString, championsList]);
-
-    useEffect(() => {
-        let red = [], blue = [];
-        draft.forEach((e, i) => {
-            let currentTeam = BLUE_SIDE_PICKS.has(i) ? blue : red;
-            if(i === currentPick) setLocalCurrentPick({blue: BLUE_SIDE_PICKS.has(i), index: currentTeam.length});
-            currentTeam.push(e);
-        });
-        setBlueTeamRenderData(blue);
-        setRedTeamRenderData(red);
-
-    }, [currentPick, draft])
+    }, [draftString, setDraft, setCurrentPick, championsList]);
 
     const select = useCallback(champion => {
         if(currentPick >= 20) return;
         setDraft(prevDraft => editArrayAtIndex(prevDraft, currentPick, champion));
-    }, [currentPick]);
+    }, [setDraft, currentPick]);
 
     const lockin = useCallback(() => {
         if(currentPick >= 20 || !draft[currentPick] || (draft[currentPick] === 'none' && PICKS.has(currentPick))) return;
-        if(currentPick >= 19) setLocalCurrentPick({blue: true, index: -1}); // if all champs picked
         setCurrentPick(pick => pick + 1);
-    }, [draft, currentPick]);
+    }, [draft, setCurrentPick, currentPick]);
 
     const selectAndLockRandom = useCallback(() => {
         const getRandomChampion = () => {
@@ -68,19 +55,18 @@ const useDraftLogicController = (draftString='') => {
             return newDraft;
         });
         setCurrentPick(pick => pick - 1);
-    }, [currentPick]);
+    }, [setDraft, setCurrentPick, currentPick]);
 
     return {
         draft,
         setDraft,
-        blueTeamRenderData,
-        redTeamRenderData,
         localCurrentPick,
         currentPick,
         setCurrentPick,
         lockin,
         undo,
         select,
+        ...teamRenderData,
     };
 }
 

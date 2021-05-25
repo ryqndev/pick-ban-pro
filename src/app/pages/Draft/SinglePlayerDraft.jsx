@@ -26,7 +26,6 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
     } = useDraftTimer();
 
     useEffect(() => {
-        console.log("connection object", connection);
         if(!connection) return;
         send({
             type: 'STATE_UPDATE',

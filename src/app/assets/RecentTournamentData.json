@@ -537,6 +537,46 @@
                         ]
                     }
                 ]
+            },
+            {
+                "name": "Grand Finals",
+                "days": [
+                    {
+                        "date": "May 23, 2021",
+                        "games": [
+                            {
+                                "blue": "Royal Never Give Up",
+                                "red": "DWG KIA",
+                                "draft": "3ybg6j1m321s6ki-p-2541e-1p3q1k342h27332c",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "DWG KIA",
+                                "red": "Royal Never Give Up",
+                                "draft": "bg3y6k6j321m1s2541p-i-3ied333qd-1p2h2tem",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "Royal Never Give Up",
+                                "red": "DWG KIA",
+                                "draft": "3y1m6j1s326k25bg664146p-33151pe-1k2hd-3q",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "DWG KIA",
+                                "red": "Royal Never Give Up",
+                                "draft": "bg3y6k6j321s1m274124i-254633ed1p2h7eemd-",
+                                "winner": "blue"
+                            },
+                            {
+                                "blue": "Royal Never Give Up",
+                                "red": "DWG KIA",
+                                "draft": "3y1m6j1sbg6k25321w411k6733edem463i272h7e",
+                                "winner": "blue"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

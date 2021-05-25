@@ -8,7 +8,7 @@ import {ReactComponent as SettingsIcon} from '../../../assets/settings.svg';
 import './ChampionSelectionDisplay.scss';
 
 
-const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
+const ChampionSelectionDisplay = ({draft, currentPick, children, ...actions}) => {
     const [disabled, setDisabled] = useState(new Set(draft));
 
     useEffect(() => {
@@ -42,7 +42,9 @@ const ChampionSelectionDisplay = ({draft, currentPick, ...actions}) => {
                 disabled={disabled}
                 hasNoneOption={!PICKS.has(currentPick)}
             />
-            <OptionsDisplay open={showOptions} draft={draft}/>
+            <OptionsDisplay open={showOptions} draft={draft}>
+                {children}
+            </OptionsDisplay>   
             <div className="selected-controls card__component">
                 <div className="selected-display">
                     <img src={imageLink} alt={selectedID}/>

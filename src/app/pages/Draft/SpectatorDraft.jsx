@@ -1,12 +1,12 @@
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import useDraftLogicController from '../../controller/hooks/useDraftLogicController';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelectionDisplay';
 // import useDraftTimer from '../../controller/hooks/useDraftTimer';
+import useDraftRenderData from '../../controller/hooks/useDraftRenderData'
 import './Draft.scss';
 
-const SpectatorDraft = ({peerID, connect, message}) => {
+const SpectatorDraft = ({peer, peerID, connect, message}) => {
     const {id} = useParams();
     const {
         blueTeamRenderData, 
@@ -14,9 +14,9 @@ const SpectatorDraft = ({peerID, connect, message}) => {
         localCurrentPick,
         currentPick,
         setDraft,
+        draft,
         setCurrentPick,
-        ...draft
-    } = useDraftLogicController();
+    } = useDraftRenderData();
 
 	// const {
     //     timeLimit,
@@ -28,12 +28,11 @@ const SpectatorDraft = ({peerID, connect, message}) => {
 
     useEffect(() => {
         if(!peerID) return;
-        connect(id);
+        connect(id, 'spectator');
     }, [connect, peerID, id]);
 
     useEffect(() => {
         if(!message) return;
-        console.log("got new message fo sho");
         if(message?.type === 'STATE_UPDATE'){
             setDraft(message.content?.draft);
             setCurrentPick(message.content?.current_pick);
@@ -44,7 +43,20 @@ const SpectatorDraft = ({peerID, connect, message}) => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
-                <ChampionSelectionDisplay currentPick={currentPick} {...draft} />
+                <ChampionSelectionDisplay currentPick={currentPick} draft={draft} >
+                    <br />
+                    <br />
+                    <h3>
+                        debug
+                    </h3>
+                    {JSON.stringify({
+                        side: localCurrentPick.blue,
+                        pick_number: currentPick,
+                        id: peerID,
+                        // connections: peer.connections,
+                        disconnected: peer.disconnected,
+                    }, null, 8)}
+                </ChampionSelectionDisplay>
                 <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />
             </div>
         </main>

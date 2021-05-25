@@ -43,7 +43,7 @@ const App = () => {
 					"/d/:matchName/:teamNames",
 					"/d/:matchName/:teamNames/:draftString",
 				]}>
-					<Draft setNavRenderData={setNavRenderData} connection={connection} peerID={peerID} send={send} />
+					<Draft setNavRenderData={setNavRenderData} connection={connection} message={message} peerID={peerID} peer={peer} send={send} />
 				</Route>
 				<Footer />
 			</Router>

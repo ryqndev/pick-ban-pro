@@ -5,6 +5,8 @@
     & > .filter-options {
         display: grid;
         grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr;
+        row-gap: 0px;
         column-gap: 50px;
         @media screen and (max-width: 800px) {
             grid-template-columns: 1fr;
