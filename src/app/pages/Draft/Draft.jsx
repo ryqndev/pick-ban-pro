@@ -8,10 +8,8 @@ import './Draft.scss';
 
 const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
     const {draftString} = useParams();
-
     const {
-        blueTeamRenderData, 
-        redTeamRenderData,
+        teamRenderData,
         localCurrentPick,
         currentPick,
         ...draft
@@ -26,7 +24,6 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
     } = useDraftTimer();
 
     useEffect(() => {
-        console.log("connection object", connection);
         if(!connection) return;
         send({
             type: 'STATE_UPDATE',
@@ -38,7 +35,6 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
             }
         })
     }, [draft.draft, connection, message, send, currentPick]);
-
 
     useEffect(() => {
         setNavRenderData({
@@ -53,9 +49,8 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
-                <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={blueTeamRenderData}/>
+                <TeamPickDisplay isLeft={true} currentPick={localCurrentPick} teamPickData={teamRenderData.blue}/>
                 <ChampionSelectionDisplay currentPick={currentPick} {...draft}>
-
                     <h3>
                         debug
                     </h3>
@@ -67,7 +62,7 @@ const Draft = ({setNavRenderData, connection, message, peer, peerID, send}) => {
                         disconnected: peer.disconnected,
                     }, null, 8)}
                 </ChampionSelectionDisplay>
-                <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={redTeamRenderData} />
+                <TeamPickDisplay isLeft={false} currentPick={localCurrentPick} teamPickData={teamRenderData.red} />
             </div>
         </main>
     ); 

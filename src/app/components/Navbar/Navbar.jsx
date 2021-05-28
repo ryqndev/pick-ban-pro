@@ -1,48 +1,33 @@
 
 import { useEffect, memo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Navbar.scss';
 
-const splitTeamNames = (teamNames = ',') => {
-    const names = teamNames.split(',');
-    if (names.length !== 2 || teamNames === ',') return ['Blue Team', 'Red Team'];
-    return [decodeURIComponent(names[0]), decodeURIComponent(names[1])];
-}
-
-const Navbar = ({ navRenderData }) => {
-    const { matchName, teamNames } = useParams();
+const Navbar = ({ timeLeft, timeLimit, side, type, names }) => {
+    useEffect(() => {
+        if (!timeLeft) return;
+        document.documentElement.style.setProperty(
+            '--navbar-length', timeLeft / timeLimit * 100000 + '%');
+    }, [timeLeft, timeLimit]);
 
     useEffect(() => {
-        if (!navRenderData?.timeLeft) return;
-        document.documentElement.style.setProperty('--navbar-length', navRenderData?.timeLeft / navRenderData?.timeLimit * 100000 + '%');
-    }, [navRenderData?.timeLeft, navRenderData?.timeLimit]);
+        document.documentElement.style.setProperty(
+            '--picking-side', `var(--accent-${side ? 'primary' : 'secondary'})`);
+    }, [side]);
 
-    useEffect(() => {
-        document.documentElement.style.setProperty('--picking-side', navRenderData?.side ? 'var(--accent-primary)' : 'var(--accent-secondary)');
-    }, [navRenderData?.side]);
-
-    if (!navRenderData?.type) return (
+    if (!type) return (
         <nav>
             <Link to="/" className="name"><Logo /></Link>
             <h1>pickban.pro</h1>
         </nav>
     );
 
-    const side = navRenderData?.side;
     const isRed = side === 'red';
     const isBlue = side === 'blue';
 
-    const [blueTeamName, redTeamName] = splitTeamNames(teamNames);
-    let names = {
-        match: navRenderData?.match ?? decodeURIComponent(matchName ?? 'pickban.pro'),
-        red: navRenderData?.red ?? redTeamName,
-        blue: navRenderData?.blue ?? blueTeamName,
-    }
-
-
-    const blueTimer = isBlue ? parseInt(navRenderData?.timeLeft) : '',
-        redTimer = isRed ? parseInt(navRenderData?.timeLeft) : '';
+    const blueTimer = isBlue ? parseInt(timeLeft ?? 30) : '',
+        redTimer = isRed ? parseInt(timeLeft ?? 30) : '';
 
     return (
         <nav className="with-bar">

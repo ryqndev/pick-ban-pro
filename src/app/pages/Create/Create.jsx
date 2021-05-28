@@ -4,7 +4,7 @@ import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
 import './Create.scss';
 
-const Create = ({ peer, peerID }) => {
+const Create = ({ peerID }) => {
     const navigate = useNavigate();
 
     const [matchName, setMatchName] = useState('');
@@ -39,9 +39,11 @@ const Create = ({ peer, peerID }) => {
         event.preventDefault();
         navigate(draftLink, { 
             state: {
-                matchName: matchName.length === 0 ? 'pickban.pro' : matchName,
-                blueTeamName: blueTeamName.length === 0 ? 'Blue Team' : blueTeamName,
-                redTeamName: redTeamName.length === 0 ? 'Red Team' : redTeamName,
+                names: {
+                    match: matchName,
+                    blue: blueTeamName,
+                    red: redTeamName,
+                },
                 hasTimeLimits,
                 timeLimit,
                 challengerLink,
@@ -62,7 +64,6 @@ const Create = ({ peer, peerID }) => {
 
                     <label htmlFor="blue-team-name">Blue Team Name: <span>(optional)</span></label>
                     <ControlledTextInput id="blue-team-name" placeholder="Ex. Cloud9" value={blueTeamName} setValue={setBlueTeamName} />
-
 
                     <label htmlFor="red-team-name">Red Team Name: <span>(optional)</span></label>
                     <ControlledTextInput id="red-team-name" placeholder="Ex. DWG KIA" value={redTeamName} setValue={setRedTeamName} />
@@ -104,8 +105,6 @@ const Create = ({ peer, peerID }) => {
                         </>
                     } />
                 </Routes>
-
-
 
                 <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>
                 <ControlledTextInput id="spectator-link" value={spectatorLink} readOnly />

@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import { ReactComponent as SettingsIcon } from '../../../../assets/settings.svg';
 
 const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, showOptions }) => {
@@ -28,4 +29,4 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
     )
 }
 
-export default ControlsDisplay;
+export default memo(ControlsDisplay);

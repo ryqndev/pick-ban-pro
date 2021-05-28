@@ -1,16 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useDraftTimer = (options) => {
-    const [timeLimitInMilliseconds] = useState(options?.timeLimitInMilliseconds ?? 30000);
-    const [timeLeft, setTimeLeft] = useState(() => timeLimitInMilliseconds / 1000);
+/**
+ * @function useDraftTimer draft timer hook that manages the drafting timer
+ * 
+ * This hook manages the timer by manipulating the timerEnd state. timerEnd
+ * 
+ * @param {Number} timeLimit Time (in seconds) per pick - default: 30
+ */
+const useDraftTimer = (timeLimit) => {
+    const [timeLimitInSeconds] = useState(timeLimit ?? 30);
+    const [timeLeft, setTimeLeft] = useState(timeLimitInSeconds);
     const [timerEnd, setTimerEnd] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
     const startTimer = useCallback(() => {
-        let date = new Date();
-        date = date.getTime();
-        setTimerEnd(date + (timeLimitInMilliseconds));
-    }, [timeLimitInMilliseconds]);
+        setTimerEnd(new Date().getTime() + timeLimitInSeconds * 1000);
+    }, [timeLimitInSeconds]);
 
     const endTimer = useCallback(() => { setTimerEnd(0) }, []);
 
@@ -18,9 +23,12 @@ const useDraftTimer = (options) => {
         if (timerEnd === 0) return;
         setIsRunning(true);
         const timer = setInterval(() => {
-            let newTimeLeft = timerEnd - (new Date().getTime());
+            let newTimeLeft = timerEnd - new Date().getTime();
             setTimeLeft(newTimeLeft / 1000);
-            if (newTimeLeft <= -3) startTimer();
+            if (newTimeLeft <= -3){
+                clearInterval(timer);
+                setIsRunning(false);
+            }
         }, 200);
 
         return () => {
@@ -30,7 +38,7 @@ const useDraftTimer = (options) => {
     }, [timerEnd, startTimer]);
 
     return {
-        timeLimitInMilliseconds,
+        timeLimitInSeconds,
         timerEnd,
         timeLeft,
         isRunning,

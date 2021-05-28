@@ -19,7 +19,7 @@ main.draft--wrapper {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         grid-template-areas: "blue select red";
-        column-gap: 80px;
+        column-gap: 40px;
         height: 98%;
         min-height: 0;
         @media screen and (max-width: 1500px) {

@@ -22,13 +22,13 @@ const Menu = () => {
                 <Link to="/list" className="card__component explore">
                     <div className="selection explore">
                         <h2>Explore.</h2>
-                        <span>(MSI 2020)</span>
+                        <span>(MSI 2021)</span>
                         <p>Examine and analyze completed drafts at the highest level of league competition.</p>
                     </div>
                 </Link>
             </div>
         </div>
-    )
+    );
 }
 
 export default Menu;
