@@ -7,14 +7,14 @@ nav {
     width: 100%;
     padding: 0px 10px;
     display: grid;
-    grid-template-columns: 70px 1fr 50px 740px 50px 1fr 70px;
-    column-gap: 20px;
+    grid-template-columns: 70px 1fr 50px 565px 50px 1fr 70px;
+    column-gap: 40px;
     background-color: var(--nav-bg);
     color: white;
     grid-template-areas: "logo blue-team blue-counter middle red-counter red-team toggle";
 
     @media screen and (max-width: 1500px) {
-        grid-template-columns: 70px 1fr 50px 620px 50px 1fr 70px;
+        grid-template-columns: 70px 1fr 50px 400px 50px 1fr 70px;
     }
 
     @media screen and (max-width: 1300px) {

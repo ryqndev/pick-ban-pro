@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useContext} from 'react';
-import {editArrayAtIndex, parseDraftString, parseCurrentPick} from '../draftLogicControllerUtil.js';
+import {editArrayAtIndex, parseDraftString} from '../draftLogicControllerUtil.js';
 import useDraftRenderData from './useDraftRenderData.js';
 import ChampionsContext from '../contexts/ChampionsContext';
 
@@ -13,14 +13,14 @@ const useDraftLogicController = (draftString='') => {
     } = useDraftRenderData();
 
     useEffect(() => {
-        setDraft({d: parseDraftString(draftString, championsList), p: parseCurrentPick(draftString)});
+        setDraft(parseDraftString(draftString));
     }, [draftString, setDraft, championsList]);
 
     /**
      * @function select selects a champion for current pick
      */
     const select = useCallback(champion => {
-        if(draft.p >= 20) return;
+        if(draft.p >= 20 || draft.p <= -1) return;
         setDraft(prevDraft => ({d: editArrayAtIndex(prevDraft.d, draft.p, champion), p: prevDraft.p}));
     }, [setDraft, draft.p]);
 
@@ -29,7 +29,7 @@ const useDraftLogicController = (draftString='') => {
      * only increments pick counter on valid cases
      */
     const lockin = useCallback(() => {
-        if(draft.p >= 20 || !draft.d[draft.p]) return;
+        if((draft.p >= 20 || !draft.d[draft.p]) && draft.p !== -1) return;
         setDraft(({d, p}) => ({d, p: p+1}));
     }, [draft, setDraft]);
 

@@ -5,12 +5,12 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
     return (
         <div className="controls">
             <button
-                className="lock-in"
+                className={`lock-in ${draft.p === -1 ? 'start' : ''}`}
                 ref={lockinButtonRef}
                 onClick={actions.lockin}
-                disabled={!draft.d[draft.p]}
+                disabled={draft.p !== -1 && !draft.d[draft.p]}
             >
-                lock in
+                {draft.p <= -1 ? 'start' : 'lock in'}
             </button>
             <button
                 className={`settings ${showOptions ? 'active' : ''}`}

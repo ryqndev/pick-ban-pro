@@ -26,8 +26,8 @@ const Navbar = ({ timeLeft, timeLimit, side, type, names }) => {
     const isRed = side === 'red';
     const isBlue = side === 'blue';
 
-    const blueTimer = isBlue ? parseInt(timeLeft ?? 30) : '',
-        redTimer = isRed ? parseInt(timeLeft ?? 30) : '';
+    const blueTimer = isBlue ? ~~(timeLeft ?? 30) : '',
+        redTimer = isRed ? ~~(timeLeft ?? 30) : '';
 
     return (
         <nav className="with-bar">

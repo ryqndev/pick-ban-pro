@@ -46,7 +46,7 @@ const editArrayAtIndex = (array, index, item) => {
  */
 const parseDraftString = (draftString, championsList) => {
     const parsedDraftString = new Array(20).fill(null);
-    if(!draftString || draftString.length === 0) return parsedDraftString;
+    if(!draftString || draftString.length === 0) return {d: parsedDraftString, p: -1};
 
     const championKeyMap = mapKeyToID(championsList);
 
@@ -54,7 +54,7 @@ const parseDraftString = (draftString, championsList) => {
         parsedDraftString[index] = championKeyMap[decode(key)];
     }
     draftString.toLowerCase().split('=')[0].split(/(.{2})/).filter(e => e.length !== 0).forEach(getChampNameFromKey);
-    return parsedDraftString;
+    return {d: parsedDraftString, p: parseCurrentPick};
 }
 
 const parseCurrentPick = (draftString) => {
