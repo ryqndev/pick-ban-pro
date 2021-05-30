@@ -1,3 +1,3 @@
-import App from './App.jsx';
+import App from './AppContainer';
 
 export default App;

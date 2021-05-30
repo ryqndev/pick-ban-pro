@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import ChampionsContext from './controller/contexts/ChampionsContext';
 import useDDragonStaticAssets from './controller/hooks/useDDragonStaticAssets';
-import App from '.';
+import App from './App.jsx';
 
 const AppWrapper = () => {
     const { championsList, patchList, patch } = useDDragonStaticAssets();

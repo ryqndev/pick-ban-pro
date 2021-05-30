@@ -22,7 +22,7 @@ const DEFAULT_NAME_OBJECT = {
 const useNames = (nameState=DEFAULT_NAME_OBJECT) => {
     const {matchName, teamNames} = useParams();
     const [names, setNames] = useState(nameState);
-
+    
     useEffect(() => {
         if(matchName || teamNames) {
             const match = decodeURIComponent(matchName ?? DEFAULT_MATCH_NAME);
