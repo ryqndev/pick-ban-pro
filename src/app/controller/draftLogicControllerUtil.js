@@ -46,7 +46,7 @@ const editArrayAtIndex = (array, index, item) => {
  */
 const parseDraftString = (draftString, championsList) => {
     const parsedDraftString = new Array(20).fill(null);
-    if(!draftString || draftString.length === 0) return {d: parsedDraftString, p: -1};
+    if (!draftString || draftString.length === 0) return { d: parsedDraftString, p: -1 };
 
     const championKeyMap = mapKeyToID(championsList);
 
@@ -54,7 +54,7 @@ const parseDraftString = (draftString, championsList) => {
         parsedDraftString[index] = championKeyMap[decode(key)];
     }
     draftString.toLowerCase().split('=')[0].split(/(.{2})/).filter(e => e.length !== 0).forEach(getChampNameFromKey);
-    return {d: parsedDraftString, p: parseCurrentPick};
+    return { d: parsedDraftString, p: parseCurrentPick };
 }
 
 const parseCurrentPick = (draftString) => {
@@ -64,7 +64,7 @@ const parseCurrentPick = (draftString) => {
 
 const writeDraftString = (draft, championsList) => {
     return draft.reduce((acc, e) => {
-        if(!e) return acc;
+        if (!e) return acc;
         let key = getKey(e, championsList);
         return [...acc, encode(parseInt(key))];
     }, []);
@@ -72,8 +72,8 @@ const writeDraftString = (draft, championsList) => {
 
 /** TODO: throw error if champ name not found? */
 const getKey = (championName, championsList) => {
-    if(!championsList) return 1294;
-    if(championName === 'none') return 1293;
+    if (!championsList) return 1294;
+    if (championName === 'none') return 1293;
     return championsList[championName].key;
 }
 
@@ -88,7 +88,7 @@ const mapKeyToID = (championsList) => {
         "1293": "none",
         "1294": null,
     }
-    for(let name in championsList) championKeyMap[championsList[name].key] = name;
+    for (let name in championsList) championKeyMap[championsList[name].key] = name;
     return championKeyMap;
 }
 

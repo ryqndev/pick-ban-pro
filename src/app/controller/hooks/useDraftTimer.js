@@ -11,7 +11,6 @@ const useDraftTimer = (timeLimit) => {
     const [timeLimitInSeconds] = useState(timeLimit ?? 30);
     const [timeLeft, setTimeLeft] = useState(timeLimitInSeconds);
     const [timerEnd, setTimerEnd] = useState(0);
-    const [isRunning, setIsRunning] = useState(false);
 
     const startTimer = useCallback(() => {
         setTimerEnd(new Date().getTime() + timeLimitInSeconds * 1000);
@@ -21,27 +20,34 @@ const useDraftTimer = (timeLimit) => {
 
     useEffect(() => {
         if (timerEnd === 0) return;
-        setIsRunning(true);
+        const identifier = ~~(Math.random() * 10000);
         const timer = setInterval(() => {
+            console.log('timer ' + identifier);
             let newTimeLeft = timerEnd - new Date().getTime();
             setTimeLeft(newTimeLeft / 1000);
-            if (newTimeLeft <= -3){
+            if (newTimeLeft <= -3) {
                 clearInterval(timer);
-                setIsRunning(false);
+                setTimerEnd(0);
             }
         }, 200);
 
         return () => {
             clearInterval(timer);
-            setIsRunning(false);
+            setTimerEnd(0);
         }
     }, [timerEnd, startTimer]);
+
+    useEffect(() => {
+        if(timeLeft <= -3) {
+            console.log("Timer has ended");
+        }
+    }, [timeLeft]);
 
     return {
         timeLimitInSeconds,
         timerEnd,
+        setTimerEnd,
         timeLeft,
-        isRunning,
         startTimer,
         endTimer,
     }

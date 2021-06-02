@@ -3,7 +3,7 @@ import {editArrayAtIndex, parseDraftString} from '../draftLogicControllerUtil.js
 import useDraftRenderData from './useDraftRenderData.js';
 import ChampionsContext from '../contexts/ChampionsContext';
 
-const useDraftLogicController = (draftString='') => {
+const useDraftLogicController = (draftString) => {
     const {championsList} = useContext(ChampionsContext);
     const {
         draft,

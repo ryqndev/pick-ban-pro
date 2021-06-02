@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import { memo } from 'react';
 import { ReactComponent as SettingsIcon } from '../../../../assets/settings.svg';
 
 const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, showOptions }) => {

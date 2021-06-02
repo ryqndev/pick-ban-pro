@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelectionDisplay';
-// import useDraftTimer from '../../controller/hooks/useDraftTimer';
+import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData'
 import './Draft.scss';
 
@@ -11,13 +11,10 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
     const { draft, setDraft, currentPick, teamRenderData } = useDraftRenderData();
     const [readyCheck, setReadyCheck] = useState(null);
 
-    // const {
-    //     timeLimit,
-    //     timeLeft,
-    //     isRunning,
-    //     startTimer,
-    //     endTimer,
-    // } = useDraftTimer();
+    const {
+        timeLeft,
+        setTimerEnd,
+    } = useDraftTimer();
 
     useEffect(() => {
         if (peerID) connect(id, 'spectator');
@@ -25,15 +22,23 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
 
     useEffect(() => {
         if (!message || !message?.content) return;
+        console.log(message);
+        setTimerEnd(message.content?.timer_end);
         setDraft(message.content?.draft);
         setReadyCheck(message.content?.ready_check);
+    }, [message, setDraft, timeLeft, setTimerEnd, currentPick, setNavigationContent]);
+
+    useEffect(() => {
+        if (!message || !message?.content) return;
         setNavigationContent({
             type: 'draft',
             timeLimit: message.content?.time_limit,
+            timeLeft,
             names: message.content?.names,
+            side: currentPick.side,
         });
         return () => setNavigationContent({});
-    }, [message, setDraft, setNavigationContent]);
+    }, [timeLeft, message, currentPick, setNavigationContent]);
 
     if (!readyCheck) return (
         <main className="draft--wrapper wait-ready-check">
