@@ -22,11 +22,10 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
 
     useEffect(() => {
         if (!message || !message?.content) return;
-        console.log(message);
         setTimerEnd(message.content?.timer_end);
         setDraft(message.content?.draft);
         setReadyCheck(message.content?.ready_check);
-    }, [message, setDraft, timeLeft, setTimerEnd, currentPick, setNavigationContent]);
+    }, [message, setDraft, setTimerEnd, currentPick, setNavigationContent]);
 
     useEffect(() => {
         if (!message || !message?.content) return;

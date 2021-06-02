@@ -10,22 +10,30 @@ import './Draft.scss';
 const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToSpectators, peer, peerID }) => {
     const { state } = useLocation();
     const { draftString } = useParams();
-    const { teamRenderData, currentPick, ...draft } = useDraftLogicController(draftString);
+    const { teamRenderData, currentPick, lockin, undo, ...draft } = useDraftLogicController(draftString);
     const names = useNames(state?.names);
 
+    const onTimerEnd = () => {
+        if(lockin()) return startTimer();
+
+    }
+
     const {
-        timeLimit,
+        timeLimitInSeconds,
         timeLeft,
         timerEnd,
-        setTimerEnd,
-    } = useDraftTimer(state?.timeLimit);
+        startTimer,
+    } = useDraftTimer(state?.timeLimit, onTimerEnd);
+
+    const lockinWithTimer = () => lockin() && startTimer();
+    const undoWithTimer = () => undo() && startTimer();
 
     useEffect(() => {
-        if (spectatorConnections?.length === 0) return;
+        if (!spectatorConnections?.length) return;
         sendToSpectators({
             type: 'STATE_UPDATE',
             content: {
-                ready_check: [true, true],
+                ready_check: draft.draft.p !== -1,
                 draft: draft.draft,
                 names: names,
                 time_limit: state.timeLimit,
@@ -41,17 +49,17 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
             type: 'draft',
             side: currentPick.side,
             timeLeft,
-            timeLimit,
+            timeLimit: timeLimitInSeconds,
             names,
         });
         return () => setNavigationContent({});
-    }, [setNavigationContent, timeLeft, timeLimit, names, currentPick]);
+    }, [setNavigationContent, timeLeft, timeLimitInSeconds, names, currentPick]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft}>
+                <ChampionSelectionDisplay {...draft} lockin={lockinWithTimer} undo={undoWithTimer}>
                     <h3>
                         debug
                     </h3>
@@ -59,7 +67,6 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
                         side: currentPick.blue,
                         pick_number: draft.draft.p,
                         id: peerID,
-                        connections: peer.connections.length,
                         disconnected: peer.disconnected,
                     }, null, 8)}
                 </ChampionSelectionDisplay>

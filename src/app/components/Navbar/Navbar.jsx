@@ -7,14 +7,13 @@ import './Navbar.scss';
 const Navbar = ({ timeLeft, timeLimit, side, type, names }) => {
     useEffect(() => {
         if (!timeLeft) return;
-        console.log(timeLeft / timeLimit * 100);
         document.documentElement.style.setProperty(
             '--navbar-length', timeLeft / timeLimit * 100 + '%');
     }, [timeLeft, timeLimit]);
 
     useEffect(() => {
         document.documentElement.style.setProperty(
-            '--picking-side', `var(--accent-${side === 'blue' ? 'primary' : 'secondary'})`);
+            '--picking-side', `var(--accent-${side === 'red' ? 'secondary' : 'primary'})`);
     }, [side]);
 
     if (!type) return (

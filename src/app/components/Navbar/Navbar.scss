@@ -82,6 +82,7 @@ nav {
     }
 
     &.with-bar {
+
         &::after,
         &::before {
             content: '';
@@ -95,7 +96,7 @@ nav {
 
         &::after {
             background-color: var(--picking-side);
-            transition: width 200ms linear;
+            transition: width 250ms linear;
             width: var(--navbar-length);
         }
 

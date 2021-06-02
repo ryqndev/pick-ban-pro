@@ -28,7 +28,7 @@ const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) =>
         if (draft.p >= 20) return 'Finished';
         if (draft.p <= -1) {
             if(property === 'name') return 'Ready';
-            return spectator ? 'Waiting to start...' : 'Click [START] to begin'
+            return spectator ? 'Waiting to start...' : 'Click [START] to begin';
         }
         if (championsList === null || !selectedID) return '---';
         if (selectedID === 'none') return 'None';
