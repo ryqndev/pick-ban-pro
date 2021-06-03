@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.586242e7.chunk.css",
+    "main.css": "/static/css/main.4d5dccc6.chunk.css",
     "main.js": "/static/js/main.7e3c58f3.chunk.js",
     "main.js.map": "/static/js/main.7e3c58f3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.379c56d3.js",
@@ -10,7 +10,7 @@
     "static/js/2.58e21647.chunk.js.map": "/static/js/2.58e21647.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.0e713134.chunk.css.map": "/static/css/2.0e713134.chunk.css.map",
-    "static/css/main.586242e7.chunk.css.map": "/static/css/main.586242e7.chunk.css.map",
+    "static/css/main.4d5dccc6.chunk.css.map": "/static/css/main.4d5dccc6.chunk.css.map",
     "static/js/2.58e21647.chunk.js.LICENSE.txt": "/static/js/2.58e21647.chunk.js.LICENSE.txt",
     "static/media/Aatrox.png": "/static/media/Aatrox.ec006449.png",
     "static/media/Ahri.png": "/static/media/Ahri.efbf0d40.png",
@@ -180,7 +180,7 @@
     "static/js/runtime-main.379c56d3.js",
     "static/css/2.0e713134.chunk.css",
     "static/js/2.58e21647.chunk.js",
-    "static/css/main.586242e7.chunk.css",
+    "static/css/main.4d5dccc6.chunk.css",
     "static/js/main.7e3c58f3.chunk.js"
   ]
 }
