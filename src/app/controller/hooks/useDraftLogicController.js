@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useContext} from 'react';
-import {editArrayAtIndex, parseDraftString} from '../draftLogicControllerUtil.js';
+import {editArrayAtIndex, parseDraftString, PICKS} from '../draftLogicControllerUtil.js';
 import useDraftRenderData from './useDraftRenderData.js';
 import ChampionsContext from '../contexts/ChampionsContext';
 
@@ -24,18 +24,9 @@ const useDraftLogicController = (draftString) => {
      */
     const select = useCallback(champion => {
         if(draft.p >= 20 || draft.p <= -1) return false;
-
-        if(!champion) {
-            const selected = Set(draft.d);
-            Object.keys(championsList).forEach(championID => {
-                console.log(championID);
-            });
-            return false;
-        }
-
-        setDraft(prevDraft => ({d: editArrayAtIndex(prevDraft.d, draft.p, champion), p: prevDraft.p}));
+        setDraft(({d, p}) => ({d: editArrayAtIndex(d, draft.p, champion), p}));
         return true;
-    }, [championsList, draft, setDraft]);
+    }, [draft, setDraft]);
 
     /**
      * @function lockin locking currently selected pick
@@ -46,6 +37,29 @@ const useDraftLogicController = (draftString) => {
         setDraft(({d, p}) => ({d, p: p+1}));
         return true;
     }, [draft, setDraft]);
+
+    const forceLockin = useCallback(() => {
+        if(draft.p >= 20 && draft.p !== -1) return false;
+
+        if(!draft.d[draft.p]) {
+            if(!PICKS.has(draft.p)) {
+                setDraft(({d, p}) => ({d: editArrayAtIndex(d, draft.p, 'none'), p: p+1}));
+                return true;
+            }
+            const selected = new Set(draft.d);
+            Object.keys(championsList).some(championID => {
+                if(!selected.has(championID)) {
+                    setDraft(({d, p}) => ({d: editArrayAtIndex(d, draft.p, championID), p: p+1}));
+                    return true;
+                }
+                return false;
+            });
+            return true;
+        }
+
+        setDraft(({d, p}) => ({d, p: p+1}));
+        return true;
+    }, [championsList, draft, setDraft]);
 
     /**
      * @function undo undo the last action of draft. 
@@ -73,6 +87,7 @@ const useDraftLogicController = (draftString) => {
         currentPick,
         teamRenderData,
         lockin,
+        forceLockin,
         undo,
         select,
     };

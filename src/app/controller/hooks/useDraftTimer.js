@@ -7,20 +7,22 @@ import { useState, useEffect, useCallback } from 'react';
  * 
  * @param {Number} timeLimit Time (in seconds) per pick - default: 30
  */
-const useDraftTimer = (timeLimit, onTimerEnd=()=>{}) => {
-    const [timeLimitInSeconds] = useState(timeLimit ?? 30);
+const useDraftTimer = (hasTimeLimits=false, timeLimit=30, onTimerEnd=()=>{}) => {
+    const [on, setOn] = useState(hasTimeLimits);
+    const [timeLimitInSeconds] = useState(timeLimit);
     const [timeLeft, setTimeLeft] = useState(0);
     const [timerEnd, setTimerEnd] = useState(0);
 
     const startTimer = useCallback(() => {
         // Pick timer ends at [Current time] + [time limit] + 500ms grace period
+        if(!on) return;
         setTimerEnd(new Date().getTime() + timeLimitInSeconds * 1000 + 500);
-    }, [timeLimitInSeconds]);
+    }, [timeLimitInSeconds, on]);
 
     const endTimer = useCallback(() => { setTimerEnd(0) }, []);
 
     useEffect(() => {
-        if (timerEnd === 0) return;
+        if (timerEnd === 0 || !on) return;
         const timer = setInterval(() => {
             let newTimeLeft = timerEnd - new Date().getTime();
             setTimeLeft(newTimeLeft / 1000);
@@ -32,7 +34,7 @@ const useDraftTimer = (timeLimit, onTimerEnd=()=>{}) => {
         }, 250);
 
         return () => clearInterval(timer);
-    }, [timerEnd, startTimer, onTimerEnd]);
+    }, [on, timerEnd, startTimer, onTimerEnd]);
 
     return {
         timeLimitInSeconds,
@@ -41,6 +43,7 @@ const useDraftTimer = (timeLimit, onTimerEnd=()=>{}) => {
         timeLeft,
         startTimer,
         endTimer,
+        setOn,
     }
 }
 

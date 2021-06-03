@@ -30,7 +30,7 @@ const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) =>
             if(property === 'name') return 'Ready';
             return spectator ? 'Waiting to start...' : 'Click [START] to begin';
         }
-        if (championsList === null || !selectedID) return '---';
+        if (championsList === null || !selectedID) return spectator || property === 'name' ? '---' : 'Select a champion';
         if (selectedID === 'none') return 'None';
         return championsList[selectedID][property];
     }

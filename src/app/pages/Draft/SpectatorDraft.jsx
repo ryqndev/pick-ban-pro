@@ -13,7 +13,9 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
 
     const {
         timeLeft,
+        timerEnd,
         setTimerEnd,
+        setOn,
     } = useDraftTimer();
 
     useEffect(() => {
@@ -25,7 +27,8 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
         setTimerEnd(message.content?.timer_end);
         setDraft(message.content?.draft);
         setReadyCheck(message.content?.ready_check);
-    }, [message, setDraft, setTimerEnd, currentPick, setNavigationContent]);
+        setOn(message.content?.has_time_limits);
+    }, [message, setDraft, setTimerEnd, setOn, currentPick, setNavigationContent]);
 
     useEffect(() => {
         if (!message || !message?.content) return;
@@ -33,11 +36,12 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
             type: 'draft',
             timeLimit: message.content?.time_limit,
             timeLeft,
+            timerEnd,
             names: message.content?.names,
             side: currentPick.side,
         });
         return () => setNavigationContent({});
-    }, [timeLeft, message, currentPick, setNavigationContent]);
+    }, [timeLeft, timerEnd, message, currentPick, setNavigationContent]);
 
     if (!readyCheck) return (
         <main className="draft--wrapper wait-ready-check">

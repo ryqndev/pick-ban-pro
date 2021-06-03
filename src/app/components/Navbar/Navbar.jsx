@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Navbar.scss';
 
-const Navbar = ({ timeLeft, timeLimit, side, type, names }) => {
+const Navbar = ({ timeLeft, timeLimit, timerEnd, side, type, names }) => {
     useEffect(() => {
         if (!timeLeft) return;
         document.documentElement.style.setProperty(
@@ -26,8 +26,8 @@ const Navbar = ({ timeLeft, timeLimit, side, type, names }) => {
     const isRed = side === 'red';
     const isBlue = side === 'blue';
 
-    const blueTimer = isBlue ? ~~(timeLeft ?? 30) : '',
-        redTimer = isRed ? ~~(timeLeft ?? 30) : '';
+    const blueTimer = timerEnd !== 0 && isBlue ? ~~(timeLeft ?? 30) : '',
+        redTimer = timerEnd !== 0 && isRed ? ~~(timeLeft ?? 30) : '';
 
     return (
         <nav className="with-bar">

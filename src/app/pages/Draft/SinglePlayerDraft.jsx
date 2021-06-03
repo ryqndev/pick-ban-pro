@@ -14,8 +14,7 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
     const names = useNames(state?.names);
 
     const onTimerEnd = () => {
-        if(lockin()) return startTimer();
-
+        draft.forceLockin() && startTimer();
     }
 
     const {
@@ -23,7 +22,7 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
         timeLeft,
         timerEnd,
         startTimer,
-    } = useDraftTimer(state?.timeLimit, onTimerEnd);
+    } = useDraftTimer(state?.hasTimeLimits ,state?.timeLimit, onTimerEnd);
 
     const lockinWithTimer = () => lockin() && startTimer();
     const undoWithTimer = () => undo() && startTimer();
@@ -48,12 +47,13 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
         setNavigationContent({
             type: 'draft',
             side: currentPick.side,
+            timerEnd,
             timeLeft,
             timeLimit: timeLimitInSeconds,
             names,
         });
         return () => setNavigationContent({});
-    }, [setNavigationContent, timeLeft, timeLimitInSeconds, names, currentPick]);
+    }, [setNavigationContent, timeLeft, timerEnd, timeLimitInSeconds, names, currentPick]);
 
     return (
         <main className="draft--wrapper">
