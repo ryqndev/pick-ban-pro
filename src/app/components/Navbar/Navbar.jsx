@@ -17,7 +17,7 @@ const Navbar = ({ timeLeft, timeLimit, timerEnd, side, type, names }) => {
     }, [side]);
 
     if (!type) return (
-        <nav>
+        <nav className="main">
             <Link to="/" className="name"><Logo /></Link>
             <h1>pickban.pro</h1>
         </nav>
@@ -30,7 +30,7 @@ const Navbar = ({ timeLeft, timeLimit, timerEnd, side, type, names }) => {
         redTimer = timerEnd !== 0 && isRed ? ~~(timeLeft ?? 30) : '';
 
     return (
-        <nav className="with-bar">
+        <nav className="main with-bar">
             <Link to="/" className="name"><Logo /></Link>
             <h2 className="blue" style={{ color: isBlue ? 'white' : 'var(--bg-primary-light)' }}>{names.blue}</h2>
             <p className="blue">{blueTimer}</p>

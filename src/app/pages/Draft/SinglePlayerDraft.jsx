@@ -57,15 +57,11 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
                 <ChampionSelectionDisplay {...draft} lockin={lockinWithTimer} undo={undoWithTimer}>
-                    <h3>
-                        debug
-                    </h3>
-                    {JSON.stringify({
-                        side: currentPick.blue,
-                        pick_number: draft.draft.p,
-                        id: peerID,
-                        disconnected: peer.disconnected,
-                    }, null, 8)}
+                    {{
+                        ...state,
+                        hey: 'you',
+                        no: 34,    
+                    }}
                 </ChampionSelectionDisplay>
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
             </div>

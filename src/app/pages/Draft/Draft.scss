@@ -17,13 +17,13 @@ main.draft--wrapper {
     }
     & > .pickban-select--wrapper {
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: 24vw auto 24vw;
         grid-template-areas: "blue select red";
-        column-gap: 40px;
         height: 98%;
         min-height: 0;
-        @media screen and (max-width: 1500px) {
-            grid-template-columns: 22vw 1fr 22vw;
+        @media screen and (max-width: 1800px) {
+            column-gap: 40px;
+            grid-template-columns: 1fr auto 1fr;
         }
         @media screen and (max-width: 800px) {
             grid-template-columns: 1fr 1fr;

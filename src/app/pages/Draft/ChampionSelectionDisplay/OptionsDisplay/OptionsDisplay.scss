@@ -5,15 +5,25 @@
     &>.content {
         box-sizing: border-box;
         overflow: scroll;
-        &>h2 {
-            margin: 5px;
-            font-size: 1.6em;
-        }
-        &>input[type=text] {
-            margin-top: 10px;
-            font-size: 1em;
-            height: 30px;
-            width: calc(100% - 30px);
+        &>nav.options-tabs {
+            background-color: inherit;
+            display: grid;
+            column-gap: 5px;
+            grid-template-columns: min-content auto;
+            overflow: scroll;
+            &>button {
+                width: min-content;
+                font-size: 1em;
+                color: grey;
+                padding: 8px 15px;
+                border-radius: 4px 4px 0px 0px;
+                box-shadow: none;
+                font-family: 'Rubik';
+                &.selected {
+                    color: white;
+                    background-color: var(--bg-primary);
+                }
+            }
         }
     }
 }

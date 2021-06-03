@@ -1,10 +1,11 @@
+import './DraftSettings.scss';
 
 const DraftSettings = () => {
     return (
-        <div>
+        <div className="draft-settings--wrapper">
             
         </div>
-    )
+    );
 }
 
 export default DraftSettings;
