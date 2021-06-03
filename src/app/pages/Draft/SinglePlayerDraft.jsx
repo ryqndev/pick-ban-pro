@@ -13,9 +13,9 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
     const { teamRenderData, currentPick, lockin, undo, ...draft } = useDraftLogicController(draftString);
     const names = useNames(state?.names);
 
-    const onTimerEnd = () => {
-        draft.forceLockin() && startTimer();
-    }
+    const onTimerEnd = () => draft.forceLockin() && startTimer();
+    const lockinWithTimer = () => lockin() && startTimer();
+    const undoWithTimer = () => undo() && startTimer();
 
     const {
         timeLimitInSeconds,
@@ -23,9 +23,6 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
         timerEnd,
         startTimer,
     } = useDraftTimer(state?.hasTimeLimits ,state?.timeLimit, onTimerEnd);
-
-    const lockinWithTimer = () => lockin() && startTimer();
-    const undoWithTimer = () => undo() && startTimer();
 
     useEffect(() => {
         if (!spectatorConnections?.length) return;

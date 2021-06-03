@@ -25,7 +25,8 @@
                 width: 150px;
             }
             @media screen and (max-width: 800px) {
-                width: calc(100% - 20px)
+                margin: 0px 10px 10px;
+                width: calc(100% - 40px)
             }
         }
     }

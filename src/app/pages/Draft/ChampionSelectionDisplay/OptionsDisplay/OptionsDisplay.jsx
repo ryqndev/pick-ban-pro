@@ -1,12 +1,17 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import './OptionsDisplay.scss';
 
-const OptionsDisplay = ({ open, options, children }) => {
+const OptionsDisplay = ({ open, children }) => {
+    const [tab, setTab] = useState('settings');
 
     return (
-        <div className="options-display--wrapper" style={{ maxHeight: open ? '250px' : 0 + 'px' }}>
+        <div className="options-display--wrapper" style={{ maxHeight: open ? '500px' : 0 + 'px' }}>
             <div className="content card__component">
-                {children}
+                <nav>
+                    <button onClick={() => setTab('settings')}>Settings</button>
+                    <button onClick={() => setTab('participants')}>Participants</button>
+                    
+                </nav>
             </div>
         </div>
     );

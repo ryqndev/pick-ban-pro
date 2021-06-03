@@ -23,7 +23,6 @@ const usePeer = () => {
      */
     useEffect(() => {
         if (!connection) return;
-
         connection.on('open', () => { connection.on('data', setMessage) });
     }, [connection]);
 
@@ -51,7 +50,7 @@ const usePeer = () => {
     }, [peer]);
 
     const send = useCallback(message => {
-        if(!connection) return console.log('Not connected to anyone!');
+        if(!connection) return console.error('Not connected to anyone!');
         connection.send(message);
     }, [connection]);
     

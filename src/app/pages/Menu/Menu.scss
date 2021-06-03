@@ -20,14 +20,17 @@
             column-gap: 0px;
         }
         &>h1 {
-            font: 10em 'Hyperwave';
+            font: 6em 'Rubik';
+            padding: 50px;
+            text-transform: uppercase;
             text-align: center;
             margin-top: -10vh;
             grid-column: 1/4;
             color: rgb(58, 58, 58);
             @media screen and (max-width: 1000px) {
                 margin-top: 0;
-                font-size: 5em;
+                font-size: 3em;
+                padding: 0;
                 grid-column: 1/2;
             }
         }

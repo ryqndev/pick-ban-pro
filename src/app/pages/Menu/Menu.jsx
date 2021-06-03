@@ -8,12 +8,13 @@ const Menu = () => {
                 <h1>formats</h1>
                 <Link to="/create" className="card__component test">
                     <div className="selection test">
-                        <h2>Test.</h2>
+                        <h2>Practice.</h2>
                         <span>(Single-player + spectators)</span>
                         <p>Play around with a tournament draft pro teams use without time limits with in-depth analysis.</p>
                     </div>
                 </Link>
-                <Link to="/create/challenge" className="card__component draft" disabled>
+                {/* <Link to="/create/challenge" className="card__component draft" disabled> */}
+                <Link to="#" className="card__component draft">
                     <div className="selection draft">
                         <h2>Draft.</h2>
                         <span>coming soon</span>
