@@ -5,19 +5,27 @@ body {
     overflow-x: hidden;
     overscroll-behavior: none;
 }
+
 ::-webkit-scrollbar {
     background-color: inherit;
-    position: absolute;
     width: 8px;
+    height: 8px;
 }
+
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: var(--bg-primary-light);
 }
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
 a:any-link {
     color: inherit;
     transition: color 250ms;
 }
+
 a:hover {
     color: var(--accent-alt);
 }

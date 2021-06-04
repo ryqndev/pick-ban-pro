@@ -23,7 +23,11 @@ const usePeer = () => {
      */
     useEffect(() => {
         if (!connection) return;
-        connection.on('open', () => { connection.on('data', setMessage) });
+        connection.on('open', () => { 
+            connection.on('data', setMessage);
+            connection.on('close', console.error);
+            connection.on('error', console.error);
+         });
     }, [connection]);
 
     useEffect(() => {
@@ -55,9 +59,15 @@ const usePeer = () => {
     }, [connection]);
     
     const sendToSpectators = useCallback(message => {
-        spectatorConnections.forEach(connection => {
-            connection.send(message);
+        let connectedSpectators = [...spectatorConnections];
+        connectedSpectators = connectedSpectators.filter(connection => {
+            if(connection.open){
+                connection.send(message);
+                return true;
+            }
+            return false;
         });
+        if(connectedSpectators.length !== spectatorConnections.length) setSpectatorConnections(connectedSpectators);
     }, [spectatorConnections]);
 
     return {

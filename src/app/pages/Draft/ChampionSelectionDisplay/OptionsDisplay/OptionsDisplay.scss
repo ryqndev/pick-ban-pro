@@ -3,14 +3,12 @@
     overflow: hidden;
     transition: max-height 350ms ease-in-out;
     &>.content {
-        box-sizing: border-box;
-        overflow: scroll;
         &>nav.options-tabs {
             background-color: inherit;
             display: grid;
             column-gap: 5px;
             grid-template-columns: min-content auto;
-            overflow: scroll;
+            overflow: hidden;
             &>button {
                 width: min-content;
                 font-size: 1em;
@@ -24,6 +22,13 @@
                     background-color: var(--bg-primary);
                 }
             }
+        }
+        &>.open-page {
+            box-sizing: border-box;
+            padding: 20px 30px;
+            height: 300px;
+            background-color: var(--bg-primary);
+            border-radius: 0px 4px 4px;
         }
     }
 }

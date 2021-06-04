@@ -1,3 +1,7 @@
-import App from './AppContainer';
+import AppContainer from './AppContainer.jsx';
+import App from './App.jsx';
 
-export default App;
+export default AppContainer;
+export {
+    App,
+}

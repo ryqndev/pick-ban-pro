@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
+import { Links } from '../../components/PeerDisplays';
 import './Create.scss';
 
-const Create = ({ peerID }) => {
+const Create = ({ peerID, spectatorConnections }) => {
     const navigate = useNavigate();
 
     const [matchName, setMatchName] = useState('');
@@ -15,15 +16,6 @@ const Create = ({ peerID }) => {
     const [timeLimit, setTimeLimit] = useState(30);
 
     const [draftLink, setDraftLink] = useState('/d');
-
-    const [challengerLink, setChallengerLink] = useState('Creating...');
-    const [spectatorLink, setSpectatorLink] = useState('Creating...');
-
-    useEffect(() => {
-        if (!peerID?.length) return;
-        setChallengerLink(window.location.origin + '/challenger/' + peerID);
-        setSpectatorLink(window.location.origin + '/spectator/' + peerID)
-    }, [peerID]);
 
     useEffect(() => {
         if (matchName.length !== 0)
@@ -37,7 +29,7 @@ const Create = ({ peerID }) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        navigate(draftLink, { 
+        navigate(draftLink, {
             state: {
                 names: {
                     match: matchName,
@@ -46,8 +38,6 @@ const Create = ({ peerID }) => {
                 },
                 hasTimeLimits,
                 timeLimit,
-                challengerLink,
-                spectatorLink,
             }
         });
     }
@@ -58,7 +48,6 @@ const Create = ({ peerID }) => {
                 <h1>Options</h1>
                 <span>(You can change these during draft)</span>
                 <div>
-
                     <label htmlFor="match-name">Match Name: <span>(optional)</span></label>
                     <ControlledTextInput id="match-name" placeholder="Ex. MSI 2021" value={matchName} setValue={setMatchName} />
 
@@ -77,37 +66,23 @@ const Create = ({ peerID }) => {
                             defaultChecked={hasTimeLimits}
                             onChange={() => { setHasTimeLimits(prev => !prev) }}
                         />
-                        {
-                            hasTimeLimits && (
-                                <>
-                                    <label className="seconds" htmlFor="timer">Seconds per pick:</label>
-                                    <ControlledTextInput id="time-limit" value={timeLimit} setValue={setTimeLimit} />
-                                </>
-                            )
-                        }
+                        {hasTimeLimits && (
+                            <>
+                                <label className="seconds" htmlFor="timer">Seconds per pick:</label>
+                                <ControlledTextInput id="time-limit" value={timeLimit} setValue={setTimeLimit} />
+                            </>
+                        )}
                     </div>
                 </div>
                 <button>Start</button>
             </form>
             <div className="link-holder card__component">
                 <Routes>
-                    <Route path="/" element={
-                        <>
-                            <h1>Spectator Link</h1>
-                            <span>Let people watch you as you draft</span>
-                        </>
-                    } />
+                    <Route path="/" element={<Links spectators={spectatorConnections} peerID={peerID}/>} />
                     <Route path="/challenge" element={
-                        <>
-                            <h1>Challenger & Spectator Links</h1>
-                            <label htmlFor="challenger-link">Challenger <span>to play (send only to 1)</span></label>
-                            <ControlledTextInput id="challenger-link" value={challengerLink} readOnly />
-                        </>
+                        <Links spectators={spectatorConnections} peerID={peerID} challenger/>
                     } />
                 </Routes>
-
-                <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>
-                <ControlledTextInput id="spectator-link" value={spectatorLink} readOnly />
             </div>
         </div>
     );

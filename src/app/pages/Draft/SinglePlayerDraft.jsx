@@ -7,7 +7,7 @@ import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useNames from '../../controller/hooks/useNames';
 import './Draft.scss';
 
-const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToSpectators, peer, peerID }) => {
+const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToSpectators, peerID }) => {
     const { state } = useLocation();
     const { draftString } = useParams();
     const { teamRenderData, currentPick, lockin, undo, ...draft } = useDraftLogicController(draftString);
@@ -16,6 +16,8 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
     const onTimerEnd = () => draft.forceLockin() && startTimer();
     const lockinWithTimer = () => lockin() && startTimer();
     const undoWithTimer = () => undo() && startTimer();
+
+
 
     const {
         timeLimitInSeconds,
@@ -29,7 +31,7 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
         sendToSpectators({
             type: 'STATE_UPDATE',
             content: {
-                ready_check: draft.draft.p !== -1,
+                ready_check: true,
                 draft: draft.draft,
                 names: names,
                 time_limit: state.timeLimit,
@@ -59,8 +61,8 @@ const SinglePlayerDraft = ({ setNavigationContent, spectatorConnections, sendToS
                 <ChampionSelectionDisplay {...draft} lockin={lockinWithTimer} undo={undoWithTimer}>
                     {{
                         ...state,
-                        hey: 'you',
-                        no: 34,    
+                        spectators: spectatorConnections,
+                        peerID,
                     }}
                 </ChampionSelectionDisplay>
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />

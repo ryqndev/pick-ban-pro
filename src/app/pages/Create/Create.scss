@@ -12,16 +12,6 @@
         row-gap: 10px;
     }
 
-    & label {
-        padding-left: 5px;
-        font: 1.3em 'Rubik';
-
-        &>span {
-            font-size: 0.7em;
-            color: grey;
-        }
-    }
-
     &>.link-holder {
         box-sizing: border-box;
         display: grid;
@@ -35,26 +25,6 @@
             background-color: var(--bg-primary-1);
             width: 100vw;
             max-width: none;
-        }
-
-        &>h1 {
-            box-sizing: border-box;
-            padding: 10px 20px;
-            text-align: center;
-            font: 1.7em 'Rubik';
-            color: var(--accent-tertiary);
-            filter: brightness(1.5);
-        }
-        &>span {
-            color: grey;
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        & input[type=text] {
-            font-size: 1.2em;
-            padding: 10px 10px;
-            color: #bbb;
         }
     }
 
@@ -128,7 +98,5 @@
                 }
             }
         }
-
-
     }
 }

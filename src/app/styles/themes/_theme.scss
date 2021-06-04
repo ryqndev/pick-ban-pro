@@ -29,8 +29,9 @@
 }
 :root {
     --picking-side: var(--accent-secondary);
-    --nav-bg: var(--bg-primary);
-    --card-background: var(--bg-primary-light-2);
+    // --nav-bg: var(--bg-primary);
+    --nav-bg: #101010DD;
+    --card-background: var(--bg-primary-light-3);
     --elevation-shadow: var(--bg-primary-dark);
     --champion-select-search-bg: var(--bg-primary-light-3);
     --champion-pick-bg: var(--bg-primary-light-3);

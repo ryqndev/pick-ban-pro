@@ -26,7 +26,7 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
                 undo
             </button>
         </div>
-    )
+    );
 }
 
 export default memo(ControlsDisplay);
