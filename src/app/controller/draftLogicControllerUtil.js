@@ -54,7 +54,8 @@ const parseDraftString = (draftString, championsList) => {
         parsedDraftString[index] = championKeyMap[decode(key)];
     }
     draftString.toLowerCase().split('=')[0].split(/(.{2})/).filter(e => e.length !== 0).forEach(getChampNameFromKey);
-    return { d: parsedDraftString, p: parseCurrentPick };
+
+    return { d: parsedDraftString, p: parseCurrentPick(draftString) };
 }
 
 const parseCurrentPick = (draftString) => {

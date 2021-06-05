@@ -68,6 +68,7 @@
                 grid-template-columns: 1fr 80px;
                 row-gap: 15px;
                 column-gap: 10px;
+                font-size: 1.3em;
 
                 .timer-toggle {
                     margin-left: auto;
@@ -76,11 +77,11 @@
 
                 &>label.seconds {
                     padding-top: 8px;
-                    font-size: 1.4em;
                     color: #aaa;
                 }
                 &>input[type=text] {
                     text-align: center;
+                    font-size: 1em;
                 }
 
                 &::before {

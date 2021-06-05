@@ -6,6 +6,7 @@ const DraftSettings = ({on, setOn, limit, setLimit}) => {
     return (
         <div className="draft-settings--wrapper">
             <div className="time-limits">
+                <h3>Timer</h3>
                 <label htmlFor="timer">Set Time Limits:</label>
                 <Toggle
                     id="timer"

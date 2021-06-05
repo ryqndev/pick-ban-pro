@@ -21,6 +21,15 @@ nav.main {
         grid-template-columns: 70px 1fr 50px 300px 50px 1fr 70px;
     }
 
+    @media screen and (max-width: 800px) {
+        grid-template-rows: 45px;
+        grid-template-columns: 70px 1fr 50px 1fr 70px;
+        height: 60px;
+        column-gap: 10px;
+        grid-template-areas:
+            "logo middle middle middle toggle";
+    }
+
     & a.name {
         background-color: transparent;
         transition: background-color 250ms;
@@ -30,7 +39,12 @@ nav.main {
             height: 60px;
             width: 70px;
             padding: 12px;
+
+            @media screen and (max-width: 800px) {
+                height: 50px;
+            }
         }
+
 
         &:hover {
             background-color: var(--bg-primary-light-2);
@@ -49,17 +63,23 @@ nav.main {
     &>h2 {
         font: 2em 'Arvo', serif;
         padding-top: 10px;
-        color: var(--bg-primary-light);
+        color: grey;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
         transition: color 350ms;
 
+        @media screen and (max-width: 800px) {
+            font-size: 1.3em;
+        }
+
         &.blue {
+            grid-area: blue-team;
             text-align: right;
         }
 
         &.red {
+            grid-area: red-team;
             text-align: left;
         }
 
@@ -73,19 +93,39 @@ nav.main {
         display: grid;
         place-content: center;
 
+        @media screen and (max-width: 800px) {
+            font-size: 2.3em;
+        }
+
         &.blue {
             filter: saturate(0.7) brightness(2);
             color: var(--accent-primary);
+            grid-area: blue-counter;
+
+            @media screen and (max-width: 800px) {
+                grid-area: counter;
+            }
         }
 
         &.red {
             filter: saturate(0.25) brightness(2);
             color: var(--accent-secondary);
+            grid-area: red-counter;
 
+            @media screen and (max-width: 800px) {
+                grid-area: counter;
+            }
         }
     }
 
     &.with-bar {
+        @media screen and (max-width: 800px) {
+            height: 92px;
+            grid-template-rows: 45px 40px;
+            grid-template-areas:
+                "logo middle middle middle toggle"
+                "blue-team blue-team counter red-team red-team";
+        }
 
         &::after,
         &::before {
@@ -95,7 +135,7 @@ nav.main {
             position: absolute;
             left: 50vw;
             transform: translateX(-50%);
-            top: 60px;
+            bottom: 0px;
         }
 
         &::after {

@@ -2,6 +2,7 @@
     box-sizing: border-box;
     overflow: hidden;
     transition: max-height 350ms ease-in-out;
+
     &>.content {
         &>nav.options-tabs {
             background-color: inherit;
@@ -9,6 +10,7 @@
             column-gap: 5px;
             grid-template-columns: min-content auto;
             overflow: hidden;
+
             &>button {
                 width: min-content;
                 font-size: 1em;
@@ -17,16 +19,17 @@
                 border-radius: 4px 4px 0px 0px;
                 box-shadow: none;
                 font-family: 'Rubik';
+
                 &.selected {
                     color: white;
                     background-color: var(--bg-primary);
                 }
             }
         }
+
         &>.open-page {
             box-sizing: border-box;
             padding: 20px 30px;
-            height: 300px;
             background-color: var(--bg-primary);
             border-radius: 0px 4px 4px;
         }
