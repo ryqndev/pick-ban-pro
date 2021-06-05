@@ -62,6 +62,10 @@ nav.main {
         &.red {
             text-align: left;
         }
+
+        &.active {
+            color: white;
+        }
     }
 
     &>p {

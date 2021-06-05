@@ -3,47 +3,50 @@ import { useState, useEffect, useCallback } from 'react';
 /**
  * @function useDraftTimer draft timer hook that manages the drafting timer
  * 
- * This hook manages the timer by manipulating the timerEnd state.
+ * This hook manages the timer by manipulating the End state.
  * 
  * @param {Number} timeLimit Time (in seconds) per pick - default: 30
  */
-const useDraftTimer = (hasTimeLimits=false, timeLimit=30, onTimerEnd=()=>{}) => {
+const useDraftTimer = (hasTimeLimits = false, timeLimit = 30, onEnd = () => { }) => {
     const [on, setOn] = useState(hasTimeLimits);
-    const [timeLimitInSeconds] = useState(timeLimit);
-    const [timeLeft, setTimeLeft] = useState(0);
-    const [timerEnd, setTimerEnd] = useState(0);
+    const [limit, setLimit] = useState(timeLimit);
+    const [time, setTime] = useState(0);
+    const [end, setEnd] = useState(0);
 
     const startTimer = useCallback(() => {
         // Pick timer ends at [Current time] + [time limit] + 500ms grace period
-        if(!on) return;
-        setTimerEnd(new Date().getTime() + timeLimitInSeconds * 1000 + 500);
-    }, [timeLimitInSeconds, on]);
+        if (!on) return;
+        setEnd(new Date().getTime() + limit * 1000 + 500);
+    }, [limit, on]);
 
-    const endTimer = useCallback(() => { setTimerEnd(0) }, []);
+    const endTimer = useCallback(() => { setEnd(0) }, []);
 
     useEffect(() => {
-        if (timerEnd === 0 || !on) return;
+        if (end === 0 || !on) return;
         const timer = setInterval(() => {
-            let newTimeLeft = timerEnd - new Date().getTime();
-            setTimeLeft(newTimeLeft / 1000);
-            if (newTimeLeft <= -3) {
+            let newtime = end - new Date().getTime();
+            setTime(newtime / 1000);
+            if (newtime <= -3) {
                 clearInterval(timer);
-                setTimerEnd(0);
-                onTimerEnd();
+                setEnd(0);
+                onEnd();
             }
         }, 250);
 
         return () => clearInterval(timer);
-    }, [on, timerEnd, startTimer, onTimerEnd]);
+    }, [on, end, startTimer, onEnd]);
+
+    useEffect(() => { if (!on) setEnd(0) }, [on]);
 
     return {
-        timeLimitInSeconds,
-        timerEnd,
-        setTimerEnd,
-        timeLeft,
-        startTimer,
-        endTimer,
+        on,
         setOn,
+        limit,
+        setLimit,
+        time,
+        end,
+        setEnd,
+        startTimer,
     }
 }
 

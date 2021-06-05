@@ -21,10 +21,10 @@
         }
         &>h1 {
             font: 6em 'Rubik';
-            padding: 50px;
+            padding: 20px;
             text-transform: uppercase;
             text-align: center;
-            margin-top: -10vh;
+            margin-top: -15vh;
             grid-column: 1/4;
             color: rgb(58, 58, 58);
             @media screen and (max-width: 1000px) {
@@ -39,7 +39,6 @@
             padding: 20px 30px 40px;
             text-decoration: none;
             border: 1px solid transparent;
-            height: min-content;
 
             transition: box-shadow 350ms, background-color 350ms, border-color 250ms;
 

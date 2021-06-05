@@ -1,9 +1,26 @@
+import Toggle from 'react-toggle';
+import ControlledTextInput from '../../../../../components/ControlledTextInput';
 import './DraftSettings.scss';
 
-const DraftSettings = () => {
+const DraftSettings = ({on, setOn, limit, setLimit}) => {
     return (
         <div className="draft-settings--wrapper">
-            
+            <div className="time-limits">
+                <label htmlFor="timer">Set Time Limits:</label>
+                <Toggle
+                    id="timer"
+                    icons={false}
+                    className="timer-toggle"
+                    defaultChecked={on}
+                    onChange={() => { setOn(prev => !prev) }}
+                />
+                {on && (
+                    <>
+                        <label className="seconds" htmlFor="timer">Seconds per pick:</label>
+                        <ControlledTextInput id="time-limit" value={limit} setValue={setLimit} />
+                    </>
+                )}
+            </div>
         </div>
     );
 }

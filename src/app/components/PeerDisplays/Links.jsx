@@ -2,7 +2,7 @@ import {memo, useState, useEffect} from 'react';
 import ControlledTextInput from '../ControlledTextInput';
 import './Links.scss';
 
-const Links = ({challenger, spectators, peerID, style={} }) => {
+const Links = ({challenger, spectators, peerID }) => {
     const [challengerLink, setChallengerLink] = useState('Creating...');
     const [spectatorLink, setSpectatorLink] = useState('Creating...');
 
@@ -13,7 +13,7 @@ const Links = ({challenger, spectators, peerID, style={} }) => {
     }, [peerID]);
 
     return (
-        <div className="links--component-wrapper" style={style}>
+        <div className="links--component-wrapper">
             <h1>{challenger ? 'Challenger & ' : ''}Spectator Link{challenger ? 's' : ''}</h1>
             <span>{!challenger ? 'Let people watch you as you draft' : 'Play against a friend and invite people to watch'}</span>
 
