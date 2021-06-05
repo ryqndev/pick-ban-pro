@@ -5,6 +5,7 @@ import roles from '../../assets/roles.json';
 import ChampionIcon from './ChampionIcon';
 import RoleFilter from './RoleFilter';
 import './ChampionSelect.scss';
+import clsx from 'clsx';
 
 const options = {
     isCaseSensitive: false,
@@ -17,7 +18,7 @@ const options = {
     ],
 };
 
-const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
+const ChampSelect = ({className, select, disabled, hasNoneOption}) => {
     const { championsList } = useContext(ChampionsContext);
     const [filteredChampionsList, setFilteredChampionsList] = useState(championsList); 
     const [roleFilter, setRoleFilter] = useState(null);
@@ -34,9 +35,7 @@ const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
     useEffect(() => {
         if(!roleFilter) return setFilteredChampionsList(championsList);        
         setFilteredChampionsList(
-            Object.fromEntries(
-                roles[roleFilter].map(champion => [champion, championsList[champion]])
-            )
+            Object.fromEntries(roles[roleFilter].map(champ => [champ, championsList[champ]]))
         );
     }, [roleFilter, championsList]);
 
@@ -63,7 +62,7 @@ const ChampSelect = ({className='', select, disabled, hasNoneOption}) => {
     }, [fuse, search, cachedFullList]);
 
     return (
-        <div className={`champion-select--wrapper ${className}`}>
+        <div className={clsx('champion-select--wrapper', className)}>
             <div className="filter-options card__component">
                 <RoleFilter roleFilter={roleFilter} setRoleFilter={setRoleFilter} />
                 <input type="text" value={search} onChange={handleChange} />

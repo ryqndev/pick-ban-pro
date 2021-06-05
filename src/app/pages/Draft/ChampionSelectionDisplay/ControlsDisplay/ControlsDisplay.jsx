@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { memo } from 'react';
 import { ReactComponent as SettingsIcon } from '../../../../assets/settings.svg';
 
@@ -5,7 +6,7 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
     return (
         <div className="controls">
             <button
-                className={`lock-in ${draft.p === -1 ? 'start' : ''}`}
+                className={clsx('lock-in', draft.p === -1 && 'start')}
                 ref={lockinButtonRef}
                 onClick={actions.lockin}
                 disabled={draft.p !== -1 && !draft.d[draft.p]}
@@ -13,7 +14,7 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
                 {draft.p <= -1 ? 'start' : 'lock in'}
             </button>
             <button
-                className={`settings ${showOptions ? 'active' : ''}`}
+                className={clsx('settings', showOptions && 'active')}
                 onClick={() => { setShowOptions(prevOption => !prevOption) }}
             >
                 <SettingsIcon />

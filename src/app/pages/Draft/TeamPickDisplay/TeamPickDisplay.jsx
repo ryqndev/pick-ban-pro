@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {useContext, memo} from 'react';
 import ChampionsContext from '../../../controller/contexts/ChampionsContext';
 import ChampionBan from './ChampionBan';
@@ -28,7 +29,7 @@ const TeamPickDisplay = ({side, currentPick, teamRenderData}) => {
     const isCurrentPick = (index) => (side === currentPick.side) && (index === currentPick.index);
 
     return (
-        <div className={`team-pick-display--wrapper`}>
+        <div className="team-pick-display--wrapper">
             <div className="ban-row phase-1">
                 {teamRenderData.slice(BAN_1_START, BAN_1_END + 1).map((champion, index) => (
                     <ChampionBan key={index} {...getChampionData(champion)} currentPick={isCurrentPick(index)}/>
@@ -37,7 +38,7 @@ const TeamPickDisplay = ({side, currentPick, teamRenderData}) => {
             {teamRenderData.slice(PICK_1_START, PICK_1_END + 1).map((champion, index) => (
                 <ChampionPick
                     key={index}
-                    className={`pick ${isCurrentPick(index + PICK_1_START) ? 'currently-picking' : ''}`}
+                    className={clsx('pick', isCurrentPick(index + PICK_1_START) && 'currently-picking')}
                     isBlue={side === "blue"}
                     {...getChampionData(champion)} 
                 />
@@ -50,7 +51,7 @@ const TeamPickDisplay = ({side, currentPick, teamRenderData}) => {
             {teamRenderData.slice(PICK_2_START, PICK_2_END + 1).map((champion, index) => (
                 <ChampionPick
                     key={index}
-                    className={`pick ${isCurrentPick(index + PICK_2_START) ? 'currently-picking' : ''}`}
+                    className={clsx('pick', isCurrentPick(index + PICK_2_START) && 'currently-picking')}
                     isBlue={side === "blue"}
                     {...getChampionData(champion)} 
                 />
