@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
 import { Links } from '../../components/PeerDisplays';
 import './Create.scss';
 
-const Create = ({ peerID, spectatorConnections }) => {
+const Create = ({ peerID, connection, challenge, spectatorConnections }) => {
     const navigate = useNavigate();
 
     const [matchName, setMatchName] = useState('');
@@ -29,7 +29,7 @@ const Create = ({ peerID, spectatorConnections }) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        navigate(draftLink, {
+        navigate(challenge ? '/challenge/' + peerID : draftLink, {
             state: {
                 names: {
                     match: matchName,
@@ -77,12 +77,12 @@ const Create = ({ peerID, spectatorConnections }) => {
                 <button>Start</button>
             </form>
             <div className="link-holder card__component">
-                <Routes>
-                    <Route path="/" element={<Links spectators={spectatorConnections} peerID={peerID}/>} />
-                    <Route path="/challenge" element={
-                        <Links spectators={spectatorConnections} peerID={peerID} challenger/>
-                    } />
-                </Routes>
+                <Links 
+                    spectators={spectatorConnections} 
+                    peerID={peerID} 
+                    connection={challenge ? connection : null} 
+                    challenge
+                />
             </div>
         </div>
     );

@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../../../../components/ControlledTextInput';
 import './DraftSettings.scss';
 
-const DraftSettings = ({on, setOn, limit, setLimit}) => {
+const DraftSettings = ({ on, setOn, limit, setLimit }) => {
     return (
         <div className="draft-settings--wrapper">
             <div className="time-limits">
@@ -26,4 +27,4 @@ const DraftSettings = ({on, setOn, limit, setLimit}) => {
     );
 }
 
-export default DraftSettings;
+export default memo(DraftSettings);

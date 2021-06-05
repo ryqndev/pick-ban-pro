@@ -2,7 +2,7 @@ import {memo, useState, useEffect} from 'react';
 import ControlledTextInput from '../ControlledTextInput';
 import './Links.scss';
 
-const Links = ({challenger, spectators, peerID }) => {
+const Links = ({challenge, connection, spectators, peerID }) => {
     const [challengerLink, setChallengerLink] = useState('Creating...');
     const [spectatorLink, setSpectatorLink] = useState('Creating...');
 
@@ -14,14 +14,14 @@ const Links = ({challenger, spectators, peerID }) => {
 
     return (
         <div className="links--component-wrapper">
-            <h1>{challenger ? 'Challenger & ' : ''}Spectator Link{challenger ? 's' : ''}</h1>
-            <span>{!challenger ? 'Let people watch you as you draft' : 'Play against a friend and invite people to watch'}</span>
+            <h1>{challenge ? 'Challenger & ' : ''}Spectator Link{challenge ? 's' : ''}</h1>
+            <span>{!challenge ? 'Let people watch you as you draft' : 'Play against a friend and invite people to watch'}</span>
 
-            {challenger && (<>
+            {challenge && (<>
                 <label htmlFor="challenger-link">Challenger <span>to play (send only to 1)</span></label>
                 <ControlledTextInput id="challenger-link" value={challengerLink} readOnly />
 
-                <span style={{color: 'white'}}>{'challenger is connected'}</span>
+                <span style={{color: connection ? 'green' : 'red'}}>{connection ? 'Challenger is connected' : 'Challenger not connected'}</span>
             </>)}
 
             <label htmlFor="spectator-link">Spectator <span>to watch (max. ~200 people)</span></label>

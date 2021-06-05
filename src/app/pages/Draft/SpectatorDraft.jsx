@@ -53,18 +53,7 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay draft={draft} spectator>
-                    <br />
-                    <br />
-                    <h3>
-                        debug
-                    </h3>
-                    {JSON.stringify({
-                        side: currentPick.blue,
-                        pick_number: draft.p,
-                        id: peerID,
-                    }, null, 8)}
-                </ChampionSelectionDisplay>
+                <ChampionSelectionDisplay draft={draft} spectator />
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
             </div>
         </main>

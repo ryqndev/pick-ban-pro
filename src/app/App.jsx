@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import usePeer from './controller/hooks/usePeer';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Menu, Create, TournamentList, SinglePlayerDraft, SpectatorDraft } from './pages';
+import { Menu, Create, TournamentList, SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft } from './pages';
 import './styles/main.scss';
 
 const App = () => {
@@ -17,8 +17,10 @@ const App = () => {
 				<Route path="/" element={<Menu />} />
 				<Route path="menu" element={<Menu />} />
 				<Route path="list/*" element={<TournamentList />} />
-				<Route path="create/*" element={<Create {...peer} />} />
-				<Route path="challenger/:id" element={<SpectatorDraft {...peer} />} />
+				<Route path="create" element={<Create {...peer} />} />
+				<Route path="create/challenge" element={<Create challenge {...peer} />} />
+				<Route path="challenger/:id" element={<ChallengerDraft {...peer} setNavigationContent={setNavigationContent} />} />
+				<Route path="challenge/:id" element={<MultiplayerDraft {...peer} setNavigationContent={setNavigationContent} />} />
 				<Route path="spectator/:id" element={<SpectatorDraft {...peer} setNavigationContent={setNavigationContent} />} />
 				{[
 					"d",
@@ -31,7 +33,7 @@ const App = () => {
 					<Route
 						key={url}
 						path={url}
-						element={<SinglePlayerDraft setNavigationContent={setNavigationContent} {...peer} />}
+						element={<SinglePlayerDraft {...peer} setNavigationContent={setNavigationContent} />}
 					/>
 				)}
 			</Routes>

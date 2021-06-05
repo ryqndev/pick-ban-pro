@@ -23,25 +23,29 @@ const usePeer = () => {
      */
     useEffect(() => {
         if (!connection) return;
-        connection.on('open', () => { 
+        connection.on('open', () => {
             connection.on('data', setMessage);
             connection.on('close', console.error);
             connection.on('error', console.error);
-         });
+        });
     }, [connection]);
 
     useEffect(() => {
-        if(!peerID) return;
+        if (!peerID) return;
 
         const connector = (newConnection) => {
-            switch(newConnection?.metadata?.type) {
+            switch (newConnection?.metadata?.type) {
                 case 'spectator':
                     newConnection.on('open', () => {
                         setSpectatorConnections(spectators => [...spectators, newConnection]);
                     });
                     break;
+                case 'challenger':
+                    //TODO verify by using hash that challenger is allowed 
+                    newConnection.on('open', () => { setConnection(newConnection) });
+                    break;
                 default:
-                    setConnection(newConnection); 
+                    return;
             }
         }
 
@@ -50,24 +54,24 @@ const usePeer = () => {
     }, [peer, peerID, setSpectatorConnections]);
 
     const connect = useCallback((id, connectionType) => {
-        setConnection(peer.connect(id, {metadata: {type: connectionType}}));
+        setConnection(peer.connect(id, { metadata: { type: connectionType } }));
     }, [peer]);
 
     const send = useCallback(message => {
-        if(!connection) return console.error('Not connected to anyone!');
+        if (!connection) return console.error('Not connected to anyone!');
         connection.send(message);
     }, [connection]);
-    
+
     const sendToSpectators = useCallback(message => {
         let connectedSpectators = [...spectatorConnections];
         connectedSpectators = connectedSpectators.filter(connection => {
-            if(connection.open){
+            if (connection.open) {
                 connection.send(message);
                 return true;
             }
             return false;
         });
-        if(connectedSpectators.length !== spectatorConnections.length) setSpectatorConnections(connectedSpectators);
+        if (connectedSpectators.length !== spectatorConnections.length) setSpectatorConnections(connectedSpectators);
     }, [spectatorConnections]);
 
     return {

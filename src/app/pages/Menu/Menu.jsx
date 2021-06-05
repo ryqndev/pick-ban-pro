@@ -10,23 +10,27 @@ const Menu = () => {
                     <div className="selection test">
                         <h2>Practice.</h2>
                         <span>(Single-player + spectators)</span>
-                        <p>Play around with a tournament draft pro teams use without time limits with in-depth analysis.</p>
+                        <p>
+                            Play around with a tournament draft pro teams use with / without time limits and invite spectators to watch your drafts.
+                        </p>
                     </div>
                 </Link>
-                {/* <Link to="/create/challenge" className="card__component draft"> */}
-                <Link to="#" className="card__component draft">
+                <Link to="/create/challenge" className="card__component draft">
                     <div className="selection draft">
                         <h2>Draft.</h2>
-                        <span>coming soon</span>
                         <span>(2 players + spectators)</span>
-                        <p>Participate in a mock draft with another coach with a generated link with custom settings. Spectator links will also be available.</p>
+                        <p>
+                            Participate in a mock draft with another coach with a generated link with custom settings. Spectator links will also be available.
+                        </p>
                     </div>
                 </Link>
                 <Link to="/list" className="card__component explore">
                     <div className="selection explore">
                         <h2>Explore.</h2>
                         <span>(MSI 2021)</span>
-                        <p>Examine and analyze completed drafts at the highest level of league competition.</p>
+                        <p>
+                            Examine and analyze completed drafts at the highest level of league competition from all regions. (currently only supports MSI 2021)
+                        </p>
                     </div>
                 </Link>
             </div>

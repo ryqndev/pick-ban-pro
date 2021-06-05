@@ -2,7 +2,7 @@ import Landing from './Landing';
 import Menu from './Menu';
 import Create from './Create';
 import TournamentList from './TournamentList';
-import {SinglePlayerDraft, SpectatorDraft} from './Draft';
+import {SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft} from './Draft';
 
 export {
     Landing,
@@ -10,5 +10,7 @@ export {
     Create,
     TournamentList, 
     SpectatorDraft,
+    ChallengerDraft,
     SinglePlayerDraft,
+    MultiplayerDraft,
 }
