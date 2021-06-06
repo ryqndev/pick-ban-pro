@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback, memo } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
+import { BLUE_SIDE_PICKS } from '../../controller/draftLogicControllerUtil.js';
 import useDraftHost from '../../controller/hooks/useDraftHost';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
@@ -7,17 +8,22 @@ import './Draft.scss';
 
 const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMessage, message, update, peerID }) => {
     const { id } = useParams();
-    const { timer, currentPick, teamRenderData, lockin, select, ...draft } = useDraftHost(setNavigationContent, spectators, update);
+    const { settings, actions, draft, isBlue } = useDraftHost(setNavigationContent, spectators, update);
     const [readyCheck, setReadyCheck] = useState(() => [false, false]);
 
     // auto start game when both ready checks are true
     useEffect(() => {
-        if (readyCheck[0] && readyCheck[1] && draft.draft.p === -1) lockin();
-    }, [readyCheck, draft, lockin]);
+        if (readyCheck[0] && readyCheck[1] && draft.p === -1) actions.lockin();
+    }, [readyCheck, draft, actions]);
 
     const lockinWithReadyCheck = () => {
-        if (readyCheck[0] && readyCheck[1]) lockin();
+        if (readyCheck[0] && readyCheck[1]) actions.lockin();
         setReadyCheck(prevReady => [true, prevReady[1]]);
+    }
+
+    const enemyTurnToMove = () => {
+        const blueTeamToMove = BLUE_SIDE_PICKS.has(draft.p);
+        return isBlue ? !blueTeamToMove : blueTeamToMove;
     }
 
     useEffect(() => {
@@ -27,31 +33,39 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
                 setReadyCheck(prevReady => [prevReady[0], true]);
                 break;
             case 'LOCK_IN':
-                lockin();
+                enemyTurnToMove() && actions.lockin();
                 break;
             case 'SELECT':
-                select(message.content);
+                enemyTurnToMove() && actions.select(message.content);
+                break;
+            case 'UNDO':
+                // check its their turn
+                // prompt host to allow
+                actions.undo();
+                break;
+            case 'SETTINGS_UPDATE':
+                // prompt host to allow
                 break;
             default:
                 break;
         }
         setMessage(null);
-    }, [message, select, lockin, setMessage]);
+    }, [message, actions, setMessage]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft} lockin={lockinWithReadyCheck} select={select}>
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
+                <ChampionSelectionDisplay lockin={lockinWithReadyCheck} {...draft} {...actions}>
                     {{
-                        ...timer,
+                        ...settings,
                         challenge: true,
                         connection,
                         spectators: spectators,
                         peerID,
                     }}
                 </ChampionSelectionDisplay>
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
             </div>
         </main>
     );

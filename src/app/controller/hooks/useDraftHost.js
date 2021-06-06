@@ -1,5 +1,5 @@
-import {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import useNames from './useNames.js';
 import useDraftLogicController from './useDraftLogicController.js';
 import useDraftTimer from './useDraftTimer.js';
@@ -7,22 +7,23 @@ import useDraftTimer from './useDraftTimer.js';
 const useDraftHost = (setNavigationContent, spectators, update, draftString) => {
     const { state } = useLocation();
     const names = useNames(state?.names);
+    const { teamRenderData, currentPick, draft, forceLockin, ...actions } = useDraftLogicController(draftString);
 
-    const { teamRenderData, currentPick, lockin, undo, ...draft } = useDraftLogicController(draftString);
+    const [isBlue, setIsBlue] = useState(state?.isBlue ?? true);
 
-    const onEnd = () => draft.forceLockin() && startTimer();
-    const lockinWithTimer = () => lockin() && startTimer();
-    const undoWithTimer = () => undo() && startTimer();
+    const { on, setOn, setLimit, limit, time, end, startTimer } = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, forceLockin);
 
-    const { on, setOn, setLimit, limit, time, end, startTimer } = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, onEnd);
+    useEffect(() => {
+        if(draft.p < 20 && draft.p >= 0) startTimer();
+    }, [draft.p, startTimer]);
 
     useEffect(() => {
         update({
             type: 'STATE_UPDATE', content: {
-                ready_check: true, draft: draft.draft, limit, on, end, names
+                ready_check: true, draft, limit, on, end, names, hostIsBlue: isBlue,
             }
         });
-    }, [draft.draft, spectators, end, update, names, on, limit]);
+    }, [draft, spectators, end, update, names, on, limit, isBlue]);
 
     useEffect(() => {
         setNavigationContent({ type: 'draft', side: currentPick.side, end, time, limit, names });
@@ -30,14 +31,20 @@ const useDraftHost = (setNavigationContent, spectators, update, draftString) => 
     }, [setNavigationContent, time, end, limit, names, currentPick]);
 
     return {
-        timer: {
-            on, setOn, setLimit, limit,
+        isBlue,
+        settings: {
+            on, 
+            limit,
+            setOn, 
+            setLimit,
+            setIsBlue,
         },
-        lockin: lockinWithTimer,
-        undo: undoWithTimer,
-        teamRenderData,
-        currentPick,
-        ...draft,
+        actions,
+        draft: {
+            ...teamRenderData,
+            ...draft,
+            currentPick,
+        }
     }
 }
 

@@ -3,13 +3,8 @@ import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
-    const {
-        teamRenderData,
-        draft,
-        currentPick,
-        readyCheck,
-    } = useDraftClient('spectator', setNavigationContent, peerID, connect, message);
+const SpectatorDraft = (props) => {
+    const { draft, readyCheck } = useDraftClient({ type: 'spectator', ...props });
 
     if (!readyCheck) return (
         <main className="draft--wrapper wait-ready-check">
@@ -20,9 +15,9 @@ const SpectatorDraft = ({ peerID, connect, message, setNavigationContent }) => {
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay draft={draft} spectator />
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
+                <ChampionSelectionDisplay {...draft} spectator />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
             </div>
         </main>
     );

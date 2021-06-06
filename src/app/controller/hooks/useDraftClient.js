@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData';
 
-const useDraftClient = (type, setNavigationContent, peerID, connect, message) => {
+const useDraftClient = ({ type, setNavigationContent, peerID, connect, message }) => {
     const { id } = useParams();
     const { draft, setDraft, currentPick, teamRenderData } = useDraftRenderData();
     const [readyCheck, setReadyCheck] = useState(null);
@@ -11,6 +11,7 @@ const useDraftClient = (type, setNavigationContent, peerID, connect, message) =>
     const {
         time,
         end,
+        setLimit,
         setEnd,
         setOn,
     } = useDraftTimer();
@@ -22,11 +23,12 @@ const useDraftClient = (type, setNavigationContent, peerID, connect, message) =>
 
     useEffect(() => {
         if (!message || !message?.content) return;
-        setEnd(message.content?.end);
-        setDraft(message.content?.draft);
-        setReadyCheck(message.content?.ready_check);
-        setOn(message.content?.on);
-    }, [message, setDraft, setEnd, setOn, currentPick, setNavigationContent]);
+        setEnd(message.content.end);
+        setLimit(message.content.limit);
+        setDraft(message.content.draft);
+        setReadyCheck(message.content.ready_check);
+        setOn(message.content.on);
+    }, [message, setDraft, setEnd, setLimit, setOn, currentPick, setNavigationContent]);
 
     useEffect(() => {
         if (!message || !message?.content) return;
@@ -42,10 +44,12 @@ const useDraftClient = (type, setNavigationContent, peerID, connect, message) =>
     }, [time, end, message, currentPick, setNavigationContent]);
 
     return {
-        teamRenderData,
-        draft,
-        currentPick,
         readyCheck,
+        draft: {
+            ...teamRenderData,
+            ...draft,
+            currentPick,
+        }
     }
 }
 

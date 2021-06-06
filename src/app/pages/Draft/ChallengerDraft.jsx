@@ -3,16 +3,11 @@ import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const ChallengerDraft = ({ peerID, connect, message, send, setNavigationContent }) => {
-    const {
-        teamRenderData,
-        draft,
-        currentPick,
-        readyCheck,
-    } = useDraftClient('challenger', setNavigationContent, peerID, connect, message);
+const ChallengerDraft = ({ send, ...props }) => {
+    const { draft, readyCheck } = useDraftClient({ type: 'challenger', ...props });
 
     const lockin = () => {
-        if(draft.p === -1) send({type: 'READY_UP'});
+        if(draft.p === -1 && !readyCheck[1]) send({type: 'READY_UP'});
         else send({type: 'LOCK_IN', state: draft.p});
     }
     const select = (champion) => {
@@ -31,8 +26,8 @@ const ChallengerDraft = ({ peerID, connect, message, send, setNavigationContent 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay draft={draft} select={select} lockin={lockin} undo={undo}>
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
+                <ChampionSelectionDisplay {...draft} select={select} lockin={lockin} undo={undo}>
                 {{
                     // on,
                     // setOn,
@@ -42,7 +37,7 @@ const ChallengerDraft = ({ peerID, connect, message, send, setNavigationContent 
                     // peerID,
                 }}
                 </ChampionSelectionDisplay>
-                <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
             </div>
         </main>
     );

@@ -12,6 +12,8 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
     const [blueTeamName, setBlueTeamName] = useState('');
     const [redTeamName, setRedTeamName] = useState('');
 
+    const [isBlue, setIsBlue] = useState(true);
+
     const [hasTimeLimits, setHasTimeLimits] = useState(!!challenge);
     const [timeLimit, setTimeLimit] = useState(30);
 
@@ -38,6 +40,7 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
                 },
                 hasTimeLimits,
                 timeLimit,
+                isBlue,
             }
         });
     }

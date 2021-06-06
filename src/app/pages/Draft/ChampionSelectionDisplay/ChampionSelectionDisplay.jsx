@@ -8,26 +8,24 @@ import NoneIcon from '../../../assets/square.png';
 import './ChampionSelectionDisplay.scss';
 
 
-const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) => {
-    const [disabled, setDisabled] = useState(new Set(draft.d));
+const ChampionSelectionDisplay = ({ d, p, children, spectator, ...actions }) => {
+    const [disabled, setDisabled] = useState(new Set(d));
 
-    useEffect(() => {
-        setDisabled(new Set(draft.d));
-    }, [draft.d]);
+    useEffect(() => setDisabled(new Set(d)), [d]);
 
     const { championsList } = useContext(ChampionsContext);
     const [showOptions, setShowOptions] = useState(false);
     const lockinButtonRef = useRef(null);
 
-    const selectedID = draft.d[draft.p];
+    const selectedID = d[p];
     const imageLink = (selectedID && selectedID !== 'none')
         ? require('../../../assets/champion/' + selectedID + '.png').default
         : NoneIcon;
 
     const stateTextDisplay = (property) => {
-        if (draft.p >= 20) return 'Finished';
-        if (draft.p <= -1) {
-            if(property === 'name') return 'Ready';
+        if (p >= 20) return 'Finished';
+        if (p <= -1) {
+            if (property === 'name') return 'Ready';
             return spectator ? 'Waiting to start...' : 'Click [START] to begin';
         }
         if (championsList === null || !selectedID) return spectator || property === 'name' ? '---' : 'Select a champion';
@@ -35,7 +33,7 @@ const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) =>
         return championsList[selectedID][property];
     }
 
-    useEffect(() => { lockinButtonRef?.current?.focus() }, [draft.d]);
+    useEffect(() => { lockinButtonRef?.current?.focus() }, [d]);
 
     return (
         <div className="champion-select-display--wrapper">
@@ -43,10 +41,10 @@ const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) =>
                 className="select"
                 select={spectator ? () => { } : actions.select}
                 disabled={disabled}
-                hasNoneOption={!PICKS.has(draft.p)}
+                hasNoneOption={!PICKS.has(p)}
             />
 
-            <OptionsDisplay open={showOptions} draft={draft.d}>
+            <OptionsDisplay open={showOptions} draft={d}>
                 {children}
             </OptionsDisplay>
 
@@ -61,7 +59,7 @@ const ChampionSelectionDisplay = ({ draft, children, spectator, ...actions }) =>
                     setShowOptions={setShowOptions}
                     lockinButtonRef={lockinButtonRef}
                     actions={actions}
-                    draft={draft} />}
+                    draft={{ d, p }} />}
             </div>
         </div>
     );

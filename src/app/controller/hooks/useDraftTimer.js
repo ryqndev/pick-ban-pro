@@ -19,8 +19,6 @@ const useDraftTimer = (hasTimeLimits = false, timeLimit = 30, onEnd = () => { })
         setEnd(new Date().getTime() + limit * 1000 + 500);
     }, [limit, on]);
 
-    const endTimer = useCallback(() => { setEnd(0) }, []);
-
     useEffect(() => {
         if (end === 0 || !on) return;
         const timer = setInterval(() => {
@@ -29,12 +27,13 @@ const useDraftTimer = (hasTimeLimits = false, timeLimit = 30, onEnd = () => { })
             if (newtime <= -3) {
                 clearInterval(timer);
                 setEnd(0);
+                setTime(limit);
                 onEnd();
             }
         }, 250);
 
         return () => clearInterval(timer);
-    }, [on, end, startTimer, onEnd]);
+    }, [on, end, startTimer, setTime, limit, onEnd]);
 
     useEffect(() => { if (!on) setEnd(0) }, [on]);
 
