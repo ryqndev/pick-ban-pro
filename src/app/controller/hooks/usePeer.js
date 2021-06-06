@@ -44,12 +44,8 @@ const usePeer = () => {
                 case 'challenger':
                     //TODO verify by using hash that challenger is allowed 
                     newConnection.on('open', () => { 
-                        console.log("host got new connection")
                         setConnection(newConnection);
-                        newConnection.on('data', (msg) => {
-                            setMessage(msg);
-                            console.log("recieve new msg")
-                        });
+                        newConnection.on('data', setMessage);
                     });
                     break;
                 default:
@@ -71,7 +67,6 @@ const usePeer = () => {
     }, [connection]);
 
     const update = useCallback(message => {
-        console.log("UPDATING CLIENTS", message)
         if(connection) connection.send(message);
         let connectedSpectators = [...spectators];
         connectedSpectators = connectedSpectators.filter(connection => {
@@ -90,6 +85,7 @@ const usePeer = () => {
         setPeer,
         setPeerID,
         message,
+        setMessage,
         connection,
         spectators,
         connect,

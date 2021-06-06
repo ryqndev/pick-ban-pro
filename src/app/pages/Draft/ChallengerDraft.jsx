@@ -13,13 +13,13 @@ const ChallengerDraft = ({ peerID, connect, message, send, setNavigationContent 
 
     const lockin = () => {
         if(draft.p === -1) send({type: 'READY_UP'});
-        else send({type: 'LOCK_IN'});
+        else send({type: 'LOCK_IN', state: draft.p});
     }
     const select = (champion) => {
-        send({type: 'SELECT', content: champion});
+        send({type: 'SELECT', content: champion, state: draft.p});
     }
     const undo = () => {
-        send({type: 'UNDO'});
+        send({type: 'UNDO', state: draft.p});
     }
 
     if (!readyCheck) return (
@@ -34,12 +34,12 @@ const ChallengerDraft = ({ peerID, connect, message, send, setNavigationContent 
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
                 <ChampionSelectionDisplay draft={draft} select={select} lockin={lockin} undo={undo}>
                 {{
-                        // on,
-                        // setOn,
-                        // limit,
-                        // setLimit,
-                        // spectators: spectatorConnections,
-                        // peerID,
+                    // on,
+                    // setOn,
+                    // limit,
+                    // setLimit,
+                    // spectators: spectatorConnections,
+                    // peerID,
                 }}
                 </ChampionSelectionDisplay>
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.red} side="red" />
