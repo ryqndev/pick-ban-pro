@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 const usePeer = () => {
     const [peer, setPeer] = useState(() => new Peer());
     const [connection, setConnection] = useState(null);
-    const [spectatorConnections, setSpectatorConnections] = useState([]);
+    const [spectators, setSpectators] = useState([]);
     const [peerID, setPeerID] = useState('');
     const [message, setMessage] = useState(null);
 
@@ -24,6 +24,7 @@ const usePeer = () => {
     useEffect(() => {
         if (!connection) return;
         connection.on('open', () => {
+            console.log("client got new connection")
             connection.on('data', setMessage);
             connection.on('close', console.error);
             connection.on('error', console.error);
@@ -37,12 +38,19 @@ const usePeer = () => {
             switch (newConnection?.metadata?.type) {
                 case 'spectator':
                     newConnection.on('open', () => {
-                        setSpectatorConnections(spectators => [...spectators, newConnection]);
+                        setSpectators(prev => [...prev, newConnection]);
                     });
                     break;
                 case 'challenger':
                     //TODO verify by using hash that challenger is allowed 
-                    newConnection.on('open', () => { setConnection(newConnection) });
+                    newConnection.on('open', () => { 
+                        console.log("host got new connection")
+                        setConnection(newConnection);
+                        newConnection.on('data', (msg) => {
+                            setMessage(msg);
+                            console.log("recieve new msg")
+                        });
+                    });
                     break;
                 default:
                     return;
@@ -51,7 +59,7 @@ const usePeer = () => {
 
         peer.on('connection', connector);
         return () => peer.off('connection', connector);
-    }, [peer, peerID, setSpectatorConnections]);
+    }, [peer, peerID, setSpectators]);
 
     const connect = useCallback((id, connectionType) => {
         setConnection(peer.connect(id, { metadata: { type: connectionType } }));
@@ -62,8 +70,10 @@ const usePeer = () => {
         connection.send(message);
     }, [connection]);
 
-    const sendToSpectators = useCallback(message => {
-        let connectedSpectators = [...spectatorConnections];
+    const update = useCallback(message => {
+        console.log("UPDATING CLIENTS", message)
+        if(connection) connection.send(message);
+        let connectedSpectators = [...spectators];
         connectedSpectators = connectedSpectators.filter(connection => {
             if (connection.open) {
                 connection.send(message);
@@ -71,8 +81,8 @@ const usePeer = () => {
             }
             return false;
         });
-        if (connectedSpectators.length !== spectatorConnections.length) setSpectatorConnections(connectedSpectators);
-    }, [spectatorConnections]);
+        if (connectedSpectators.length !== spectators.length) setSpectators(connectedSpectators);
+    }, [connection, spectators]);
 
     return {
         peer,
@@ -81,10 +91,10 @@ const usePeer = () => {
         setPeerID,
         message,
         connection,
-        spectatorConnections,
+        spectators,
         connect,
         send,
-        sendToSpectators,
+        update,
     };
 }
 

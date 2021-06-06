@@ -1,51 +1,53 @@
-import { useEffect, memo } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import useDraftLogicController from '../../controller/hooks/useDraftLogicController';
+import { useEffect, useState, memo } from 'react';
+import { useParams } from 'react-router-dom';
+import useDraftHost from '../../controller/hooks/useDraftHost';
 import TeamPickDisplay from './TeamPickDisplay';
-import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelectionDisplay';
-import useDraftTimer from '../../controller/hooks/useDraftTimer';
-import useNames from '../../controller/hooks/useNames';
+import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const MultiplayerDraft = ({ setNavigationContent, spectatorConnections, sendToSpectators, peerID }) => {
-    const { state } = useLocation();
-    const { draftString } = useParams();
-    const { teamRenderData, currentPick, lockin, undo, ...draft } = useDraftLogicController(draftString);
-    const names = useNames(state?.names);
+const MultiplayerDraft = ({ setNavigationContent, spectators, connection, message, update, peerID }) => {
+    const { id } = useParams();
+    const { timer, currentPick, teamRenderData, select, undo, lockin, ...draft } = useDraftHost(setNavigationContent, spectators, update);
+    const [readyCheck, setReadyCheck] = useState(() => [false, false]);
 
-    const onEnd = () => draft.forceLockin() && startTimer();
-    const lockinWithTimer = () => lockin() && startTimer();
-    const undoWithTimer = () => undo() && startTimer();
+    // auto start game when both ready checks are true
+    useEffect(() => {
+        if (readyCheck[0] && readyCheck[1] && draft.draft.p === -1) lockin();
+    }, [readyCheck, draft, lockin]);
 
-    const { on, setOn, setLimit, limit, time, end, startTimer } = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, onEnd);
+    const lockinWithReadyCheck = () => {
+        if (readyCheck[0] && readyCheck[1]) lockin();
+        else setReadyCheck(prevReady => [true, prevReady[1]]);
+    }
 
     useEffect(() => {
-        if (!spectatorConnections?.length) return;
-        sendToSpectators({
-            type: 'STATE_UPDATE', content: {
-                ready_check: true, draft: draft.draft, limit, on, end, names
-            }
-        });
-    }, [draft.draft, spectatorConnections, end, sendToSpectators, names, on, limit, state]);
+        if (!message || !message?.type) return;
+        switch (message.type) {
+            // case 'READY_UP':
+            //     setReadyCheck(prevReady => [prevReady[0], true]);
+            //     break;
+            // case 'LOCK_IN':
+            //     lockin();
+            //     break;
+            // case 'SELECT':
+            //     select(message.content);
+            //     break;
 
-    useEffect(() => {
-        setNavigationContent({ type: 'draft', side: currentPick.side, end, time, limit, names });
-        return () => setNavigationContent({});
-    }, [setNavigationContent, time, end, limit, names, currentPick]);
+            default:
+                return;
+        }
+    }, [message, setReadyCheck, select, lockin]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={currentPick} teamRenderData={teamRenderData.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft} lockin={lockinWithTimer} undo={undoWithTimer}>
+                <ChampionSelectionDisplay {...draft} lockin={lockinWithReadyCheck} select={select} undo={undo}>
                     {{
-                        ...state,
-                        on,
-                        setOn,
-                        limit,
+                        ...timer,
                         challenge: true,
-                        setLimit,
-                        spectators: spectatorConnections,
+                        connection,
+                        spectators: spectators,
                         peerID,
                     }}
                 </ChampionSelectionDisplay>

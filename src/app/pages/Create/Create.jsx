@@ -5,14 +5,14 @@ import ControlledTextInput from '../../components/ControlledTextInput';
 import { Links } from '../../components/PeerDisplays';
 import './Create.scss';
 
-const Create = ({ peerID, connection, challenge, spectatorConnections }) => {
+const Create = ({ peerID, connection, challenge, spectators }) => {
     const navigate = useNavigate();
 
     const [matchName, setMatchName] = useState('');
     const [blueTeamName, setBlueTeamName] = useState('');
     const [redTeamName, setRedTeamName] = useState('');
 
-    const [hasTimeLimits, setHasTimeLimits] = useState(false);
+    const [hasTimeLimits, setHasTimeLimits] = useState(!!challenge);
     const [timeLimit, setTimeLimit] = useState(30);
 
     const [draftLink, setDraftLink] = useState('/d');
@@ -78,10 +78,10 @@ const Create = ({ peerID, connection, challenge, spectatorConnections }) => {
             </form>
             <div className="link-holder card__component">
                 <Links 
-                    spectators={spectatorConnections} 
+                    spectators={spectators} 
                     peerID={peerID} 
                     connection={challenge ? connection : null} 
-                    challenge
+                    challenge={challenge}
                 />
             </div>
         </div>
