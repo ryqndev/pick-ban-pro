@@ -1,0 +1,9 @@
+.swal2-popup {
+    background-color: var(--bg-primary-light-3);
+    &>.swal2-title {
+        color: var(--text-primary);
+    }
+    &>.swal2-html-container {
+        color: var(--text-primary);
+    }
+}
