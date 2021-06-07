@@ -4,7 +4,7 @@ import { Links } from '../../../../components/PeerDisplays';
 import { DraftSettings } from './pages';
 import './OptionsDisplay.scss';
 
-const OptionsDisplay = ({ open, children }) => {
+const OptionsDisplay = ({ open, ...settings }) => {
     const [tab, setTab] = useState('settings');
 
     return (
@@ -18,10 +18,10 @@ const OptionsDisplay = ({ open, children }) => {
                 <div className="open-page" style={{borderRadius: tab === 'settings' ? '0px 4px 4px 4px' : '4px'}}>
                     <div style={{maxWidth: '450px', margin: '0 auto'}}>
                         {tab === 'settings' && (
-                            <DraftSettings {...children} />
+                            <DraftSettings {...settings} />
                         )}
                         {tab === 'participants' && (
-                            <Links {...children} />
+                            <Links {...settings} />
                         )}
                     </div>
                 </div>

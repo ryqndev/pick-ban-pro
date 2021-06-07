@@ -1,8 +1,19 @@
 import clsx from 'clsx';
 import { memo } from 'react';
+import { PICKS } from '../../../../controller/draftLogicControllerUtil.js';
 import { ReactComponent as SettingsIcon } from '../../../../assets/settings.svg';
 
-const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, showOptions }) => {
+const ControlsDisplay = ({ lockinButtonRef, actions, draft, multiplayer, setShowOptions, showOptions }) => {
+    const mainButtonText = () => {
+        if (draft.p <= -1) {
+            return multiplayer ? 'ready' : 'start';
+        }
+        if (draft.p >= 20) {
+            return '';
+        }
+        return PICKS.has(draft.p) ? 'lock in' : 'ban';
+    }
+
     return (
         <div className="controls">
             <button
@@ -11,7 +22,7 @@ const ControlsDisplay = ({ lockinButtonRef, actions, draft, setShowOptions, show
                 onClick={actions.lockin}
                 disabled={draft.p !== -1 && !draft.d[draft.p]}
             >
-                {draft.p <= -1 ? 'start' : 'lock in'}
+                {mainButtonText()}
             </button>
             <button
                 className={clsx('settings', showOptions && 'active')}

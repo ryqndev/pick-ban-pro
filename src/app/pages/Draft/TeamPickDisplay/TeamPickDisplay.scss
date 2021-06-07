@@ -1,31 +1,39 @@
 .team-pick-display--wrapper {
     height: 100%;
     font-size: 1em;
+
     @media screen and (max-width: 1500px) {
         font-size: 0.8em;
     }
+
     @media screen and (max-width: 1200px) {
         font-size: 0.7em;
     }
 
     &.currently-picking {
-        & > .pick {
+        &>.pick {
             height: calc((100% - 200px)/5 - 2px);
+
             &.currently-picking {
                 height: calc((100% - 200px)/5 + 10px);
             }
         }
     }
-    & > .pick {
+
+    &>.pick {
+        max-height: calc(20vh - 63px);
         height: calc((100% - 230px)/5);
     }
-    & > .ban-row {
+
+    &>.ban-row {
         height: 100px;
         display: grid;
         column-gap: 5px;
+
         &.phase-1 {
             grid-template-columns: repeat(3, 1fr);
         }
+
         &.phase-2 {
             grid-template-columns: repeat(2, 1fr);
         }

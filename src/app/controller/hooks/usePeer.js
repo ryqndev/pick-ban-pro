@@ -24,7 +24,6 @@ const usePeer = () => {
     useEffect(() => {
         if (!connection) return;
         connection.on('open', () => {
-            console.log("client got new connection")
             connection.on('data', setMessage);
             connection.on('close', console.error);
             connection.on('error', console.error);

@@ -1,0 +1,111 @@
+.selected-controls--wrapper {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    height: 100%;
+
+    @media screen and (max-width: 800px) {
+        width: calc(100vw - 20px);
+        grid-template-columns: auto 1fr;
+    }
+
+    &>.selected-display {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr 45px;
+        column-gap: 20px;
+        min-height: 0;
+        height: 100%;
+
+        @media screen and (max-width: 800px) {
+            &>h3 {
+                display: none;
+            }
+
+            &>span {
+                display: none;
+            }
+        }
+
+        &>img {
+            height: 120px;
+            grid-row: 1/3;
+        }
+
+        &>h3 {
+            font: 5em 'Hyperwave';
+        }
+
+        &>span {
+            font-family: 'Rubik';
+            font-size: 1.3em;
+        }
+
+    }
+
+    &>.controls {
+        display: grid;
+        grid-template-rows: 65px 45px;
+        grid-template-columns: 45px 1fr;
+        column-gap: 10px;
+        row-gap: 10px;
+
+        &>button {
+            box-sizing: border-box;
+            padding: 0px 20px;
+            height: 100%;
+
+            &.lock-in {
+                font-size: 1.4em;
+                grid-column: 1/3;
+
+                &.start {
+                    background-color: #4BB543;
+
+                    @keyframes glow {
+                        from {
+                            filter: brightness(1);
+                        }
+
+                        to {
+                            filter: brightness(1.2);
+
+                        }
+                    }
+
+                    animation: glow 1s alternate-reverse infinite ease-in-out;
+
+                    &:hover {
+                        background-color: #34d129;
+                        animation: none;
+                    }
+                }
+
+            }
+
+            &.undo {
+                font-size: 1.1em;
+                transition: box-shadow 350ms, background-color 350ms, color 350ms;
+            }
+
+            &.settings {
+                display: grid;
+                place-content: center;
+
+                &>svg {
+                    fill: var(--text-primary);
+                }
+            }
+
+            &:disabled {
+                box-shadow: none;
+                background-color: var(--bg-primary-dark);
+                color: var(--bg-primary-light-2);
+            }
+
+            &:hover:not(:disabled) {
+                background-color: var(--bg-primary-light);
+            }
+        }
+    }
+}

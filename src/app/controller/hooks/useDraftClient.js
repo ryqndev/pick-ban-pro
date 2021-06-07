@@ -9,8 +9,10 @@ const useDraftClient = ({ type, setNavigationContent, peerID, connect, message }
     const [readyCheck, setReadyCheck] = useState(null);
 
     const {
+        on,
         time,
         end,
+        limit,
         setLimit,
         setEnd,
         setOn,
@@ -45,6 +47,10 @@ const useDraftClient = ({ type, setNavigationContent, peerID, connect, message }
 
     return {
         readyCheck,
+        settings: {
+            limit,
+            on,
+        },
         draft: {
             ...teamRenderData,
             ...draft,

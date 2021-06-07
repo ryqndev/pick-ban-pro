@@ -1,14 +1,12 @@
 import { useEffect, useState, memo } from 'react';
-import { useParams } from 'react-router-dom';
-import { BLUE_SIDE_PICKS } from '../../controller/draftLogicControllerUtil.js';
+import Swal from 'sweetalert2';
 import useDraftHost from '../../controller/hooks/useDraftHost';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
 const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMessage, message, update, peerID }) => {
-    const { id } = useParams();
-    const { settings, actions, draft, isBlue } = useDraftHost(setNavigationContent, spectators, update);
+    const { settings, actions, draft } = useDraftHost(setNavigationContent, spectators, update, true);
     const [readyCheck, setReadyCheck] = useState(() => [false, false]);
 
     // auto start game when both ready checks are true
@@ -21,9 +19,8 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
         setReadyCheck(prevReady => [true, prevReady[1]]);
     }
 
-    const enemyTurnToMove = () => {
-        const blueTeamToMove = BLUE_SIDE_PICKS.has(draft.p);
-        return isBlue ? !blueTeamToMove : blueTeamToMove;
+    const undoWithRequest = () => {
+
     }
 
     useEffect(() => {
@@ -33,18 +30,38 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
                 setReadyCheck(prevReady => [prevReady[0], true]);
                 break;
             case 'LOCK_IN':
-                enemyTurnToMove() && actions.lockin();
+                actions.lockin('CLIENT');
                 break;
             case 'SELECT':
-                enemyTurnToMove() && actions.select(message.content);
+                actions.select(message.content, 'CLIENT');
                 break;
             case 'UNDO':
-                // check its their turn
-                // prompt host to allow
-                actions.undo();
+                Swal.fire({
+                    title: 'Undo Request',
+                    text: "Your opponent has requested to undo the last pick.",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: 'green',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Allow',
+                    cancelButtonText: 'Decline',
+                }).then((result) => {
+                    if (result.isConfirmed) actions.undo();
+                });
                 break;
             case 'SETTINGS_UPDATE':
-                // prompt host to allow
+                Swal.fire({
+                    title: 'Settings Change Request',
+                    text: "Your opponent has requested to change the draft settings: ",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: 'green',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Allow',
+                    cancelButtonText: 'Decline',
+                }).then((result) => {
+                    // if (result.isConfirmed) actions.undo();
+                });
                 break;
             default:
                 break;
@@ -56,15 +73,14 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
-                <ChampionSelectionDisplay lockin={lockinWithReadyCheck} {...draft} {...actions}>
-                    {{
-                        ...settings,
-                        challenge: true,
-                        connection,
-                        spectators: spectators,
-                        peerID,
-                    }}
-                </ChampionSelectionDisplay>
+                <ChampionSelectionDisplay lockin={lockinWithReadyCheck} {...draft} {...actions} multiplayer settings={{
+                    ...settings,
+                    challenge: true,
+                    readyCheck,
+                    connection,
+                    spectators: spectators,
+                    peerID,
+                }}/>
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
             </div>
         </main>

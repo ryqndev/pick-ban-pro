@@ -1,17 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import useNames from './useNames.js';
 import useDraftLogicController from './useDraftLogicController.js';
 import useDraftTimer from './useDraftTimer.js';
+import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
 
-const useDraftHost = (setNavigationContent, spectators, update, draftString) => {
+const useDraftHost = (setNavigationContent, spectators, update, multiplayer, draftString) => {
     const { state } = useLocation();
-    const names = useNames(state?.names);
-    const { teamRenderData, currentPick, draft, forceLockin, ...actions } = useDraftLogicController(draftString);
-
     const [isBlue, setIsBlue] = useState(state?.isBlue ?? true);
 
-    const { on, setOn, setLimit, limit, time, end, startTimer } = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, forceLockin);
+    const names 
+        = useNames(state?.names);
+
+    const { teamRenderData, currentPick, draft, forceLockin, ...actions } 
+        = useDraftLogicController(draftString);
+
+    const { on, setOn, setLimit, limit, time, end, startTimer } 
+        = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, forceLockin);
+
+    const enemyTurnToMove = useCallback(() => {
+        const blueTeamToMove = BLUE_SIDE_PICKS.has(draft.p);
+        return isBlue ? !blueTeamToMove : blueTeamToMove;
+    }, [draft.p, isBlue]);
+
+    const lockin = (caller) => {
+        if(draft.p  === -1 || !multiplayer) return actions.lockin();
+        if(typeof caller === 'object' && caller !== null && !enemyTurnToMove()) actions.lockin();
+        if(caller === 'CLIENT' && enemyTurnToMove()) actions.lockin();
+    }
+
+    const select = (champion, caller='HOST') => {
+        if (!multiplayer) actions.select(champion);
+        if(caller === 'HOST' && !enemyTurnToMove()) actions.select(champion);
+        if(caller === 'CLIENT' && enemyTurnToMove()) actions.select(champion);
+    }
 
     useEffect(() => {
         if(draft.p < 20 && draft.p >= 0) startTimer();
@@ -39,7 +61,15 @@ const useDraftHost = (setNavigationContent, spectators, update, draftString) => 
             setLimit,
             setIsBlue,
         },
-        actions,
+        actions: {
+            lockin,
+            select,
+            undo: actions.undo,
+            enemy: {
+                lockin,
+                select,
+            }
+        },
         draft: {
             ...teamRenderData,
             ...draft,

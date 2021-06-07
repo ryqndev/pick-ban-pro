@@ -7,20 +7,18 @@ import './Draft.scss';
 
 const SinglePlayerDraft = ({ setNavigationContent, spectators, update, peerID }) => {
     const { draftString } = useParams();
-    const { settings, draft, actions } = useDraftHost(setNavigationContent, spectators, update, draftString);
+    const { settings, draft: {blue, red, ...draft}, actions } = useDraftHost(setNavigationContent, spectators, update, false, draftString);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
-                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft} {...actions}>
-                    {{
-                        ...settings,
-                        spectators,
-                        peerID,
-                    }}
-                </ChampionSelectionDisplay>
-                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={blue} side="blue" />
+                <ChampionSelectionDisplay {...draft} {...actions} settings={{
+                    ...settings,
+                    spectators,
+                    peerID,
+                }} />
+                <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={red} side="red" />
             </div>
         </main>
     );
