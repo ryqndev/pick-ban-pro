@@ -17,6 +17,7 @@ const SinglePlayerDraft = ({ setNavigationContent, spectators, update, peerID })
                     ...settings,
                     spectators,
                     peerID,
+                    type: 'HOST',
                 }} />
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={red} side="red" />
             </div>

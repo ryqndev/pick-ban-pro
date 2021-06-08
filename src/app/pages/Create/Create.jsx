@@ -66,7 +66,7 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
                             id="timer"
                             icons={false}
                             className="timer-toggle"
-                            defaultChecked={hasTimeLimits}
+                            checked={hasTimeLimits}
                             onChange={() => { setHasTimeLimits(prev => !prev) }}
                         />
                         {hasTimeLimits && (

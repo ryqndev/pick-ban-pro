@@ -13,7 +13,6 @@ const OptionsDisplay = ({ open, ...settings }) => {
                 <nav className="options-tabs">
                     <button className={clsx(tab === 'settings' && "selected")} onClick={() => setTab('settings')}>Settings</button>
                     <button className={clsx(tab === 'participants' && "selected")} onClick={() => setTab('participants')}>Participants</button>
-
                 </nav>
                 <div className="open-page" style={{borderRadius: tab === 'settings' ? '0px 4px 4px 4px' : '4px'}}>
                     <div style={{maxWidth: '450px', margin: '0 auto'}}>

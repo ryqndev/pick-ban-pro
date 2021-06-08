@@ -1,11 +1,11 @@
 import { useContext, useRef, useEffect, memo } from 'react';
 import ChampionsContext from '../../../../controller/contexts/ChampionsContext';
+import { PICKS, BLUE_SIDE_PICKS } from '../../../../controller/draftLogicControllerUtil.js';
 import ControlsDisplay from '../ControlsDisplay';
 import NoneIcon from '../../../../assets/square.png';
-import { PICKS, BLUE_SIDE_PICKS } from '../../../../controller/draftLogicControllerUtil';
 import './StateDisplay.scss';
 
-const StateDisplay = ({ d, p, showOptions, setShowOptions, multiplayer, spectator, ...actions }) => {
+const StateDisplay = ({ d, p, showOptions, setShowOptions, multiplayer, spectator, isBlue, type, readyCheck, ...actions }) => {
     const { championsList } = useContext(ChampionsContext);
 
     const lockinButtonRef = useRef(null);
@@ -50,23 +50,25 @@ const StateDisplay = ({ d, p, showOptions, setShowOptions, multiplayer, spectato
         if (DRAFT_IS_FINISHED) return 'Finished';
 
         if (multiplayer) {
+            const isCurrentPlayerTurn = BLUE_SIDE_PICKS.has(p) ? isBlue : !isBlue;
+
             if (DRAFT_NOT_STARTED) {
-                // if current player is not ready return 'Click [READY] to ready up';
+                if (!readyCheck[type === 'HOST' ? 0 : 1]) return 'Click [READY] to ready up';
                 return 'Waiting for enemy to ready up';
             }
             if (PICKS.has(p)) {
-                // if current players turn return 'Pick a champion';
+                if (isCurrentPlayerTurn) return 'Pick a champion';
                 return 'Waiting for enemy pick';
             }
-            // if current players turn return 'Ban a champion';
+            if (isCurrentPlayerTurn) return 'Ban a champion';
             return 'Waiting for enemy ban';
         }
 
         if (DRAFT_NOT_STARTED) return spectator ? 'Waiting to start...' : 'Click [START] to begin';
 
-        const teamToMove = BLUE_SIDE_PICKS.has(p) ? 'Blue Team' : 'Red Team';
+        const TEAM_TO_MOVE = BLUE_SIDE_PICKS.has(p) ? 'Blue Team' : 'Red Team';
 
-        return teamToMove + (PICKS.has(p) ? ' pick' : ' bann') + 'ing...';
+        return TEAM_TO_MOVE + (PICKS.has(p) ? ' pick' : ' bann') + 'ing...';
     }
 
     return (

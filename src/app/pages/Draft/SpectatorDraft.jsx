@@ -16,7 +16,7 @@ const SpectatorDraft = (props) => {
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft} spectator />
+                <ChampionSelectionDisplay {...draft} spectator settings={{type: 'SPECTATOR'}}/>
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.red} side="red" />
             </div>
         </main>

@@ -1,13 +1,13 @@
-import { useEffect, useState, memo } from 'react';
+import { useEffect, memo } from 'react';
 import Swal from 'sweetalert2';
 import useDraftHost from '../../controller/hooks/useDraftHost';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
+import { confirmTimerToggleRequest, confirmUndoRequest } from '../../controller/libs/sweetalert';
 import './Draft.scss';
 
 const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMessage, message, update, peerID }) => {
-    const { settings, actions, draft } = useDraftHost(setNavigationContent, spectators, update, true);
-    const [readyCheck, setReadyCheck] = useState(() => [false, false]);
+    const { settings, actions, draft, isBlue, readyCheck, setReadyCheck } = useDraftHost(setNavigationContent, spectators, update, true);
 
     // auto start game when both ready checks are true
     useEffect(() => {
@@ -15,12 +15,12 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
     }, [readyCheck, draft, actions]);
 
     const lockinWithReadyCheck = () => {
-        if (readyCheck[0] && readyCheck[1]) actions.lockin();
+        if (readyCheck[0] && readyCheck[1]) return actions.lockin('HOST');
         setReadyCheck(prevReady => [true, prevReady[1]]);
     }
 
     const undoWithRequest = () => {
-
+        // promptUndoRequest(() => send({ type: 'UNDO', state: draft.p }));
     }
 
     useEffect(() => {
@@ -36,45 +36,25 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
                 actions.select(message.content, 'CLIENT');
                 break;
             case 'UNDO':
-                Swal.fire({
-                    title: 'Undo Request',
-                    text: "Your opponent has requested to undo the last pick.",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: 'green',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Allow',
-                    cancelButtonText: 'Decline',
-                }).then((result) => {
-                    if (result.isConfirmed) actions.undo();
-                });
+                confirmUndoRequest(actions.undo);
                 break;
-            case 'SETTINGS_UPDATE':
-                Swal.fire({
-                    title: 'Settings Change Request',
-                    text: "Your opponent has requested to change the draft settings: ",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: 'green',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Allow',
-                    cancelButtonText: 'Decline',
-                }).then((result) => {
-                    // if (result.isConfirmed) actions.undo();
-                });
+            case 'TIMER_TOGGLE_REQUEST':
+                confirmTimerToggleRequest(message.content, () => settings.setOn(message.content));
                 break;
             default:
                 break;
         }
         setMessage(null);
-    }, [message, actions, setMessage]);
+    }, [message, actions, setReadyCheck, settings, setMessage]);
 
     return (
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
-                <ChampionSelectionDisplay lockin={lockinWithReadyCheck} {...draft} {...actions} multiplayer settings={{
+                <ChampionSelectionDisplay {...draft} {...actions} lockin={lockinWithReadyCheck} multiplayer settings={{
                     ...settings,
+                    isBlue,
+                    type: 'HOST',
                     challenge: true,
                     readyCheck,
                     connection,

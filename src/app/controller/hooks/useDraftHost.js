@@ -8,6 +8,7 @@ import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
 const useDraftHost = (setNavigationContent, spectators, update, multiplayer, draftString) => {
     const { state } = useLocation();
     const [isBlue, setIsBlue] = useState(state?.isBlue ?? true);
+    const [readyCheck, setReadyCheck] = useState(() => [false, false]);
 
     const names 
         = useNames(state?.names);
@@ -25,8 +26,8 @@ const useDraftHost = (setNavigationContent, spectators, update, multiplayer, dra
 
     const lockin = (caller) => {
         if(draft.p  === -1 || !multiplayer) return actions.lockin();
-        if(typeof caller === 'object' && caller !== null && !enemyTurnToMove()) actions.lockin();
-        if(caller === 'CLIENT' && enemyTurnToMove()) actions.lockin();
+        if(caller === 'HOST' && !enemyTurnToMove()) return actions.lockin();
+        if(caller === 'CLIENT' && enemyTurnToMove()) return actions.lockin();
     }
 
     const select = (champion, caller='HOST') => {
@@ -42,10 +43,10 @@ const useDraftHost = (setNavigationContent, spectators, update, multiplayer, dra
     useEffect(() => {
         update({
             type: 'STATE_UPDATE', content: {
-                ready_check: true, draft, limit, on, end, names, hostIsBlue: isBlue,
+                ready_check: readyCheck, draft, limit, on, end, names, hostIsBlue: isBlue,
             }
         });
-    }, [draft, spectators, end, update, names, on, limit, isBlue]);
+    }, [draft, spectators, end, update, names, readyCheck, on, limit, isBlue]);
 
     useEffect(() => {
         setNavigationContent({ type: 'draft', side: currentPick.side, end, time, limit, names });
@@ -54,6 +55,8 @@ const useDraftHost = (setNavigationContent, spectators, update, multiplayer, dra
 
     return {
         isBlue,
+        readyCheck,
+        setReadyCheck,
         settings: {
             on, 
             limit,
@@ -68,7 +71,7 @@ const useDraftHost = (setNavigationContent, spectators, update, multiplayer, dra
             enemy: {
                 lockin,
                 select,
-            }
+            },
         },
         draft: {
             ...teamRenderData,

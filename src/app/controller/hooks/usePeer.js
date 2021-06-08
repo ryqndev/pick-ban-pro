@@ -1,5 +1,6 @@
 import Peer from 'peerjs';
-import { useState, useEffect, useCallback } from 'react'
+import Swal from 'sweetalert2';
+import { useState, useEffect, useCallback } from 'react';
 
 const usePeer = () => {
     const [peer, setPeer] = useState(() => new Peer());
@@ -31,6 +32,44 @@ const usePeer = () => {
     }, [connection]);
 
     useEffect(() => {
+        peer.on('error', err => {
+            console.log(err.type)
+            switch (err.type) {
+                case 'browser-incompatible':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        html: `Your browser may have disabled WebRTC or not support it. You can still play single player draft but will not be able to have spectators or challengers.
+                        <br />
+                        <br />
+
+                        If you would like to enable WebRTC, follow <a target="_blank" rel="noopener noreferrer" href="https://myownconference.com/blog/en/webrtc/">these</a> steps.`,
+                    });
+                    break;
+                case 'disconnected':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'We outtie~',
+                        text: 'You have been disconnected',
+                    });
+                    break;
+                case 'peer-unavailable':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Who that?',
+                        text: 'Link may have expired because draft doesn\'t exist.',
+                    });
+                    break;
+                default:
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong. Code: ' + err.type,
+                    });
+                    break;
+            }
+        });
+
         if (!peerID) return;
 
         const connector = (newConnection) => {
@@ -42,7 +81,7 @@ const usePeer = () => {
                     break;
                 case 'challenger':
                     //TODO verify by using hash that challenger is allowed 
-                    newConnection.on('open', () => { 
+                    newConnection.on('open', () => {
                         setConnection(newConnection);
                         newConnection.on('data', setMessage);
                     });
@@ -53,6 +92,7 @@ const usePeer = () => {
         }
 
         peer.on('connection', connector);
+
         return () => peer.off('connection', connector);
     }, [peer, peerID, setSpectators]);
 
@@ -66,7 +106,7 @@ const usePeer = () => {
     }, [connection]);
 
     const update = useCallback(message => {
-        if(connection) connection.send(message);
+        if (connection) connection.send(message);
         let connectedSpectators = [...spectators];
         connectedSpectators = connectedSpectators.filter(connection => {
             if (connection.open) {

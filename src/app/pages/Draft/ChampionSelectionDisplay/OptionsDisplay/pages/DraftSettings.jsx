@@ -13,8 +13,8 @@ const DraftSettings = ({ on, setOn, limit, setLimit }) => {
                     id="timer"
                     icons={false}
                     className="timer-toggle"
-                    defaultChecked={on}
-                    onChange={() => { setOn(prev => !prev) }}
+                    checked={on}
+                    onChange={() => setOn(prev => !prev)}
                 />
                 {on && (
                     <>
