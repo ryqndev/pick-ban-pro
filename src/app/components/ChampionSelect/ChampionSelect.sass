@@ -1,0 +1,58 @@
+.champion-select--wrapper
+    display: grid
+    grid-template-rows: auto 1fr
+    row-gap: 20px
+
+    &>.filter-options
+        display: grid
+        grid-template-columns: 1fr auto
+        grid-template-rows: 1fr
+        row-gap: 0px
+        column-gap: 50px
+
+        @media screen and (max-width: 800px)
+            grid-template-columns: 1fr
+            row-gap: 10px
+            grid-template-rows: 1fr 1fr
+
+        &>input[type=text]
+            width: 360px
+
+            @media screen and (max-width: 1500px)
+                width: 250px
+
+            @media screen and (max-width: 1200px)
+                width: 200px
+
+            @media screen and (max-width: 1200px)
+                width: 150px
+
+            @media screen and (max-width: 800px)
+                margin: 0px 10px 10px
+                width: calc(100% - 40px)
+
+    &>.results
+        max-height: 100%
+        overflow: hidden
+
+        & .resizable-container
+            box-sizing: border-box
+            max-height: 100%
+            overflow-y: scroll
+            overflow-x: hidden
+            display: grid
+            grid-template-columns: repeat(6, 1fr)
+            column-gap: 10px
+            padding: 0px 15px
+            width: 100%
+
+            @media screen and (max-width: 1500px)
+                grid-template-columns: repeat(5, 1fr)
+
+            @media screen and (max-width: 1200px)
+                grid-template-columns: repeat(4, 1fr)
+
+            @media screen and (max-width: 500px)
+                grid-template-columns: repeat(3, 1fr)
+                padding: 0px
+                width: calc(100vw - 20px)

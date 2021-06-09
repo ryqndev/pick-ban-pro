@@ -4,8 +4,8 @@ import Fuse from 'fuse.js';
 import roles from '../../assets/roles.json';
 import ChampionIcon from './ChampionIcon';
 import RoleFilter from './RoleFilter';
-import './ChampionSelect.scss';
 import clsx from 'clsx';
+import './ChampionSelect.sass';
 
 const options = {
     isCaseSensitive: false,

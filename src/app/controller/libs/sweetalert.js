@@ -6,7 +6,7 @@ const promptConfirmation = (title, text, confirm, cancel, callback) => {
         text: text,
         icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: 'green',
+        confirmButtonColor: '#19AB27',
         cancelButtonColor: '#d33',
         confirmButtonText: confirm,
         cancelButtonText: cancel,

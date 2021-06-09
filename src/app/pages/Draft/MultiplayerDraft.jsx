@@ -1,12 +1,11 @@
 import { useEffect, memo } from 'react';
-import Swal from 'sweetalert2';
 import useDraftHost from '../../controller/hooks/useDraftHost';
 import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
-import { confirmTimerToggleRequest, confirmUndoRequest } from '../../controller/libs/sweetalert';
+import { confirmTimerToggleRequest, confirmUndoRequest, promptUndoRequest } from '../../controller/libs/sweetalert';
 import './Draft.scss';
 
-const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMessage, message, update, peerID }) => {
+const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMessage, message, send, update, peerID }) => {
     const { settings, actions, draft, isBlue, readyCheck, setReadyCheck } = useDraftHost(setNavigationContent, spectators, update, true);
 
     // auto start game when both ready checks are true
@@ -19,8 +18,8 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
         setReadyCheck(prevReady => [true, prevReady[1]]);
     }
 
-    const undoWithRequest = () => {
-        // promptUndoRequest(() => send({ type: 'UNDO', state: draft.p }));
+    const undo = () => {
+		promptUndoRequest(() => send({ type: 'UNDO', state: draft.p }));
     }
 
     useEffect(() => {
@@ -38,6 +37,9 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
             case 'UNDO':
                 confirmUndoRequest(actions.undo);
                 break;
+            case 'CONFIRM_UNDO':
+                actions.undo();
+                break;
             case 'TIMER_TOGGLE_REQUEST':
                 confirmTimerToggleRequest(message.content, () => settings.setOn(message.content));
                 break;
@@ -51,7 +53,7 @@ const MultiplayerDraft = ({ setNavigationContent, spectators, connection, setMes
         <main className="draft--wrapper">
             <div className="pickban-select--wrapper">
                 <TeamPickDisplay currentPick={draft.currentPick} teamRenderData={draft.blue} side="blue" />
-                <ChampionSelectionDisplay {...draft} {...actions} lockin={lockinWithReadyCheck} multiplayer settings={{
+                <ChampionSelectionDisplay {...draft} {...actions} lockin={lockinWithReadyCheck} undo={undo} multiplayer settings={{
                     ...settings,
                     isBlue,
                     type: 'HOST',

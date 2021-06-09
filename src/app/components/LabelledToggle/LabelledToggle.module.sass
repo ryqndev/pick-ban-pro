@@ -1,0 +1,31 @@
+.wrapper
+    padding: 5px 0px
+    height: 20px
+
+    &>input
+        position: absolute
+        opacity: 0
+        width: 0
+        pointer-events: none
+        
+    &>label 
+        padding: 5px 10px
+        vertical-align: middle
+        color: grey
+        cursor: pointer
+        border: 1px solid var(--bg-primary-light)
+        transition: border-color 350ms, color 350ms
+
+        &:nth-child(2)
+            border-top-left-radius: 20px
+            border-bottom-left-radius: 20px
+            padding-left: 15px
+
+        &:nth-child(4)
+            border-top-right-radius: 20px
+            border-bottom-right-radius: 20px
+            padding: 5px 18px 5px 10px
+
+    &>label.active
+        color: var(--accent-primary)
+        border-color: var(--accent-primary)
