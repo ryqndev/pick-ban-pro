@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import useDraftClient from '../../controller/hooks/useDraftClient';
 import {
 	promptUndoRequest,
@@ -14,7 +13,6 @@ const ChallengerDraft = ({ send, ...props }) => {
         send,
 		...props,
 	});
-	// const [confirmationHash,  .setConfirmationHash] = useState(null);
 
 	const lockin = () => {
 		if (draft.p === -1) send({ type: 'READY_UP' });

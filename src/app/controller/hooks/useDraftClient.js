@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData';
-import { confirmUndoRequest } from '../libs/sweetalert';
+import { confirmTimerToggleRequest, confirmUndoRequest } from '../libs/sweetalert';
 
 const useDraftClient = ({ type, setNavigationContent, peerID, connect, send, message }) => {
     const { id } = useParams();
@@ -37,6 +37,12 @@ const useDraftClient = ({ type, setNavigationContent, peerID, connect, send, mes
         });
     }, [send]);
 
+    const timerRequest = useCallback((message) => {
+        confirmTimerToggleRequest(message.content, () => {
+            send({type: 'CONFIRM_TIMER_TOGGLE_REQUEST', content: message.content});
+        });
+    }, [send]);
+
     /** connect to host as :type  */
     useEffect(() => {
         if (peerID) connect(id, type);
@@ -46,8 +52,9 @@ const useDraftClient = ({ type, setNavigationContent, peerID, connect, send, mes
         if (!message && !message?.type) return;
         if (message.type === 'STATE_UPDATE') updateState(message);
         if (message.type === 'UNDO') undoRequest(message);
+        if (message.type === 'TIMER_TOGGLE_REQUEST') timerRequest(message);
 
-    }, [message, undoRequest, updateState]);
+    }, [message, undoRequest, timerRequest, updateState]);
 
     useEffect(() => {
         setNavigationContent({ type: 'draft', limit, time, end, names, side: currentPick.side });
