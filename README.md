@@ -1,11 +1,12 @@
 # pick-ban-pro
 
-
-## Namings
-
-### players
-
-A player can have different values in different contexts. The general classification within the game concepts itself splits the players into two teams: red and blue. On a technical level, however, when using peer-to-peer connections, I split the players into a host and client classification. The best way to look at it is the game classification \[red/blue\] will be managed by data passed between components and technical classification \[host/client\] will be written into separate components.
+# On the list
+- feedback on draft changes (i.e. undo request was denied)
+- developing the explore tab to have more competitions
+- e2e testing + ci/cd
+- support patch updates
+- disable champions
+- champion data for picking
 
 ## Thanks
 
