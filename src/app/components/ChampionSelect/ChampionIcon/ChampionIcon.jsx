@@ -3,7 +3,12 @@ import NoneIcon from '../../../assets/square.png';
 import './ChampionIcon.scss';
 
 const ChampionIcon = ({item: {name, id}, select, disabled}) => {
-    const imageLink = id !== 'none' ? require('../../../assets/champion/' + id + '.png').default : NoneIcon;
+    let imageLink;
+    try{
+        imageLink = id !== 'none' ? require('../../../assets/champion/' + id + '.png').default : NoneIcon;
+    }catch(err){
+        imageLink = NoneIcon;
+    }
 
     const handleClick = (e) => {
         select(id);
