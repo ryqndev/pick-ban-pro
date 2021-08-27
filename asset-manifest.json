@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.8738506a.chunk.css",
-    "main.js": "/static/js/main.a50ff9e5.chunk.js",
-    "main.js.map": "/static/js/main.a50ff9e5.chunk.js.map",
+    "main.js": "/static/js/main.163f56fd.chunk.js",
+    "main.js.map": "/static/js/main.163f56fd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.379c56d3.js",
     "runtime-main.js.map": "/static/js/runtime-main.379c56d3.js.map",
     "static/css/2.0e713134.chunk.css": "/static/css/2.0e713134.chunk.css",
@@ -15,6 +15,7 @@
     "static/media/Aatrox.png": "/static/media/Aatrox.ec006449.png",
     "static/media/Ahri.png": "/static/media/Ahri.efbf0d40.png",
     "static/media/Akali.png": "/static/media/Akali.52069090.png",
+    "static/media/Akshan.png": "/static/media/Akshan.3cb8ec31.png",
     "static/media/Alistar.png": "/static/media/Alistar.11b936be.png",
     "static/media/Amumu.png": "/static/media/Amumu.2615f4eb.png",
     "static/media/Anivia.png": "/static/media/Anivia.82541a9f.png",
@@ -181,6 +182,6 @@
     "static/css/2.0e713134.chunk.css",
     "static/js/2.381a860f.chunk.js",
     "static/css/main.8738506a.chunk.css",
-    "static/js/main.a50ff9e5.chunk.js"
+    "static/js/main.163f56fd.chunk.js"
   ]
 }
