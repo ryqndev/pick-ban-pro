@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import usePeer from './controller/hooks/usePeer';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Menu, Create, TournamentList, SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft } from './pages';
+import { Menu, Create, ProAnalyst, SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft } from './pages';
 import './styles/main.scss';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Menu />} />
 				<Route path="menu" element={<Menu />} />
-				<Route path="list/*" element={<TournamentList />} />
+				<Route path="list/*" element={<ProAnalyst />} />
 				<Route path="create" element={<Create challenge={false} {...peer} />} />
 				<Route path="create/challenge" element={<Create challenge {...peer} />} />
 				<Route path="challenger/:id" element={<ChallengerDraft {...peer} setNavigationContent={setNavigationContent} />} />

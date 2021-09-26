@@ -1,0 +1,57 @@
+.container {
+    display: grid;
+    grid-template-columns: 80px 1fr 420px;
+    column-gap: 20px;
+    padding: 20px 20px 80px;
+
+    &>h1.title {
+        margin: 0;
+        grid-column: 2/4;
+        font-size: 10em;
+        padding: 0px 10px 20px;
+        color: var(--accent-secondary);
+        font-family: 'Hyperwave';
+    }
+
+    &>.list {
+        display: grid;
+        row-gap: 15px;
+
+        &>.list-item {
+            display: grid;
+            grid-template-columns: 150px 150px 3fr 100px;
+            column-gap: 20px;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 1.2em;
+            text-align: left;
+            text-decoration: none;
+            background-color: #151515;
+
+            &.header {
+                background-color: gold;
+                color: black;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            &.selected {
+                background-color: #252525;
+            }
+        }
+    }
+
+    &>aside {
+        &>.tournament-quick-view {
+            min-height: 0;
+            height: auto;
+            border-radius: 4px;
+            background-color: #252525;
+            padding: 60px 80px;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}

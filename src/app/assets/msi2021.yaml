@@ -1,0 +1,363 @@
+- name: MSI 2021
+  stages:
+    - name: Knockout Stage
+      days:
+        - date: May 6, 2021
+          games:
+            - blue: DWG KIA
+              red: Cloud 9
+              draft: bg1w1s246j3ip-325n5m2h671m1p6k39343y4615
+              winner: blue
+            - blue: Gillette Infinity
+              red: DetonatioN FocusMe
+              draft: 1s3yp-bg1wbx251m4146du2c4-ocdtobemedc-3c
+              winner: blue
+            - blue: Royal Never Give Up
+              red: Pentanet.GG
+              draft: 2v6kp-3i3y321w1sbg4133661m5n2-259-1k466-
+              winner: blue
+            - blue: Pentanet.GG
+              red: Unicorns of Love
+              draft: 6k251k661si-3241c-1w6724341me-3i46ec5n1p
+              winner: red
+            - blue: fastPay Wildcats
+              red: paiN Gaming
+              draft: 3b6j1m32bg411sem251wc-i-1p6kd-34eda0ob3e
+              winner: red
+            - blue: MAD Lions
+              red: PSG Talon
+              draft: 1m6j321pp-1w252441i-332h1q341k3n461sd-ob
+              winner: blue
+        - date: May 7, 2021
+          games:
+            - blue: Pentanet.GG
+              red: Royal Never Give Up
+              draft: 6kp-3i321k1w461s252o39412v332-3q2h2y1ped
+              winner: red
+            - blue: Unicorns of Love
+              red: Royal Never Give Up
+              draft: i-p-25bg1w32412-du1c466kemdt1pzxc-345ld-
+              winner: red
+            - blue: Gilette Infinity
+              red: DWG KIA
+              draft: 24bg1sp-1w25oc322wbx6k3q33672hd-e-46c-ob
+              winner: red
+            - blue: DetonatioN FocusMe
+              red: Cloud9
+              draft: bg1w1sp-6j1m25322446413iem67ob4-2h3yc-1p
+              winnter: blue
+            - blue: fastPay Wildcats
+              red: MAD Lions
+              draft: bg676k1s1wp-253341i-2h2yed1p461m34d-1k1q
+              winner: red
+            - blue: paiN Gaming
+              red: PSG Talon
+              draft: 323b1mc-bg4kem1w41i-3c2h132c1ked46d-176k
+              winner: red
+        - date: May 8, 2021
+          games:
+            - blue: Royal Never Give Up
+              red: Unicorns of Love
+              draft: 1mi-6j25p-411w3224331s2hm-3i6k461kbx1p12
+              winner: blue
+            - blue: Unicorns of Love
+              red: Pentanet.GG
+              draft: i-1k1w32ocbg2546p-3i41a05lemc-33dt3-341s
+              winner: red
+            - blue: DWG KIA
+              red: DetonatioN FocusMe
+              draft: 1m6j1sbg1w32p-25i-duc-3y6kob461kem15346-
+              winner: blue
+            - blue: Cloud9
+              red: Gilette Infinity
+              draft: 461s3y67321wp-41251mi-15dt1pd-c-em66bg34
+              winner: blue
+            - blue: MAD Lions
+              red: paiN Gaming
+              draft: 1m6j3b32251wp-662-ejbg676k171p1k3y1s2o4k
+              winner: blue
+            - blue: PSG Talon
+              red: fastPay Wildcats
+              draft: 6j321s2h251k1m41331wbgp-bx46666k15ejedll
+              winner: blue
+        - date: May 9, 2021
+          games:
+            - blue: Unicorns of Love
+              red: Royal Never Give Up
+              draft: i-32256j1sbg1w1m41duc-p-1p3346em2h341ked
+              winner: red
+            - blue: Unicorns of Love
+              red: Pentanet.GG
+              draft: 256jp-1k461w24331mc-6-41du3n329-2w1pi-2v
+              winner: blue
+            - blue: Royal Never Give Up
+              red: Pentanet.GG
+              draft: 2v6k1m1wp-253233242y2h413i1sed346-3q466u
+              winner: blue
+            - blue: Royal Never Give Up
+              red: Unicorns of Love
+              draft: 1mi-1k25p-411w322433bxc-ed3i1s1q466kd-1p
+              winner: blue
+            - blue: Pentanet.GG
+              red: Unicorns of Love
+              draft: 6k251wp-c-322433413-a01k1mu-6-1p1sob6m8-
+              winner: blue
+            - blue: Pentanet.GG
+              red: Royal Never Give Up
+              draft: 6kp-1s242h321w2533c-6-41du3qi-ed461v1pd-
+              winner: red
+            - blue: Unicorns of Love
+              red: Pentanet.GG
+              draft: 25246-1ww-p-463i33c-41dued1p3qd-u-3d341s
+              winner: red
+        - date: May 10, 2021
+          games:
+            - blue: MAD Lions
+              red: fastPay Wildcats
+              draft: 1mp-1k1w25321s2y41i-331pocob34c-2h2-3y6-
+              winner: red
+            - blue: PSG Talon
+              red: paiN Gaming
+              draft: 3b1mc-1w4kp-2541ocbgej33ed6kd-13463i3y7-
+              winner: blue
+            - blue: fastPay Wildcats
+              red: PSG Talon
+              draft: bg6j1w1mp-25412yi-2-1p2hc-edem3y7g46333i
+              winner: red
+            - blue: paiN Gaming
+              red: MAD Lions
+              draft: 6j3bi-bg413y1m1w6kp-c-4613291q2h325m3q67
+              winner: red
+            - blue: paiN Gaming
+              red: fastPay Wildcats
+              draft: 6jp-411w1s3b251m2ybg3y1p463332a0bx66ob1h
+              winner: blue
+            - blue: PSG Talon
+              red: MAD Lions
+              draft: 6j1m1sbg323y1w6k41i-2hp-341q1kc-3i3qe-33
+              winner: red
+        - date: May 11, 2021
+          games:
+            - blue: Cloud 9
+              red: DWG KIA
+              draft: 46bg32p-1m6j1s411w25i-332h1kbxob3ic-34ed
+              winner: blue
+            - blue: DetonatioN FocusMe
+              red: Gillette Infinity
+              draft: bg1mdu1w3yp-251s41i-462yd-edob343q7-c-33
+              winner: blue
+            - blue: DWG KIA
+              red: Gillette Infinity
+              draft: bg6j1s32p-1m411w332546i-2h6kob1k3yem1p3i
+              winner: blue
+            - blue: Cloud 9
+              red: DetonatioN FocusMe
+              draft: 466j6-1s251mp-1wi-4133c-ed1k6k3i3ylle-ob
+              winner: blue
+            - blue: DetonatioN FocusMe
+              red: DWG KIA
+              draft: 6j6-bgp-321m254146i-1k332h34c-ed3nob3q4d
+              winner: red
+            - blue: Gillette Infinity
+              red: Cloud 9
+              draft: 1s461m25673yp-32bgbx331w343i1p136k3q15e-
+              winner: red
+    - name: Rumble Stage
+      days:
+        - date: May 14, 2021
+          games:
+            - blue: DWG KIA
+              red: Royal Never Give Up
+              draft: 25246-1ww-p-463i33c-41dued1p3qd-u-3d341s
+              winner: blue
+            - blue: MAD Lions
+              red: Pentanet.GG
+              draft: 1m6jbgp-321w254133i-6k2-2h34c-1s27obe-1p
+              winner: blue
+            - blue: PSG Talon
+              red: DWG KIA
+              draft: 1m6kbg1s9-6j1w41251p466-i-343933121v2h3-
+              winner: blue
+            - blue: Royal Never Give Up
+              red: Cloud 9
+              draft: 6jbg1s326k1m2541p-46i-e-1p333yc-2h2cdted
+              winner: blue
+            - blue: PSG Talon
+              red: Pentanet.GG
+              draft: 6j461m32bg33251si-6k41p-2hc-ob3-em271p1i
+              winner: red
+            - blue: Cloud 9
+              red: MAD Lions
+              draft: 1s1m246k6-462541p-bgej333i1kob6ue-7eed6m
+              winner: red
+        - date: May 15, 2021
+          games:
+            - blue: Pentanet.GG
+              red: Royal Never Give Up
+              draft: 461m321sbg6j1w416kbx33253417i-c-2he-5ned
+              winner: red
+            - blue: DWG KIA
+              red: Cloud 9
+              draft: 6kp-1m32336u1s252oej39171wob6-1p3ie-2-ed
+              winner: blue
+            - blue: MAD Lions
+              red: Royal Never Give Up
+              draft: bg461m321s336j25m-1w6739341p3i1k6k3qe-17
+              winner: red
+            - blue: Cloud 9
+              red: PSG Talon
+              draft: 1m6j4132251wp-bg2-6667ej6k3i341s461p1q4-
+              winner: blue
+            - blue: Pentanet.GG
+              red: DWG KIA
+              draft: 461m32i-bg6j25411s34obp-bx33c-1h2h2o392c
+              winner: blue
+            - blue: MAD Lions
+              red: PSG Talon
+              draft: 6kbg1m32edp-1s41251w463i6j2ha01k33duc-3y
+              winner: red
+        - date: May 16, 2021
+          games:
+            - blue: Cloud 9
+              red: Pentanet.GG
+              draft: 1m6jbg6k1s251w4133i-2hp-1q1ked2c463i343-
+              winner: red
+            - blue: Royal Never Give Up
+              red: PSG Talon
+              draft: 466k321sbg1m2533p-6j67a0ed6-1pe-3q3i3y2b
+              winner: blue
+            - blue: DWG KIA
+              red: MAD Lions
+              draft: bg6k1m256j324133i-1w2hp-ed2c1k3-1s46343y
+              winner: red
+            - blue: Royal Never Give Up
+              red: Pentanet.GG
+              draft: bg6j321m6k2h413325p-1si-c-46em1p343yob2q
+              winner: red
+            - blue: Cloud 9
+              red: DWG KIA
+              draft: p-6k1m25bg1s1w3i2432332hed6u1341i-1k272c
+              winner: red
+            - blue: PSG Talon
+              red: MAD Lions
+              draft: 6j1m6k1s32bg254133du2h1wed1q1k3i4634151p
+              winner: blue
+        - date: May 17, 2021
+          games:
+            - blue: PSG Talon
+              red: Royal Never Give Up
+              draft: 6k2532p-bg1m1w4133du2h1sob2y1k2-oc3i3y4-
+              winner: blue
+            - blue: MAD Lions
+              red: DWG KIA
+              draft: 1mbg1k32676k1s4125du1w332h461pob7e34dt3y
+              winner: red
+            - blue: Cloud 9
+              red: Royal Never Give Up
+              draft: 6k2532p-bg1m1s1w33412hdu24462-1p3i3y2y4-
+              winner: blue
+            - blue: Pentanet.GG
+              red: MAD Lions
+              draft: 6k1mp-1s32251w2y41bgej2h6-46121p3i6ue-3j
+              winner: blue
+            - blue: DWG KIA
+              red: PSG Talon
+              draft: bg6j326k251m411sp-1w33duob2h3i4-dt3y46ed
+              winner: red
+            - blue: Pentanet.GG
+              red: Cloud 9
+              draft: 6k461sbg321m2541336j67oc6-3i3qlle-ob34i-
+              winner: blue
+        - date: May 18, 2021
+          games:
+            - blue: Royal Never Give Up
+              red: DWG KIA
+              draft: 6jbg3y32ob1s1m4125p-i-332h6k4-15e-46em34
+              winner: red
+            - blue: Pentanet.GG
+              red: PSG Talon
+              draft: 326jbg1sp-6-251m4146du1wdtedc-3i2h345l15
+              winner: red
+            - blue: Royal Never Give Up
+              red: MAD Lions
+              draft: 3y1sbg1m6j25326k1wp-4641673i4-332hc-341q
+              winner: blue
+            - blue: PSG Talon
+              red: Cloud 9
+              draft: 6kbg1s326j1m41i-251w6u2hem3y337-ed1k3-7e
+              winner: red
+            - blue: DWG KIA
+              red: Pentanet.GG
+              draft: bg1m322h6-6j416k25p-335l3i6uedob461s3y34
+              winner: blue
+            - blue: MAD Lions
+              red: Cloud 9
+              draft: 1m32251sbg6j6k41p-1wdubx1q1i2h33c-3idt13
+              winner: blue
+    - name: Semifinals
+      days:
+        - date: May 21, 2021
+          games:
+            - blue: Royal Never Give Up
+              red: PSG Talon
+              draft: 3y32bg6k1k1m1s2541p-i-464-3-em332h5l1p7g
+              winner: blue
+            - blue: PSG Talon
+              red: Royal Never Give Up
+              draft: 6k3y321m1sbg2541p-i-3346152h3iem5l1ked34
+              winner: blue
+            - blue: Royal Never Give Up
+              red: PSG Talon
+              draft: 3y32bg6k1k1m1s25i-p-41332h3-em467e1p5l34
+              winner: blue
+            - blue: PSG Talon
+              red: Royal Never Give Up
+              draft: 6k3y321m1sbg2533p-i-em41d-1k3-3i46ed151p
+              winner: red
+        - date: May 22, 2021
+          games:
+            - blue: DWG KIA
+              red: MAD Lions
+              draft: 6k1m1s6jbgp-3225411w673y1p33e-1q3illecem
+              winner: blue
+            - blue: MAD Lions
+              red: DWG KIA
+              draft: 1m6kp-bg326j1s41252ydu464-3y1p2h335led34
+              winner: blue
+            - blue: DWG KIA
+              red: MAD Lions
+              draft: 6k1m1s67bgp-32252h1w3341e-ed3y4-1p463i1q
+              winner: red
+            - blue: DWG KIA
+              red: MAD Lions
+              draft: bg1m6k6732p-1s41251wi-463y1p3id-2hedem34
+              winner: blue
+            - blue: MAD Lions
+              red: DWG KIA
+              draft: 1mbgp-1s676k25i-1w412h3y4-e-1pemc-ed463i
+              winner: red
+    - name: Grand Finals
+      days:
+        - date: May 23, 2021
+          games:
+            - blue: Royal Never Give Up
+              red: DWG KIA
+              draft: 3ybg6j1m321s6ki-p-2541e-1p3q1k342h27332c
+              winner: blue
+            - blue: DWG KIA
+              red: Royal Never Give Up
+              draft: bg3y6k6j321m1s2541p-i-3ied333qd-1p2h2tem
+              winner: blue
+            - blue: Royal Never Give Up
+              red: DWG KIA
+              draft: 3y1m6j1s326k25bg664146p-33151pe-1k2hd-3q
+              winner: blue
+            - blue: DWG KIA
+              red: Royal Never Give Up
+              draft: bg3y6k6j321s1m274124i-254633ed1p2h7eemd-
+              winner: blue
+            - blue: Royal Never Give Up
+              red: DWG KIA
+              draft: 3y1m6j1sbg6k25321w411k6733edem463i272h7e
+              winner: blue
+

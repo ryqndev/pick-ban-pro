@@ -1,18 +1,25 @@
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import ChampionsContext from './controller/contexts/ChampionsContext';
 import useDDragonStaticAssets from './controller/hooks/useDDragonStaticAssets';
 import App from './App.jsx';
 
-const AppWrapper = () => {
-    const { championsList, patchList, patch } = useDDragonStaticAssets();
+const queryClient = new QueryClient();
 
-    return (
-        <ChampionsContext.Provider value={{ championsList, patchList, patch }}>
-            <Router basename={process.env.PUBLIC_URL}>
-                <App />
-            </Router>
-        </ChampionsContext.Provider>
-    )
-}
+const AppWrapper = () => {
+	const { championsList, patchList, patch } = useDDragonStaticAssets();
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<ChampionsContext.Provider
+				value={{ championsList, patchList, patch }}
+			>
+				<Router basename={process.env.PUBLIC_URL}>
+					<App />
+				</Router>
+			</ChampionsContext.Provider>
+		</QueryClientProvider>
+	);
+};
 
 export default AppWrapper;

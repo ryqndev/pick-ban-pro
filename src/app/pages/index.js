@@ -1,14 +1,14 @@
 import Landing from './Landing';
 import Menu from './Menu';
 import Create from './Create';
-import TournamentList from './TournamentList';
+import ProAnalyst from './ProAnalyst';
 import {SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft} from './Draft';
 
 export {
     Landing,
     Menu,
     Create,
-    TournamentList, 
+    ProAnalyst, 
     SpectatorDraft,
     ChallengerDraft,
     SinglePlayerDraft,
