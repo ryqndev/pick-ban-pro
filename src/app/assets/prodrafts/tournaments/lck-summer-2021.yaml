@@ -20,7 +20,7 @@ teams:
 stages:
   - name: Group Stage
     start: 2021-06-09
-    end: 2021-08-01
+    end: 2021-08-15
     type: list
     games:
       - date: Week 1
@@ -1443,4 +1443,119 @@ stages:
                 draft: 37bxd-m-322h1m1s7-ej7g3i2y665-2939bg3n2o
                 winner: blue
                 patch: 11.15
-
+  - name: Playoffs
+    start: 2021-08-18
+    end: 2021-08-28
+    type: list
+    games:
+      - date: Quarterfinals
+        games: 
+          - type: series
+            teams: [7, 0]
+            games:
+              - blue: 7
+                red: 0
+                draft: 5-6k463i1s1m3n32d-2h4dc-291cbx2d3537136i
+                winner: red
+                patch: 11.16
+              - blue: 7
+                red: 0
+                draft: 1s6k463i321m3nd-3513ejm-bg5l4d6i2h1c2d15
+                winner: blue
+                patch: 11.16
+              - blue: 7
+                red: 0
+                draft: 1s3i461m32ej3nd-5-132hc-296iedbxm-412d4k
+                winner: blue
+                patch: 11.16
+              - blue: 0
+                red: 7
+                draft: 13463n1s3i321m24ej3q2hbg5-6k4a7-2d6i35ob
+                winner: red
+                patch: 11.16
+          - type: series
+            teams: [9, 8]
+            games:
+              - blue: 9
+                red: 8
+                draft: 133i1m1s1wd-6i463n2d7g6kej2932bgbxm-2hc-
+                winner: blue
+                patch: 11.16
+              - blue: 8
+                red: 9
+                draft: 3i1s7g1m2hd-3n6i7-46ob2d32m-bx67ej66bg5l
+                winner: red
+                patch: 11.16
+              - blue: 8
+                red: 9
+                draft: 3i1m7g1s7-d-6i242hbgej323nob136k462ded1p
+                winner: red
+                patch: 11.16
+      - date: Semifinals
+        games: 
+          - type: series
+            teams: [2, 7]
+            games:
+              - blue: 2
+                red: 7
+                draft: 133q3n1sej7-3i241m5-37411c2h671q2dd-em33
+                winner: blue
+                patch: 11.16
+              - blue: 7
+                red: 2
+                draft: 3q135-ej3n1m1s3i377-2d2h293j9q4-d-a0em1c
+                winner: red
+                patch: 11.16
+              - blue: 7
+                red: 2
+                draft: 3q133iej372d1s463n66bg4d1mm-7-bx324kedem
+                winner: red
+                patch: 11.16
+          - type: series
+            teams: [4, 9]
+            games:
+              - blue: 4
+                red: 9
+                draft: 6ibx3im-4-2h1s1m32ejbg24d-5lec1cem7g2d13
+                winner: blue
+                patch: 11.16
+              - blue: 9
+                red: 4
+                draft: 133i7g6i1m1sd-ejbgm-2h1n463q2d1p3y5-onob
+                winner: blue
+                patch: 11.16
+              - blue: 9
+                red: 4
+                draft: 133i7g6i1m1sd-ejbg24463q2h2dbx5-1n665l4k
+                winner: blue
+                patch: 11.16
+              - blue: 4
+                red: 9
+                draft: 3i1m6i1s4-134kd-2d3n4d2-ejbxm-3229dudtc-
+                winner: red
+                patch: 11.16
+      - date: Finals
+        games: 
+          - type: series
+            teams: [2, 9]
+            games:
+              - blue: 2
+                red: 9
+                draft: 131sej3i1m37d-6i7gm-4kon5-bx67272h5l1c29
+                winner: blue
+                patch: 11.16
+              - blue: 2
+                red: 9
+                draft: ej1s1m3i7gd-4k6ion372h7-5-294-bx1c122-1v
+                winner: blue
+                patch: 11.16
+              - blue: 9
+                red: 2
+                draft: 4k1s37ejd-3i6i1m3n2d7g1229m-bg67bx665lem
+                winner: blue
+                patch: 11.16
+              - blue: 9
+                red: 2
+                draft: 4k1s37ej3n13d-3i1c6i27m-294-bx2h7-325l43
+                winner: red
+                patch: 11.16

@@ -1,0 +1,1491 @@
+{
+  "name": "LCS Summer 2021",
+  "path": "lcs-summer-2021",
+  "full-name": "League Championship Series 2021 Summer",
+  "start": "2021-06-04T00:00:00.000Z",
+  "end": "2021-08-29T00:00:00.000Z",
+  "region": "NA",
+  "league": "LCS",
+  "teams": [
+    "100 Thieves",
+    "Cloud 9",
+    "CLG",
+    "Dignitas",
+    "Evil Geniuses",
+    "Flyquest",
+    "Golden Guardians",
+    "Immortals",
+    "Team Liquid",
+    "TSM"
+  ],
+  "stages": [
+    {
+      "name": "Group Stage",
+      "start": "2021-06-04T00:00:00.000Z",
+      "end": "2021-08-01T00:00:00.000Z",
+      "type": "list",
+      "games": [
+        {
+          "date": "Week 1",
+          "games": [
+            {
+              "blue": 8,
+              "red": 9,
+              "draft": "326j6k1mon251s1w1k2917i-5-2h1p33em2yed6i",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 4,
+              "red": 3,
+              "draft": "bx25bg6kon1m1w1s2941332h3i15463q17i-ob2c",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 6,
+              "red": 1,
+              "draft": "326jbg6k1mon251s41i-2h1w1pc-1733ob3y466i",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 0,
+              "red": 7,
+              "draft": "1k1m1s6j32on251wi-2917333qbx1p133i2h1qob",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 5,
+              "red": 2,
+              "draft": "6k6j1m2532bgon411s6i292h172c5l1w15obedu-",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 9,
+              "red": 4,
+              "draft": "321kon1m1s6i256k1w34462d29416j33bgi-2h66",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 3,
+              "red": 5,
+              "draft": "6jbx6k1m25on1w1s3229obbg1k346i245-2h3ied",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 1,
+              "red": 0,
+              "draft": "1w2567zxbgon1m4632242h5l133y1ked5-411i17",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 2,
+              "red": 8,
+              "draft": "396k6j1s2d25on1w321m241529bgf-672h5mc-i-",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 7,
+              "red": 6,
+              "draft": "461m326j25on1w1s41i-ob2hc-1k332y2466bg3q",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 3,
+              "red": 0,
+              "draft": "6jbx6k1s251m1won17292h5-3i321kbg2o3y3e5l",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 4,
+              "red": 5,
+              "draft": "bg25ed1m32on1w1s29i-ob17332c2h5-3ya0dt1q",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 1,
+              "red": 8,
+              "draft": "3225bg6k151mon1s2941332hi-1wob1p2y5-ed39",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 9,
+              "red": 6,
+              "draft": "326jon1m1sbg25411wi-1p1k46ob2hem335l6i6k",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 2,
+              "red": 7,
+              "draft": "1w6kon1m6j321s25bg29176613ob5-3i1poc156i",
+              "winner": "red",
+              "patch": 11.11
+            }
+          ]
+        },
+        {
+          "date": "Week 2",
+          "games": [
+            {
+              "blue": 9,
+              "red": 0,
+              "draft": "176i1mi-1kon251s1w6k2741bg3467zx2hdu5l2c",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 8,
+              "red": 3,
+              "draft": "1m39on6j17251w291s6ibx2cbg2h336k1k15emdt",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 4,
+              "red": 7,
+              "draft": "17on251m1wbg1s321k292c6i33272h67395-c-1p",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 6,
+              "red": 2,
+              "draft": "6k1wbg25171k1mon1s2y3229245l4j2c2h673y3q",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 5,
+              "red": 1,
+              "draft": "1mon1732391k1w6j67296i5-2c3y1qed3i1sg-7-",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 0,
+              "red": 6,
+              "draft": "32176i6j1mon1w25bg1s416633ob2h461k272ced",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 5,
+              "red": 9,
+              "draft": "1m6j17on322c391k1w252oi-ob1p1s332h6ied6k",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 8,
+              "red": 4,
+              "draft": "1mbg1s2517391w2c5-156i29bx46i-1k7e2h41c-",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 1,
+              "red": 2,
+              "draft": "6k1w32251m6jon1s295-392hbg3q66153y2oi-2y",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 7,
+              "red": 3,
+              "draft": "bxon17251mi-1w395-32bg2h6i291k41a01s3i46",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 6,
+              "red": 5,
+              "draft": "on1m393217251s6j2c1w2967c05-7-6i2ydtob46",
+              "winner": "blue",
+              "patch": 11.11
+            },
+            {
+              "blue": 7,
+              "red": 8,
+              "draft": "1525391k171won5-32bg662c3i671s335l6k2734",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 2,
+              "red": 9,
+              "draft": "1k1s25291w1m2c6j6766bg46133915ed5-1q277-",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 3,
+              "red": 1,
+              "draft": "25bx6j3217395-on292c2h1sa02y411w3-436i2-",
+              "winner": "red",
+              "patch": 11.11
+            },
+            {
+              "blue": 4,
+              "red": 0,
+              "draft": "171m391s322con1w462925416k33i-6i2h3ic-1p",
+              "winner": "red",
+              "patch": 11.11
+            }
+          ]
+        },
+        {
+          "date": "Week 3",
+          "games": [
+            {
+              "blue": 1,
+              "red": 4,
+              "draft": "1w3929171son2c1k6j32675-2-271m7-3-ob2yd-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 5,
+              "red": 8,
+              "draft": "2cob1739bg6ion1w155-2932ed6k2h1s335l7-d-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 7,
+              "red": 9,
+              "draft": "1k1w6k2c3917on6j1s292y67dt34c01p3i379q7-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 3,
+              "red": 6,
+              "draft": "6k3917on6j2c1w6i1m4629i-5l24ob2y2hbxbg3n",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 0,
+              "red": 2,
+              "draft": "6k17on391k2c1sbx3-1w32obbg3n1m5-72671pdt",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 1,
+              "red": 7,
+              "draft": "bgon1w2c325-17i-1k291m332-373i2y271s3n6i",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 4,
+              "red": 2,
+              "draft": "17bgbx1kon6j1s3-i-5-2c72291m32156oduemdt",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 9,
+              "red": 3,
+              "draft": "bx1k17391s2c1w6k3n34292h5li-dt1m6i335-46",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 5,
+              "red": 0,
+              "draft": "2c6i17on32ob396j5-2o1s371q3i2-1p1k35edd-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 6,
+              "red": 8,
+              "draft": "391m15ob171s2c1w326i296k2hbg5-on335l1k4k",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 3,
+              "red": 2,
+              "draft": "6k1w3-39on6i171sbx5-29335l7-2h2cobc-153j",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 0,
+              "red": 8,
+              "draft": "6k17156j391k1s2c1w3nob6i41bgbx32291v1m5l",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 9,
+              "red": 1,
+              "draft": "on1w2c1k176j39295-2o2y335l7-1p133i1s343q",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 5,
+              "red": 7,
+              "draft": "1won332c325-17296i1si-27392hbg9q1k5l5ndt",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 6,
+              "red": 4,
+              "draft": "on392c175-291w6j67326i1k1m7-5l4627obdt6k",
+              "winner": "red",
+              "patch": 11.12
+            }
+          ]
+        },
+        {
+          "date": "Week 4",
+          "games": [
+            {
+              "blue": 8,
+              "red": 4,
+              "draft": "1k396k176i321s6j1mon295-5ld-2h7-3-3567ee",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 3,
+              "red": 0,
+              "draft": "6j6i175-bx391sob1w1mon46bg32i-2941a02h6k",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 1,
+              "red": 6,
+              "draft": "175-1son1k2c6ibxob1w333ni-2h3218c-6k2946",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 2,
+              "red": 7,
+              "draft": "1wbx1k1s6ionob175-723-i-41bg39335l6kdt3i",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 9,
+              "red": 5,
+              "draft": "2c1kob39173i1won1s5-1p332hedbg7-275l29i-",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 8,
+              "red": 2,
+              "draft": "bx39obon3-171s5-i-322c3jed15bg6o1m3567dt",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 3,
+              "red": 5,
+              "draft": "17bxon5-6j2c1m6i1w3n1s332hedbgob1k5l29i-",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 1,
+              "red": 0,
+              "draft": "ob5-6jon1w2c1sbx2y32671m46276i3q33395n7g",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 9,
+              "red": 4,
+              "draft": "2c391m5-6j1w2y3n6i2917332h7-5l6ti-7g1s6k",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 7,
+              "red": 6,
+              "draft": "32171s1w39bg2c6ibx5-1k27i-6k6j1mob295ldt",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 3,
+              "red": 4,
+              "draft": "6jbx2c395-171m3n6i1w1sobbg412hd-i-29dt3-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 0,
+              "red": 7,
+              "draft": "6ibx1k2c1w5-1son293n6j17372-6k3iob467g13",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 9,
+              "red": 8,
+              "draft": "2c1kon2y171w5-1s39337g323i5l1m3n2-291043",
+              "winner": "blue",
+              "patch": 11.12
+            },
+            {
+              "blue": 5,
+              "red": 6,
+              "draft": "5-2c1mbgon1s6ibxob1w1k3n326ki-462y292hc-",
+              "winner": "red",
+              "patch": 11.12
+            },
+            {
+              "blue": 1,
+              "red": 2,
+              "draft": "bx5-1monob321s3-i-3n1k72676iem2h6odudt33",
+              "winner": "blue",
+              "patch": 11.12
+            }
+          ]
+        },
+        {
+          "date": "Week 5",
+          "games": [
+            {
+              "blue": 8,
+              "red": 0,
+              "draft": "ob5-6j2c2y1k1son6ibgej323n332dd-2h157-17",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 5,
+              "red": 4,
+              "draft": "3n172c371k5-1sejbgon32ob33d-2h2y6i7-dted",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 3,
+              "red": 9,
+              "draft": "2yob1k2c6i395-1sbx29ed332h7g5lon7-c-1m46",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 1,
+              "red": 7,
+              "draft": "1m5-6ionobbg2c1w1k1sbx33c-3218i-413n3-6k",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 2,
+              "red": 6,
+              "draft": "6i5-3n1s1konbx1m2y5l2c7-bpbg15dt411cd-em",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 9,
+              "red": 7,
+              "draft": "2c5-ob1konbg6ii-1m1s3nu-bx3i176k33412h4k",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 2,
+              "red": 4,
+              "draft": "6i5-bg1s1kbxonob3nbp41i-3-7-3q2c6k337g5l",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 8,
+              "red": 1,
+              "draft": "obbgon5-1s2c1k3nbxej5ldt151m2d6k6i7g1cll",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 3,
+              "red": 6,
+              "draft": "1k5-6i1s6k291mbx3n2y2c46ej4-327-i-dudt33",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 0,
+              "red": 5,
+              "draft": "1s5-1kbx6i1m2con6k3n463241bg295l9-6job33",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 4,
+              "red": 6,
+              "draft": "ob5-bxbg1m3n6i1k2y2ci-7-2h326k17411s335l",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 2,
+              "red": 0,
+              "draft": "175-6i1s2c1kon3nbgbxbpej336k7-461m2h3qed",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 1,
+              "red": 9,
+              "draft": "102c1k5-1s3nonbx6iejbg33ob3i1p1w2y1c7g34",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 8,
+              "red": 5,
+              "draft": "obbg6i5-on2c1k1s3ndudt292y2h35ed337e7-1q",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 3,
+              "red": 7,
+              "draft": "1k5-6i2con1mbg3n6kbx1s322y337-4kc-edob3i",
+              "winner": "red",
+              "patch": 11.13
+            }
+          ]
+        },
+        {
+          "date": "Week 6",
+          "games": [
+            {
+              "blue": 9,
+              "red": 2,
+              "draft": "ob5-bx1k6ibg1s3n321w1m6k6jon332y2h41c-10",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 1,
+              "red": 5,
+              "draft": "1m5-bgon1sbx1k6i3n2c326k7-3934du5m334-2h",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 6,
+              "red": 0,
+              "draft": "2c5-bg1k7-6ion463n2ybx332h32obi-41em6k4d",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 7,
+              "red": 4,
+              "draft": "bg5-2c376kon6i3n1k39i-a033d-c-2hemdudt1s",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 8,
+              "red": 3,
+              "draft": "1m5-bx6i2c1k2yejbg32331c46edon10ob7-1512",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 9,
+              "red": 6,
+              "draft": "ob5-bx1k6ibg1s322y2h3n2c7-5li-onc-1m411c",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 8,
+              "red": 7,
+              "draft": "6k5-1m323i2c1kon6i4kbxi-bg2h7-33c-1p3-37",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 0,
+              "red": 4,
+              "draft": "1k5-obon2c376ibg3n1m7gej33462h1sec2o396k",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 1,
+              "red": 3,
+              "draft": "bg5-1kon2c6i3n1m1w6k461s32bxi-29du2h415l",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 5,
+              "red": 2,
+              "draft": "bxbg3n5-1s1k6i32obon5m2h5l72332c2-7-c-3j",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 8,
+              "red": 6,
+              "draft": "on1k2c5-ob156ibx3nejbg337-6k461c1m103537",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 5,
+              "red": 7,
+              "draft": "3n5-on6k371k6i2cbg321sej334k7-3i2y7g1hed",
+              "winner": "blue",
+              "patch": 11.13
+            },
+            {
+              "blue": 9,
+              "red": 0,
+              "draft": "ob5-2c1k3nbx6ionbg3332ej1w2y461s2-7g10ed",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 1,
+              "red": 4,
+              "draft": "bgon1k5-2cbx3n6ii-6k3id-321i171s1m295ldt",
+              "winner": "red",
+              "patch": 11.13
+            },
+            {
+              "blue": 3,
+              "red": 2,
+              "draft": "1s5-on1kbxbg3n6i322c1m7-41bpa05l2h29c-10",
+              "winner": "blue",
+              "patch": 11.13
+            }
+          ]
+        },
+        {
+          "date": "Week 7",
+          "games": [
+            {
+              "blue": 1,
+              "red": 7,
+              "draft": "bg5-1mon3b136i373nbx332h34677-2y6k1s2cob",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 5,
+              "red": 9,
+              "draft": "bx5-346ibgon13ej3n1s7-d-371m32151kdudtem",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 0,
+              "red": 3,
+              "draft": "135-1mbxon6i3n371sej6k335l1k2h7-4667103x",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 2,
+              "red": 8,
+              "draft": "7-bx671s5-136i3n3237336kon15d-5l2hed1m3i",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 6,
+              "red": 4,
+              "draft": "1337bg5-i-2y6ion6k3nbx1m336j2ha03qem1s27",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 1,
+              "red": 2,
+              "draft": "1s5-1m3ion136i3n6k2-33bxej67d-bgdti-3q6o",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 8,
+              "red": 0,
+              "draft": "on5-bx6i46133n1s321m6k7-3310ej2hbgdudtec",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 7,
+              "red": 9,
+              "draft": "7-5-bg136i2con3nbx371s1ki-3-1m6k2hc-3x2v",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 3,
+              "red": 6,
+              "draft": "bx136i1mon5-373nf-c-3x9q1sedi-1067462c4k",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 5,
+              "red": 4,
+              "draft": "bg5-on6i13bx1s3n1m7-i-d-46a033du412hec3-",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 7,
+              "red": 2,
+              "draft": "1s5-13376kbg6ibx3non2h3-3b6o7-4ki-3q3215",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 8,
+              "red": 9,
+              "draft": "1s5-1k13bx6i323nej67153i2ybg35332h1c4-7g",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 4,
+              "red": 3,
+              "draft": "375-bx6i3xbg3non131md-2y5l2h3-c-29413327",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 0,
+              "red": 5,
+              "draft": "375-136i6k3nonbg1s2-32ej337-672c462hed34",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 1,
+              "red": 6,
+              "draft": "675-bx136i2-6k3n1s2yon37i-3if-332h32bg1m",
+              "winner": "blue",
+              "patch": 11.14
+            }
+          ]
+        },
+        {
+          "date": "Week 8",
+          "games": [
+            {
+              "blue": 1,
+              "red": 0,
+              "draft": "bg373n132-5-on6i1s2y6k7-5lobi-182hbx33ej",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 4,
+              "red": 9,
+              "draft": "2-5-341m7g6i3nej1s6k463qi-3ibx2h103337bg",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 8,
+              "red": 5,
+              "draft": "on2-7-3n5-6i13bg6k27321w331m15bxej2h4kob",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 6,
+              "red": 2,
+              "draft": "13671s5-bg2y6ionbxi-3nd-c-2h33ob3dem6kdt",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 3,
+              "red": 7,
+              "draft": "6k1m3i136i5-onbx2y292h7-1s5l46bgdted3x4k",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 6,
+              "red": 9,
+              "draft": "3i5-ej6ibx3n2yon32bg66337-2-1m1s1kobedd-",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 4,
+              "red": 7,
+              "draft": "135-376k3n1m6ionbgej7-3x33bx3ii-3b1s67d-",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 1,
+              "red": 5,
+              "draft": "bg133n2-6k395-on6i467-bxc-335l3j2hi-dt2i",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 8,
+              "red": 3,
+              "draft": "on321m7-135-6i3nbxejbg332yob4k6k46d-1s4d",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 0,
+              "red": 2,
+              "draft": "375-132-bxbgon1s6i322wd-1pi-7g5mm-2h3q5l",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 6,
+              "red": 8,
+              "draft": "13onbg2y5-6i3nbx6k67i-271m4k1s2hobem1q15",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 0,
+              "red": 7,
+              "draft": "375-bgon136i1s6k3nd-bx3b1m4k465l33obec67",
+              "winner": "red",
+              "patch": 11.14
+            },
+            {
+              "blue": 9,
+              "red": 1,
+              "draft": "13bgon6k3n395-6i2-3ibx3318i-5l7-322h1p3y",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 4,
+              "red": 2,
+              "draft": "bx5-1s3nbg6i1m1332i-2y5ldt357-1o2-d-emon",
+              "winner": "blue",
+              "patch": 11.14
+            },
+            {
+              "blue": 5,
+              "red": 3,
+              "draft": "135-bx7-3nbg6ion3b6k272h5l3xdt1m2y2o675n",
+              "winner": "red",
+              "patch": 11.14
+            }
+          ]
+        },
+        {
+          "date": "Week 9",
+          "games": [
+            {
+              "blue": 0,
+              "red": 9,
+              "draft": "3iej67bx3q5-326i3n2-bg5mon1pd-6k2h46ed1x",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 4,
+              "red": 1,
+              "draft": "2-1m3q5-bx6k6i3n1sbgej32d-337-132h4-464d",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 5,
+              "red": 6,
+              "draft": "3n13bx5-1cbg6i3q2h3767i-1s2y332w4a4k3-1m",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 7,
+              "red": 8,
+              "draft": "1m3n323715675-2-bg7-3b392hm-33ej1f1h3i1i",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 2,
+              "red": 3,
+              "draft": "3qd-137-5-1sbg1m3n6iej33464don6kbx674-ed",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 0,
+              "red": 6,
+              "draft": "3n5-67bgbx7-6i3q2h32335md-2y1m4a2-1ponr-",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 4,
+              "red": 8,
+              "draft": "2-1m327-bgd-5-6ii-41462h33154-134k3-3q1p",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 1,
+              "red": 3,
+              "draft": "1m2-bg3q3n5-6i13377-bx33182y2h354ac-677e",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 5,
+              "red": 7,
+              "draft": "7-3q375-3bbg3n6ibxm-1m2y13d-6k1x2hllem2c",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 2,
+              "red": 9,
+              "draft": "1mzx3qzx6izx5-2-bxejbg1p7-3id-2hdt153967",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 9,
+              "red": 3,
+              "draft": "36674-3q5-1i6i4dbx1xdt272-6-26z-c-1p4k1e",
+              "winner": "red",
+              "patch": 11.15
+            },
+            {
+              "blue": 6,
+              "red": 7,
+              "draft": "3b3qbg3n6k5-6i3c32bx1m1x1p677-2heced5ldt",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 1,
+              "red": 8,
+              "draft": "bg7-323n2-bx5-6i2h5lej2913153q1i3i4-4k7g",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 4,
+              "red": 0,
+              "draft": "391m2y3n137-5-bg6iej5l32d-4k6t3q3i4-1q7g",
+              "winner": "blue",
+              "patch": 11.15
+            },
+            {
+              "blue": 2,
+              "red": 5,
+              "draft": "bg1s67135-4-1m3q6i1o2h32bx46375lem296t2w",
+              "winner": "blue",
+              "patch": 11.15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Playoffs",
+      "start": "2021-06-04T00:00:00.000Z",
+      "end": "2021-08-01T00:00:00.000Z",
+      "type": "list",
+      "games": [
+        {
+          "date": "Round 1",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                4,
+                3
+              ],
+              "games": [
+                {
+                  "blue": 4,
+                  "red": 3,
+                  "draft": "bx7-371m3q5-bgej3n1s325l3i13d-464d4-ob15",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 3,
+                  "red": 4,
+                  "draft": "7-bxbg375-3n1m326i27132hc-2-5l6746dudt7g",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 4,
+                  "red": 3,
+                  "draft": "bx7-371m135-bgej5l321s463i3nd-272y2d6k5n",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 3,
+                  "red": 4,
+                  "draft": "7-bxbg375-131m463n274d6k2h32du5li-3b33ob",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                1,
+                8
+              ],
+              "games": [
+                {
+                  "blue": 1,
+                  "red": 8,
+                  "draft": "bg7-32bx2-5-6i1s2h5lej37on15d-3i1m671p35",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 1,
+                  "draft": "bxbg2-5-7-371s6i323q153i33d-i-1p3n2h5mc-",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 8,
+                  "draft": "157-2-bx67on5-1c3qbg321m46373i335l6id-66",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 8,
+                  "draft": "157-2-5-67bx321s371m4j356k33on2h2qeddt3i",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                3,
+                7
+              ],
+              "games": [
+                {
+                  "blue": 3,
+                  "red": 7,
+                  "draft": "7-1m3bbxbg135-6k4ad-2h3q294ka03idtobi-6i",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 3,
+                  "red": 7,
+                  "draft": "3b1m6kbx3q135-bg6idudtej154k46d-67ed2a7-",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 7,
+                  "red": 3,
+                  "draft": "1m5-3n6k133q6ibgej3733277-4d3i1s464k4-6u",
+                  "winner": "blue",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                1,
+                6
+              ],
+              "games": [
+                {
+                  "blue": 1,
+                  "red": 6,
+                  "draft": "371s3q5-3n6ibgej331c321m7-243i2woc67d-i-",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 6,
+                  "red": 1,
+                  "draft": "1s372-bxbg3q5-321c5m675ldtonc07-d-1pem6i",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 6,
+                  "draft": "375-3q1s3n32bg1c6iej7-1p2ybx2wm-l-2-461q",
+                  "winner": "blue",
+                  "patch": 11.15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "Round 2",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                0,
+                4
+              ],
+              "games": [
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "bgbx7-5-46321m1s2h6id-3q5l6kc-3iecej33m-",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "bgbx1m5-7-326i1si-15d-3qej67m-463i5m2hc-",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "1mbx3q5-bg32d-1sej6i157-m-6733463i292hc-",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "1mbx3q5-bg32d-6k3n6i15i-ej462hobec41335l",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 4,
+                  "red": 0,
+                  "draft": "321mbx3q5-ec6iej1s376k7-2dbg332h46dte-em",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                8,
+                9
+              ],
+              "games": [
+                {
+                  "blue": 8,
+                  "red": 9,
+                  "draft": "6i153i4-1m4k461s2h5-bg37bx6k3qd-137-327g",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 9,
+                  "draft": "6i152hbg134-3q7g5-1c3i32376kbx331q5mc0em",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 9,
+                  "red": 8,
+                  "draft": "156ibg3i4-2h3q1p1c1s1m46i-323bbxm-c02933",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 9,
+                  "draft": "6i152hbg1m4-3q1s7-4k5-c0333i29671nbx3-ej",
+                  "winner": "blue",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                4,
+                1
+              ],
+              "games": [
+                {
+                  "blue": 4,
+                  "red": 1,
+                  "draft": "2-1m6i375-1cbg1s32ej3n336k7-d-3i15ob3q1p",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 4,
+                  "red": 1,
+                  "draft": "bg1m32d-5-3n6i1s7-i-p-ejdt152h5l33ob463i",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 4,
+                  "red": 1,
+                  "draft": "bg1m5-d-1si-6i7-324-4615372ydt1n5l1c5m1k",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                9,
+                7
+              ],
+              "games": [
+                {
+                  "blue": 9,
+                  "red": 7,
+                  "draft": "6k1mbg3q136i1sd-5-1p322h5l371c3i67em4629",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 9,
+                  "red": 7,
+                  "draft": "bg326k3q136i1s5-4-d-1m3ibx3bm-5li-412h1c",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 7,
+                  "red": 9,
+                  "draft": "1mbg326i1s3q5-1cm-37dtem6k7-3i1k1p4-4k15",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 9,
+                  "red": 7,
+                  "draft": "bg3q6k324-6i1s5-dti-33ej7g7-2v3i1p341mec",
+                  "winner": "blue",
+                  "patch": 11.15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "Round 4",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                8,
+                0
+              ],
+              "games": [
+                {
+                  "blue": 8,
+                  "red": 0,
+                  "draft": "7-bg1m376i1c3qej1s5-32d-5l1546132h3iemec",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 0,
+                  "draft": "7-bg1m1c2-5-1s3n2h3537134k412qi-1v15obec",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 8,
+                  "draft": "bgej1c3n3qd-6ibx7-i-3j5-ec155l3i1mem4627",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 8,
+                  "draft": "bgej1c3n3q6i5-bxd-i-1p2-ecem1m3ic02h464k",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 0,
+                  "draft": "6ibg3nc01s1c5-2h2-3i7-ec5l3q37d-4-3267bx",
+                  "winner": "blue",
+                  "patch": 11.15
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                0,
+                1
+              ],
+              "games": [
+                {
+                  "blue": 0,
+                  "red": 1,
+                  "draft": "bg6i7-3n3q1m1s5-d-ej1p322h3i4613155lecdt",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 0,
+                  "draft": "2hbg3n7-bx3q6iej1s324-5l4kd-3ied1m1cc01p",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 1,
+                  "draft": "bg6i7-3n3qej1m461s5-d-1pbx32415l2h1cm-i-",
+                  "winner": "red",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 0,
+                  "draft": "ejbg3n7-1m3q1p6id-1s1532bx465l3i2hm-334k",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "Round 3",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                9,
+                1
+              ],
+              "games": [
+                {
+                  "blue": 9,
+                  "red": 1,
+                  "draft": "bg377-6i4-3q1s325-bx1pd-2h5lem33dt281m67",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 9,
+                  "draft": "37bg2h6i3q7-1s1m5-d-461pbxemej333229dt28",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 9,
+                  "red": 1,
+                  "draft": "bg6i7-1m4-5-1s133n7g4k32bx3i3-152h5l2946",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 1,
+                  "red": 9,
+                  "draft": "37bg2h6i1p7-3q1s7g5-153ibx32i-29m-5m335l",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 9,
+                  "red": 1,
+                  "draft": "bg1p7-3q4-6id-3213bx1s3n1m334k155lem1kon",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "Finals",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                0,
+                8
+              ],
+              "games": [
+                {
+                  "blue": 0,
+                  "red": 8,
+                  "draft": "bg3n5-ej1c1m6i3q1s327-4k5lbx15372h2qc-29",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 0,
+                  "red": 8,
+                  "draft": "bg3n5-ej1c326ibx1s5m1m3id-7-2h3q5l1pc-4-",
+                  "winner": "blue",
+                  "patch": 11.15
+                },
+                {
+                  "blue": 8,
+                  "red": 0,
+                  "draft": "3nbg6i3i2-3q1cej1s327-d-4k1mc05l15462hc-",
+                  "winner": "red",
+                  "patch": 11.15
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
