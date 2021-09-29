@@ -1,0 +1,63 @@
+{
+  "name": "Worlds 2021",
+  "path": "worlds-2021",
+  "full-name": "2021 World Championship",
+  "start": "2021-10-05T00:00:00.000Z",
+  "end": "2021-11-06T00:00:00.000Z",
+  "region": "INTL",
+  "league": "Worlds",
+  "teams": [
+    "EDward Gaming",
+    "FunPlus Phoenix",
+    "Royal Never Give Up",
+    "Damwon Gaming",
+    "Gen.G",
+    "T1",
+    "MAD Lions",
+    "Fnatic",
+    "Rogue",
+    "100 Thieves",
+    "Team Liquid",
+    "PSG Talon",
+    "Beyond Gaming",
+    "Cloud 9",
+    "DetonatioN FocusMe",
+    "Galatasaray Esports",
+    "Hanwha Life Esports",
+    "Infinity Esports",
+    "LNG Esports",
+    "Peace",
+    "RED Canids",
+    "Unicorns of Love"
+  ],
+  "stages": [
+    {
+      "name": "Play-In Round 1",
+      "start": "2021-10-05T00:00:00.000Z",
+      "end": "2021-10-07T00:00:00.000Z",
+      "type": "list",
+      "games": []
+    },
+    {
+      "name": "Play-In Round 2",
+      "start": "2021-10-08T00:00:00.000Z",
+      "end": "2021-10-09T00:00:00.000Z",
+      "type": "list",
+      "games": []
+    },
+    {
+      "name": "Groups",
+      "start": "2021-10-11T00:00:00.000Z",
+      "end": "2021-10-18T00:00:00.000Z",
+      "type": "list",
+      "games": []
+    },
+    {
+      "name": "Playoffs",
+      "start": "2021-10-22T00:00:00.000Z",
+      "end": "2021-11-06T00:00:00.000Z",
+      "type": "list",
+      "games": []
+    }
+  ]
+}
