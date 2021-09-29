@@ -16,7 +16,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Menu />} />
 				<Route path="menu" element={<Menu />} />
-				<Route path="list/*" element={<ProAnalyst />} />
+				<Route path="tournaments/*" element={<ProAnalyst />} />
 				<Route path="create" element={<Create challenge={false} {...peer} />} />
 				<Route path="create/challenge" element={<Create challenge {...peer} />} />
 				<Route path="challenger/:id" element={<ChallengerDraft {...peer} setNavigationContent={setNavigationContent} />} />

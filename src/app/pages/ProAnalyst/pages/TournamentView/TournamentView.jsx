@@ -18,8 +18,8 @@ const TournamentView = () => {
 		).then(res => res.json())
 	);
 
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>Something went wrong...</div>;
+	if (isLoading) return <div className={cn['error-message']}>Loading...</div>;
+	if (error) return <div className={cn['error-message']}>Something went wrong...</div>;
 
 	return (
 		<div className={cn.container}>
@@ -90,6 +90,7 @@ const DayList = ({ tournament, date, games, teamNames }) => {
 		</div>
 	);
 };
+
 const Single = ({ tournament, blue, red, patch, draft, teamNames }) => {
 	return (
 		<div className={cn.match}>
@@ -99,6 +100,7 @@ const Single = ({ tournament, blue, red, patch, draft, teamNames }) => {
 		</div>
 	);
 };
+
 const Series = ({ tournament, teams, patch, games, teamNames }) => {
 	const t1 = teamNames[teams[0]],
 		t2 = teamNames[teams[1]];
@@ -120,4 +122,5 @@ const Series = ({ tournament, teams, patch, games, teamNames }) => {
 		</div>
 	);
 };
+
 export default TournamentView;

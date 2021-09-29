@@ -4,13 +4,13 @@ import { Dashboard, TeamView, TournamentListView, TournamentView  } from './page
 const ProAnalyst = () => {
 	return (
 		<Routes>
-			<Route path='/' element={<Dashboard />} />
+			{/* <Route path='/' element={<Dashboard />} />
 			<Route path='/teams' element={<TeamView />} />
-            <Route path='/teams/:teamName' element={<TeamView />} />
-            <Route path='/tournaments' element={<TournamentListView />} />
-            <Route path='/tournaments/:tournamentName' element={<TournamentView />} />
-            <Route path='/patches' element={<Dashboard />} />
-            <Route path='/patches/:patchVersion' element={<Dashboard />} />
+            <Route path='/teams/:teamName' element={<TeamView />} /> */}
+            <Route path='/' element={<TournamentListView />} />
+            <Route path='/:tournamentName' element={<TournamentView />} />
+            {/* <Route path='/patches' element={<Dashboard />} />
+            <Route path='/patches/:patchVersion' element={<Dashboard />} /> */}
 		</Routes>
 	);
 };

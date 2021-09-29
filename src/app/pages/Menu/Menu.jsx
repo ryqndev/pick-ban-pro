@@ -20,16 +20,16 @@ const Menu = () => {
                         <h2>Draft.</h2>
                         <span>(2 players + spectators)</span>
                         <p>
-                            Participate in a mock draft with another coach with a generated link with custom settings. Spectator links will also be available.
+                            [BETA] Participate in a mock draft with another coach with a generated link with custom settings. Spectator links will also be available.
                         </p>
                     </div>
                 </Link>
-                <Link to="/list" className="card__component explore">
+                <Link to="/tournaments" className="card__component explore">
                     <div className="selection explore">
                         <h2>Explore.</h2>
-                        <span>(MSI 2021)</span>
+                        <span>(Most major regions supported)</span>
                         <p>
-                            Examine and analyze completed drafts at the highest level of league competition from all regions. (currently only supports MSI 2021)
+                            Examine and analyze completed drafts at the highest level of league competition from all regions. In the process of adding more.
                         </p>
                     </div>
                 </Link>

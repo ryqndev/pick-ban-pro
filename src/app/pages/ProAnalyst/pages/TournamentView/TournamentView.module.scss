@@ -1,5 +1,14 @@
+.error-message {
+    height: 90vh;
+    display: grid;
+    place-content: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    font-weight: bold;
+}
 .container {
-    .tournament-list--page {
+    &>.tournament-list--page {
         max-width: 1300px;
         margin: 0 auto;
         padding: 40px 0px;
@@ -33,7 +42,6 @@
                                     margin: 0;
                                     font-size: 1.2em;
                                 }
-                                // font-size: 1.4em;
                                 &>.game-select {
                                     margin: 0 0 0 20px;
                                     font-size: 0.8em;
