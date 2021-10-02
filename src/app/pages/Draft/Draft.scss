@@ -38,7 +38,11 @@ main.draft--wrapper {
         min-height: 0;
 
         @media screen and (max-width: 1800px) {
-            column-gap: 40px;
+            column-gap: 80px;
+            grid-template-columns: 1fr auto 1fr;
+        }
+        @media screen and (max-width: 1600px) {
+            column-gap: 20px;
             grid-template-columns: 1fr auto 1fr;
         }
 

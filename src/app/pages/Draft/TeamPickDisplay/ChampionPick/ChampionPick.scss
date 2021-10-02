@@ -41,13 +41,20 @@
     }
 
     &.left {
-        border-right: 2px solid var(--accent-primary);
+        // border-right: 2px solid var(--accent-primary);
+        border-left: 2px solid var(--accent-primary);
+
+        transform: scaleX(-1);
 
         & .pick>h3 {
-            right: 20px;
+            transform: scaleX(-1);
+
+            left: 20px;
         }
         & .pick>span {
-            right: 15px;
+            transform: scaleX(-1);
+
+            left: 15px;
         }
     }
 

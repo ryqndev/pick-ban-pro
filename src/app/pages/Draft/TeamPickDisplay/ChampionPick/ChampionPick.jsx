@@ -1,23 +1,37 @@
 import clsx from 'clsx';
-import {memo} from 'react';
+import { memo } from 'react';
 import './ChampionPick.scss';
 
-const transparentImageBase64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+const transparentImageBase64 =
+	'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
-const ChampionPick = ({ className, name, isBlue, id}) => {
-    const iconSource = id ? `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg` : transparentImageBase64;
-
-    return (
-        <div className={clsx('champion-pick--wrapper', isBlue ? 'left' : 'right', className)}>
-            <div
-                className="pick"
-                style={{ backgroundImage: `url('${iconSource}')` }}
-            >
-                <span>Picking...</span>
-                <h3>{name}</h3>
-            </div>
-        </div>
-    );
-}
+const ChampionPick = ({ className, name, num, isBlue  }) => {
+	const iconSource = num
+		? `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${num}/${num}000.jpg`
+		: transparentImageBase64;
+        
+	return (
+		<div
+			className={clsx(
+				'champion-pick--wrapper',
+				isBlue ? 'left' : 'right',
+				className
+			)}
+		>
+			<div
+				className='pick'
+				style={{
+					backgroundImage: `url('${iconSource}')`,
+					backgroundPosition: `12% 12%`,
+                    backgroundSize: '140%',
+                    backgroundRepeat: 'no-repeat'
+				}}
+			>
+				<span>Picking...</span>
+				<h3>{name}</h3>
+			</div>
+		</div>
+	);
+};
 
 export default memo(ChampionPick);
