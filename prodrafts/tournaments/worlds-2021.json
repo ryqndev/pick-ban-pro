@@ -36,7 +36,128 @@
       "start": "2021-10-05T00:00:00.000Z",
       "end": "2021-10-07T00:00:00.000Z",
       "type": "list",
-      "games": []
+      "games": [
+        {
+          "date": "Day 1",
+          "type": "days",
+          "games": [
+            {
+              "blue": 16,
+              "red": 18,
+              "draft": "d-1s5-9q6ked136ul-35n-o-377g5l7-dt291727",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "tjmbsjbtsm"
+            },
+            {
+              "blue": 17,
+              "red": 20,
+              "draft": "1s7-3b3yw-5-6kl-oc1n7f2h461315ll4k2dedob",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bjstmbjstm"
+            },
+            {
+              "blue": 18,
+              "red": 19,
+              "draft": "246k4-133i1s7-l-3-ej6uw-dt2dbg266m2h3615",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "mbjstbmsjt"
+            },
+            {
+              "blue": 16,
+              "red": 17,
+              "draft": "7-136kn-1n4k1sw-l-292h5-1p46ll2d3y7g1m2w",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "jbsmtsbjmt"
+            },
+            {
+              "blue": 21,
+              "red": 14,
+              "draft": "d-4k5-12w-131sl-7-6kdt2honobed262j3i1p46",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "jbstmbmsjt"
+            },
+            {
+              "blue": 15,
+              "red": 12,
+              "draft": "131s3b6kejw-l-295-d-6u1p2h173idt5lc02d1n",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bmjstbjmst"
+            },
+            {
+              "blue": 14,
+              "red": 13,
+              "draft": "e-2j3q6k4-1s7-l-6u5-46ed29dtbgw-2h5mc-13",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "mjtbsbjmst"
+            },
+            {
+              "blue": 21,
+              "red": 15,
+              "draft": "6k13d-12o-1s4kl-2j291c4-ed1m3-3ionw-7-dt",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "tbjsmbjmts"
+            }
+          ]
+        },
+        {
+          "date": "Day 2",
+          "type": "days",
+          "games": [
+            {
+              "blue": 19,
+              "red": 16,
+              "draft": "4k6kn-1s7-2413l-4joc1mw-29ll374d7gi-dt7e",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "mjtbsbjsmt"
+            },
+            {
+              "blue": 20,
+              "red": 18,
+              "draft": "7-1s6u7f4kw-l-6k6m2d133i2h5l1neddt5-3927",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "btmjsbmtsj"
+            },
+            {
+              "blue": 17,
+              "red": 19,
+              "draft": "4-7-266k24l-1soc13ejed3i7e372d29du46dt2h",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "jbmtsjmtbs"
+            },
+            {
+              "blue": 20,
+              "red": 16,
+              "draft": "7-1s136k29onl-4k4j5-w-412dlld-n-2ho-4-ed",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bjstmtjbsm"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Play-In Round 2",
