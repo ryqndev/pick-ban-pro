@@ -152,7 +152,7 @@
               "draft": "7-1s136k29onl-4k4j5-w-412dlld-n-2ho-4-ed",
               "winner": "red",
               "patch": "11.19",
-              "vod": null,
+              "vod": "https://youtu.be/5Y7apAsCNyk?t=426",
               "roles": "bjstmtjbsm"
             },
             {
@@ -161,7 +161,7 @@
               "draft": "7-ej6u6k13d-l-292h2ww-1s2d15on4kedocll1i",
               "winner": "red",
               "patch": "11.19",
-              "vod": null,
+              "vod": "https://youtu.be/jaS0KYrrB9w?t=590",
               "roles": "bjstmbsjmt"
             },
             {
@@ -190,6 +190,72 @@
               "patch": "11.19",
               "vod": null,
               "roles": "tbsmjbjstm"
+            }
+          ]
+        },
+        {
+          "date": "Day 3",
+          "type": "days",
+          "games": [
+            {
+              "blue": 18,
+              "red": 17,
+              "draft": "7f135-4k3y1sl-7-6u2w3j6kw-2ddt9q3i2h1q5l",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bjmstmjbts"
+            },
+            {
+              "blue": 19,
+              "red": 20,
+              "draft": "4k135-l-3b1s6k2hd-5l2dbx4-6ull3i2w1kn-15",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bstjmsmbjt"
+            },
+            {
+              "blue": 14,
+              "red": 12,
+              "draft": "6k7-ej2jd-3yl-5-29oc2hed13onlldtw-6-2c7e",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bjstmjbmst"
+            },
+            {
+              "blue": 13,
+              "red": 21,
+              "draft": "126u6kd-131nl-1s6j7-5-eddt3i2h3-e-15em4k",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "bmjtsjbmst"
+            }
+          ]
+        },
+        {
+          "date": "Tiebreakers",
+          "type": "days",
+          "games": [
+            {
+              "blue": 21,
+              "red": 12,
+              "draft": "ej4k6k1329121sd-5-1p6j3be-w-432hdt1q3i67",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "jmbstmjbst"
+            },
+            {
+              "blue": 14,
+              "red": 13,
+              "draft": "4-2j7-d-ed6-2hl-w-5-292-461513on3y1pob3i",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": null,
+              "roles": "sjbmtbsjmt"
             }
           ]
         }
