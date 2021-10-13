@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import usePeer from './controller/hooks/usePeer';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Menu, Create, ProAnalyst, SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectatorDraft } from './pages';
+import { Menu, Create, ProAnalyst, SinglePlayerDraft, MultiplayerDraft, ChallengerDraft, SpectateDraft } from './pages';
 import './styles/main.scss';
 
 const App = () => {
@@ -21,7 +21,10 @@ const App = () => {
 				<Route path="create/challenge" element={<Create challenge {...peer} />} />
 				<Route path="challenger/:id" element={<ChallengerDraft {...peer} setNavigationContent={setNavigationContent} />} />
 				<Route path="challenge/:id" element={<MultiplayerDraft {...peer} setNavigationContent={setNavigationContent} />} />
-				<Route path="spectator/:id" element={<SpectatorDraft {...peer} setNavigationContent={setNavigationContent} />} />
+				
+				<Route path="blue/:id/:hash" element={<ChallengerDraft {...peer} setNavigationContent={setNavigationContent} />} />
+				<Route path="red/:id/:hash" element={<MultiplayerDraft {...peer} setNavigationContent={setNavigationContent} />} />
+				<Route path="spectate/:id" element={<SpectateDraft setNavigationContent={setNavigationContent} />} />
 				{[
 					"d",
 					"d/:draftString",

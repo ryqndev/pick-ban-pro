@@ -1,56 +1,59 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { updateDoc, setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import db from '../../controller/libs/firestore';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
-import LabelledToggle from '../../components/LabelledToggle/LabelledToggle';
 import { Links } from '../../components/PeerDisplays';
 import './Create.sass';
 
-const Create = ({ peerID, connection, challenge, spectators }) => {
-	const navigate = useNavigate();
-
+const Create = ({ challenge }) => {
+	const [[roomid, bluehash, redhash]] = useState(() => [
+		generate(6),
+		generate(4),
+		generate(4),
+	]);
 	const [matchName, setMatchName] = useState('');
 	const [blueTeamName, setBlueTeamName] = useState('');
 	const [redTeamName, setRedTeamName] = useState('');
 
-	const [isBlue, setIsBlue] = useState(true);
-
 	const [hasTimeLimits, setHasTimeLimits] = useState(!!challenge);
 	const [timeLimit, setTimeLimit] = useState(30);
 
-	const [draftLink, setDraftLink] = useState('/d');
+	const [areOptionsFinalized, setAreOptionsFinalized] = useState(false);
 
+	function generate(length = 10) {
+		return (Math.random() + 1).toString(36).substring(2, length + 2);
+	}
 	useEffect(() => {
-		if (matchName.length !== 0)
-			return setDraftLink(
-				`/d/${encodeURIComponent(matchName)}/${encodeURIComponent(
-					blueTeamName
-				)},${encodeURIComponent(redTeamName)}/`
-			);
-
-		if (redTeamName.length + blueTeamName.length === 0)
-			return setDraftLink(`/d/`);
-
-		return setDraftLink(
-			`/draft/${encodeURIComponent(blueTeamName)},${encodeURIComponent(
-				redTeamName
-			)}/`
-		);
-	}, [matchName, blueTeamName, redTeamName]);
+		setDoc(doc(db, 'livedrafts', roomid), {
+			blue: bluehash,
+			red: redhash,
+			settingUp: true,
+			createdAt: serverTimestamp(),
+			updatedAt: serverTimestamp(),
+		});
+	}, [roomid, bluehash, redhash]);
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		navigate(challenge ? '/challenge/' + peerID : draftLink, {
-			state: {
+		setAreOptionsFinalized(true);
+		updateDoc(doc(db, 'livedrafts', roomid), {
+			draft: new Array(20).fill(0),
+			position: -1,
+			settingUp: false,
+			options: {},
+			details: {
+				patch: '11.19',
 				names: {
-					match: matchName,
 					blue: blueTeamName,
 					red: redTeamName,
+					match: matchName,
 				},
-				hasTimeLimits,
-				timeLimit,
-				isBlue,
 			},
+			updatedAt: serverTimestamp(),
+		}).catch(err => {
+			console.error(err);
+			setAreOptionsFinalized(false);
 		});
 	};
 
@@ -58,59 +61,30 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
 		<div className='create--wrapper'>
 			<form className='content card__component' onSubmit={handleSubmit}>
 				<h1>Options</h1>
-				<span>(You can change these during draft)</span>
+				<span>
+					{areOptionsFinalized
+						? 'Options are set. Use the links to draft'
+						: 'You must finalize options before drafting'}
+				</span>
 				<div>
-					{challenge && (
-						<div className='team-selection'>
-							<label>You play as: </label>
-							<LabelledToggle
-								name='my-team'
-								labels={[
-									{ label: 'BLUE', value: 'true' },
-									{ label: 'RED', value: 'false' },
-								]}
-								isFirst={isBlue}
-								setIsFirst={setIsBlue}
-							/>
-							<label>Enemy plays as: </label>
-							<LabelledToggle
-								name='enemy-team'
-								labels={[
-									{ label: 'BLUE', value: 'false' },
-									{ label: 'RED', value: 'true' },
-								]}
-								isFirst={!isBlue}
-								setIsFirst={setIsBlue}
-							/>
-						</div>
-					)}
-
-					<label htmlFor='match-name'>
-						Match Name: <span>(optional)</span>
-					</label>
-					<ControlledTextInput
-						id='match-name'
-						placeholder='Ex. MSI 2021'
+					<NameInput
+						disabled={areOptionsFinalized}
+						name='Match'
+						example='Worlds 2021'
 						value={matchName}
 						setValue={setMatchName}
 					/>
-
-					<label htmlFor='blue-team-name'>
-						Blue Team Name: <span>(optional)</span>
-					</label>
-					<ControlledTextInput
-						id='blue-team-name'
-						placeholder='Ex. Cloud9'
+					<NameInput
+						disabled={areOptionsFinalized}
+						name='Blue'
+						example='Cloud9'
 						value={blueTeamName}
 						setValue={setBlueTeamName}
 					/>
-
-					<label htmlFor='red-team-name'>
-						Red Team Name: <span>(optional)</span>
-					</label>
-					<ControlledTextInput
-						id='red-team-name'
-						placeholder='Ex. DWG KIA'
+					<NameInput
+						disabled={areOptionsFinalized}
+						name='Red'
+						example='Damwon Gaming'
 						value={redTeamName}
 						setValue={setRedTeamName}
 					/>
@@ -123,7 +97,8 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
 							className='timer-toggle'
 							checked={hasTimeLimits}
 							onChange={() => {
-								setHasTimeLimits(prev => !prev);
+								!areOptionsFinalized &&
+									setHasTimeLimits(prev => !prev);
 							}}
 						/>
 						{hasTimeLimits && (
@@ -132,6 +107,7 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
 									Seconds per pick:
 								</label>
 								<ControlledTextInput
+									disabled={areOptionsFinalized}
 									id='time-limit'
 									value={timeLimit}
 									setValue={setTimeLimit}
@@ -140,17 +116,34 @@ const Create = ({ peerID, connection, challenge, spectators }) => {
 						)}
 					</div>
 				</div>
-				<button>Start</button>
+				<button disabled={areOptionsFinalized}>
+					{areOptionsFinalized
+						? 'Match is ready!'
+						: 'Finalize Options'}
+				</button>
 			</form>
 			<div className='link-holder card__component'>
-				<Links
-					spectators={spectators}
-					peerID={peerID}
-					connection={challenge ? connection : null}
-					challenge={challenge}
-				/>
+				<Links roomid={roomid} blue={bluehash} red={redhash} />
 			</div>
 		</div>
+	);
+};
+
+const NameInput = ({ name, value, setValue, example, disabled }) => {
+	return (
+		<>
+			<label htmlFor={`${name}-team-name`}>
+				{name === 'Match' ? name : name + ' Team'} Name:{' '}
+				<span>(optional)</span>
+			</label>
+			<ControlledTextInput
+				disabled={disabled}
+				id={`${name}-team-name`}
+				placeholder={'Ex. ' + example}
+				value={value}
+				setValue={setValue}
+			/>
+		</>
 	);
 };
 
