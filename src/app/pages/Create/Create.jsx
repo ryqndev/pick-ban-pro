@@ -38,7 +38,7 @@ const Create = ({ challenge }) => {
 		event.preventDefault();
 		setAreOptionsFinalized(true);
 		updateDoc(doc(db, 'livedrafts', roomid), {
-			draft: new Array(20).fill(0),
+			draft: new Array(20).fill(null),
 			position: -1,
 			settingUp: false,
 			options: {},
@@ -50,6 +50,7 @@ const Create = ({ challenge }) => {
 					match: matchName,
 				},
 			},
+			ready: [false, false],
 			updatedAt: serverTimestamp(),
 		}).catch(err => {
 			console.error(err);

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { component } from './ControlledTextInput.module.sass';
 
-const ControlledTextInput = ({ id, placeholder = '', disabled=false, value, setValue }) => {
+const ControlledTextInput = ({ id, placeholder = '', disabled=false, value, setValue, readOnly=false }) => {
 	const handleTextChange = setValue => event => {
 		event.preventDefault();
 		setValue(event.target.value);
@@ -15,6 +15,7 @@ const ControlledTextInput = ({ id, placeholder = '', disabled=false, value, setV
 			placeholder={placeholder}
 			className={component}
 			value={value}
+			readOnly={readOnly}
 			onChange={handleTextChange(setValue)}
 		/>
 	);

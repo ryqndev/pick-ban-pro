@@ -1,23 +1,39 @@
-import { useEffect, useState, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
-import useDraftLogicController from './useDraftLogicController.js';
+import { useEffect, useState } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
+import db from '../libs/firestore.js';
+import useDraftRenderData from './useDraftRenderData.js';
 import useDraftTimer from './useDraftTimer.js';
-import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
 
-const useFirestoreDraft = (setNavigationContent, spectators, update, multiplayer, draftString) => {
+const useFirestoreDraft = (setNavigationContent, id, hash) => {
+    const {
+        draft,
+        setDraft,
+        currentPick,
+        teamRenderData,
+    } = useDraftRenderData();
 
-    const { teamRenderData, currentPick, draft, forceLockin, ...actions } 
-        = useDraftLogicController(draftString);
+    const [data, setData] = useState(null);
+
+    useEffect(() => onSnapshot(doc(db, 'livedrafts', id), doc => {
+        setData(doc.data());
+    }), [id]);
+
+    useEffect(() => {
+        console.log("udpate in data", data);
+        if (!data || data.settingUp) return;
+        const { position, draft } = data;
+        setDraft({ d: draft, p: position });
+    }, [data, setDraft]);
+
 
     // const { on, setOn, setLimit, limit, time, end, startTimer } 
     //     = useDraftTimer(state?.hasTimeLimits, state?.timeLimit, forceLockin);
 
     return {
-        draft: {
-            ...teamRenderData,
-            ...draft,
-            currentPick,
-        }
+        render: teamRenderData,
+        data,
+        draft,
+        currentPick,
     }
 }
 

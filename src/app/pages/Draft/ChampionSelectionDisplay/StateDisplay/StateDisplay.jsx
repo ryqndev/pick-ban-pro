@@ -13,11 +13,8 @@ const StateDisplay = ({
 	p,
 	showOptions,
 	setShowOptions,
-	multiplayer,
-	spectator,
-	isBlue,
 	type,
-	readyCheck,
+	ready,
 	...actions
 }) => {
 	const { championsList } = useContext(ChampionsContext);
@@ -49,7 +46,7 @@ const StateDisplay = ({
 
 	const displayChampionText = property => {
 		if (championsList === null || !selectedID) {
-			if (spectator) return '---';
+			if (type === 'spectator') return '---';
 			if (property === 'name') return '---';
 			return 'Select a champion';
 		}
@@ -64,7 +61,7 @@ const StateDisplay = ({
 		if (DRAFT_NOT_STARTED) return '---';
 		if (DRAFT_IS_FINISHED) return 'Finished';
 
-		if (spectator) return '---';
+		if (type === 'spectator') return '---';
 		if (PICKS.has(p)) return 'Picking...';
 		return 'Banning...';
 	};
@@ -75,13 +72,13 @@ const StateDisplay = ({
 
 		if (DRAFT_IS_FINISHED) return 'Finished';
 
-		if (multiplayer) {
+		if (type === 'blue' || type === 'red') {
 			const isCurrentPlayerTurn = BLUE_SIDE_PICKS.has(p)
-				? isBlue
-				: !isBlue;
+				? type === 'blue'
+				: type === 'red';
 
 			if (DRAFT_NOT_STARTED) {
-				if (!readyCheck[type === 'HOST' ? 0 : 1])
+				if (!ready[type === 'blue' ? 0 : 1])
 					return 'Click [READY] to ready up';
 				return 'Waiting for enemy to ready up';
 			}
@@ -94,7 +91,7 @@ const StateDisplay = ({
 		}
 
 		if (DRAFT_NOT_STARTED)
-			return spectator ? 'Waiting to start...' : 'Click [START] to begin';
+			return type === 'spectator' ? 'Waiting to start...' : 'Click [START] to begin';
 
 		const TEAM_TO_MOVE = BLUE_SIDE_PICKS.has(p) ? 'Blue Team' : 'Red Team';
 
@@ -108,13 +105,12 @@ const StateDisplay = ({
 				<h3>{stateTextDisplay('name')}</h3>
 				<span>{stateTextDisplay('title')}</span>
 			</div>
-			{!spectator && (
+			{!type === 'spectator' && (
 				<ControlsDisplay
 					showOptions={showOptions}
 					setShowOptions={setShowOptions}
 					lockinButtonRef={lockinButtonRef}
 					actions={actions}
-					multiplayer={multiplayer}
 					draft={{ d, p }}
 				/>
 			)}

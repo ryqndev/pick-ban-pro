@@ -5,10 +5,10 @@ import { doc, onSnapshot } from "firebase/firestore";
 import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData';
 
-const useDraftClient = ({ }) => {
+const useDraftClient = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
-    const { draft, setDraft, currentPick, teamRenderData } = useDraftRenderData();
+    const { setDraft, setCurrentPick, teamRenderData } = useDraftRenderData();
 
     useEffect(() => onSnapshot(doc(db, "livedrafts", id), doc => {
         setData(doc.data());
@@ -20,25 +20,16 @@ const useDraftClient = ({ }) => {
         setDraft({d: data.draft, p: data?.position})
     }, [data, setDraft]);
 
-    const {
-        on,
-        time,
-        end,
-        limit,
-    } = useDraftTimer();
+    // const {
+    //     on,
+    //     time,
+    //     end,
+    //     limit,
+    // } = useDraftTimer();
 
     return {
-        settingUp: data?.settingUp ?? true,
-        settings: {
-            limit,
-            on,
-            id,
-        },
-        draft: {
-            ...teamRenderData,
-            ...draft,
-            currentPick,
-        }
+        render: { ...teamRenderData },
+        ...data,
     }
 }
 

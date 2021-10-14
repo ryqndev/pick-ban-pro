@@ -5,17 +5,16 @@ import OptionsDisplay from './OptionsDisplay';
 import StateDisplay from './StateDisplay';
 import './ChampionSelectionDisplay.scss';
 
-const ChampionSelectionDisplay = ({ d, p, settings, spectator, ...props }) => {
+const ChampionSelectionDisplay = ({ d, p, settings, ...props }) => {
     const [disabled, setDisabled] = useState(new Set(d));
     useEffect(() => setDisabled(new Set(d)), [d]);
-
     const [showOptions, setShowOptions] = useState(false);
 
     return (
         <div className="champion-select-display--wrapper">
             <ChampionSelect
                 className="select"
-                select={spectator ? () => { } : props.select}
+                select={settings.type === 'spectator' ? () => { } : props.select}
                 disabled={disabled}
                 hasNoneOption={!PICKS.has(p)}
             />
@@ -25,7 +24,6 @@ const ChampionSelectionDisplay = ({ d, p, settings, spectator, ...props }) => {
             <StateDisplay 
                 d={d}
                 p={p}
-                spectator={spectator}
                 setShowOptions={setShowOptions}  
                 {...settings}
                 {...props} 
