@@ -486,10 +486,52 @@ stages:
           patch: '11.19'
           vod: null
           roles: mtjbssjmtb
+        - blue: 1
+          red: 8
+          draft: 3b9q4-136k2wd-l-1s5m2h7-5-em1ndt5l3i6i1w
+          winner: blue
+          patch: '11.19'
+          vod: null
+          roles: mbstjbjmst
+        - blue: 11
+          red: 7
+          draft: 4-9qd-7-6k3yl-n-5m1sed2d2h6iw-dtbg155l1n
+          winner: blue
+          patch: '11.19'
+          vod: null
+          roles: bjmtsmbtsj
+        - blue: 4
+          red: 10
+          draft: 7-6k5-7g1s9ql-13374kw-352-2hob1m2qed1co-
+          winner: blue
+          patch: '11.19'
+          vod: null
+          roles: btsmjmbjst
+        - blue: 3
+          red: 13
+          draft: 139q7f7-ed1s4-l-2h2w5md-1c1n332-6u5-emo-
+          winner: blue
+          patch: '11.19'
+          vod: null
+          roles: mtbjsbsmjt
+        - blue: 0
+          red: 14
+          draft: 6-9q7-6k132w1s2h2j4-3ied3bobbg465m295l26
+          winner: blue
+          patch: '11.19'
+          vod: null
+          roles: jmtbssjmbt
+        - blue: 9
+          red: 5
+          draft: 2wd-3i1n9q1s6kej4-7f7-396i2j6u5-261m1c2d
+          winner: red
+          patch: '11.19'
+          vod: null
+          roles: bsmtjbmsjt
+
   - name: Playoffs
     start: 2021-10-22
     end: 2021-11-06
     type: list
     games: []
     
-
