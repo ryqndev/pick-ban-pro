@@ -1,6 +1,5 @@
 import SpectateDraft from './SpectateDraft.jsx';
-import BlueDraft from './BlueDraft.jsx';
-import RedDraft from './RedDraft.jsx';
+import MultiplayerDraft from './MultiplayerDraft.jsx';
 import SinglePlayerDraft from './SinglePlayerDraft.jsx';
 
-export { SinglePlayerDraft, BlueDraft, RedDraft, SpectateDraft };
+export { SinglePlayerDraft, MultiplayerDraft, SpectateDraft };

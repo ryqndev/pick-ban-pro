@@ -26,8 +26,10 @@ const Create = ({ challenge }) => {
 	}
 	useEffect(() => {
 		setDoc(doc(db, 'livedrafts', roomid), {
-			blue: bluehash,
-			red: redhash,
+			hashes: {
+				blue: bluehash,
+				red: redhash,
+			},
 			settingUp: true,
 			createdAt: serverTimestamp(),
 			updatedAt: serverTimestamp(),

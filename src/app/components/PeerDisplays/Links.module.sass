@@ -1,6 +1,27 @@
 .component
     display: grid
     row-gap: 10px
+    
+    &>.action-container 
+        position: relative
+
+    &>div>.actions 
+        display: grid
+        grid-template-columns: auto auto
+        position: absolute
+        right: 0
+        height: calc(1.2em + 24px)
+        &>*
+            display: grid
+            place-content: center
+            height: 100%
+            width: 40px
+            opacity: 0
+            transition: opacity 350ms
+            background-color: var(--bg-primary)
+            &:hover
+                opacity: 1
+
 
     &>h1
         box-sizing: border-box

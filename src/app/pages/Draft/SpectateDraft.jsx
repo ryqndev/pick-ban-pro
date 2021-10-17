@@ -3,24 +3,38 @@ import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const SpectateDraft = (props) => {
-    const { render, settingUp, draft, position } = useDraftClient({ type: 'spectator', ...props });
+const SpectateDraft = ({ setNavigationContent }) => {
+	const { draft, currentPick, render, data } =
+		useDraftClient(setNavigationContent);
 
-    if (settingUp) return (
-        <main className='draft--wrapper wait-ready-check'>
-            <h1>Waiting for host to start...</h1>
-        </main>
-    );
+	if (!data || data.settingUp)
+		return (
+			<main className='draft--wrapper wait-ready-check'>
+				<h1>Waiting for host to start...</h1>
+			</main>
+		);
 
-    return (
-        <main className='draft--wrapper'>
-            <div className='pickban-select--wrapper'>
-                <TeamPickDisplay currentPick={position} teamRenderData={render.blue} side='blue' />
-                <ChampionSelectionDisplay draft={{d: draft, p: position}} settings={{type: 'SPECTATOR'}}/>
-                <TeamPickDisplay currentPick={position} teamRenderData={render.red} side='red' />
-            </div>
-        </main>
-    );
-}
+	return (
+		<main className='draft--wrapper'>
+			<div className='pickban-select--wrapper'>
+				<TeamPickDisplay
+					currentPick={currentPick}
+					teamRenderData={render.blue}
+					side='blue'
+				/>
+				<ChampionSelectionDisplay
+					{...data}
+					{...draft}
+					settings={{ type: 'spectator' }}
+				/>
+				<TeamPickDisplay
+					currentPick={currentPick}
+					teamRenderData={render.red}
+					side='red'
+				/>
+			</div>
+		</main>
+	);
+};
 
 export default SpectateDraft;

@@ -1,20 +1,25 @@
-import { useEffect, memo } from 'react';
+import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import TeamPickDisplay from './TeamPickDisplay';
 import useFirestoreDraft from '../../controller/hooks/useFirestoreDraft';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const BlueDraft = ({
-	setNavigationContent,
-}) => {
-    const {id, hash} = useParams();
-	const { actions, draft, currentPick, render, ready } =
-		useFirestoreDraft(setNavigationContent, id, hash);
+const MultiplayerDraft = ({ setNavigationContent, side }) => {
+	const { id, hash } = useParams();
+	const { actions, draft, currentPick, render, data } = useFirestoreDraft(
+		setNavigationContent,
+		id,
+		hash,
+		side
+	);
 
-    const lockinWithReadyCheck = () => {
-
-    }
+	if (!data || data.settingUp)
+		return (
+			<main className='draft--wrapper wait-ready-check'>
+				<h1>Waiting for host to finalize draft settings...</h1>
+			</main>
+		);
 
 	return (
 		<main className='draft--wrapper'>
@@ -25,13 +30,11 @@ const BlueDraft = ({
 					side='blue'
 				/>
 				<ChampionSelectionDisplay
+					{...data}
 					{...draft}
 					{...actions}
-					lockin={lockinWithReadyCheck}
-					// undo={undo}
-                    ready={ready}
 					settings={{
-                        type: 'blue',
+						type: side,
 					}}
 				/>
 				<TeamPickDisplay
@@ -44,4 +47,4 @@ const BlueDraft = ({
 	);
 };
 
-export default memo(BlueDraft);
+export default memo(MultiplayerDraft);

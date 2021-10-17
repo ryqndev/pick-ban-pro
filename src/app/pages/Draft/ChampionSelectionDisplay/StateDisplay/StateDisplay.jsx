@@ -91,7 +91,7 @@ const StateDisplay = ({
 		}
 
 		if (DRAFT_NOT_STARTED)
-			return type === 'spectator' ? 'Waiting to start...' : 'Click [START] to begin';
+			return type === 'spectator' ? 'Waiting for teams to ready...' : 'Click [START] to begin';
 
 		const TEAM_TO_MOVE = BLUE_SIDE_PICKS.has(p) ? 'Blue Team' : 'Red Team';
 
@@ -105,7 +105,7 @@ const StateDisplay = ({
 				<h3>{stateTextDisplay('name')}</h3>
 				<span>{stateTextDisplay('title')}</span>
 			</div>
-			{!type === 'spectator' && (
+			{!(type === 'spectator') && (
 				<ControlsDisplay
 					showOptions={showOptions}
 					setShowOptions={setShowOptions}

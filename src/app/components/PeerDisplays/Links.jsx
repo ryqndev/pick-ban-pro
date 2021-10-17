@@ -16,14 +16,22 @@ const Links = ({ roomid, blue, red }) => {
 
 			{(blue && red) && (
 				<>
+					<div className={cn['action-container']}>
 					<label htmlFor='challenger-link' className={cn.blue}>
 						Blue Side <span> (has first pick) </span>
 					</label>
+					<div className={cn.actions}>
+						<div>a</div>
+						<a target="_blank" rel="noopener noreferrer" href={window.origin + '/blue/' + roomid + '/' + blue}>a</a>
+					</div>
 					<ControlledTextInput
 						id='challenger-link'
 						value={window.origin + '/blue/' + roomid + '/' + blue}
 						readOnly
 					/>
+
+					</div>
+
 					<label htmlFor='challenger-link' className={cn.red}>
 						Red Side <span> (has last pick) </span>
 					</label>
