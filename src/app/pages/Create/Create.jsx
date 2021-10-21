@@ -47,9 +47,9 @@ const Create = ({ challenge }) => {
 			details: {
 				patch: '11.19',
 				names: {
-					blue: blueTeamName,
-					red: redTeamName,
-					match: matchName,
+					blue: blueTeamName.length ? blueTeamName : 'Blue Team',
+					red: redTeamName.length ? redTeamName : 'Red Team',
+					match: matchName.length ? matchName : 'Pick Ban Pro',
 				},
 			},
 			ready: [false, false],

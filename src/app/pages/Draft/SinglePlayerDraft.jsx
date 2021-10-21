@@ -6,7 +6,7 @@ import ChampionSelectionDisplay from './ChampionSelectionDisplay/ChampionSelecti
 import './Draft.scss';
 
 const SinglePlayerDraft = ({
-	setNavigationContent,
+	setNav,
 	spectators,
 	update,
 	peerID,
@@ -17,7 +17,7 @@ const SinglePlayerDraft = ({
 		draft: { blue, red, ...draft },
 		actions,
 	} = useDraftHost(
-		setNavigationContent,
+		setNav,
 		spectators,
 		update,
 		false,

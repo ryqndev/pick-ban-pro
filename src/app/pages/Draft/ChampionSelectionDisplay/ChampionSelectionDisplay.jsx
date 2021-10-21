@@ -19,7 +19,7 @@ const ChampionSelectionDisplay = ({ d, p, settings, ...props }) => {
                 hasNoneOption={!PICKS.has(p)}
             />
 
-            <OptionsDisplay open={showOptions} draft={d} {...settings}/>
+            <OptionsDisplay open={showOptions} draft={d} {...settings} {...props}/>
 
             <StateDisplay 
                 d={d}

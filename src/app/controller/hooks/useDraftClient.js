@@ -6,7 +6,7 @@ import useDraftTimer from '../../controller/hooks/useDraftTimer';
 import useDraftRenderData from '../../controller/hooks/useDraftRenderData';
 import { BLUE_SIDE_PICKS } from '../draftLogicControllerUtil.js';
 
-const useDraftClient = setNavigationContent => {
+const useDraftClient = setNav => {
 	const { id } = useParams();
 	const [data, setData] = useState(null);
 	const { setDraft, draft, currentPick, teamRenderData } =
@@ -24,12 +24,12 @@ const useDraftClient = setNavigationContent => {
 		if (!data || data.settingUp) return;
 		const { position, draft } = data;
 		setDraft({ d: draft, p: position });
-		setNavigationContent({
+		setNav({
 			type: 'draft',
 			side: BLUE_SIDE_PICKS.has(position) ? 'blue' : 'red',
 			names: data.details.names,
 		});
-	}, [data, setDraft, setNavigationContent]);
+	}, [data, setDraft, setNav]);
 
 	// const {
 	//     on,

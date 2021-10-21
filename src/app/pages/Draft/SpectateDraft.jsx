@@ -3,9 +3,9 @@ import TeamPickDisplay from './TeamPickDisplay';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const SpectateDraft = ({ setNavigationContent }) => {
+const SpectateDraft = ({ setNav }) => {
 	const { draft, currentPick, render, data } =
-		useDraftClient(setNavigationContent);
+		useDraftClient(setNav);
 
 	if (!data || data.settingUp)
 		return (

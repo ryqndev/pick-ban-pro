@@ -5,7 +5,7 @@ import useDraftLogicController from './useDraftLogicController.js';
 import useDraftTimer from './useDraftTimer.js';
 import {BLUE_SIDE_PICKS} from '../draftLogicControllerUtil.js';
 
-const useDraftHost = (setNavigationContent, spectators, update, multiplayer, draftString) => {
+const useDraftHost = (setNav, spectators, update, multiplayer, draftString) => {
     const { state } = useLocation();
     const [isBlue, setIsBlue] = useState(state?.isBlue ?? true);
     const [readyCheck, setReadyCheck] = useState(() => [false, false]);
@@ -49,9 +49,9 @@ const useDraftHost = (setNavigationContent, spectators, update, multiplayer, dra
     }, [draft, spectators, end, update, names, readyCheck, on, limit, isBlue]);
 
     useEffect(() => {
-        setNavigationContent({ type: 'draft', side: currentPick.side, end, time, limit, names });
-        return () => setNavigationContent({});
-    }, [setNavigationContent, time, end, limit, names, currentPick]);
+        setNav({ type: 'draft', side: currentPick.side, end, time, limit, names });
+        return () => setNav({});
+    }, [setNav, time, end, limit, names, currentPick]);
 
     return {
         isBlue,

@@ -8,21 +8,21 @@ import './styles/main.scss';
 
 const App = () => {
 	const peer = usePeer();
-	const [navigationContent, setNavigationContent] = useState({});
+	const [navigationContent, setNav] = useState({});
 
 	return (
 		<>
 			<Navbar {...navigationContent} />
 			<Routes>
-				<Route path="/" element={<Menu />} />
+				<Route path="/" element={<Menu setNav={setNav}/>} />
 				<Route path="menu" element={<Menu />} />
 				<Route path="tournaments/*" element={<ProAnalyst />} />
 				<Route path="create" element={<Create {...peer} />} />
 				<Route path="create/challenge" element={<Create {...peer} />} />
 				
-				<Route path="blue/:id/:hash" element={<MultiplayerDraft setNavigationContent={setNavigationContent} side="blue" />} />
-				<Route path="red/:id/:hash" element={<MultiplayerDraft setNavigationContent={setNavigationContent} side="red" />} />
-				<Route path="spectate/:id" element={<SpectateDraft setNavigationContent={setNavigationContent} />} />
+				<Route path="blue/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="blue" />} />
+				<Route path="red/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="red" />} />
+				<Route path="spectate/:id" element={<SpectateDraft setNav={setNav} />} />
 				{[
 					"d",
 					"d/:draftString",
@@ -34,7 +34,7 @@ const App = () => {
 					<Route
 						key={url}
 						path={url}
-						element={<SinglePlayerDraft {...peer} setNavigationContent={setNavigationContent} />}
+						element={<SinglePlayerDraft {...peer} setNav={setNav} />}
 					/>
 				)}
 			</Routes>

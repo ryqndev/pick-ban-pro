@@ -8,9 +8,9 @@ import {
 import db from '../libs/firestore.js';
 import useDraftRenderData from './useDraftRenderData.js';
 import useDraftTimer from './useDraftTimer.js';
-import { BLUE_SIDE_PICKS } from '../draftLogicControllerUtil.js';
+import { BLUE_SIDE_PICKS, RED_SIDE_PICKS } from '../draftLogicControllerUtil.js';
 
-const useFirestoreDraft = (setNavigationContent, id, hash, side) => {
+const useFirestoreDraft = (setNav, id, hash, side) => {
 	const { draft, setDraft, currentPick, teamRenderData } =
 		useDraftRenderData();
 
@@ -28,12 +28,12 @@ const useFirestoreDraft = (setNavigationContent, id, hash, side) => {
 		if (!data || data.settingUp) return;
 		const { position, draft } = data;
 		setDraft({ d: draft, p: position });
-		setNavigationContent({
+		setNav({
 			type: 'draft',
-			side: BLUE_SIDE_PICKS.has(position) ? 'blue' : 'red',
+			side: BLUE_SIDE_PICKS.has(position) ? 'blue' : (RED_SIDE_PICKS.has(position) ? 'red' : ''),
 			names: data.details.names,
 		});
-	}, [data, setDraft, setNavigationContent]);
+	}, [data, setDraft, setNav]);
 
 	const lockin = useCallback(() => {
 		// if ready check, update accordingly
@@ -53,8 +53,8 @@ const useFirestoreDraft = (setNavigationContent, id, hash, side) => {
 		if (
 			(data.position >= 20 || !data.draft[data.position]) &&
 			data.position !== -1
-		)
-			return false;
+		) return false;
+
 		// check if correct side can make pick
 		if (currentPick.side !== side) return false;
 

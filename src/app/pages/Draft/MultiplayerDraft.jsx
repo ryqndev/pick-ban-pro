@@ -5,10 +5,10 @@ import useFirestoreDraft from '../../controller/hooks/useFirestoreDraft';
 import ChampionSelectionDisplay from './ChampionSelectionDisplay';
 import './Draft.scss';
 
-const MultiplayerDraft = ({ setNavigationContent, side }) => {
+const MultiplayerDraft = ({ setNav, side }) => {
 	const { id, hash } = useParams();
 	const { actions, draft, currentPick, render, data } = useFirestoreDraft(
-		setNavigationContent,
+		setNav,
 		id,
 		hash,
 		side

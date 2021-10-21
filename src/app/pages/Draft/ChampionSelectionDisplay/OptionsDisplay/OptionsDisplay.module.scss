@@ -1,14 +1,18 @@
-.options-display--wrapper {
+.container {
     box-sizing: border-box;
     overflow: hidden;
-    transition: max-height 350ms ease-in-out;
+    transition: max-height 150ms ease-in-out;
+
+    & #counters {
+        height: calc(100vh - 400px);
+    }
 
     &>.content {
         &>nav.options-tabs {
             background-color: inherit;
             display: grid;
             column-gap: 5px;
-            grid-template-columns: min-content auto;
+            grid-template-columns: min-content min-content auto;
             overflow: hidden;
 
             &>button {
@@ -29,9 +33,14 @@
 
         &>.open-page {
             box-sizing: border-box;
-            padding: 20px 30px;
             background-color: var(--bg-primary);
             border-radius: 0px 4px 4px;
+
+            & .max-width {
+                margin: 0 auto;
+                padding: 20px 30px;
+                max-width: 450px;
+            }
         }
     }
 }

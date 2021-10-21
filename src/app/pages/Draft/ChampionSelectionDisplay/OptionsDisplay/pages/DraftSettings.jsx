@@ -1,11 +1,12 @@
 import { memo } from 'react';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../../../../components/ControlledTextInput';
+import clsx from 'clsx';
 import './DraftSettings.scss';
 
-const DraftSettings = ({ on, setOn, limit, setLimit }) => {
+const DraftSettings = ({ className, on, setOn, limit, setLimit }) => {
     return (
-        <div className="draft-settings--wrapper">
+        <div className={clsx("draft-settings--wrapper", className)}>
             <div className="time-limits">
                 <h3>Timer</h3>
                 <label htmlFor="timer">Set Time Limits:</label>
