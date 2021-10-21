@@ -20,7 +20,7 @@ const Menu = ({ setNav }) => {
 						</p>
 					</div>
 				</Link>
-				<Link to='/create/challenge' className='card__component draft'>
+				<Link to='/challenge' className='card__component draft'>
 					<div className='selection draft'>
 						<h2>Draft.</h2>
 						<span>(2 players + spectators)</span>

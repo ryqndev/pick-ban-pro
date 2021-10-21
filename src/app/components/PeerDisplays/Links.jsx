@@ -22,40 +22,54 @@ const Links = ({ roomid, blue, red, className }) => {
 			{blue && red && (
 				<>
 					<div className={cn['action-container']}>
-						<label htmlFor='challenger-link' className={cn.blue}>
+						<label htmlFor={cn['blue-link']} className={cn.blue}>
 							Blue Side <span> (has first pick) </span>
 						</label>
 					</div>
-					<LinkText href={blueLink} />
+					<LinkText href={blueLink} id={cn['blue-link']} />
 
-					<label htmlFor='challenger-link' className={cn.red}>
+					<label htmlFor={cn['red-link']} className={cn.red}>
 						Red Side <span> (has last pick) </span>
 					</label>
-					<LinkText href={redLink} />
+					<LinkText href={redLink} id={cn['red-link']} />
 				</>
 			)}
 
-			<hr width="80%" />
+			<div className={cn.hr}></div>
 
-			<label htmlFor='spectator-link'>
+			<label htmlFor={cn['spectator-link']}>
 				Spectator <span>to watch</span>
 			</label>
-			<LinkText href={specLink} />
-
-			<span style={{ color: 'white' }}>
-				{/* { spectators currently connected */}
-			</span>
+			<LinkText href={specLink} id={cn['spectator-link']} />
+			{blue && red && (
+				<button
+					style={{
+						padding: '0',
+						width: '120px',
+						margin: '10px auto 5px',
+						height: '40px',
+						fontSize: '0.8em',
+					}}
+					onClick={() => {
+						navigator.clipboard.writeText(
+							`Blue Team: ${blueLink}\nRed Team: ${redLink}\nSpectators: ${specLink}`
+						);
+					}}
+				>
+					Copy All
+				</button>
+			)}
 		</div>
 	);
 };
 
-const LinkText = ({ href }) => {
+const LinkText = ({ href, id }) => {
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(href);
-	}
+	};
 	return (
 		<div className={cn.actions}>
-			<ControlledTextInput id='challenger-link' value={href} readOnly />
+			<ControlledTextInput id={id} value={href} readOnly />
 			<button onClick={copyToClipboard}>
 				<ContentPasteIcon />
 			</button>

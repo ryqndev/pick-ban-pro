@@ -18,7 +18,7 @@ const App = () => {
 				<Route path="menu" element={<Menu />} />
 				<Route path="tournaments/*" element={<ProAnalyst />} />
 				<Route path="create" element={<Create {...peer} />} />
-				<Route path="create/challenge" element={<Create {...peer} />} />
+				<Route path="challenge" element={<Create />} />
 				
 				<Route path="blue/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="blue" />} />
 				<Route path="red/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="red" />} />

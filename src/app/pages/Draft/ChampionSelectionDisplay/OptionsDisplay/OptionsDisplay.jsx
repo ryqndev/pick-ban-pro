@@ -17,6 +17,7 @@ const OptionsDisplay = ({ open, ...settings }) => {
                     <button className={clsx(tab === 'settings' && cn.selected)} onClick={() => setTab('settings')}>Settings</button>
                     <button className={clsx(tab === 'participants' && cn.selected)} onClick={() => setTab('participants')}>Participants</button>
                     <button className={clsx(tab === 'counters' && cn.selected)} onClick={() => setTab('counters')}>Counters</button>
+                    <button onClick={() => settings.setOpen(false)}> x </button>
                 </nav>
                 <div className={cn['open-page']} style={{borderRadius: tab === 'settings' ? '0px 4px 4px 4px' : '4px'}}>
                     <div style={{margin: '0 auto'}}>

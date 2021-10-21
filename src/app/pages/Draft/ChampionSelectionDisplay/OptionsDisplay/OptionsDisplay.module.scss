@@ -5,6 +5,7 @@
 
     & #counters {
         height: calc(100vh - 400px);
+        border-radius: 0px 2px 2px;
     }
 
     &>.content {
@@ -12,7 +13,7 @@
             background-color: inherit;
             display: grid;
             column-gap: 5px;
-            grid-template-columns: min-content min-content auto;
+            grid-template-columns: min-content min-content auto min-content;
             overflow: hidden;
 
             &>button {

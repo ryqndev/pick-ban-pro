@@ -6,7 +6,7 @@ import ControlledTextInput from '../../components/ControlledTextInput';
 import { Links } from '../../components/PeerDisplays';
 import './Create.sass';
 
-const Create = ({ challenge }) => {
+const Create = () => {
 	const [[roomid, bluehash, redhash]] = useState(() => [
 		generate(6),
 		generate(4),
@@ -16,7 +16,7 @@ const Create = ({ challenge }) => {
 	const [blueTeamName, setBlueTeamName] = useState('');
 	const [redTeamName, setRedTeamName] = useState('');
 
-	const [hasTimeLimits, setHasTimeLimits] = useState(!!challenge);
+	const [hasTimeLimits, setHasTimeLimits] = useState(true);
 	const [timeLimit, setTimeLimit] = useState(30);
 
 	const [areOptionsFinalized, setAreOptionsFinalized] = useState(false);
