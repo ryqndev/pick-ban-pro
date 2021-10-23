@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import db from '../../controller/libs/firestore.js';
+import db from '../libs/firestore.js';
 import { doc, onSnapshot } from 'firebase/firestore';
-import useDraftTimer from '../../controller/hooks/useDraftTimer';
-import useDraftRenderData from '../../controller/hooks/useDraftRenderData';
+import useDraftTimer from './useDraftTimer';
+import useDraftRenderData from './useDraftRenderData';
 import { BLUE_SIDE_PICKS } from '../draftLogicControllerUtil.js';
 
 const useDraftClient = setNav => {

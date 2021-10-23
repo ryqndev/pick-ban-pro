@@ -1,68 +1,39 @@
-import { useState, useEffect } from 'react';
-import { updateDoc, setDoc, doc, serverTimestamp } from 'firebase/firestore';
-import db from '../../controller/libs/firestore';
+import { useState } from 'react';
 import Toggle from 'react-toggle';
 import ControlledTextInput from '../../components/ControlledTextInput';
 import { Links } from '../../components/PeerDisplays';
-import './Create.sass';
+import useCreateRoom from './controller/useCreateRoom';
+import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMoreRounded';
+import clsx from 'clsx';
+import cn from './Create.module.sass';
 
 const Create = () => {
-	const [[roomid, bluehash, redhash]] = useState(() => [
-		generate(6),
-		generate(4),
-		generate(4),
-	]);
 	const [matchName, setMatchName] = useState('');
 	const [blueTeamName, setBlueTeamName] = useState('');
 	const [redTeamName, setRedTeamName] = useState('');
 
+	const [hasAdvancedOptions, setHasAdvancedOptions] = useState(false);
 	const [hasTimeLimits, setHasTimeLimits] = useState(true);
 	const [timeLimit, setTimeLimit] = useState(30);
 
 	const [areOptionsFinalized, setAreOptionsFinalized] = useState(false);
 
-	function generate(length = 10) {
-		return (Math.random() + 1).toString(36).substring(2, length + 2);
-	}
-	useEffect(() => {
-		setDoc(doc(db, 'livedrafts', roomid), {
-			hashes: {
-				blue: bluehash,
-				red: redhash,
-			},
-			settingUp: true,
-			createdAt: serverTimestamp(),
-			updatedAt: serverTimestamp(),
-		});
-	}, [roomid, bluehash, redhash]);
-
-	const handleSubmit = event => {
-		event.preventDefault();
-		setAreOptionsFinalized(true);
-		updateDoc(doc(db, 'livedrafts', roomid), {
-			draft: new Array(20).fill(null),
-			position: -1,
-			settingUp: false,
-			options: {},
-			details: {
-				patch: '11.19',
-				names: {
-					blue: blueTeamName.length ? blueTeamName : 'Blue Team',
-					red: redTeamName.length ? redTeamName : 'Red Team',
-					match: matchName.length ? matchName : 'Pick Ban Pro',
-				},
-			},
-			ready: [false, false],
-			updatedAt: serverTimestamp(),
-		}).catch(err => {
-			console.error(err);
-			setAreOptionsFinalized(false);
-		});
-	};
+	const { handleSubmit, roomid, redhash, bluehash } = useCreateRoom(
+		matchName,
+		blueTeamName,
+		redTeamName,
+		hasTimeLimits,
+		timeLimit,
+		setAreOptionsFinalized,
+	);
 
 	return (
-		<div className='create--wrapper'>
-			<form className='content card__component' onSubmit={handleSubmit}>
+		<div className={cn.container}>
+			<form
+				className={clsx(cn.content, 'card__component')}
+				onSubmit={handleSubmit}
+			>
 				<h1>Options</h1>
 				<span>
 					{areOptionsFinalized
@@ -80,7 +51,7 @@ const Create = () => {
 					<NameInput
 						disabled={areOptionsFinalized}
 						name='Blue'
-						example='Cloud9'
+						example='Cloud 9'
 						value={blueTeamName}
 						setValue={setBlueTeamName}
 					/>
@@ -92,32 +63,47 @@ const Create = () => {
 						setValue={setRedTeamName}
 					/>
 
-					<div className='time-limits'>
-						<label htmlFor='timer'>Set Time Limits:</label>
-						<Toggle
-							id='timer'
-							icons={false}
-							className='timer-toggle'
-							checked={hasTimeLimits}
-							onChange={() => {
-								!areOptionsFinalized &&
-									setHasTimeLimits(prev => !prev);
-							}}
-						/>
-						{hasTimeLimits && (
-							<>
-								<label className='seconds' htmlFor='timer'>
-									Seconds per pick:
-								</label>
-								<ControlledTextInput
-									disabled={areOptionsFinalized}
-									id='time-limit'
-									value={timeLimit}
-									setValue={setTimeLimit}
-								/>
-							</>
-						)}
+					<div
+						className={cn.options}
+						onClick={() => {
+							setHasAdvancedOptions(prev => !prev);
+						}}
+					>
+						<p>Advanced Options</p>
+						{
+							hasAdvancedOptions 
+								? <ExpandLessIcon />
+								: <ExpandMoreIcon />
+						}
 					</div>
+					{hasAdvancedOptions && (
+						<div className={cn['time-limits']}>
+							<label htmlFor='timer'>Set Time Limits:</label>
+							<Toggle
+								id={cn.timer}
+								icons={false}
+								className={cn['timer-toggle']}
+								checked={hasTimeLimits}
+								onChange={() => {
+									!areOptionsFinalized &&
+										setHasTimeLimits(prev => !prev);
+								}}
+							/>
+							{hasTimeLimits && (
+								<>
+									<label className='seconds' htmlFor='timer'>
+										Seconds per pick:
+									</label>
+									<ControlledTextInput
+										disabled={areOptionsFinalized}
+										id={cn['time-limit']}
+										value={timeLimit}
+										setValue={setTimeLimit}
+									/>
+								</>
+							)}
+						</div>
+					)}
 				</div>
 				<button disabled={areOptionsFinalized}>
 					{areOptionsFinalized
@@ -125,7 +111,7 @@ const Create = () => {
 						: 'Finalize Options'}
 				</button>
 			</form>
-			<div className='link-holder card__component'>
+			<div className={clsx(cn['link-holder'], 'card__component')}>
 				<Links roomid={roomid} blue={bluehash} red={redhash} />
 			</div>
 		</div>

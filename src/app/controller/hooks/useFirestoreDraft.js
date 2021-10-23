@@ -4,6 +4,7 @@ import {
 	updateDoc,
 	onSnapshot,
 	serverTimestamp,
+	Timestamp
 } from 'firebase/firestore';
 import db from '../libs/firestore.js';
 import useDraftRenderData from './useDraftRenderData.js';
@@ -16,13 +17,18 @@ const useFirestoreDraft = (setNav, id, hash, side) => {
 
 	const [data, setData] = useState(null);
 
-	useEffect(
-		() =>
-			onSnapshot(doc(db, 'livedrafts', id), doc => {
-				setData(doc.data());
-			}),
-		[id]
-	);
+	const [autolockTimer, setAutolockTimer] = useState(null);
+
+	useEffect(() => 
+		onSnapshot(doc(db, 'livedrafts', id), doc => {
+			setData(doc.data());
+		}
+	), [id]);
+
+	useEffect(() => {
+		if (!data || data.timer) return;
+		
+	}, [data]);
 
 	useEffect(() => {
 		if (!data || data.settingUp) return;
@@ -38,12 +44,16 @@ const useFirestoreDraft = (setNav, id, hash, side) => {
 	const lockin = useCallback(() => {
 		// if ready check, update accordingly
 		if (data.position === -1 && !data.ready[side === 'blue' ? 0 : 1]) {
-			const updatedReadyCheck = data.ready;
+			const updatedReadyCheck = [...data.ready];
 			updatedReadyCheck[side === 'blue' ? 0 : 1] = true;
+
+			const lastToReady = updatedReadyCheck[side === 'blue' ? 1 : 0];
+
 
 			updateDoc(doc(db, 'livedrafts', id), {
 				ready: updatedReadyCheck,
-				position: data.ready[side === 'blue' ? 1 : 0] ? 0 : -1,
+				position: lastToReady ? 0 : -1,
+				timer: lastToReady ? Timestamp.now().toMillis() + Number(data.options.timeLimit) * 1000 : 0,
 				updatedAt: serverTimestamp(),
 			});
 			return true;
@@ -60,6 +70,8 @@ const useFirestoreDraft = (setNav, id, hash, side) => {
 
 		updateDoc(doc(db, 'livedrafts', id), {
 			position: data.position + 1,
+			timer: Timestamp.now().toMillis() + Number(data.options.timeLimit) * 1000,
+			updatedAt: serverTimestamp()
 		});
 	}, [data, id, side, currentPick]);
 
@@ -69,6 +81,7 @@ const useFirestoreDraft = (setNav, id, hash, side) => {
 		updatedDraft[data.position] = champion;
 		updateDoc(doc(db, 'livedrafts', id), {
 			draft: updatedDraft,
+			updatedAt: serverTimestamp(),
 		});
 	};
 

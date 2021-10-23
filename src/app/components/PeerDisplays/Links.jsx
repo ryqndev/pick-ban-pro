@@ -23,13 +23,13 @@ const Links = ({ roomid, blue, red, className }) => {
 				<>
 					<div className={cn['action-container']}>
 						<label htmlFor={cn['blue-link']} className={cn.blue}>
-							Blue Side <span> (has first pick) </span>
+							Blue Side
 						</label>
 					</div>
 					<LinkText href={blueLink} id={cn['blue-link']} />
 
 					<label htmlFor={cn['red-link']} className={cn.red}>
-						Red Side <span> (has last pick) </span>
+						Red Side 
 					</label>
 					<LinkText href={redLink} id={cn['red-link']} />
 				</>

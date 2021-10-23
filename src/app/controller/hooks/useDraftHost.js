@@ -25,7 +25,7 @@ const useDraftHost = (setNav, spectators, update, multiplayer, draftString) => {
     }, [draft.p, isBlue]);
 
     const lockin = (caller) => {
-        if(draft.p  === -1 || !multiplayer) return actions.lockin();
+        if(draft.p === -1 || !multiplayer) return actions.lockin();
         if(caller === 'HOST' && !enemyTurnToMove()) return actions.lockin();
         if(caller === 'CLIENT' && enemyTurnToMove()) return actions.lockin();
     }
