@@ -463,8 +463,8 @@
     },
     {
       "name": "Groups",
-      "start": "2021-10-11T00:00:00.000Z",
-      "end": "2021-10-18T00:00:00.000Z",
+      "start": "2021-10-22T00:00:00.000Z",
+      "end": "2021-11-06T00:00:00.000Z",
       "type": "list",
       "games": [
         {
@@ -633,7 +633,7 @@
               "draft": "9qon7-1n13d-1s6i4k4-6ked7fl-3i3b2hob3741",
               "winner": "blue",
               "patch": "11.19",
-              "vod": null,
+              "vod": "https://youtu.be/-6op2RxPqUU?t=30",
               "roles": "jmtsbjtmsb"
             },
             {
@@ -642,8 +642,362 @@
               "draft": "139q7-4-l-7fd-2h1s465-3q5l3idt1q4kejbg5m",
               "winner": "red",
               "patch": "11.19",
-              "vod": null,
+              "vod": "https://youtu.be/GBHuE3BGu08?t=291",
               "roles": "mtjbssjmtb"
+            },
+            {
+              "blue": 1,
+              "red": 8,
+              "draft": "3b9q4-136k2wd-l-1s5m2h7-5-em1ndt5l3i6i1w",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/OrIUTvN9DGw?t=356",
+              "roles": "mbstjbjmst"
+            },
+            {
+              "blue": 11,
+              "red": 7,
+              "draft": "4-9qd-7-6k3yl-n-5m1sed2d2h6iw-dtbg155l1n",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/p1v874UVfVY?t=226",
+              "roles": "bjmtsmbtsj"
+            },
+            {
+              "blue": 4,
+              "red": 10,
+              "draft": "7-6k5-7g1s9ql-13374kw-352-2hob1m2qed1co-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/tBpyUvYIYNI?t=406",
+              "roles": "btsmjmbjst"
+            },
+            {
+              "blue": 3,
+              "red": 13,
+              "draft": "139q7f7-ed1s4-l-2h2w5md-1c1n332-6u5-emo-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/zhKbTHm00SI?t=69",
+              "roles": "mtbjsbsmjt"
+            },
+            {
+              "blue": 0,
+              "red": 14,
+              "draft": "6-9q7-6k132w1s2h2j4-3ied3bobbg465m295l26",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/-avbK7ILsLE?t=269",
+              "roles": "jmtbssjmbt"
+            },
+            {
+              "blue": 9,
+              "red": 5,
+              "draft": "2wd-3i1n9q1s6kej4-7f7-396i2j6u5-261m1c2d",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/0DU2zqTbjmw?t=314",
+              "roles": "bsmtjbmsjt"
+            }
+          ]
+        },
+        {
+          "date": "Day 4",
+          "type": "days",
+          "games": [
+            {
+              "blue": 1,
+              "red": 3,
+              "draft": "3b6k2w2d7-9q1s4-l-135m2hed2jon7e265l273i",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/gU6Pe0cikmY?t=320",
+              "roles": "jmbstmbsjt"
+            },
+            {
+              "blue": 13,
+              "red": 8,
+              "draft": "4-1sej297f9q2hd-3bl-2w5l7-1w3q1n6u13ocon",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/XJn7_2NkqTM?t=259",
+              "roles": "sbtmjmbsjt"
+            },
+            {
+              "blue": 1,
+              "red": 13,
+              "draft": "132d2h9q1s6k2w4-3i1n1w5-l-37w-bgdtem41i-",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/bLRLUdX6qq4?t=96",
+              "roles": "tjmsbmtjsb"
+            },
+            {
+              "blue": 3,
+              "red": 8,
+              "draft": "131s7f9qedn-4-2hl-3bbgd-2w1n8-5-3i6u6k2-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/QW9AejOoGhw?t=459",
+              "roles": "mbsjtsbmtj"
+            },
+            {
+              "blue": 8,
+              "red": 1,
+              "draft": "134-2h9qd-3b6kej1s7f7-395-2i1n3-ed3i9-2d",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/BQsYD210Q_o?t=30",
+              "roles": "bsmtjbjsmt"
+            },
+            {
+              "blue": 13,
+              "red": 3,
+              "draft": "d-7fed9q7-5m4-l-1s2h2wo-293qi-5l2q412d12",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/5Iog21OBtuE?t=356",
+              "roles": "msjbtbjtsm"
+            }
+          ]
+        },
+        {
+          "date": "Day 5",
+          "type": "days",
+          "games": [
+            {
+              "blue": 14,
+              "red": 0,
+              "draft": "2w6-6k1s4-9q7-2j3i5-263j2h3b29ejl-5mc-dt",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/djccj7NHIOg?t=5",
+              "roles": "mjtbsjtmbs"
+            },
+            {
+              "blue": 5,
+              "red": 9,
+              "draft": "d-9q7-6k2w4-ej1s2hbg1n297g1m132d1p3i3y1i",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/O31acNWuq84?t=373",
+              "roles": "bsjtmjsbmt"
+            },
+            {
+              "blue": 0,
+              "red": 5,
+              "draft": "132w3b1s6k1n9qej4-3i2j395m6ued5-26l-d-2d",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/wbneeIrAm0w?t=339",
+              "roles": "stjbmbmsjt"
+            },
+            {
+              "blue": 9,
+              "red": 14,
+              "draft": "7-6k132w5-9q1s4-2hed1526ej6-3bobn-41c-l-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/z9oo3gnzngY?t=28",
+              "roles": "jmtbsmsjtb"
+            },
+            {
+              "blue": 14,
+              "red": 5,
+              "draft": "1s7-6k134-d-9q2wej5m3y392j7g5-1n1p1mz-6u",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/F-zxUATNIS8?t=140",
+              "roles": "sbmtjtbsmj"
+            },
+            {
+              "blue": 9,
+              "red": 0,
+              "draft": "139qn-1s4-1i6k2w397fd-ej157-2j1n5-6i2d3q",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/ae7w4D_-gss?t=192",
+              "roles": "bsmjttsbjm"
+            }
+          ]
+        },
+        {
+          "date": "Day 6",
+          "type": "days",
+          "games": [
+            {
+              "blue": 16,
+              "red": 11,
+              "draft": "6k139q1s7-4j4-l-edejbg2h4k1n2-3i2w1m6i5-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/jQGNBRD-mmg?t=14",
+              "roles": "mbstjbmstj"
+            },
+            {
+              "blue": 2,
+              "red": 7,
+              "draft": "dt6k2w4-2-9q1sl-6iej7-d-bg2h13ob3i27em33",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/JQOJwsNOneo?t=546",
+              "roles": "jbmtsbjmts"
+            },
+            {
+              "blue": 11,
+              "red": 2,
+              "draft": "6k3y135-1s2w9ql-4-7-5m1n2-3i6u2d332jon4k",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/LNHA2AVkhKE?t=10",
+              "roles": "smbjtbmjst"
+            },
+            {
+              "blue": 7,
+              "red": 16,
+              "draft": "136k4d1sbg9q4-7-6il-dt1m3iej2w41295-2-2h",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/LcRGcSL_f1Q?t=633",
+              "roles": "mbsjtmjtbs"
+            },
+            {
+              "blue": 16,
+              "red": 2,
+              "draft": "3i1m6k139q7-1s4-l-ejed1nbg2d2h4kondt7e5l",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/XIRFfhRq9lc?t=10",
+              "roles": "jbmstmbjts"
+            },
+            {
+              "blue": 7,
+              "red": 11,
+              "draft": "7-4-156kej9q6il-1ndt2w33292d41on3idu3y3q",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/3JWVD9uh1bg?t=38",
+              "roles": "jstbmbjstm"
+            }
+          ]
+        },
+        {
+          "date": "Day 7",
+          "type": "days",
+          "games": [
+            {
+              "blue": 4,
+              "red": 6,
+              "draft": "4-9q7-6kd-131sl-6iej2w2hbg1q5l2d7g3qdton",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/hcQDyMJ_yTk?t=14",
+              "roles": "jbtmsbjsmt"
+            },
+            {
+              "blue": 18,
+              "red": 10,
+              "draft": "4-6k2d1s3i139q7-em293ji-2j154k462won6i1c",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/67gjYbGonXU?t=294",
+              "roles": "sbmtjmsbtj"
+            },
+            {
+              "blue": 4,
+              "red": 18,
+              "draft": "7-9qd-2won7f1sl-5-13ej362d4-5l2hdt397g3q",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/jSQTEbh66Jo?t=99",
+              "roles": "jtbsmbjtsm"
+            },
+            {
+              "blue": 6,
+              "red": 10,
+              "draft": "7-6k5-1s4k9ql-ej4-ed6ibg5l3i1q2w1cdt2d1n",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/KsW19qs1uVU?t=618",
+              "roles": "bmjstbmsjt"
+            },
+            {
+              "blue": 10,
+              "red": 4,
+              "draft": "6k7-ej4-9q5-1sl-2h5mdt1m3i1nd-6i4j3q46ll",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/3Qp7okBi360?t=89",
+              "roles": "jbsmtbstjm"
+            },
+            {
+              "blue": 18,
+              "red": 6,
+              "draft": "4-4k6i7-9qej1s6k7f2h13on2d5-d-7g2637o-1p",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/fH04hb8hZvA?t=72",
+              "roles": "jsmbtbstjm"
+            }
+          ]
+        },
+        {
+          "date": "Tiebreakers",
+          "type": "days",
+          "games": [
+            {
+              "blue": 1,
+              "red": 8,
+              "draft": "3b136k9q2h1s4-edl-3i6idtej2w299-2d5mbg1n",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/X_Fxp7wLPbE?t=389",
+              "roles": "mtjbsmbstj"
+            },
+            {
+              "blue": 13,
+              "red": 8,
+              "draft": "4-2h6k9q3b13l-d-dt1s7-5mw-9-em2d3i1qc-2-",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/bIVHRBOmdQo?t=374",
+              "roles": "bjmtsmsbtj"
+            },
+            {
+              "blue": 16,
+              "red": 2,
+              "draft": "3i136k4k9q1s4-l-2dej1n3-bg2h33dtem276i5-",
+              "winner": "red",
+              "patch": "11.19",
+              "vod": "https://youtu.be/L7fauqPUeiw?t=115",
+              "roles": "mbtsjbtmsj"
+            },
+            {
+              "blue": 4,
+              "red": 10,
+              "draft": "7-6k4kej131s9qemi-2wl-5-1c4-2-d-3q1n3y3i",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/GW-j76ZbG5o?t=263",
+              "roles": "stbjmsbjmt"
+            },
+            {
+              "blue": 6,
+              "red": 18,
+              "draft": "134-ej9q1s7f7-l-6i29dtd-1n4k5-3i2d466u2h",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/lzTN2yY1fm0?t=34",
+              "roles": "mbstjbjmts"
+            },
+            {
+              "blue": 4,
+              "red": 6,
+              "draft": "7-ej4-2wd-6i9q6k1sl-3q7f2j1p5-1q342-2d13",
+              "winner": "blue",
+              "patch": "11.19",
+              "vod": "https://youtu.be/YbpJJ-OXKq4?t=184",
+              "roles": "sbmjtbjsmt"
             }
           ]
         }
@@ -654,7 +1008,290 @@
       "start": "2021-10-22T00:00:00.000Z",
       "end": "2021-11-06T00:00:00.000Z",
       "type": "list",
-      "games": []
+      "games": [
+        {
+          "date": "Quarterfinals",
+          "type": "days",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                5,
+                16
+              ],
+              "games": [
+                {
+                  "blue": 5,
+                  "red": 16,
+                  "draft": "ed9q7-1s1n4-2wl-5-ej2j13d-2h7gdt3y1pbg5l",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/ijefFPZWxRw?t=976",
+                  "roles": "tbjmsbjtms"
+                },
+                {
+                  "blue": 16,
+                  "red": 5,
+                  "draft": "3i1s9q4-2w1n7-ej3j325-26dt2d2hbgon331m5l",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/OXRKh8P261g?t=52",
+                  "roles": "mbjstbmjts"
+                },
+                {
+                  "blue": 16,
+                  "red": 5,
+                  "draft": "3i1s9q4-2w1n7-ej3j2-322jdton2h2dbg5l1m46",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/SKe2cM_PQBI?t=10",
+                  "roles": "mjbstbmjst"
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                0,
+                2
+              ],
+              "games": [
+                {
+                  "blue": 0,
+                  "red": 2,
+                  "draft": "271s3-4-9q7-6kejd-7f1n5-2w393ybg332i3i13",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/mB5sydN92Es?t=180",
+                  "roles": "bsjmtbmjst"
+                },
+                {
+                  "blue": 0,
+                  "red": 2,
+                  "draft": "1n1s6k7-3-4-d-l-5-9q293i26331idtc-2w2-1-",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/e9zFgffgEyk?t=46",
+                  "roles": "msbtjbjtsm"
+                },
+                {
+                  "blue": 2,
+                  "red": 0,
+                  "draft": "7-4-9qd-1n1s6kej2w5-3-2-37bg7f3y7gl-dt39",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/1p1SITGE39I?t=31",
+                  "roles": "tjmbsbtjms"
+                },
+                {
+                  "blue": 0,
+                  "red": 2,
+                  "draft": "3-1s6k4-337-d-ej1n9ql-1-2-dt26em392w5-2d",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/EAIIknNvWy4?t=64",
+                  "roles": "msbtjbjmst"
+                },
+                {
+                  "blue": 0,
+                  "red": 2,
+                  "draft": "3-4-6k7-1-ejd-1sl-299q332-2d262i1p1n2won",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/5bodgI8qPPU?t=87",
+                  "roles": "mbsjtjbsmt"
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                3,
+                6
+              ],
+              "games": [
+                {
+                  "blue": 3,
+                  "red": 6,
+                  "draft": "137-7f9q1n4-1sej2wl-3q1p2dbg3i5-2hdton46",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/6QcawgrIaGs?t=127",
+                  "roles": "jbmstbjmst"
+                },
+                {
+                  "blue": 6,
+                  "red": 3,
+                  "draft": "ej6k4-7-2w9ql-1s5mdt3i2h5-13d-3q2d1p1n7g",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/-Hurm6ZZaw8?t=87",
+                  "roles": "bstmjjbstm"
+                },
+                {
+                  "blue": 6,
+                  "red": 3,
+                  "draft": "ej9q2w6k4-7-l-3i1s1qdt3q1n2h5-29372734ff",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/uaClm8GkZy0?t=31",
+                  "roles": "btsjmtjmbs"
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                4,
+                13
+              ],
+              "games": [
+                {
+                  "blue": 4,
+                  "red": 13,
+                  "draft": "7-9q131m4-l-ej371s5-394d7gdtob2h332d7e1n",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/4OaJp6wrHrE?t=139",
+                  "roles": "bjstmbjmst"
+                },
+                {
+                  "blue": 13,
+                  "red": 4,
+                  "draft": "ej7-7f4-1n9ql-dt1s2h265m137g3i2d2w1ied3q",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/QZbyfpwidtk?t=31",
+                  "roles": "bsjtmsjbtm"
+                },
+                {
+                  "blue": 13,
+                  "red": 4,
+                  "draft": "ej7-7f4-139ql-dt1s2h2w5m2-2d5-7g1m3q1n3y",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/E1wty1ZD6Jg?t=93",
+                  "roles": "bstmjsjbtm"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "Semifinals",
+          "type": "days",
+          "games": [
+            {
+              "type": "series",
+              "teams": [
+                3,
+                5
+              ],
+              "games": [
+                {
+                  "blue": 3,
+                  "red": 5,
+                  "draft": "ej9q7f3q2w4-1sd-3i6k7-2637bgdt662h5m1ll-",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/BqTv7F61yUM?t=194",
+                  "roles": "jtmbsmtjsb"
+                },
+                {
+                  "blue": 5,
+                  "red": 3,
+                  "draft": "d-9q4-ej1n6k1s2w7-3j5m5-onl-2d373bdt4dc-",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/NBogGocpQfI?t=86",
+                  "roles": "jmbsttmjbs"
+                },
+                {
+                  "blue": 3,
+                  "red": 5,
+                  "draft": "ej9q7f1s2w4-1n5md-l-3q5-2hon3idt2d1l6kq-",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/3osKEIuuIsw?t=77",
+                  "roles": "jbmstbmjts"
+                },
+                {
+                  "blue": 3,
+                  "red": 5,
+                  "draft": "ej9q7f1s2w4-5md-1n7-dt3i2d6613376k6u2739",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/aSqdDanOvnw?t=31",
+                  "roles": "bmsjtmjtbs"
+                },
+                {
+                  "blue": 5,
+                  "red": 3,
+                  "draft": "7-1s1n9qd-4-ej2w372d5-dt396ubg122j7gq-3y",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/JQ6GRDEfk0M?t=55",
+                  "roles": "btjmstbsjm"
+                }
+              ]
+            },
+            {
+              "type": "series",
+              "teams": [
+                0,
+                4
+              ],
+              "games": [
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "3q4-ej7-2w9q6kl-1s1n7f393i7gd-2dono-1p43",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/Htso3bpth7A?t=42",
+                  "roles": "bjstmbjstm"
+                },
+                {
+                  "blue": 4,
+                  "red": 0,
+                  "draft": "7-9q4-3q6kej1s2w1ndt5md-2d293-3b661m7g39",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/A7UpHXkZ0fI?t=22",
+                  "roles": "jsbtmtjmbs"
+                },
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "3q7-2w9qej4-6k1s391n7fl-d-7g1p2d3yon341m",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/1Pzb3gN9LYQ?t=19",
+                  "roles": "bjstmjsbmt"
+                },
+                {
+                  "blue": 0,
+                  "red": 4,
+                  "draft": "3q7-ej9q1s4-6k2w397f1nl-d-5-1p266i3y2d7g",
+                  "winner": "blue",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/4pSVQ49JyuI?t=43",
+                  "roles": "bsjmttsbjm"
+                },
+                {
+                  "blue": 4,
+                  "red": 0,
+                  "draft": "7-9q4-1s6kejdt5m1n5-l-2h3q3y7g2d2w1m1pd-",
+                  "winner": "red",
+                  "patch": "11.19",
+                  "vod": "https://youtu.be/8ygDoPzW6Mg?t=33",
+                  "roles": "sjbtmbjstm"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
