@@ -42,14 +42,7 @@ const Links = ({ roomid, blue, red, className }) => {
 			</label>
 			<LinkText href={specLink} id={cn['spectator-link']} />
 			{blue && red && (
-				<button
-					style={{
-						padding: '0',
-						width: '120px',
-						margin: '10px auto 5px',
-						height: '40px',
-						fontSize: '0.8em',
-					}}
+				<button className={cn['copy-all']}
 					onClick={() => {
 						navigator.clipboard.writeText(
 							`Blue Team: ${blueLink}\nRed Team: ${redLink}\nSpectators: ${specLink}`

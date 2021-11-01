@@ -5,7 +5,7 @@ import { ReactComponent as JungleIcon } from '../../../assets/positions/position
 import { ReactComponent as MiddleIcon } from '../../../assets/positions/position-middle.svg';
 import { ReactComponent as BotIcon } from '../../../assets/positions/position-bottom.svg';
 import { ReactComponent as SupportIcon } from '../../../assets/positions/position-utility.svg';
-import { component, active } from './RoleFilter.module.sass';
+import cn from './RoleFilter.module.sass';
 
 const RoleFilter = ({ roleFilter, setRoleFilter }) => {
 	const roles = [
@@ -21,11 +21,11 @@ const RoleFilter = ({ roleFilter, setRoleFilter }) => {
 	};
 
 	return (
-		<div className={component}>
+		<div className={cn.component}>
 			{roles.map(({ id, icon }) => (
 				<div
 					key={id}
-					className={clsx(id === roleFilter && active)}
+					className={clsx(id === roleFilter && cn.active)}
 					onClick={() => {
 						filterRole(id);
 					}}

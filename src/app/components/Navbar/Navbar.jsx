@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import './Navbar.scss';
+import cn from './Navbar.module.scss';
 
 
 const Navbar = ({ type, time, limit, end, side, names }) => {
@@ -16,8 +16,8 @@ const Navbar = ({ type, time, limit, end, side, names }) => {
     }, [side]);
 
     if (!type) return (
-        <nav className="main">
-            <Link to="/" className="name"><Logo /></Link>
+        <nav className={cn.container}>
+            <Link to="/" className={cn.name}><Logo /></Link>
             <h1>pickban.pro</h1>
         </nav>
     );
@@ -29,13 +29,13 @@ const Navbar = ({ type, time, limit, end, side, names }) => {
         redTimer = end !== 0 && isRed ? ~~(time ?? 30) : '';
 
     return (
-        <nav className="main with-bar">
-            <Link to="/" className="name"><Logo /></Link>
-            <h2 className={clsx("blue", isBlue && "active")}>{names.blue}</h2>
-            <p className="blue">{blueTimer}</p>
+        <nav className={clsx(cn.container, cn['with-bar'])}>
+            <Link to="/" className={cn.name}><Logo /></Link>
+            <h2 className={clsx(cn.blue, isBlue && cn.active)}>{names.blue}</h2>
+            <p className={cn.blue}>{blueTimer}</p>
             <h1>{names.match}</h1>
-            <p className="red">{redTimer}</p>
-            <h2 className={clsx("red", isRed && "active")}>{names.red}</h2>
+            <p className={cn.red}>{redTimer}</p>
+            <h2 className={clsx(cn.red, isRed && cn.active)}>{names.red}</h2>
         </nav>
     );
 }

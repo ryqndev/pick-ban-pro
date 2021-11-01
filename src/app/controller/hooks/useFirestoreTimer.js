@@ -4,10 +4,13 @@ const useFirestoreTimer = (timer, forceLockin) => {
     const [timeLeft, setTimeLeft] = useState(0);
 
     useEffect(() => {
+        if(!timer) return;
         const countdown = setInterval(() => {
             const tempTimeLeft = (timer - Date.now()) / 1000;
             if (tempTimeLeft <= 0) {
                 clearInterval(countdown);
+                forceLockin();
+                return;
             }
 
             setTimeLeft(tempTimeLeft);
@@ -16,7 +19,7 @@ const useFirestoreTimer = (timer, forceLockin) => {
         return () => {
             clearInterval(countdown);
         }
-    }, [timer]);
+    }, [timer, forceLockin]);
 
     return {
         timeLeft,

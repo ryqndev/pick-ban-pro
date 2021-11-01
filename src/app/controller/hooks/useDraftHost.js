@@ -58,11 +58,14 @@ const useDraftHost = (setNav, spectators, update, multiplayer, draftString) => {
         readyCheck,
         setReadyCheck,
         settings: {
-            on, 
-            limit,
-            setOn, 
-            setLimit,
-            setIsBlue,
+            options: {
+                hasTimeLimits: on,
+                timeLimit: limit,
+                toggleTimeLimit: setOn, 
+                setTimeLimit: setLimit,
+                setIsBlue,
+            },
+
         },
         actions: {
             lockin,

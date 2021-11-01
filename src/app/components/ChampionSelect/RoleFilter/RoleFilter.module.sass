@@ -2,11 +2,13 @@
     display: grid
     grid-template-columns: repeat(5, 1fr)
     column-gap: 6px
-    & > div 
+
+    &>div 
         display: grid
         place-content: center
         border-radius: 4px
         transition: box-shadow 500ms, background-color 500ms
-    & > div.active 
+    
+    &>div.active 
         box-shadow: inset 1px 1px 5px 1px var(--elevation-shadow)
         background-color: #101010

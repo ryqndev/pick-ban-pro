@@ -2,6 +2,11 @@
     box-sizing: border-box;
     overflow: hidden;
     transition: max-height 150ms ease-in-out;
+    max-height: 0vh;
+
+    &.open {
+        max-height: 95vh;
+    }
 
     & #counters {
         height: calc(100vh - 400px);
@@ -13,7 +18,8 @@
             background-color: inherit;
             display: grid;
             column-gap: 5px;
-            grid-template-columns: min-content min-content auto min-content;
+            // grid-template-columns: min-content min-content auto min-content;
+            grid-template-columns: min-content auto min-content;
             overflow: hidden;
 
             &>button {
@@ -29,18 +35,31 @@
                     color: white;
                     background-color: var(--bg-primary);
                 }
+                &.close {
+                    background-color: transparent;
+                    // border-radius: 50%;
+                    cursor: pointer;
+                }
             }
         }
 
-        &>.open-page {
+        &>.page {
             box-sizing: border-box;
             background-color: var(--bg-primary);
-            border-radius: 0px 4px 4px;
+            border-radius: 0px 4px 4px 4px;
 
-            & .max-width {
+            &.rounded {
+                border-radius: 4px;
+            }
+
+            & .small {
                 margin: 0 auto;
                 padding: 20px 30px;
                 max-width: 450px;
+            }
+
+            &>div {
+                margin: 0 auto;
             }
         }
     }
