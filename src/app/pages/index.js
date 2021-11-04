@@ -1,13 +1,14 @@
 import Landing from './Landing';
 import Menu from './Menu';
-import Create from './Create';
+import { Practice, Challenge } from './Create';
 import ProAnalyst from './ProAnalyst';
 import { SinglePlayerDraft, MultiplayerDraft, SpectateDraft } from './Draft';
 
 export {
     Landing,
     Menu,
-    Create,
+    Practice,
+    Challenge,
     ProAnalyst,
     SpectateDraft,
     SinglePlayerDraft,

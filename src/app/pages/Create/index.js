@@ -1,3 +1,7 @@
-import Create from './Create.jsx';
+import Practice from './Practice';
+import Challenge from './Challenge';
 
-export default Create;
+export {
+    Practice,
+    Challenge,
+};

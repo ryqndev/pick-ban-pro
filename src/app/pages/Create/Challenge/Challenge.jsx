@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Toggle from 'react-toggle';
-import ControlledTextInput from '../../components/ControlledTextInput';
-import { Links } from '../../components/PeerDisplays';
-import useCreateRoom from './controller/useCreateRoom';
+import ControlledTextInput from '../../../components/ControlledTextInput';
+import { Links } from '../../../components/PeerDisplays';
+import useCreateRoom from '../controller/useCreateRoom';
 import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreRounded';
 import clsx from 'clsx';
-import cn from './Create.module.sass';
+import cn from './Challenge.module.sass';
 
-const Create = () => {
+const Challenge = () => {
 	const [matchName, setMatchName] = useState('');
 	const [blueTeamName, setBlueTeamName] = useState('');
 	const [redTeamName, setRedTeamName] = useState('');
@@ -136,4 +136,4 @@ const NameInput = ({ name, value, setValue, example, disabled }) => {
 	);
 };
 
-export default Create;
+export default Challenge;

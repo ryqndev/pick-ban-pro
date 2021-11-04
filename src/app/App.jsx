@@ -1,46 +1,25 @@
-import { useState, memo } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import usePeer from './controller/hooks/usePeer';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import { Menu, Create, ProAnalyst, SinglePlayerDraft, MultiplayerDraft, SpectateDraft } from './pages';
-import './styles/main.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import ChampionsContext from './controller/contexts/ChampionsContext';
+import useDDragonStaticAssets from './controller/hooks/useDDragonStaticAssets';
+import Pages from './Pages.jsx';
+
+const queryClient = new QueryClient();
 
 const App = () => {
-	const peer = usePeer();
-	const [navigationContent, setNav] = useState({});
+	const { championsList, patchList, patch } = useDDragonStaticAssets();
 
 	return (
-		<>
-			<Navbar {...navigationContent} />
-			<Routes>
-				<Route path="/" element={<Menu setNav={setNav}/>} />
-				<Route path="menu" element={<Menu />} />
-				<Route path="tournaments/*" element={<ProAnalyst />} />
-				<Route path="create" element={<Create {...peer} />} />
-				<Route path="challenge" element={<Create />} />
-				
-				<Route path="blue/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="blue" />} />
-				<Route path="red/:id/:hash" element={<MultiplayerDraft setNav={setNav} side="red" />} />
-				<Route path="spectate/:id" element={<SpectateDraft setNav={setNav} />} />
-				{[
-					"d",
-					"d/:draftString",
-					"draft/:teamNames",
-					"draft/:teamNames/:draftString",
-					"d/:matchName/:teamNames",
-					"d/:matchName/:teamNames/:draftString"
-				].map(url =>
-					<Route
-						key={url}
-						path={url}
-						element={<SinglePlayerDraft {...peer} setNav={setNav} />}
-					/>
-				)}
-			</Routes>
-			<Footer />
-		</>
+		<QueryClientProvider client={queryClient}>
+			<ChampionsContext.Provider
+				value={{ championsList, patchList, patch }}
+			>
+				<Router basename={process.env.PUBLIC_URL}>
+					<Pages />
+				</Router>
+			</ChampionsContext.Provider>
+		</QueryClientProvider>
 	);
-}
+};
 
-export default memo(App);
+export default App;

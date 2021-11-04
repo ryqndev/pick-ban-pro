@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Menu.scss';
+import clsx from 'clsx';
+import cn from './Menu.module.scss';
 
 const Menu = ({ setNav }) => {
 	useEffect(() => { setNav({}) }, [setNav]);
 
 	return (
-		<div className='menu--wrapper'>
-			<div className='selection--holder'>
+		<div className={cn.container}>
+			<div className={cn['selection--holder']}>
 				<h1>formats</h1>
-				<Link to='/create' className='card__component test'>
-					<div className='selection test'>
+				<Link to='/practice' className={clsx(cn.test, 'card__component')}>
+					<div className={clsx(cn.selection, cn.test)}>
 						<h2>Practice.</h2>
 						<span>(Single-player + spectators)</span>
 						<p>
@@ -20,8 +21,8 @@ const Menu = ({ setNav }) => {
 						</p>
 					</div>
 				</Link>
-				<Link to='/challenge' className='card__component draft'>
-					<div className='selection draft'>
+				<Link to='/challenge' className={clsx(cn.draft, 'card__component')}>
+					<div className={clsx(cn.selection, cn.draft)}>
 						<h2>Draft.</h2>
 						<span>(2 players + spectators)</span>
 						<p>
@@ -31,8 +32,8 @@ const Menu = ({ setNav }) => {
 						</p>
 					</div>
 				</Link>
-				<Link to='/tournaments' className='card__component explore'>
-					<div className='selection explore'>
+				<Link to='/tournaments' className={clsx(cn.explore, 'card__component')}>
+					<div className={clsx(cn.selection, cn.explore)}>
 						<h2>Explore.</h2>
 						<span>(Most major regions supported)</span>
 						<p>
